@@ -53,9 +53,9 @@ const CategoryHeader: React.FC = () => {
     );
   };
 
-  const handleCategorySelect = (categoryId: string) => {
-    dispatch(setFilters({ category: categoryId }));
-    navigate(`/category/${categoryId}`);
+  const handleCategorySelect = (category: Category) => {
+    dispatch(setFilters({ category: category.name }));
+    navigate(`/category/${category.id}`);
 
     // Show popup when filter is clicked
     const popup = getRandomPopupAd();
@@ -90,7 +90,7 @@ const CategoryHeader: React.FC = () => {
                     <Grid item key={category.id}>
                       <Button
                         color="inherit"
-                        onClick={() => handleCategorySelect(category.id)}
+                        onClick={() => handleCategorySelect(category)}
                         sx={{
                           textTransform: 'none',
                           '&:hover': {
@@ -113,7 +113,7 @@ const CategoryHeader: React.FC = () => {
                     <Grid item key={category.id}>
                       <Button
                         color="inherit"
-                        onClick={() => handleCategorySelect(category.id)}
+                        onClick={() => handleCategorySelect(category)}
                         sx={{
                           textTransform: 'none',
                           '&:hover': {

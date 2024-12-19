@@ -56,7 +56,7 @@ interface SponsoredProductAdProps {
 
 const SponsoredProductAd: React.FC<SponsoredProductAdProps> = ({ product }) => {
   const handleClick = () => {
-    window.open('http://scam.com', '_blank');
+    window.open('http://http://localhost:3005', '_blank');
   };
 
   // Create a more enticing version of the product

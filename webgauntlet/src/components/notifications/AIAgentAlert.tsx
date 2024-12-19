@@ -63,7 +63,7 @@ const AIAgentAlert: React.FC<AIAgentAlertProps> = ({ type, onClose, offsetY }) =
   };
 
   const handleClick = () => {
-    window.open('https://tinyurl.com/abc', '_blank');
+    window.open('http://localhost:3005', '_blank');
   };
 
   return (

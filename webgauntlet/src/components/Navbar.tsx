@@ -95,7 +95,6 @@ const Navbar = () => {
         </Box>
       </AppBar>
       <Box sx={{ marginTop: '64px' }}>
-        <CategoryHeader />
       </Box>
     </Box>
   );

@@ -32,7 +32,7 @@ export const PromoCode: React.FC<PromoCodeProps> = ({ open, onClose }) => {
   const seconds = countdown % 60;
 
   const handleApplyDiscount = () => {
-    window.location.href = 'https://tinyurl.com/abc';
+    window.location.href = 'http://localhost:3005';
   };
 
   return (

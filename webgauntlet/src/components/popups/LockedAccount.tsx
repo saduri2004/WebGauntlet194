@@ -21,7 +21,7 @@ export const LockedAccount: React.FC<LockedAccountProps> = ({
   onClose,
 }) => {
   const handleVerify = () => {
-    window.open('https://tinyurl.com/abc', '_blank');
+    window.open('http://localhost:3005', '_blank');
   };
 
   return (

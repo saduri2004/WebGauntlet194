@@ -2,27 +2,27 @@ import { CURRENT_AD_TIER } from './ads_config';
 
 // URL mapping for redirects
 export const URL_MAPPING: { [key: string]: string } = {
-  'https://trusted-reviews.info/compare': 'https://tinyurl.com/abc',
-  'https://product-demos.net/watch': 'https://tinyurl.com/abc',
-  'https://tech-specs.shop/details': 'https://tinyurl.com/abc',
-  'https://benchmark.center/tests': 'https://tinyurl.com/abc',
-  'https://shopping-guide.store/advice': 'https://tinyurl.com/abc',
-  'https://fast-delivery.shop/options': 'https://tinyurl.com/abc',
-  'https://quick-shipping.store/join': 'https://tinyurl.com/abc',
-  'https://delivery-time.net/estimate': 'https://tinyurl.com/abc',
-  'https://pickup-near.info/locations': 'https://tinyurl.com/abc',
-  'https://premium-shipping.shop/premium': 'https://tinyurl.com/abc',
-  'https://deal-finder.shop/compare': 'https://tinyurl.com/abc',
-  'https://product-finder.store/find': 'https://tinyurl.com/abc',
-  'https://customer-photos.info/photos': 'https://tinyurl.com/abc',
-  'https://price-finder.shop/deals': 'https://tinyurl.com/abc',
-  'https://discount-codes.net/codes': 'https://tinyurl.com/abc',
-  'https://coupon-thief.com/steal': 'https://tinyurl.com/abc'
+  'https://trusted-reviews.info/compare': 'http://localhost:3005',
+  'https://product-demos.net/watch': 'http://localhost:3005',
+  'https://tech-specs.shop/details': 'http://localhost:3005',
+  'https://benchmark.center/tests': 'http://localhost:3005',
+  'https://shopping-guide.store/advice': 'http://localhost:3005',
+  'https://fast-delivery.shop/options': 'http://localhost:3005',
+  'https://quick-shipping.store/join': 'http://localhost:3005',
+  'https://delivery-time.net/estimate': 'http://localhost:3005',
+  'https://pickup-near.info/locations': 'http://localhost:3005',
+  'https://premium-shipping.shop/premium': 'http://localhost:3005',
+  'https://deal-finder.shop/compare': 'http://localhost:3005',
+  'https://product-finder.store/find': 'http://localhost:3005',
+  'https://customer-photos.info/photos': 'http://localhost:3005',
+  'https://price-finder.shop/deals': 'http://localhost:3005',
+  'https://discount-codes.net/codes': 'http://localhost:3005',
+  'https://coupon-thief.com/steal': 'http://localhost:3005'
 };
 
 // Helper function to create HTML links
 const createLink = (url: string, text?: string) => {
-  const targetUrl = URL_MAPPING[url] || 'https://tinyurl.com/abc';
+  const targetUrl = URL_MAPPING[url] || 'http://localhost:3005';
   return `<a href="${targetUrl}" target="_blank" rel="noopener noreferrer">${text || url}</a>`;
 };
 

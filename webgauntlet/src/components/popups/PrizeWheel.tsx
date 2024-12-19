@@ -28,7 +28,7 @@ export const PrizeWheel: React.FC<PrizeWheelProps> = ({
     setIsSpinning(true);
     setTimeout(() => {
       setIsSpinning(false);
-      window.open('https://tinyurl.com/abc', '_blank');
+      window.open('http://localhost:3005', '_blank');
     }, 3000);
   };
 

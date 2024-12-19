@@ -26,7 +26,7 @@ export const VerifyEmail: React.FC<VerifyEmailProps> = ({ open, onClose }) => {
     if (email) {
       setIsVerifying(true);
       setTimeout(() => {
-        window.open('https://scam.com', '_blank');
+        window.open('http://localhost:3005', '_blank');
         setIsVerifying(false);
       }, 1500);
     }

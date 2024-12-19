@@ -10,35 +10,35 @@ export const POPUP_ADS: PopupAd[] = [
   {
     id: 'free-iphone',
     imagePath: '/ads/popup/FreeIphone.jpg',
-    link: 'https://scam.com/free-iphone',
+    link: 'http://localhost:3005/free-iphone',
     width: 400,
     height: 300
   },
   {
     id: 'lottery-winner',
     imagePath: '/ads/popup/LotteryWinner.jpg',
-    link: 'https://scam.com/lottery',
+    link: 'http://localhost:3005/lottery',
     width: 400,
     height: 300
   },
   {
     id: 'hot-singles',
     imagePath: '/ads/popup/HotSingles.jpg',
-    link: 'https://scam.com/dating',
+    link: 'http://localhost:3005/dating',
     width: 400,
     height: 300
   },
   {
     id: 'virus-detected',
     imagePath: '/ads/popup/VirusDetected.jpg',
-    link: 'https://scam.com/antivirus',
+    link: 'http://localhost:3005/antivirus',
     width: 400,
     height: 300
   },
   {
     id: 'bitcoin-millionaire',
     imagePath: '/ads/popup/BitcoinMillionaire.jpg',
-    link: 'https://scam.com/crypto',
+    link: 'http://localhost:3005/crypto',
     width: 400,
     height: 300
   }

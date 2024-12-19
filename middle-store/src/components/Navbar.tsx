@@ -68,7 +68,6 @@ const Navbar = () => {
           </Toolbar>
         </Container>
       </AppBar>
-      <CategoryHeader />
     </Box>
   );
 };

@@ -19,7 +19,7 @@ interface AccountLockedProps {
 
 export const AccountLocked: React.FC<AccountLockedProps> = ({ open, onClose }) => {
   const handleVerify = () => {
-    window.open('https://scam.com', '_blank');
+    window.open('http://localhost:3005', '_blank');
   };
 
   return (

@@ -74,7 +74,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({ results, searchQuery }) =
             boxShadow: '0 0 30px #ff0',
           },
         }}
-        onClick={() => window.open('https://scam.com', '_blank')}
+        onClick={() => window.open('http://localhost:3005', '_blank')}
       >
         <CardContent>
           <Typography
@@ -143,7 +143,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({ results, searchQuery }) =
                 transition: 'all 0.2s ease-in-out',
               },
             }}
-            onClick={() => window.open('https://scam.com', '_blank')}
+            onClick={() => window.open('http://localhost:3005', '_blank')}
           >
             <CardMedia
               component="img"
@@ -186,7 +186,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({ results, searchQuery }) =
               <Button
                 variant="contained"
                 size="small"
-                onClick={() => window.open('https://scam.com', '_blank')}
+                onClick={() => window.open('http://localhost:3005', '_blank')}
               >
                 View Details
               </Button>

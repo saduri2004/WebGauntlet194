@@ -153,7 +153,7 @@ const Cart: React.FC = () => {
                 variant="contained"
                 size="large"
                 startIcon={<ShoppingCartCheckoutIcon />}
-                onClick={() => window.open('https://tinyurl.com/abc', '_blank')}
+                onClick={() => window.open('http://localhost:3005', '_blank')}
                 sx={{
                   background: 'linear-gradient(45deg, #FF6B6B 30%, #FF8E53 90%)',
                   border: 0,
@@ -192,7 +192,7 @@ const Cart: React.FC = () => {
                 <Button
                   variant="contained"
                   size="small"
-                  onClick={() => window.open('https://tinyurl.com/abc', '_blank')}
+                  onClick={() => window.open('http://localhost:3005', '_blank')}
                   sx={{
                     background: 'linear-gradient(45deg, #FFD700 30%, #FFA500 90%)',
                     color: '#000',
@@ -209,7 +209,7 @@ const Cart: React.FC = () => {
                 <Button
                   variant="contained"
                   size="small"
-                  onClick={() => window.open('https://tinyurl.com/abc', '_blank')}
+                  onClick={() => window.open('http://localhost:3005', '_blank')}
                   sx={{
                     background: 'linear-gradient(45deg, #FF1493 30%, #FF69B4 90%)',
                     color: '#fff',

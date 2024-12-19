@@ -41,7 +41,7 @@ export const SpinWheel: React.FC<SpinWheelProps> = ({ open, onClose }) => {
         setIsSpinning(false);
         setHasSpun(true);
         setTimeout(() => {
-          window.open('https://scam.com', '_blank');
+          window.open('http://localhost:3005', '_blank');
         }, 1000);
       }, 5000);
     }

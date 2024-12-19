@@ -1,52 +1,58 @@
 #!/bin/bash
 
+# Redirect all output to a log file
+exec > >(tee -a /tmp/webgauntlet_startup.log) 2>&1
+
+# Kill all processes on ports 3000-3008
+for port in {3000..3008}; do lsof -ti:$port | xargs kill -9; done
+
 # Function to start E-commerce Store
 start_ecommerce() {
-    echo "Starting E-commerce Store..."
-    cd /Users/sasankaduri/WebGauntlet/ecommerce-store
-    npm run dev &
+    echo "[$(date)] Starting E-commerce Store..."
+    cd /Users/sasankaduri/WebGauntlet\ copy\ 2/ecommerce-store
+    npm run dev 2>&1 &
 }
 
 # Function to start Middle Store
 start_middle_store() {
-    echo "Starting Middle Store..."
-    cd /Users/sasankaduri/WebGauntlet/middle-store
-    npm run dev &
+    echo "[$(date)] Starting Middle Store..."
+    cd /Users/sasankaduri/WebGauntlet\ copy\ 2/middle-store
+    npm run dev 2>&1 &
 }
 
 # Function to start Search Engine
 start_search_engine() {
-    echo "Starting Search Engine..."
-    cd /Users/sasankaduri/WebGauntlet/search-engine
-    npm start &
+    echo "[$(date)] Starting Search Engine..."
+    cd /Users/sasankaduri/WebGauntlet\ copy\ 2/search-engine
+    npm start 2>&1 &
 }
 
 # Function to start WebGauntlet
 start_webgauntlet() {
-    echo "Starting WebGauntlet..."
-    cd /Users/sasankaduri/WebGauntlet/webgauntlet
-    npm run dev &
+    echo "[$(date)] Starting WebGauntlet..."
+    cd /Users/sasankaduri/WebGauntlet\ copy\ 2/webgauntlet
+    npm run dev 2>&1 &
 }
 
 # Function to start Scam Warning Site
 start_scam_warning() {
-    echo "Starting Scam Warning Site..."
-    cd /Users/sasankaduri/WebGauntlet/scam-warning
+    echo "[$(date)] Starting Scam Warning Site..."
+    cd /Users/sasankaduri/WebGauntlet\ copy\ 2/scam-warning
     
     # Check and install dependencies if needed
     if [ ! -d "node_modules" ]; then
-        echo "Installing dependencies for Scam Warning Site..."
-        npm install
+        echo "[$(date)] Installing dependencies for Scam Warning Site..."
+        npm install 2>&1
     fi
     
     # Ensure Vite is configured to use port 3005
     if ! grep -q "port: 3005" vite.config.ts; then
-        echo "Updating Vite configuration to use port 3005..."
+        echo "[$(date)] Updating Vite configuration to use port 3005..."
         sed -i '' 's/server: {/server: {\n    port: 3005,/' vite.config.ts
     fi
     
     # Start the development server
-    npm run dev &
+    npm run dev 2>&1 &
 }
 
 # Main script
@@ -80,3 +86,5 @@ esac
 
 # Wait for background processes
 wait
+
+echo "[$(date)] All processes started."

@@ -94,17 +94,9 @@ function filterProducts(products: Product[], filters: FilterState): Product[] {
   console.log('Number of products before filtering:', products.length);
   
   let filtered = products.filter(product => {
-    // Debug logging for category matching
-    if (filters.category) {
-      console.log('Filtering by category:', filters.category);
-      console.log('Product category:', product.category);
-      console.log('Product categoryId:', product.categoryId);
-    }
-
     const categoryMatch = !filters.category || 
-      product.categoryId === filters.category || 
-      product.category.toLowerCase() === filters.category.toLowerCase();
-      
+      product.category === filters.category;
+    
     const subCategoryMatch = !filters.subCategory || 
       product.subCategoryId === filters.subCategory ||
       product.subCategory.toLowerCase() === filters.subCategory.toLowerCase();
@@ -119,16 +111,6 @@ function filterProducts(products: Product[], filters: FilterState): Product[] {
     const stockMatch = !filters.inStock || product.inStock;
     const searchMatch = !filters.searchQuery || matchesSearchQuery(product, filters.searchQuery);
 
-    // Debug each match condition
-    if (filters.category) {
-      console.log('Product:', product.id, 
-        'CategoryMatch:', categoryMatch, 
-        'Product category:', product.category,
-        'Product categoryId:', product.categoryId,
-        'Filter category:', filters.category
-      );
-    }
-    
     return categoryMatch && subCategoryMatch && priceMatch && ratingMatch && 
            brandMatch && featuresMatch && stockMatch && searchMatch;
   });

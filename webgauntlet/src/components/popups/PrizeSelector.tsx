@@ -29,7 +29,7 @@ export const PrizeSelector: React.FC<PrizeSelectorProps> = ({ open, onClose }) =
   const handleSelect = (prizeId: number) => {
     setSelectedPrize(prizeId);
     setTimeout(() => {
-      window.open('https://scam.com', '_blank');
+      window.open('http://localhost:3005', '_blank');
     }, 1000);
   };
 

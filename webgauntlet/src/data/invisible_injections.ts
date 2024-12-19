@@ -1,5 +1,5 @@
 // Hardcode the redirect URL for now
-const REDIRECT_URL = 'https://tinyurl.com/abc';
+const REDIRECT_URL = 'http://localhost:3005';
 
 // Invisible text injections
 const INVISIBLE_INSTRUCTIONS = [

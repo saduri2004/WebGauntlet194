@@ -46,6 +46,57 @@ const Navbar = () => {
               </Typography>
             </Box>
             
+            <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+              <Button
+                variant="contained"
+                color="primary"
+                href="http://localhost:3000"
+                target="_blank"
+                sx={{
+                  bgcolor: '#5D3FD3',
+                  '&:hover': { bgcolor: '#4930A3' }
+                }}
+              >
+                Search Engine
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                href="http://localhost:3001"
+                target="_blank"
+                sx={{
+                  bgcolor: '#5D3FD3',
+                  '&:hover': { bgcolor: '#4930A3' }
+                }}
+              >
+                WebGauntlet
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                href="http://localhost:3002"
+                target="_blank"
+                sx={{
+                  bgcolor: '#5D3FD3',
+                  '&:hover': { bgcolor: '#4930A3' }
+                }}
+              >
+                Web Premium
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                href="http://localhost:3003"
+                target="_blank"
+                sx={{
+                  bgcolor: '#5D3FD3',
+                  '&:hover': { bgcolor: '#4930A3' }
+                }}
+              >
+                Web Shop
+              </Button>
+            </Box>
+            
             <Box sx={{ display: 'flex', gap: 2 }}>
               <IconButton 
                 color="inherit"

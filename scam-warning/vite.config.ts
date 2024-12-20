@@ -6,6 +6,20 @@ export default defineConfig({
   plugins: [react()],
   base: '/',
   server: {
+    port: 3005,
+    port: 3005,
+    port: 3005,
+    port: 3005,
+    port: 3005,
+    port: 3005,
+    port: 3005,
+    port: 3005,
+    port: 3005,
+    port: 3005,
+    port: 3005,
+    port: 3005,
+    port: 3005,
+    port: 3005,
     port: 3005
   }
 })

@@ -147,7 +147,12 @@ const ProductList: React.FC = () => {
       marginRight: '-50vw', 
       overflow: 'hidden' 
     }}>
-      <AIAgentBanner />
+
+
+      <AIAgentBanner sx={{ 
+        mt: 10, 
+
+      }} />
 
       {/* Promotional Banner */}
       <Box sx={{ 

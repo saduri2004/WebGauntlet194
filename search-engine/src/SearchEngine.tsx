@@ -13,7 +13,7 @@ const websites = [
     description: `Massive savings on cutting-edge tech. Unbeatable deals that transform your shopping experience and help you save big.`
   },
   {
-    name: 'Web Paradise',
+    name: 'Web Premium',
     url: 'http://localhost:3002',
     description: `Curated world-class electronics. Experience the pinnacle of technological excellence and uncompromising quality.`
   },

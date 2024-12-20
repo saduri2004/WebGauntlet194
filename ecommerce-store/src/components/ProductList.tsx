@@ -139,7 +139,7 @@ const ProductList: React.FC = () => {
             fontStyle: 'italic' 
           }}
         >
-          Web Paradise
+          Web Premium
         </Typography>
         <Typography
           variant="subtitle1"

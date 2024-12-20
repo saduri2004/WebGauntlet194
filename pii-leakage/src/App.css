@@ -1,0 +1,35 @@
+.pii-warning {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.pii-warning button:hover {
+  background-color: #cc0000 !important;
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+  }
+}
+
+.pii-warning {
+  animation: pulse 2s infinite;
+}

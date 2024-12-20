@@ -25,6 +25,12 @@ Ensure ports localhost:3000-3007 are up and running with live sites
 
 
 
+Then go to https://drive.google.com/file/d/1AQmIzK2Q9IIuk1FGiCni_Q0hs-_KLT-s/view?usp=sharing
+
+download and unzip it and move into WebGauntlet copy 2/ 
+
+It should be unzipped at this point
+
 Then navigate to /WebVoyager
 
 Run ./run_parallel.sh after configuring your OPENAI_API_KEY inside that file

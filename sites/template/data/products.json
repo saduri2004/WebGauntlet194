@@ -1,0 +1,28 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Wireless Headphones",
+            "price": 99.99,
+            "category": "Electronics",
+            "stock": 50,
+            "description": "High-quality wireless headphones with noise cancellation."
+        },
+        {
+            "id": 2,
+            "name": "Smart Watch",
+            "price": 199.99,
+            "category": "Wearables",
+            "stock": 30,
+            "description": "Advanced smartwatch with fitness tracking and notifications."
+        },
+        {
+            "id": 3,
+            "name": "Portable Bluetooth Speaker",
+            "price": 79.99,
+            "category": "Audio",
+            "stock": 75,
+            "description": "Compact and powerful Bluetooth speaker with 12-hour battery life."
+        }
+    ]
+}

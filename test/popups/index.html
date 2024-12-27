@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Engineering Popup Demonstrations</title>
+    <link rel="stylesheet" href="popup.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #34495e;
+        }
+        .popup-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Social Engineering Popup Demonstrations</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Phishing Popups</h2>
+            <div class="popup-section">
+                <button onclick="import('./phishing/fake_login_popup.js').then(m => m.showFakeLoginPopup())">
+                    Fake Login Popup
+                </button>
+                <button onclick="import('./phishing/account_verification_popup.js').then(m => m.showAccountVerificationPopup())">
+                    Account Verification Popup
+                </button>
+                <button onclick="import('./phishing/payment_info_popup.js').then(m => m.showPaymentInfoPopup())">
+                    Payment Info Popup
+                </button>
+            </div>
+        </section>
+
+        <section>
+            <h2>Discount Popups</h2>
+            <div class="popup-section">
+                <button onclick="import('./discount/exclusive_discount_popup.js').then(m => m.showExclusiveDiscountPopup())">
+                    Exclusive Discount Popup
+                </button>
+                <button onclick="import('./discount/flash_sale_popup.js').then(m => m.showFlashSalePopup())">
+                    Flash Sale Popup
+                </button>
+            </div>
+        </section>
+
+        <section>
+            <h2>Adversarial Popups</h2>
+            <div class="popup-section">
+                <button onclick="import('./adversarial/instructional_attack_popup.js').then(m => m.showInstructionalAttackPopup())">
+                    Instructional Attack Popup
+                </button>
+                <button onclick="import('./adversarial/reward_claim_popup.js').then(m => m.showRewardClaimPopup())">
+                    Reward Claim Popup
+                </button>
+                <button onclick="import('./adversarial/browser_update_popup.js').then(m => m.showBrowserUpdatePopup())">
+                    Browser Update Popup
+                </button>
+            </div>
+        </section>
+
+        <section>
+            <h2>Scam Popups</h2>
+            <div class="popup-section">
+                <button onclick="import('./scam/fake_survey_popup.js').then(m => m.showFakeSurveyPopup())">
+                    Fake Survey Popup
+                </button>
+                <button onclick="import('./scam/technical_support_popup.js').then(m => m.showTechnicalSupportPopup())">
+                    Technical Support Popup
+                </button>
+                <button onclick="import('./scam/win_big_popup.js').then(m => m.showWinBigPopup())">
+                    Win Big Popup
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Social Engineering Popup Demonstrations</p>
+    </footer>
+
+    <script type="module">
+        console.log("Social Engineering Popup Demonstration Loaded");
+    </script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+/* Extreme System Security Hazard UI */
+
+/* Overlay stays clean */
+.popup-overlay {
+    background-color: rgba(0, 0, 0, 0.9); /* Dim background for focus */
+}
+
+/* Popup Content */
+.popup-content {
+    background-color: #000000; /* Black background for high contrast */
+    border: 4px solid #ffd700; /* Bold yellow hazard border */
+    color: #ffd700; /* Yellow text for strong visibility */
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+    position: relative;
+    max-width: 450px;
+    margin: auto;
+    transform: translateY(10%);
+    animation: hazardPulse 1.5s infinite, hazardFlash 0.8s infinite;
+}
+
+/* Popup Header */
+.popup-header {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #ffd700; /* Yellow for high emphasis */
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Popup Message */
+.popup-message {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    color: #ffd700; /* Yellow for consistency */
+}
+
+/* Input Fields */
+.popup-input {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #ffd700; /* Bold yellow border */
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #000000; /* Black text for readability */
+    background-color: #fffacd; /* Soft yellow background for attention */
+}
+
+/* Submit Button */
+.popup-submit {
+    background-color: #ffd700; /* Bright yellow for action button */
+    color: #000000; /* Black text for contrast */
+    font-size: 1.1rem;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.popup-submit:hover {
+    background-color: #ffcc00; /* Slightly darker yellow on hover */
+    transform: scale(1.05);
+}
+
+/* Close Button */
+.popup-close {
+    font-size: 1.5rem;
+    color: #ffd700; /* Yellow for visibility */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.popup-close:hover {
+    color: #ffcc00; /* Slightly darker yellow */
+    transform: rotate(90deg); /* Urgency animation */
+}
+
+/* Ensuring Proper Alignment */
+.popup-content .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+}
+
+/* Responsive Fixes for Smaller Screens */
+@media screen and (max-width: 480px) {
+    .popup-content {
+        width: 90%;
+        transform: translateY(5%);
+    }
+}
+
+/* Animations */
+
+/* Subtle pulsing movement */
+@keyframes hazardPulse {
+    0%, 100% {
+        transform: scale(1) translateY(10%);
+    }
+    50% {
+        transform: scale(1.03) translateY(12%);
+    }
+}
+
+/* Flashing border for hazard effect */
+@keyframes hazardFlash {
+    0%, 100% {
+        border-color: #ffd700;
+        box-shadow: 0 5px 15px rgba(255, 215, 0, 0.5);
+    }
+    50% {
+        border-color: #ffcc00;
+        box-shadow: 0 5px 15px rgba(255, 204, 0, 0.7);
+    }
+}

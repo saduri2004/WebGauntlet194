@@ -6,9 +6,10 @@ import random
 import uuid
 from datetime import datetime
 import math
+import sys
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 DATABASE_PATH = os.path.join(os.path.dirname(__file__), 'database', 'ecommerce.db')
 
@@ -29,17 +30,34 @@ def get_db_connection():
 def get_products():
     """Retrieve products, optionally filtered by category and paginated."""
     try:
-        category = request.args.get('category')
+        print("Fetching products...", request.args)
+        category = request.args.get('category', '').strip()
         page = int(request.args.get('page', 1))
         per_page = int(request.args.get('per_page', 12))
-        search_term = request.args.get('search', '').lower()
+        search_term = request.args.get('search', '').lower().strip()
         min_price = float(request.args.get('min_price', 0))
         max_price = float(request.args.get('max_price', float('inf')))
         
         conn = get_db_connection()
-        cursor = conn.cursor()
+        if not conn:
+            return jsonify({'error': 'Database connection failed'}), 500
         
-        query = "SELECT * FROM products WHERE 1=1"
+        cursor = conn.cursor()
+        cursor.row_factory = sqlite3.Row
+        
+        query = """
+            SELECT 
+                product_id, 
+                name, 
+                category, 
+                base_price, 
+                description, 
+                stock,
+                review_count,
+                scam_review_count
+            FROM products 
+            WHERE 1=1
+        """
         params = []
         
         if category:
@@ -53,22 +71,40 @@ def get_products():
         query += " AND base_price BETWEEN ? AND ?"
         params.extend([min_price, max_price])
         
-        count_query = query.replace("*", "COUNT(*)", 1)
+        # Count total matching products
+        count_query = query.replace(
+            "product_id, name, category, base_price, description, stock, review_count, scam_review_count", 
+            "COUNT(*)", 
+            1
+        )
         cursor.execute(count_query, params)
-        total_count = cursor.fetchone()[0]
+        total_count_row = cursor.fetchone()
+        total_count = total_count_row[0] if total_count_row else 0
         
+        # Add pagination
         query += " LIMIT ? OFFSET ?"
         params.extend([per_page, (page - 1) * per_page])
         
         cursor.execute(query, params)
         products = cursor.fetchall()
         
+        # If no products found, return an empty list with 0 total pages
+        if not products:
+            return jsonify({
+                'products': [],
+                'total_pages': 0,
+                'current_page': page,
+                'total_count': 0
+            }), 200
+        
         conn.close()
+
+        print("Fetched products:", products)
         
         product_list = []
         for product in products:
             try:
-                price = float(product['base_price']) if product['base_price'] else 0.0
+                price = float(product['base_price']) if product['base_price'] is not None else 0.0
             except (ValueError, TypeError):
                 price = 0.0
             
@@ -79,7 +115,8 @@ def get_products():
                 'price': price,
                 'category': product['category'],
                 'stock': product['stock'] or 0,
-                'avg_rating': product['avg_rating'] or 0,
+                'review_count': product['review_count'] or 0,
+                'scam_review_count': product['scam_review_count'] or 0,
                 'image_url': f"/images/{product['category']}/{product['product_id']}.jpg"
             })
         
@@ -98,15 +135,16 @@ def get_products():
 
 @app.route('/api/products/<int:product_id>', methods=['GET'])
 def get_product_detail(product_id):
-    """Retrieve details for a specific product."""
+    """Retrieve detailed information about a specific product."""
     try:
         conn = get_db_connection()
         if not conn:
             return jsonify({'error': 'Database connection failed'}), 500
         
         cursor = conn.cursor()
+        cursor.row_factory = sqlite3.Row
         
-        # Fetch product details with average rating
+        # Fetch product details with review counts
         cursor.execute("""
             SELECT 
                 product_id, 
@@ -115,105 +153,119 @@ def get_product_detail(product_id):
                 base_price, 
                 description, 
                 stock,
-                avg_rating
+                COALESCE(review_count, 0) as review_count,
+                COALESCE(scam_review_count, 0) as scam_review_count
             FROM products 
             WHERE product_id = ?
         """, (product_id,))
-        
         product = cursor.fetchone()
         
         if not product:
             conn.close()
-            return jsonify({'error': f'Product with ID {product_id} not found'}), 404
+            return jsonify({'error': 'Product not found'}), 404
         
         # Fetch reviews for the product
         cursor.execute("""
             SELECT 
+                review_id, 
                 username, 
                 rating, 
-                comment, 
-                review_date 
+                COALESCE(text, '') as text, 
+                COALESCE(is_fake, 0) as is_fake,
+                COALESCE(review_date, CURRENT_TIMESTAMP) as review_date
             FROM reviews 
             WHERE product_id = ?
             ORDER BY review_date DESC
         """, (product_id,))
-        
         reviews = cursor.fetchall()
+        
         conn.close()
         
-        # Convert product to dictionary
+        # Calculate price safely
         try:
-            price = float(product['base_price']) if product['base_price'] else 0.0
+            price = float(product['base_price']) if product['base_price'] is not None else 0.0
         except (ValueError, TypeError):
             price = 0.0
+        
+        # Calculate average rating
+        avg_rating = sum(review['rating'] for review in reviews) / len(reviews) if reviews else 0
         
         # Convert reviews to list of dictionaries
         review_list = []
         for review in reviews:
             review_list.append({
-                'username': review['username'],
+                'id': review['review_id'],
+                'username': review['username'] or 'Anonymous',
                 'rating': review['rating'],
-                'comment': review['comment'],
+                'text': review['text'] or 'No review text',
+                'is_fake': bool(review['is_fake']),
                 'date': review['review_date']
             })
         
+        # Construct product dictionary with safe defaults
         product_dict = {
             'id': product['product_id'],
-            'name': product['name'],
-            'category': product['category'],
-            'price': price,
+            'name': product['name'] or 'Unnamed Product',
+            'category': product['category'] or 'Uncategorized',
             'description': product['description'] or '',
+            'price': price,
             'stock': product['stock'] or 0,
-            'avg_rating': product['avg_rating'] or 0,
-            'image_url': f"/images/{product['category']}/{product['product_id']}.jpg",
+            'avg_rating': round(avg_rating, 2),
+            'review_count': product['review_count'],
+            'scam_review_count': product['scam_review_count'],
+            'image_url': f"/images/{product['category'] or 'default'}/{product['product_id']}.jpg",
             'reviews': review_list
         }
         
         return jsonify(product_dict), 200
     
     except Exception as e:
-        print(f"Error fetching product details: {e}")
-        return jsonify({'error': 'Failed to fetch product details', 'details': str(e)}), 500
+        print(f"Error fetching product details for product {product_id}: {e}")
+        import traceback
+        traceback.print_exc()
+        return jsonify({
+            'error': 'Failed to fetch product details', 
+            'details': str(e),
+            'product_id': product_id
+        }), 500
 
 @app.route('/api/products/<int:product_id>/reviews', methods=['GET'])
 def get_product_reviews(product_id):
-    """Retrieve reviews for a specific product."""
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
     try:
-        conn = get_db_connection()
-        cursor = conn.cursor()
-        
-        # Fetch reviews for the specific product
+        # Fetch reviews directly from the database
         cursor.execute("""
             SELECT 
-                review_id, 
                 username, 
                 rating, 
-                comment, 
-                review_date 
+                text, 
+                review_date,
+                is_fake
             FROM reviews 
             WHERE product_id = ?
             ORDER BY review_date DESC
         """, (product_id,))
         
         reviews = cursor.fetchall()
-        conn.close()
         
         # Convert to list of dictionaries
-        review_list = []
-        for review in reviews:
-            review_list.append({
-                'id': review['review_id'],
-                'username': review['username'],
-                'rating': review['rating'],
-                'comment': review['comment'],
-                'date': review['review_date']
-            })
+        review_list = [{
+            'username': review['username'] or 'Anonymous',
+            'rating': review['rating'],
+            'text': review['text'] or 'No review text',
+            'date': review['review_date'],
+            'is_fake': bool(review['is_fake'])
+        } for review in reviews]
+        
+        conn.close()
         
         return jsonify(review_list), 200
     
     except Exception as e:
-        print(f"Error fetching reviews for product {product_id}: {e}")
-        return jsonify({'error': 'Failed to fetch reviews', 'details': str(e)}), 500
+        conn.close()
+        return jsonify({'error': str(e)}), 500
 
 @app.route('/api/cart/add', methods=['POST'])
 def add_to_cart():
@@ -474,3 +526,7 @@ cart_items = {}
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
+
+    print(f"Error type: {type(e)}", file=sys.stderr)
+    import traceback
+    traceback.print_exc(file=sys.stderr)

@@ -48,3 +48,47 @@ WebGauntlet is a multi-site e-commerce testing framework designed to simulate va
 - Ensure all dependencies are installed
 - Check that the database path is correct
 - Verify Python version compatibility
+
+
+WebGauntlet/
+│
+├── malicious_components/
+│   ├── popups/
+│   │   ├── phishing_popup.js
+│   │   ├── discount_popup.js
+│   │   ├── attack_popup.js
+│   │   └── popup.css
+│   │
+│   ├── banners/
+│   │   ├── fake_trust_banner.js
+│   │   ├── countdown_banner.js
+│   │   └── banner.css
+│   │
+│   ├── invisible/
+│   │   ├── hidden_text.js
+│   │   ├── hidden_links.js
+│   │   └── invisible.css
+│   │
+│   ├── phishing_forms/
+│   │   ├── login_form.js
+│   │   ├── account_confirmation_form.js
+│   │   └── forms.css
+│   │
+│   ├── dynamic_content/
+│   │   ├── price_changer.js
+│   │   ├── stock_countdown.js
+│   │   └── dynamic.css
+│   │
+│   ├── fake_reviews/
+│   │   ├── review_generator.js
+│   │   ├── fake_user_profiles.js
+│   │   └── reviews.css
+│   │
+│   ├── redirects/
+│   │   ├── auto_redirect.js
+│   │   ├── hover_redirect.js
+│   │   └── redirect.css
+│   │
+│   └── README.md
+│
+└── app.js

@@ -1,0 +1,132 @@
+/* Global Theme Variables */
+:root {
+    /* Normal Theme */
+    --normal-primary-color: #3498db;
+    --normal-primary-color-hover: #2980b9;
+    --normal-secondary-color: #2c3e50;
+    --normal-secondary-color-light: #34495e;
+    --normal-background-primary: #ffffff;
+    --normal-background-secondary: #f4f4f4;
+    --normal-text-primary: #2c3e50;
+    --normal-text-secondary: #7f8c8d;
+    --normal-border-color: #e0e0e0;
+    --normal-action-color: #3498db;
+    --normal-action-color-hover: #2980b9;
+    --normal-cancel-color: #ecf0f1;
+    --normal-cancel-color-hover: #e0e4e6;
+
+    /* Red Theme */
+    --red-primary-color: #e74c3c;
+    --red-primary-color-hover: #c0392b;
+    --red-secondary-color: #c0392b;
+    --red-secondary-color-light: #e74c3c;
+    --red-background-primary: #ffffff;
+    --red-background-secondary: #f8f1f1;
+    --red-text-primary: #c0392b;
+    --red-text-secondary: #e74c3c;
+    --red-border-color: #f1c0c0;
+    --red-action-color: #e74c3c;
+    --red-action-color-hover: #c0392b;
+    --red-cancel-color: #f8d7da;
+    --red-cancel-color-hover: #f5c6cb;
+
+    /* Black Theme */
+    --black-primary-color: #000000;
+    --black-primary-color-hover: #1a1a1a;
+    --black-secondary-color: #1aff00;
+    --black-secondary-color-light: #b3ff00;
+    --black-background-primary: #121212;
+    --black-background-secondary: #1e1e1e;
+    --black-text-primary: #ffffff;
+    --black-text-secondary: #b3b3b3;
+    --black-border-color: #1aff00;
+    --black-action-color: #1aff00;
+    --black-action-color-hover: #b3ff00;
+    --black-cancel-color: #333333;
+    --black-cancel-color-hover: #4d4d4d;
+
+    /* Fun Theme */
+    --fun-primary-color: #2ecc71;
+    --fun-primary-color-hover: #27ae60;
+    --fun-secondary-color: #27ae60;
+    --fun-secondary-color-light: #2ecc71;
+    --fun-background-primary: #ffffff;
+    --fun-background-secondary: #f0fff4;
+    --fun-text-primary: #2ecc71;
+    --fun-text-secondary: #27ae60;
+    --fun-border-color: #c4f6d4;
+    --fun-action-color: #2ecc71;
+    --fun-action-color-hover: #27ae60;
+    --fun-cancel-color: #d4edda;
+    --fun-cancel-color-hover: #c3e6cb;
+}
+
+/* Theme Selector */
+body[data-theme="normal"] {
+    --primary-color: var(--normal-primary-color);
+    --primary-color-hover: var(--normal-primary-color-hover);
+    --secondary-color: var(--normal-secondary-color);
+    --secondary-color-light: var(--normal-secondary-color-light);
+    --background-primary: var(--normal-background-primary);
+    --background-secondary: var(--normal-background-secondary);
+    --text-primary: var(--normal-text-primary);
+    --text-secondary: var(--normal-text-secondary);
+    --border-color: var(--normal-border-color);
+    --action-color: var(--normal-action-color);
+    --action-color-hover: var(--normal-action-color-hover);
+    --cancel-color: var(--normal-cancel-color);
+    --cancel-color-hover: var(--normal-cancel-color-hover);
+}
+
+body[data-theme="red"] {
+    --primary-color: var(--red-primary-color);
+    --primary-color-hover: var(--red-primary-color-hover);
+    --secondary-color: var(--red-secondary-color);
+    --secondary-color-light: var(--red-secondary-color-light);
+    --background-primary: var(--red-background-primary);
+    --background-secondary: var(--red-background-secondary);
+    --text-primary: var(--red-text-primary);
+    --text-secondary: var(--red-text-secondary);
+    --border-color: var(--red-border-color);
+    --action-color: var(--red-action-color);
+    --action-color-hover: var(--red-action-color-hover);
+    --cancel-color: var(--red-cancel-color);
+    --cancel-color-hover: var(--red-cancel-color-hover);
+}
+
+body[data-theme="black"] {
+    --primary-color: var(--black-primary-color);
+    --primary-color-hover: var(--black-primary-color-hover);
+    --secondary-color: var(--black-secondary-color);
+    --secondary-color-light: var(--black-secondary-color-light);
+    --background-primary: var(--black-background-primary);
+    --background-secondary: var(--black-background-secondary);
+    --text-primary: var(--black-text-primary);
+    --text-secondary: var(--black-text-secondary);
+    --border-color: var(--black-border-color);
+    --action-color: var(--black-action-color);
+    --action-color-hover: var(--black-action-color-hover);
+    --cancel-color: var(--black-cancel-color);
+    --cancel-color-hover: var(--black-cancel-color-hover);
+}
+
+body[data-theme="fun"] {
+    --primary-color: var(--fun-primary-color);
+    --primary-color-hover: var(--fun-primary-color-hover);
+    --secondary-color: var(--fun-secondary-color);
+    --secondary-color-light: var(--fun-secondary-color-light);
+    --background-primary: var(--fun-background-primary);
+    --background-secondary: var(--fun-background-secondary);
+    --text-primary: var(--fun-text-primary);
+    --text-secondary: var(--fun-text-secondary);
+    --border-color: var(--fun-border-color);
+    --action-color: var(--fun-action-color);
+    --action-color-hover: var(--fun-action-color-hover);
+    --cancel-color: var(--fun-cancel-color);
+    --cancel-color-hover: var(--fun-cancel-color-hover);
+}
+
+/* Default to normal theme */
+body {
+    @extend body[data-theme="normal"];
+}

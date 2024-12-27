@@ -33,6 +33,13 @@
             transform: translateY(-2px);
         }
     </style>
+    <script type="module">
+        import { createAgentAdslot } from './test/adslot/agent_adslot.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            createAgentAdslot();
+        });
+    </script>
 </head>
 <body>
     <a href="sites/template/index.html" class="template-button">Template Site</a>

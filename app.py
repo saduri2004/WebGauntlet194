@@ -55,7 +55,7 @@ def get_products():
                 stock,
                 review_count,
                 scam_review_count
-            FROM products 
+            FROM products_main
             WHERE 1=1
         """
         params = []
@@ -155,7 +155,7 @@ def get_product_detail(product_id):
                 stock,
                 COALESCE(review_count, 0) as review_count,
                 COALESCE(scam_review_count, 0) as scam_review_count
-            FROM products 
+            FROM products_main
             WHERE product_id = ?
         """, (product_id,))
         product = cursor.fetchone()
@@ -298,7 +298,7 @@ def add_to_cart():
                 CAST(base_price AS REAL) as base_price, 
                 description, 
                 stock 
-            FROM products 
+            FROM products_main
             WHERE product_id = ?
         ''', (product_id,))
         
@@ -456,7 +456,7 @@ def get_categories():
         conn = get_db_connection()
         cursor = conn.cursor()
         
-        query = "SELECT DISTINCT category FROM products_capped ORDER BY category"
+        query = "SELECT DISTINCT category FROM products_main ORDER BY category"
         cursor.execute(query)
         
         categories = [row['category'] for row in cursor.fetchall() if row['category']]
@@ -470,6 +470,42 @@ def get_categories():
     except Exception as e:
         print(f"Error fetching categories: {e}")
         return jsonify({'error': 'Failed to fetch categories', 'details': str(e)}), 500
+
+@app.route('/api/scams', methods=['GET'])
+def get_scams():
+    """Retrieve scams, optionally filtered by type."""
+    try:
+        print("Fetching scams...", request.args)
+        scam_type = request.args.get('scam_type', '').strip()
+        
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({'error': 'Database connection failed'}), 500
+        
+        cursor = conn.cursor()
+        
+        query = "SELECT * FROM scams WHERE 1=1"
+        params = []
+        
+        if scam_type:
+            query += " AND scam_type = ?"
+            params.append(scam_type)
+        
+        cursor.execute(query, params)
+        scams = cursor.fetchall()
+        
+        conn.close()
+        
+        # Convert sqlite3.Row to dictionary
+        scam_list = [dict(scam) for scam in scams]
+        
+        print(f"Fetched {len(scam_list)} scams")
+        
+        return jsonify(scam_list), 200
+    
+    except Exception as e:
+        print(f"Error fetching scams: {e}")
+        return jsonify({'error': 'Failed to fetch scams', 'details': str(e)}), 500
 
 @app.route('/')
 def serve_index():

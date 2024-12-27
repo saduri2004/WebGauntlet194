@@ -15,7 +15,7 @@
 
 /* Popup Container Styling */
 .popup {
-    background-color: white;
+    background-color: var(--background-primary, white);
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     width: 100%;
@@ -31,12 +31,12 @@
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 15px;
-    color: #333;
+    color: var(--text-primary, #333);
 }
 
 /* Popup Message */
 .popup-message {
-    color: #666;
+    color: var(--text-secondary, #666);
     margin-bottom: 20px;
     line-height: 1.6;
 }
@@ -54,28 +54,31 @@
     display: flex;
     flex-direction: column;
     text-align: left;
+    width: 100%;
+    padding: 0 10px;
 }
 
 /* Input Label */
 .popup-input-label {
     margin-bottom: 5px;
-    color: #555;
+    color: var(--text-secondary, #555);
     font-weight: 600;
 }
 
 /* Input Styling */
 .popup-input {
-    width: 100%;
+    width: calc(100% - 20px);
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color, #ddd);
     border-radius: 5px;
     font-size: 1rem;
     transition: border-color 0.3s ease;
+    margin: 0 auto;
 }
 
 .popup-input:focus {
     outline: none;
-    border-color: #3498db;
+    border-color: var(--primary-color, #3498db);
 }
 
 /* Close Button */
@@ -91,7 +94,7 @@
     justify-content: center;
     align-items: center;
     font-size: 24px;
-    color: #999;
+    color: var(--text-secondary, #999);
     cursor: pointer;
     transition: color 0.3s ease, background-color 0.3s ease;
     border-radius: 50%;
@@ -99,7 +102,7 @@
 }
 
 .popup-close:hover {
-    color: #333;
+    color: var(--text-primary, #333);
     background-color: rgba(0,0,0,0.1);
 }
 
@@ -107,8 +110,8 @@
 .popup-proceed {
     width: 100%;
     padding: 12px;
-    background-color: #3498db;
-    color: white;
+    background-color: var(--action-color, #3498db);
+    color: var(--text-primary, white);
     border: none;
     border-radius: 5px;
     font-size: 1rem;
@@ -117,7 +120,7 @@
 }
 
 .popup-proceed:hover {
-    background-color: #2980b9;
+    background-color: var(--action-color-hover, #2980b9);
 }
 
 /* Animations */
@@ -147,13 +150,13 @@ body {
 }
 
 h1 {
-    color: #333;
-    border-bottom: 2px solid #666;
+    color: var(--text-primary, #333);
+    border-bottom: 2px solid var(--text-secondary, #666);
     padding-bottom: 10px;
 }
 
 h2 {
-    color: #444;
+    color: var(--text-primary, #444);
     margin-top: 30px;
 }
 
@@ -165,9 +168,9 @@ h2 {
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: var(--action-color, #4CAF50);
     border: none;
-    color: white;
+    color: var(--text-primary, white);
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
@@ -180,7 +183,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: var(--action-color-hover, #45a049);
 }
 
 /* Add scam toggle styling */
@@ -218,7 +221,7 @@ button:hover {
 
 /* Add subtitle styling */
 .popup-subtitle {
-    color: #666;
+    color: var(--text-secondary, #666);
     font-size: 1rem;
     margin-bottom: 15px;
     font-weight: 400;

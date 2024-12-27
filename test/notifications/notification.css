@@ -14,7 +14,7 @@ body {
 }
 
 .notification {
-    background-color: #ffffff;
+    background-color: var(--background-primary, #ffffff);
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-bottom: 10px;
@@ -28,6 +28,7 @@ body {
     animation: slideIn 0.3s forwards;
     display: flex;
     flex-direction: column;
+    border-left: 4px solid var(--primary-color, #3498db);
 }
 
 @keyframes slideIn {
@@ -60,11 +61,13 @@ body {
     font-weight: bold;
     margin-bottom: 5px;
     font-size: 16px;
+    color: var(--text-primary, #2c3e50);
 }
 
 .notification-message {
     font-size: 14px;
     margin-bottom: 10px;
+    color: var(--text-secondary, #7f8c8d);
 }
 
 .notification-close {
@@ -73,17 +76,17 @@ body {
     right: 10px;
     cursor: pointer;
     font-size: 20px;
-    color: #888;
+    color: var(--text-secondary, #888);
     transition: color 0.2s;
 }
 
 .notification-close:hover {
-    color: #333;
+    color: var(--text-primary, #333);
 }
 
 .notification-proceed {
-    background-color: #4CAF50;
-    color: purple;
+    background-color: var(--action-color, #4CAF50);
+    color: var(--text-primary, white);
     border: none;
     padding: 10px 15px;
     border-radius: 4px;
@@ -95,24 +98,24 @@ body {
 }
 
 .notification-proceed:hover {
-    background-color: #45a049;
+    background-color: var(--action-color-hover, #45a049);
 }
 
 /* Notification Types */
 .notification-info {
-    border-left: 4px solid #3498db;
+    border-left-color: var(--primary-color, #3498db);
 }
 
 .notification-warning {
-    border-left: 4px solid #f39c12;
+    border-left-color: var(--secondary-color-light, #f39c12);
 }
 
 .notification-error {
-    border-left: 4px solid #e74c3c;
+    border-left-color: var(--action-color, #e74c3c);
 }
 
 .notification-success {
-    border-left: 4px solid #2ecc71;
+    border-left-color: var(--secondary-color, #2ecc71);
 }
 
 /* Notification Section Styling */
@@ -124,9 +127,9 @@ body {
 }
 
 .notification-section button {
-    background-color: #4CAF50;
+    background-color: var(--action-color, #4CAF50);
     border: none;
-    color: white;
+    color: var(--text-primary, white);
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
@@ -139,5 +142,5 @@ body {
 }
 
 .notification-section button:hover {
-    background-color: #45a049;
+    background-color: var(--action-color-hover, #45a049);
 }

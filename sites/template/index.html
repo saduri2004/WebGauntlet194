@@ -352,6 +352,48 @@
             fetchProducts();
         });
     </script>
+    <script type="module">
+        // Import necessary modules
+        import scamEngine from '../scam_engine.js';
+        import { createNotification } from '../../test/notifications/notification_base.js';
+
+        // Function to initialize the page
+        function initializePage() {
+            console.log('🌐 Initializing template site page...');
+
+            // Run scam engine scan
+            try {
+                console.log('🕵️ Triggering scam detection...');
+                scamEngine.manualScanAndLog()
+                    .then(scams => {
+                        if (scams.length > 0) {
+                            createNotification({
+                                title: `🚨 Scam Alert`,
+                                message: `Detected ${scams.length} potential scam(s)`,
+                                type: 'warning',
+                                duration: 10000
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('❌ Scam detection error:', error);
+                        createNotification({
+                            title: 'Scam Detection Error',
+                            message: 'Failed to check for scams',
+                            type: 'error'
+                        });
+                    });
+            } catch (error) {
+                console.error('❌ Error initializing scam engine:', error);
+            }
+
+            // Additional page initialization logic can go here
+            console.log('✅ Page initialization complete');
+        }
+
+        // Run initialization when DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', initializePage);
+    </script>
 </body>
 
 </html>

@@ -48,6 +48,7 @@ def get_products():
         query = """
             SELECT 
                 product_id, 
+                imgUrl as image_url,
                 name, 
                 category, 
                 base_price, 
@@ -73,7 +74,7 @@ def get_products():
         
         # Count total matching products
         count_query = query.replace(
-            "product_id, name, category, base_price, description, stock, review_count, scam_review_count", 
+            "product_id, imgUrl as image_url, name, category, base_price, description, stock, review_count, scam_review_count", 
             "COUNT(*)", 
             1
         )
@@ -117,7 +118,7 @@ def get_products():
                 'stock': product['stock'] or 0,
                 'review_count': product['review_count'] or 0,
                 'scam_review_count': product['scam_review_count'] or 0,
-                'image_url': f"/images/{product['category']}/{product['product_id']}.jpg"
+                'image_url': product['image_url']
             })
         
         total_pages = math.ceil(total_count / per_page)
@@ -144,27 +145,41 @@ def get_product_detail(product_id):
         cursor = conn.cursor()
         cursor.row_factory = sqlite3.Row
         
-        # Fetch product details with review counts
-        cursor.execute("""
+        cursor.execute('''
             SELECT 
                 product_id, 
                 name, 
                 category, 
-                base_price, 
+                CAST(base_price AS REAL) as base_price, 
                 description, 
                 stock,
-                COALESCE(review_count, 0) as review_count,
-                COALESCE(scam_review_count, 0) as scam_review_count
+                imgUrl
             FROM products_main
             WHERE product_id = ?
-        """, (product_id,))
+        ''', (product_id,))
+        
         product = cursor.fetchone()
+        conn.close()
+        
+        print(f"Product query result: {product}")
         
         if not product:
-            conn.close()
-            return jsonify({'error': 'Product not found'}), 404
+            return jsonify({'error': f'Product with ID {product_id} not found'}), 404
+        
+        product_dict = {
+            'id': product['product_id'],
+            'name': product['name'],
+            'category': product['category'],
+            'price': float(product['base_price'] or 0),
+            'description': product['description'] or '',
+            'stock': product['stock'] or 0,
+            'image_url': product['imgUrl'] or 'placeholder.jpg'
+        }
         
         # Fetch reviews for the product
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        
         cursor.execute("""
             SELECT 
                 review_id, 
@@ -180,12 +195,6 @@ def get_product_detail(product_id):
         reviews = cursor.fetchall()
         
         conn.close()
-        
-        # Calculate price safely
-        try:
-            price = float(product['base_price']) if product['base_price'] is not None else 0.0
-        except (ValueError, TypeError):
-            price = 0.0
         
         # Calculate average rating
         avg_rating = sum(review['rating'] for review in reviews) / len(reviews) if reviews else 0
@@ -208,12 +217,12 @@ def get_product_detail(product_id):
             'name': product['name'] or 'Unnamed Product',
             'category': product['category'] or 'Uncategorized',
             'description': product['description'] or '',
-            'price': price,
+            'price': product_dict['price'],
             'stock': product['stock'] or 0,
             'avg_rating': round(avg_rating, 2),
-            'review_count': product['review_count'],
-            'scam_review_count': product['scam_review_count'],
-            'image_url': f"/images/{product['category'] or 'default'}/{product['product_id']}.jpg",
+            'review_count': len(reviews),
+            'scam_review_count': 0,
+            'image_url': product_dict['image_url'],
             'reviews': review_list
         }
         

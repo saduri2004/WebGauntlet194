@@ -312,10 +312,10 @@
                 }
                 
                 // Update product image
-                const productImage = document.getElementById('product-image');
-                if (productImage) {
-                    productImage.src = product.image_url || 'placeholder.jpg';
-                    productImage.alt = product.name || 'Product Image';
+                const imageElement = document.getElementById('product-image');
+                if (imageElement) {
+                    imageElement.src = product.image_url || 'placeholder.jpg';
+                    imageElement.alt = product.name || 'Product Image';
                 }
                 
                 // Render reviews

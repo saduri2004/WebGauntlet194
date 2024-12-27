@@ -199,22 +199,10 @@
                             <img src="${product.image_url || 'placeholder.jpg'}" alt="${escapeHtml(product.name)}" class="product-image">
                         </div>
                         <div class="product-info">
-                            <div class="product-title-container">
-                                <h3 class="product-title">${escapeHtml(product.name)}</h3>
-                            </div>
-                            <div class="product-category-container">
-                                <p class="product-category">${escapeHtml(product.category)}</p>
-                            </div>
-                            <div class="product-price-container">
-                                <p class="product-price">$${product.price.toFixed(2)}</p>
-                            </div>
-                         
-                            <div class="view-product-btn-container">
-                                <button 
-                                    class="view-product-btn"
-                                    onclick="viewProductDetail(${product.id})"
-                                >View Details</button>
-                            </div>
+                            <h3 class="product-title">${escapeHtml(product.name)}</h3>
+                            <p class="product-category">${escapeHtml(product.category)}</p>
+                            <p class="product-price">$${typeof product.base_price === 'number' ? product.base_price.toFixed(2) : (product.price ? parseFloat(product.price).toFixed(2) : '0.00')}</p>
+                            <button onclick="viewProductDetail(${product.product_id || product.id})" class="view-product-btn">View Details</button>
                         </div>
                     </div>
                 `).join('');
@@ -255,11 +243,19 @@
         }
 
         function viewProductDetail(productId) {
-            const urlParams = new URLSearchParams(window.location.search);
-            const cssParam = urlParams.get('css');
-            const themeParam = urlParams.get('theme');
+            // Validate productId
+            if (!productId || productId === 'undefined') {
+                showNotification('Invalid product selected', 'error');
+                return;
+            }
 
             let productDetailUrl = `product-detail.html?id=${productId}`;
+
+            // Optional: Add theme or CSS parameters if they exist
+            const urlParams = new URLSearchParams(window.location.search);
+            const themeParam = urlParams.get('theme');
+            const cssParam = urlParams.get('css');
+
             if (themeParam) {
                 productDetailUrl += `&theme=${themeParam}`;
             } else if (cssParam) {

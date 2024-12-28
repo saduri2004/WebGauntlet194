@@ -4,8 +4,8 @@
     --primary-color-hover: #1a1a1a;
     
     /* Secondary Colors */
-    --secondary-color: #1aff00; /* Neon Yellow */
-    --secondary-color-light: #b3ff00;
+    --secondary-color: #fff01f; /* Neon Yellow */
+    --secondary-color-light: #fff01f;
     
     /* Background Colors */
     --background-primary: #121212;
@@ -16,11 +16,11 @@
     --text-secondary: #b3b3b3;
     
     /* Border Colors */
-    --border-color: #1aff00; /* Neon Yellow border */
+    --border-color: #fff01f; /* Neon Yellow border */
     
     /* Action Colors */
-    --action-color: #1aff00; /* Neon Yellow */
-    --action-color-hover: #b3ff00;
+    --action-color: #fff01f; /* Neon Yellow */
+    --action-color-hover: #fff01f;
     --cancel-color: #333333;
     --cancel-color-hover: #4d4d4d;
 }

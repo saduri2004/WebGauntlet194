@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Product Catalog</title>
-    <link rel="stylesheet" href="../../sites/css_configs/ecommerce.css">
+    <link rel="stylesheet" href="/sites/css_configs/ecommerce.css">
+    <link rel="stylesheet" href="/public/scam-containers.css" type="text/css">
     <style>
         .notification-container {
             position: fixed;
@@ -63,68 +63,350 @@
                 transform: translateX(20px);
             }
         }
+
+        .product-count-display {
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #666;
+        }
+
+        #pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        #pagination-container button {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #pagination-container button:hover {
+            background-color: #e0e0e0;
+        }
+
+        #pagination-container button.current-page {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        .pagination-container button {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            color: #495057;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            min-width: 80px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .pagination-container button:hover:not(:disabled) {
+            background-color: #e9ecef;
+            border-color: #ced4da;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+
+        .pagination-container button.current-page {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+            font-weight: bold;
+        }
+
+        .pagination-container button:disabled {
+            background-color: #f1f3f5;
+            color: #adb5bd;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .pagination-container button[disabled='true'] {
+            background-color: #f8f9fa;
+            color: #6c757d;
+            cursor: default;
+        }
+
+        .filters-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: stretch;
+            gap: 10px;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .filters-wrapper > * {
+            flex: 1;
+            min-width: 150px;
+            max-width: 250px;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .filter-row {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            width: 100%;
+        }
+
+        .filter-row input, 
+        .filter-row select {
+            width: 100%;
+            padding: 6px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .filter-row input.price-input {
+            width: 100%;
+            text-align: center;
+        }
+
+        .price-separator {
+            color: #666;
+            margin: 0 5px;
+        }
+
+        .filter-row label {
+            font-size: 14px;
+            color: #666;
+            margin-right: 2px;
+            white-space: nowrap;
+        }
+
+        #products-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .product-card {
+            width: calc(25% - 20px);
+            max-width: 250px;
+            height: 380px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        @media (max-width: 1200px) {
+            .product-card {
+                width: calc(33.333% - 20px);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .product-card {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .product-card {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+
+        .product-image-container {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+
+        .product-title {
+            font-size: 16px;
+            margin-bottom: 5px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .product-category {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+
+        .product-rating {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .view-product-btn {
+            width: 100%;
+            padding: 8px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .view-product-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #f8f9fa;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .navbar-left, 
+        .navbar-right {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .site-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #007bff;
+            margin: 0;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #495057;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #007bff;
+        }
     </style>
+    <script type="module" src="/public/init-scams.js"></script>
 </head>
 
 <body>
-    <nav id="site-nav" name="main-navigation">
-        <a href="index.html" id="nav-products-link" name="products-link">Products</a>
-        <a href="cart.html" id="nav-cart-link" name="cart-link">Cart</a>
+    <nav id="site-nav" name="main-navigation" class="navbar">
+        <div class="navbar-left">
+            <a href="index.html" id="nav-products-link" name="products-link" class="nav-link">Products</a>
+        </div>
+        <div class="navbar-center">
+            <h1 class="site-title">WebGauntlet</h1>
+        </div>
+        <div class="navbar-right">
+            <a href="cart.html" id="nav-cart-link" name="cart-link" class="nav-link">Cart</a>
+        </div>
     </nav>
 
     <section id="search-section" class="search-container">
         <div id="filters-container" class="filters-wrapper">
-            <div id="search-input-container" name="search-input-wrapper">
-                <label for="search-input" id="search-input-label" name="search-label">Search Products:</label>
-                <input type="text" id="search-input" name="product-search-input" placeholder="Search products...">
+            <div id="search-filter-container" class="search-filters">
+                <div class="filter-row">
+                    <input type="text" id="search-input" name="product-search" placeholder="Search products">
+                </div>
             </div>
 
-            <div id="category-filter-container" name="category-filter-wrapper">
-                <label for="category-filter" id="category-filter-label" name="category-label">Filter by
-                    Category:</label>
-                <select id="category-filter" name="product-category-filter">
-                </select>
+            <div id="category-filter-container" class="category-filters">
+                <div class="filter-row">
+                    <select id="category-filter" name="product-category">
+                        <option value="">All Categories</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Clothing">Clothing</option>
+                        <option value="Home">Home</option>
+                        <option value="Books">Books</option>
+                    </select>
+                </div>
             </div>
 
             <div id="price-filter-container" name="price-filter-wrapper" class="price-filters">
-                <div id="price-min-wrapper" name="min-price-wrapper">
-                    <label for="price-min" id="price-min-label" name="min-price-label">Min Price:</label>
-                    <input type="number" id="price-min" name="product-price-min" min="0" placeholder="Min">
+                <div class="filter-row">
+                    <label for="price-range">$</label>
+                    <input type="number" id="price-min" name="product-price-min" min="0" placeholder="Min" class="price-input">
+                    <span class="price-separator">-</span>
+                    <input type="number" id="price-max" name="product-price-max" min="0" placeholder="Max" class="price-input">
                 </div>
-                <div id="price-max-wrapper" name="max-price-wrapper">
-                    <label for="price-max" id="price-max-label" name="max-price-label">Max Price:</label>
-                    <input type="number" id="price-max" name="product-price-max" min="0" placeholder="Max">
+            </div>
+
+            <div id="rating-filter-container" name="rating-filter-wrapper" class="rating-filters">
+                <div class="filter-row">
+                    <label for="min-rating">Rating ≥</label>
+                    <select id="min-rating" name="product-min-rating">
+                        <option value="0">Any</option>
+                        <option value="1">1 ★</option>
+                        <option value="2">2 ★</option>
+                        <option value="3">3 ★</option>
+                        <option value="4">4 ★</option>
+                        <option value="5">5 ★</option>
+                    </select>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="products-section" class="products-container">
-        <div id="pagination-top" class="pagination-controls top">
-            <button id="prev-page-top" class="pagination-btn prev">Previous</button>
-            <div class="page-numbers">
-                <button class="pagination-btn page-number" data-page="1">1</button>
-                <button class="pagination-btn page-number" data-page="2">2</button>
-                <button class="pagination-btn page-number" data-page="3">3</button>
-                <button class="pagination-btn page-number" data-page="4">4</button>
-            </div>
-            <button id="next-page-top" class="pagination-btn next">Next</button>
-        </div>
+        <div id="top-pagination-container" class="pagination-container"></div>
 
-        <div id="product-grid" class="products-grid">
+        <div id="product-count-display" class="product-count-display"></div>
+
+        <div id="products-container" class="products-grid">
             <!-- Products will be dynamically loaded here -->
         </div>
 
-        <div id="pagination-bottom" class="pagination-controls bottom">
-            <button id="prev-page-bottom" class="pagination-btn prev">Previous</button>
-            <div class="page-numbers">
-                <button class="pagination-btn page-number" data-page="1">1</button>
-                <button class="pagination-btn page-number" data-page="2">2</button>
-                <button class="pagination-btn page-number" data-page="3">3</button>
-                <button class="pagination-btn page-number" data-page="4">4</button>
-            </div>
-            <button id="next-page-bottom" class="pagination-btn next">Next</button>
-        </div>
+        <div id="bottom-pagination-container" class="pagination-container"></div>
     </section>
 
     <section id="cart-section" name="cart-content-section">
@@ -138,11 +420,7 @@
         z-index: 1000;
     "></div>
 
-    <script src="../../sites/shared/notifications.js"></script>
     <script>
-        let currentPage = 1;
-        let totalPages = 1;
-
         function escapeHtml(unsafe) {
             return unsafe
                 .replace(/&/g, "&amp;")
@@ -150,6 +428,184 @@
                 .replace(/>/g, "&gt;")
                 .replace(/"/g, "&quot;")
                 .replace(/'/g, "&#039;");
+        }
+
+        function createProductCard(product) {
+            // Defensive checks for product object
+            if (!product) {
+                console.error('Undefined product passed to createProductCard');
+                return document.createElement('div');
+            }
+
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.id = `product-${product.product_id || 'unknown'}`;
+
+            // Default values to prevent undefined errors
+            const name = escapeHtml(product.name || 'Unnamed Product');
+            const category = escapeHtml(product.category || 'Uncategorized');
+            const basePrice = typeof product.base_price === 'number' ? product.base_price.toFixed(2) : '0.00';
+            const imgUrl = product.imgUrl || '/images/placeholder.jpg';
+            
+            // Calculate review count and rating safely
+            const reviewCount = (product.review_count || 0) + (product.scam_review_count || 0);
+            const rating = reviewCount > 0 ? (reviewCount / 5).toFixed(1) : '0.0';
+
+            card.innerHTML = `
+                <div class="product-image-container">
+                    <img src="${imgUrl}" alt="${name}" class="product-image">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">${name}</h3>
+                    <p class="product-category">${category}</p>
+                    <p class="product-price">$${basePrice}</p>
+                    <div class="product-rating">
+                        Rating: ${rating} ★ (${reviewCount} reviews)
+                    </div>
+                    <button onclick="viewProductDetail(${product.product_id || 0})" class="view-product-btn">View Details</button>
+                </div>
+            `;
+
+            return card;
+        }
+
+        let allProducts = []; // Global variable to store all products
+
+        async function fetchProducts() {
+            try {
+                const searchTerm = document.getElementById('search-input').value;
+                const categoryFilter = document.getElementById('category-filter').value;
+                const minPrice = document.getElementById('price-min').value || 0;
+                const maxPrice = document.getElementById('price-max').value || Infinity;
+                const minRating = document.getElementById('min-rating').value || 0;
+
+                const params = new URLSearchParams({
+                    search: searchTerm,
+                    category: categoryFilter,
+                    min_price: minPrice,
+                    max_price: maxPrice,
+                    min_rating: minRating
+                });
+
+                const response = await fetch(`/api/products?${params.toString()}`);
+                const data = await response.json();
+
+                console.log('Raw API response:', data);
+                console.log('Products:', data.products);
+                console.log('Products type:', typeof data.products);
+                console.log('Is array:', Array.isArray(data.products));
+
+                // Ensure products array exists and is an array
+                allProducts = Array.isArray(data.products) ? data.products : [];
+
+                console.log('All products:', allProducts);
+                // Render first page
+                renderProductPage(1);
+            } catch (error) {
+                console.error('Failed to fetch products:', error);
+                document.getElementById('products-container').innerHTML = `<p id="fetch-error-message" name="products-fetch-error">Error loading products: ${error.message}</p>`;
+            }
+        }
+
+        function renderProductPage(page) {
+            console.log('Rendering page:', page);
+            console.log('All products before slice:', allProducts);
+
+            const productsPerPage = 12;
+            const startIndex = (page - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+            const paginatedProducts = allProducts.slice(startIndex, endIndex);
+
+            console.log('Paginated products:', paginatedProducts);
+
+            const productsContainer = document.getElementById('products-container');
+            productsContainer.innerHTML = '';
+
+            paginatedProducts.forEach(product => {
+                const productElement = createProductCard(product);
+                productsContainer.appendChild(productElement);
+            });
+
+            // Update product count display
+            const productCountDisplay = document.getElementById('product-count-display');
+            if (productCountDisplay) {
+                const startDisplay = startIndex + 1;
+                const endDisplay = Math.min(endIndex, allProducts.length);
+                productCountDisplay.textContent = `Displaying ${startDisplay}-${endDisplay} of ${allProducts.length} products`;
+            }
+
+            // Render pagination
+            renderPagination(page);
+        }
+
+        function renderPagination(currentPage) {
+            const productsPerPage = 12;
+            const totalPages = Math.ceil(allProducts.length / productsPerPage);
+            
+            // Top pagination container
+            const topPaginationContainer = document.getElementById('top-pagination-container');
+            const bottomPaginationContainer = document.getElementById('bottom-pagination-container');
+            
+            [topPaginationContainer, bottomPaginationContainer].forEach(paginationContainer => {
+                paginationContainer.innerHTML = '';
+
+                // Previous button
+                const prevButton = document.createElement('button');
+                prevButton.textContent = 'Previous';
+                prevButton.disabled = currentPage === 1;
+                prevButton.onclick = () => renderProductPage(currentPage - 1);
+                paginationContainer.appendChild(prevButton);
+
+                // Always show 3 unique pages in the middle with placeholders
+                const renderPageButton = (pageNum) => {
+                    const pageButton = document.createElement('button');
+                    pageButton.textContent = pageNum > 0 ? pageNum : '_';
+                    if (pageNum > 0) {
+                        pageButton.onclick = () => renderProductPage(pageNum);
+                        if (pageNum === currentPage) {
+                            pageButton.classList.add('current-page');
+                        }
+                    } else {
+                        pageButton.disabled = true;
+                    }
+                    paginationContainer.appendChild(pageButton);
+                };
+
+                // Calculate unique middle pages
+                let middlePages = [];
+                
+                // Start with current page
+                middlePages.push(currentPage);
+                
+                // Add pages before and after current page
+                if (currentPage > 1) {
+                    middlePages.unshift(currentPage - 1);
+                }
+                if (currentPage < totalPages) {
+                    middlePages.push(currentPage + 1);
+                }
+                
+                // Ensure we have 3 unique pages, adjusting as needed
+                while (middlePages.length < 3) {
+                    if (middlePages[0] > 1) {
+                        middlePages.unshift(middlePages[0] - 1);
+                    } else if (middlePages[middlePages.length - 1] < totalPages) {
+                        middlePages.push(middlePages[middlePages.length - 1] + 1);
+                    } else {
+                        middlePages.push(0);
+                    }
+                }
+
+                // Render middle pages
+                middlePages.forEach(renderPageButton);
+
+                // Next button
+                const nextButton = document.createElement('button');
+                nextButton.textContent = 'Next';
+                nextButton.disabled = currentPage === totalPages;
+                nextButton.onclick = () => renderProductPage(currentPage + 1);
+                paginationContainer.appendChild(nextButton);
+            });
         }
 
         async function fetchCategories() {
@@ -173,75 +629,6 @@
             }
         }
 
-        async function fetchProducts() {
-            try {
-                const searchTerm = document.getElementById('search-input').value;
-                const categoryFilter = document.getElementById('category-filter').value;
-                const minPrice = document.getElementById('price-min').value || 0;
-                const maxPrice = document.getElementById('price-max').value || Infinity;
-
-                const params = new URLSearchParams({
-                    page: currentPage,
-                    per_page: 12,
-                    search: searchTerm,
-                    category: categoryFilter,
-                    min_price: minPrice,
-                    max_price: maxPrice
-                });
-
-                const response = await fetch(`/api/products?${params.toString()}`);
-                const data = await response.json();
-                
-                const productsContainer = document.getElementById('product-grid');
-                productsContainer.innerHTML = data.products.map((product) => `
-                    <div class="product-card" id="product-card-${product.id}">
-                        <div class="product-image-container">
-                            <img src="${product.image_url || 'placeholder.jpg'}" alt="${escapeHtml(product.name)}" class="product-image">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">${escapeHtml(product.name)}</h3>
-                            <p class="product-category">${escapeHtml(product.category)}</p>
-                            <p class="product-price">$${typeof product.base_price === 'number' ? product.base_price.toFixed(2) : (product.price ? parseFloat(product.price).toFixed(2) : '0.00')}</p>
-                            <button onclick="viewProductDetail(${product.product_id || product.id})" class="view-product-btn">View Details</button>
-                        </div>
-                    </div>
-                `).join('');
-
-                totalPages = data.total_pages;
-                updatePaginationControls();
-            } catch (error) {
-                console.error('Failed to fetch products:', error);
-                document.getElementById('product-grid').innerHTML = `<p id="fetch-error-message" name="products-fetch-error">Error loading products: ${error.message}</p>`;
-            }
-        }
-
-        function updatePaginationControls() {
-            const basePageStart = Math.max(1, Math.min(
-                currentPage - 1, 
-                totalPages - 3
-            ));
-
-            const pageNumberBtns = document.querySelectorAll('.page-number');
-            pageNumberBtns.forEach((btn, index) => {
-                const pageNum = basePageStart + index;
-                btn.textContent = pageNum;
-                btn.dataset.page = pageNum;
-                btn.classList.toggle('active', pageNum === currentPage);
-                btn.style.display = pageNum <= totalPages ? 'block' : 'none';
-            });
-
-            const prevButtons = document.querySelectorAll('.pagination-btn.prev');
-            const nextButtons = document.querySelectorAll('.pagination-btn.next');
-            
-            prevButtons.forEach(btn => {
-                btn.disabled = currentPage === 1;
-            });
-            
-            nextButtons.forEach(btn => {
-                btn.disabled = currentPage === totalPages;
-            });
-        }
-
         function viewProductDetail(productId) {
             // Validate productId
             if (!productId || productId === 'undefined') {
@@ -249,147 +636,44 @@
                 return;
             }
 
-            let productDetailUrl = `product-detail.html?id=${productId}`;
+            let productDetailUrl = `/sites/template/product-detail.html?id=${productId}`;
 
             // Optional: Add theme or CSS parameters if they exist
             const urlParams = new URLSearchParams(window.location.search);
-            const themeParam = urlParams.get('theme');
-            const cssParam = urlParams.get('css');
-
-            if (themeParam) {
-                productDetailUrl += `&theme=${themeParam}`;
-            } else if (cssParam) {
-                productDetailUrl += `&css=${cssParam}`;
+            if (urlParams.has('css')) {
+                productDetailUrl += `&css=${urlParams.get('css')}`;
+            }
+            if (urlParams.has('theme')) {
+                productDetailUrl += `&theme=${urlParams.get('theme')}`;
             }
 
+            // Navigate to product detail page
             window.location.href = productDetailUrl;
         }
 
-        async function addToCart(productId) {
-            try {
-                const response = await fetch('/api/cart/add', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        productId: productId,
-                        quantity: 1
-                    })
-                });
-                
-                const result = await response.json();
-                
-                if (response.ok) {
-                    showNotification('Product added to cart', 'success');
-                    
-                    // Update cart badge
-                    const cartBadge = document.querySelector('.cart-badge');
-                    if (cartBadge) {
-                        cartBadge.textContent = result.cart.length;
-                        cartBadge.style.display = result.cart.length > 0 ? 'inline-block' : 'none';
-                    }
-                } else {
-                    showNotification(result.error || 'Failed to add product to cart', 'error');
-                }
-            } catch (error) {
-                console.error('Failed to add to cart:', error);
-                showNotification('Failed to add product to cart', 'error');
-            }
-        }
+        // Event listeners for search and filters
+        document.getElementById('search-input').addEventListener('input', fetchProducts);
+        document.getElementById('category-filter').addEventListener('change', fetchProducts);
+        document.getElementById('price-min').addEventListener('change', fetchProducts);
+        document.getElementById('price-max').addEventListener('change', fetchProducts);
+        document.getElementById('min-rating').addEventListener('change', fetchProducts);
 
-        document.getElementById('search-input').addEventListener('input', () => {
-            currentPage = 1;
-            fetchProducts();
-        });
-
-        document.getElementById('category-filter').addEventListener('change', () => {
-            currentPage = 1;
-            fetchProducts();
-        });
-
-        document.getElementById('price-min').addEventListener('input', () => {
-            currentPage = 1;
-            fetchProducts();
-        });
-
-        document.getElementById('price-max').addEventListener('input', () => {
-            currentPage = 1;
-            fetchProducts();
-        });
-
-        document.querySelectorAll('.pagination-btn.page-number').forEach(btn => {
-            btn.addEventListener('click', () => {
-                currentPage = parseInt(btn.dataset.page);
-                fetchProducts();
-            });
-        });
-
-        document.querySelectorAll('.pagination-btn.prev').forEach(btn => {
-            btn.addEventListener('click', () => {
-                if (currentPage > 1) {
-                    currentPage--;
-                    fetchProducts();
-                }
-            });
-        });
-
-        document.querySelectorAll('.pagination-btn.next').forEach(btn => {
-            btn.addEventListener('click', () => {
-                if (currentPage < totalPages) {
-                    currentPage++;
-                    fetchProducts();
-                }
-            });
-        });
-
+        // Initial load of products
         document.addEventListener('DOMContentLoaded', () => {
             fetchCategories();
             fetchProducts();
         });
     </script>
+
+    <!-- Import scam system -->
     <script type="module">
-        // Import necessary modules
-        import scamEngine from '../scam_engine.js';
-        import { createNotification } from '../../test/notifications/notification_base.js';
-
-        // Function to initialize the page
-        function initializePage() {
-            console.log('🌐 Initializing template site page...');
-
-            // Run scam engine scan
-            try {
-                console.log('🕵️ Triggering scam detection...');
-                scamEngine.manualScanAndLog()
-                    .then(scams => {
-                        if (scams.length > 0) {
-                            createNotification({
-                                title: `🚨 Scam Alert`,
-                                message: `Detected ${scams.length} potential scam(s)`,
-                                type: 'warning',
-                                duration: 10000
-                            });
-                        }
-                    })
-                    .catch(error => {
-                        console.error('❌ Scam detection error:', error);
-                        createNotification({
-                            title: 'Scam Detection Error',
-                            message: 'Failed to check for scams',
-                            type: 'error'
-                        });
-                    });
-            } catch (error) {
-                console.error('❌ Error initializing scam engine:', error);
-            }
-
-            // Additional page initialization logic can go here
-            console.log('✅ Page initialization complete');
-        }
-
-        // Run initialization when DOM is fully loaded
-        document.addEventListener('DOMContentLoaded', initializePage);
+        import { initScamSystem } from '/public/init-scams.js';
+        
+        // Initialize scam system after DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Initializing scam system');
+            initScamSystem(1);  // Initialize with site ID 1
+        });
     </script>
 </body>
-
 </html>

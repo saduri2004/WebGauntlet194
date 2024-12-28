@@ -1,0 +1,80 @@
+.banner {
+    background-color: var(--background-primary, #3498db);
+    border: 3px solid var(--border-color, #ccc);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin-left: 10px;
+
+    color: var(--text-primary, white);
+    font-family: system-ui, -apple-system, sans-serif;
+    z-index: 9999;
+    padding: 12px 24px;
+}
+  
+.banner-content {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 80% 30%;
+    gap: 16px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+  
+.banner-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: left;
+    padding-bottom: 20px;
+}
+  
+.banner-right {
+    margin-left: 10px;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+}
+  
+.banner-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-primary, white);
+}
+  
+.banner-message {
+    font-size: 16px;
+    margin: 0;
+    line-height: 1.4;
+    color: var(--text-secondary, #f0f0f0);
+}
+  
+.banner-cta {
+    background-color: var(--action-color, #e74c3c);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+  
+.banner-cta:hover {
+    background-color: var(--action-color-hover, #c0392b);
+}
+  
+.banner-close {
+    background: none;
+    border: 1px solid var(--text-primary, white);
+    color: var(--text-primary, white);
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}

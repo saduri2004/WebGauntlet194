@@ -28,15 +28,14 @@ def get_db_connection():
 
 @app.route('/api/products', methods=['GET'])
 def get_products():
-    """Retrieve products, optionally filtered by category and paginated."""
+    """Retrieve products, optionally filtered by category."""
     try:
         print("Fetching products...", request.args)
         category = request.args.get('category', '').strip()
-        page = int(request.args.get('page', 1))
-        per_page = int(request.args.get('per_page', 12))
         search_term = request.args.get('search', '').lower().strip()
         min_price = float(request.args.get('min_price', 0))
         max_price = float(request.args.get('max_price', float('inf')))
+        min_rating = float(request.args.get('min_rating', 0))
         
         conn = get_db_connection()
         if not conn:
@@ -47,67 +46,52 @@ def get_products():
         
         query = """
             SELECT 
-                product_id, 
-                imgUrl as image_url,
-                name, 
-                category, 
-                base_price, 
-                description, 
-                stock,
-                review_count,
-                scam_review_count
-            FROM products_main
+                pm.product_id, 
+                pm.imgUrl as image_url,
+                pm.name, 
+                pm.category, 
+                pm.base_price, 
+                pm.description, 
+                pm.stock,
+                COALESCE(AVG(r.rating), 0) as avg_rating,
+                COUNT(r.review_id) as review_count
+            FROM 
+                products_main pm
+            LEFT JOIN 
+                reviews r ON pm.product_id = r.product_id
             WHERE 1=1
         """
         params = []
         
         if category:
-            query += " AND category = ?"
+            query += " AND pm.category = ?"
             params.append(category)
         
         if search_term:
-            query += " AND LOWER(name) LIKE ?"
+            query += " AND LOWER(pm.name) LIKE ?"
             params.append(f"%{search_term}%")
         
-        query += " AND base_price BETWEEN ? AND ?"
+        query += " AND pm.base_price BETWEEN ? AND ?"
         params.extend([min_price, max_price])
         
-        # Count total matching products
-        count_query = query.replace(
-            "product_id, imgUrl as image_url, name, category, base_price, description, stock, review_count, scam_review_count", 
-            "COUNT(*)", 
-            1
-        )
-        cursor.execute(count_query, params)
-        total_count_row = cursor.fetchone()
-        total_count = total_count_row[0] if total_count_row else 0
+        query += " GROUP BY pm.product_id HAVING COALESCE(AVG(r.rating), 0) >= ?"
+        params.append(min_rating)
         
-        # Add pagination
-        query += " LIMIT ? OFFSET ?"
-        params.extend([per_page, (page - 1) * per_page])
+        query += " ORDER BY RANDOM()"
         
         cursor.execute(query, params)
         products = cursor.fetchall()
         
-        # If no products found, return an empty list with 0 total pages
-        if not products:
-            return jsonify({
-                'products': [],
-                'total_pages': 0,
-                'current_page': page,
-                'total_count': 0
-            }), 200
-        
         conn.close()
 
-        print("Fetched products:", products)
-        
         product_list = []
         for product in products:
             try:
                 price = float(product['base_price']) if product['base_price'] is not None else 0.0
+                avg_rating = float(product['avg_rating']) if product['avg_rating'] is not None else 0.0
             except (ValueError, TypeError):
                 price = 0.0
+                avg_rating = 0.0
             
             product_list.append({
                 'id': product['product_id'],
@@ -117,17 +101,12 @@ def get_products():
                 'category': product['category'],
                 'stock': product['stock'] or 0,
                 'review_count': product['review_count'] or 0,
-                'scam_review_count': product['scam_review_count'] or 0,
+                'avg_rating': avg_rating,
                 'image_url': product['image_url']
             })
         
-        total_pages = math.ceil(total_count / per_page)
-        
         return jsonify({
-            'products': product_list,
-            'total_pages': total_pages,
-            'current_page': page,
-            'total_count': total_count
+            'products': product_list
         }), 200
     
     except Exception as e:

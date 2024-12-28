@@ -151,6 +151,49 @@
             font-style: italic;
             color: #555;
         }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .notification-content {
+            margin-right: 10px;
+        }
+        
+        .notification-close {
+            font-size: 18px;
+            cursor: pointer;
+        }
+        
+        .notification.info {
+            background-color: #2196f3;
+            color: #fff;
+        }
+        
+        .notification.success {
+            background-color: #4caf50;
+            color: #fff;
+        }
+        
+        .notification.error {
+            background-color: #f44336;
+            color: #fff;
+        }
+        
+        .fade-out {
+            opacity: 0;
+            transform: translateY(20px);
+        }
     </style>
 </head>
 <body>
@@ -215,6 +258,69 @@
 
     <script src="../../sites/shared/notifications.js"></script>
     <script>
+        // Utility function to escape HTML to prevent XSS
+        function escapeHtml(unsafe) {
+            return unsafe
+                 .replace(/&/g, "&amp;")
+                 .replace(/</g, "&lt;")
+                 .replace(/>/g, "&gt;")
+                 .replace(/"/g, "&quot;")
+                 .replace(/'/g, "&#039;");
+        }
+
+        // Notification function
+        function showNotification(message, type = 'info') {
+            // Create notification container if it doesn't exist
+            let notificationContainer = document.getElementById('notification-container');
+            if (!notificationContainer) {
+                notificationContainer = document.createElement('div');
+                notificationContainer.id = 'notification-container';
+                document.body.appendChild(notificationContainer);
+            }
+
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.classList.add('notification', type);
+            notification.innerHTML = `
+                <div class="notification-content">
+                    ${escapeHtml(message)}
+                </div>
+                <button class="notification-close">&times;</button>
+            `;
+
+            // Add close functionality
+            const closeBtn = notification.querySelector('.notification-close');
+            closeBtn.addEventListener('click', () => {
+                notification.classList.add('fade-out');
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            });
+
+            // Auto-remove after 5 seconds
+            setTimeout(() => {
+                if (document.body.contains(notification)) {
+                    notification.classList.add('fade-out');
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 300);
+                }
+            }, 5000);
+
+            // Add to container
+            notificationContainer.appendChild(notification);
+        }
+
+        // Update cart badge function
+        function updateCartBadge(count) {
+            const cartBadge = document.querySelector('.cart-badge') || 
+                              document.getElementById('cart-badge');
+            if (cartBadge) {
+                cartBadge.textContent = count || 0;
+                cartBadge.style.display = (count > 0) ? 'inline-block' : 'none';
+            }
+        }
+
         function safeSetTextContent(elementId, text) {
             const element = document.getElementById(elementId);
             if (element) {
@@ -326,7 +432,7 @@
                     // Combine reviews from the API
                     const allReviews = [
                         ...product.reviews,
-                        ...generateScamReviews(product.scam_review_count || 0)
+                        ...product.scam_reviews
                     ];
                     
                     // Separate sponsored and non-sponsored reviews
@@ -351,55 +457,46 @@
                             userInfoDiv.classList.add('review-user-info');
                             
                             const usernameSpan = document.createElement('span');
+                            usernameSpan.classList.add('review-username');
                             usernameSpan.textContent = review.username;
                             
-                            // Create sponsored badge
-                            if (review.is_fake) {
-                                const sponsoredBadge = document.createElement('span');
-                                sponsoredBadge.classList.add('sponsored-badge');
-                                sponsoredBadge.textContent = 'Sponsored';
-                                userInfoDiv.appendChild(usernameSpan);
-                                userInfoDiv.appendChild(sponsoredBadge);
-                            } else {
-                                userInfoDiv.appendChild(usernameSpan);
-                            }
+                            const locationSpan = document.createElement('span');
+                            locationSpan.classList.add('review-location');
+                            locationSpan.textContent = review.city;
                             
-                            reviewElement.appendChild(userInfoDiv);
-
-                            // Rest of the review rendering remains the same
+                            const sponsoredBadge = document.createElement('span');
+                            sponsoredBadge.classList.add('sponsored-badge');
+                            sponsoredBadge.textContent = review.is_fake ? 'Sponsored' : '';
+                            
+                            userInfoDiv.appendChild(usernameSpan);
+                            userInfoDiv.appendChild(locationSpan);
+                            userInfoDiv.appendChild(sponsoredBadge);
+                            
+                            // Create rating stars
                             const ratingDiv = document.createElement('div');
-                            ratingDiv.innerHTML = renderStars(review.rating);
                             ratingDiv.classList.add('review-rating');
-                            reviewElement.appendChild(ratingDiv);
-
+                            ratingDiv.innerHTML = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+                            
+                            // Create review text
                             const textDiv = document.createElement('div');
-                            textDiv.textContent = review.text;
                             textDiv.classList.add('review-text');
-                            reviewElement.appendChild(textDiv);
-
+                            textDiv.textContent = review.text;
+                            
+                            // Create review date
                             const dateDiv = document.createElement('div');
-                            dateDiv.textContent = new Date(review.date).toLocaleDateString();
                             dateDiv.classList.add('review-date');
+                            dateDiv.textContent = new Date(review.date).toLocaleDateString();
+                            
+                            // Assemble review element
+                            reviewElement.appendChild(userInfoDiv);
+                            reviewElement.appendChild(ratingDiv);
+                            reviewElement.appendChild(textDiv);
                             reviewElement.appendChild(dateDiv);
-
+                            
                             reviewsContainer.appendChild(reviewElement);
                         });
-                        
-                        // Calculate average rating
-                        const averageRating = allReviews.length > 0 
-                            ? allReviews.reduce((sum, review) => sum + review.rating, 0) / allReviews.length 
-                            : 0;
-                        
-                        // Round to 1 decimal place
-                        const roundedRating = averageRating.toFixed(1);
-                        
-                        // Render average rating
-                        const ratingElement = document.getElementById('product-rating');
-                        if (ratingElement) {
-                            ratingElement.innerHTML = renderStars(averageRating);
-                            safeSetTextContent('rating-count', `${roundedRating}/5 (${allReviews.length} reviews)`);
-                        }
                     } else {
+                        // No reviews
                         reviewsContainer.innerHTML = '<p>No reviews yet</p>';
                     }
                 }
@@ -431,7 +528,8 @@
                 const productId = urlParams.get('id');
                 
                 if (!productId) {
-                    throw new Error('No product ID provided');
+                    showNotification('No product selected', 'error');
+                    return;
                 }
 
                 const response = await fetch('/api/cart/add', {
@@ -451,21 +549,13 @@
                     showNotification('Product added to cart', 'success');
                     
                     // Update cart badge
-                    updateCartBadge(result.cart.length);
+                    updateCartBadge(result.items ? result.items.length : 0);
                 } else {
                     showNotification(result.error || 'Failed to add product to cart', 'error');
                 }
             } catch (error) {
                 console.error('Failed to add to cart:', error);
                 showNotification('Failed to add product to cart', 'error');
-            }
-        }
-
-        function updateCartBadge(cartItemCount) {
-            const cartBadge = document.querySelector('.cart-badge');
-            if (cartBadge) {
-                cartBadge.textContent = cartItemCount;
-                cartBadge.style.display = cartItemCount > 0 ? 'inline-block' : 'none';
             }
         }
 

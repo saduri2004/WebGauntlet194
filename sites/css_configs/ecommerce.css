@@ -888,3 +888,55 @@ body {
     color: #cccccc;
     cursor: not-allowed;
 }
+
+/* Product Count Display */
+.product-count-display {
+    grid-column: span 3;
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+/* Pagination Buttons */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.pagination-btn {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    color: #333;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background-color: #e0e0e0;
+}
+
+.pagination-btn.page-number {
+    min-width: 40px;
+}
+
+.pagination-btn:disabled {
+    background-color: #f8f8f8;
+    color: #cccccc;
+    cursor: not-allowed;
+}
+
+.pagination-btn.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.pagination-ellipsis {
+    color: #666;
+    margin: 0 0.5rem;
+}

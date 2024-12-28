@@ -1,4 +1,4 @@
-import { createNotification } from '../test/notifications/notification_base.js';
+import { createNotification } from '../attacks/notifications/notification_base.js';
 
 // Simulated database connection for web
 class ScamDatabase {

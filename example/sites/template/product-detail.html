@@ -199,7 +199,10 @@
 <body>
     <nav id="site-nav" name="main-navigation">
         <a href="index.html" id="nav-products-link" name="products-link">Products</a>
-        <a href="cart.html" id="nav-cart-link" name="cart-link">
+        <div class="navbar-center">
+            <h1 id="site-title" class="site-title">Loading...</h1>
+        </div>
+        <a href="cart.html" id="nav-cart-link" name="cart-link" class="active">
             Cart
             <span class="cart-badge"></span>
         </a>
@@ -584,5 +587,20 @@
         // Load product details when page loads
         document.addEventListener('DOMContentLoaded', fetchProductDetails);
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/getname')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('site-title').textContent = data.site_name;
+                })
+                .catch(error => {
+                    console.error('Error fetching site name:', error);
+                    document.getElementById('site-title').textContent = 'WebGauntlet';
+                });
+        });
+    </script>
+
+
 </body>
 </html>

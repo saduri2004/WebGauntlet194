@@ -1,0 +1,10 @@
+{
+    "London": {
+        "port": 5001,
+        "url": "http://localhost:5001/sites/template/index.html"
+    },
+    "Paris": {
+        "port": 5002,
+        "url": "http://localhost:5002/sites/template/index.html"
+    }
+}

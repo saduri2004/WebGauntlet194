@@ -12,7 +12,7 @@ import logging
 # Set up logging
 logger = logging.getLogger(__name__)
 
-def create_app(site_name=None, site_id=None, template_folder=None, static_folder=None, base_dir=None):
+def create_app(site_name=None, nickname=None, site_id=None, template_folder=None, static_folder=None, base_dir=None):
     """
     Create a Flask application with optional site-specific configuration.
     
@@ -26,12 +26,7 @@ def create_app(site_name=None, site_id=None, template_folder=None, static_folder
     Returns:
         Flask application instance
     """
-    print("CRITICAL: create_app() function is being called!")  # Add this line
-    # Debug print
-    print(f"Creating app with site_name: {site_name}, site_id: {site_id}")
-    print(f"Template folder: {template_folder}")
-    print(f"Static folder: {static_folder}")
-    print(f"Base directory: {base_dir}")
+   
     
     # Determine base directory
     if base_dir is None:
@@ -53,6 +48,7 @@ def create_app(site_name=None, site_id=None, template_folder=None, static_folder
     
     # Site-specific configuration
     app.config['SITE_NAME'] = site_name
+    app.config['NICKNAME'] = nickname
     app.config['SITE_ID'] = site_id
     
     def get_db_connection():
@@ -72,11 +68,7 @@ def create_app(site_name=None, site_id=None, template_folder=None, static_folder
                 os.path.join(os.path.dirname(__file__), 'database', 'ecommerce.db')
             ]
             
-            # Print out possible database paths for debugging
-            print("🔍 Searching for database in:")
-            for path in possible_paths:
-                print(f"   - {path}: {'✅ EXISTS' if os.path.exists(path) else '❌ NOT FOUND'}")
-            
+
             # Find first existing database path
             database_path = next((path for path in possible_paths if os.path.exists(path)), None)
             
@@ -84,7 +76,6 @@ def create_app(site_name=None, site_id=None, template_folder=None, static_folder
                 print("❌ ERROR: No database file found!")
                 return None
             
-            print(f"📂 Using database: {database_path}")
             
             # Verify database is readable
             if not os.access(database_path, os.R_OK):
@@ -116,9 +107,7 @@ def create_app(site_name=None, site_id=None, template_folder=None, static_folder
         """Retrieve products, optionally filtered by category."""
         try:
             # Enhanced logging for request parameters
-            print("🌐 Product Request Parameters:")
-            for key, value in request.args.items():
-                print(f"   - {key}: {value}")
+
             
             # Extract and validate parameters
             category = request.args.get('category', '').strip()
@@ -181,9 +170,6 @@ def create_app(site_name=None, site_id=None, template_folder=None, static_folder
             
             query += " ORDER BY RANDOM()"
             
-            print(f"📊 Executing query: {query}")
-            print(f"📝 Query parameters: {params}")
-            
             cursor.execute(query, params)
             products = cursor.fetchall()
             conn.close()
@@ -209,7 +195,6 @@ def create_app(site_name=None, site_id=None, template_folder=None, static_folder
                     'image_url': product['imgUrl']
                 })
             
-            print(f"✅ Returning {len(product_list)} products")
             return jsonify({
                 'products': product_list
             }), 200
@@ -230,11 +215,8 @@ def create_app(site_name=None, site_id=None, template_folder=None, static_folder
         """
         try:
             # Extremely verbose debug logging
-            print("=" * 50)
-            print("GET PRODUCT DETAIL ROUTE CALLED")
-            print(f"Received request for product_id: {product_id}")
-            print("=" * 50)
-            
+
+          
             # Use site-specific context if available
             site_name = app.config.get('SITE_NAME')
             site_id = app.config.get('SITE_ID')
@@ -262,10 +244,6 @@ def create_app(site_name=None, site_id=None, template_folder=None, static_folder
             '''
             params = [product_id]
             
-            if site_name:
-                query += ' AND site_name = ?'
-                params.append(site_name)
-            
             cursor.execute(query, params)
             product = cursor.fetchone()
             
@@ -274,7 +252,6 @@ def create_app(site_name=None, site_id=None, template_folder=None, static_folder
             if not product:
                 return jsonify({'error': f'Product with ID {product_id} not found'}), 404
             
-            print(f"Product details: {product}")
             # Construct product dictionary
             product_dict = {
                 'id': product['product_id'],
@@ -287,7 +264,6 @@ def create_app(site_name=None, site_id=None, template_folder=None, static_folder
                 'scam_review_count': product['scam_review_count'],
                 'image_url': product['imgUrl'] or '/placeholder.jpg'
             }
-            print(f"Product dictionary: {product_dict}")
             return jsonify(product_dict)
         
         except Exception as e:
@@ -339,7 +315,6 @@ def create_app(site_name=None, site_id=None, template_folder=None, static_folder
     def add_to_cart():
         try:
             data = request.get_json()
-            print("Received cart add request:", data)
             
             product_id = data.get('productId')
             quantity = data.get('quantity', 1)
@@ -373,7 +348,6 @@ def create_app(site_name=None, site_id=None, template_folder=None, static_folder
             product = cursor.fetchone()
             conn.close()
             
-            print(f"Product query result: {product}")
             
             if not product:
                 return jsonify({'error': f'Product with ID {product_id} not found'}), 404
@@ -498,7 +472,6 @@ def create_app(site_name=None, site_id=None, template_folder=None, static_folder
         try:
             data = request.get_json()
             
-            print("Received checkout data:", data)
             
             total = sum(item['price'] * item['quantity'] for item in cart_items.values()) if cart_items else 0
             
@@ -542,7 +515,6 @@ def create_app(site_name=None, site_id=None, template_folder=None, static_folder
             
             # Query to get unique categories
             query = "SELECT DISTINCT category FROM products_main WHERE category IS NOT NULL AND category != ''"
-            print(f"📊 Executing category query: {query}")
             
             cursor.execute(query)
             
@@ -554,11 +526,11 @@ def create_app(site_name=None, site_id=None, template_folder=None, static_folder
             # Sort categories alphabetically
             categories.sort()
             
-            print(f"✅ Returning {len(categories)} categories")
+            # Return categories as JSON response
             return jsonify({
                 'categories': categories
             }), 200
-        
+    
         except Exception as e:
             print(f"❌ Error fetching categories: {e}")
             import traceback
@@ -572,7 +544,6 @@ def create_app(site_name=None, site_id=None, template_folder=None, static_folder
     def get_scams():
         """Retrieve scams, optionally filtered by type."""
         try:
-            print("Fetching scams...", request.args)
             scam_type = request.args.get('scam_type', '').strip()
             
             conn = get_db_connection()
@@ -596,7 +567,6 @@ def create_app(site_name=None, site_id=None, template_folder=None, static_folder
             # Convert sqlite3.Row to dictionary
             scam_list = [dict(scam) for scam in scams]
             
-            print(f"Fetched {len(scam_list)} scams")
             
             return jsonify(scam_list), 200
         
@@ -645,6 +615,15 @@ def create_app(site_name=None, site_id=None, template_folder=None, static_folder
                 'error': 'Failed to fetch live sites',
                 'details': str(e)
             }), 500
+
+    @app.route('/getname', methods=['GET'])
+    def get_site_name():
+        """
+        API endpoint to retrieve the site name
+        """
+        nickname = app.config.get('NICKNAME', 'WebGauntlet')
+        return jsonify({'site_name': nickname})
+
 
     @app.route('/')
     def serve_index():
@@ -704,42 +683,34 @@ def create_app(site_name=None, site_id=None, template_folder=None, static_folder
 
     cart_items = {}
 
+
     return app
+
 
 # If run directly, create a default app
 if __name__ == '__main__':
     try:
         # Get the absolute path of the current script
         current_script = os.path.abspath(__file__)
-        print(f"Current script path: {current_script}")
         
         # Dynamically determine base directory
         base_dir = os.path.dirname(os.path.dirname(current_script))
-        print(f"Base directory: {base_dir}")
-        
+        site_name = os.path.basename(base_dir)
+        nickname = os.path.basename(os.path.dirname(base_dir))
+
+
         # Verify base directory exists
         if not os.path.exists(base_dir):
             raise FileNotFoundError(f"Base directory not found: {base_dir}")
         
-        # Print out contents of base directory for debugging
-        print("Contents of base directory:")
-        for item in os.listdir(base_dir):
-            print(f"- {item}")
-        
         # Create app with base directory
-        app = create_app(base_dir=base_dir)
+        app = create_app(base_dir=base_dir, site_name=site_name, nickname=site_name)
         
-        # Run the app
-        print(f"Starting app from directory: {base_dir}")
-        app.run(host='0.0.0.0', port=5001, debug=True)
+        # Use PORT from environment, default to 5001 if not set
+        port = int(os.environ.get('PORT', 5001))
+        app.run(host='0.0.0.0', port=port, debug=True)
     except Exception as e:
         print("=" * 50, file=sys.stderr)
-        print("CRITICAL ERROR STARTING APPLICATION", file=sys.stderr)
+        print(f"Error starting app: {e}", file=sys.stderr)
         print("=" * 50, file=sys.stderr)
-        print(f"Script location: {os.path.abspath(__file__)}", file=sys.stderr)
-        print(f"Current working directory: {os.getcwd()}", file=sys.stderr)
-        print(f"Error type: {type(e)}", file=sys.stderr)
-        print(f"Error message: {str(e)}", file=sys.stderr)
-        import traceback
-        traceback.print_exc(file=sys.stderr)
-        sys.exit(1)
+        raise

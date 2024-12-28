@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title id="page-title">Loading...</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebGauntlet Base Mode</title>
+    <meta id="page-description" name="description" content="Loading E-commerce Platform">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
     <link rel="stylesheet" href="../../sites/css_configs/ecommerce.css">
     <script>
 
@@ -42,6 +44,22 @@
                 console.log('Original Theme Path:', themePath);
                 console.log('Correct CSS Path:', correctPath);
             }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/getname')
+                .then(response => response.json())
+                .then(data => {
+                    const siteName = data.site_name;
+                    document.getElementById('page-title').textContent = siteName;
+                    document.getElementById('page-description').content = `${siteName} E-commerce Platform`;
+                })
+                .catch(error => {
+                    console.error('Error fetching site name:', error);
+                    document.getElementById('page-title').textContent = 'WebGauntlet';
+                    document.getElementById('page-description').content = 'WebGauntlet E-commerce Platform';
+                });
         });
     </script>
 </head>

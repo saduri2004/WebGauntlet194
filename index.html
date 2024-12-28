@@ -2,41 +2,138 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>WebGauntlet - Live Sites</title>
-    <link rel="stylesheet" href="/sites/template/ecommerce.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebGauntlet - Live Sites Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        .live-sites-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f4f4f4;
+            --text-primary: #333;
+            --text-secondary: #666;
+            --accent-color: #3b82f6;
+            --hover-color: #2563eb;
+            --live-color: #10b981;
         }
-        .site-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
-            width: 250px;
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
             text-align: center;
+            margin-bottom: 3rem;
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
         }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .live-sites-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .site-card {
+            background-color: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: 1px solid transparent;
+            position: relative;
+        }
+
         .site-card:hover {
-            transform: scale(1.05);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.15);
+            border-color: var(--accent-color);
         }
+
         .site-card h3 {
-            margin-bottom: 10px;
-            color: #333;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
         }
-        .site-card .site-details {
-            color: #666;
-            font-size: 0.9em;
+
+        .site-details {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--hover-color);
+        }
+
+        .live-status {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--live-color);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @media (max-width: 768px) {
+            .live-sites-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>WebGauntlet Live Sites</h1>
+        <div class="header">
+            <h1>WebGauntlet Live Sites</h1>
+            <p>Explore our dynamically deployed web applications, each crafted with unique design and functionality.</p>
+        </div>
         <div id="live-sites" class="live-sites-container">
             <!-- Sites will be dynamically populated here -->
         </div>
@@ -46,37 +143,32 @@
         document.addEventListener('DOMContentLoaded', async () => {
             try {
                 // Fetch live sites from the local site_deployments.json
-                const deploymentsResponse = await fetch('/site_deployments.json');
+                const deploymentsResponse = await fetch('site_deployments.json');
                 const siteDeployments = await deploymentsResponse.json();
-
-                // Fetch site details from the database
-                const sitesResponse = await fetch('/api/live_sites');
-                const sites = await sitesResponse.json();
 
                 const liveSitesContainer = document.getElementById('live-sites');
 
-                sites.forEach(site => {
-                    const deployment = siteDeployments[site.site_name];
-                    if (deployment) {
-                        const siteCard = document.createElement('div');
-                        siteCard.classList.add('site-card');
-                        siteCard.innerHTML = `
-                            <h3>${site.site_name}</h3>
-                            <div class="site-details">
-                                <p>Site ID: ${site.site_id}</p>
-                                <p>Scam Difficulty: ${site.scam_difficulty}</p>
-                                <p>Layout ID: ${site.layout_id}</p>
-                            </div>
-                            <a href="http://localhost:${deployment.port}" target="_blank" class="btn">Visit Site</a>
-                        `;
-                        liveSitesContainer.appendChild(siteCard);
-                    }
+                Object.entries(siteDeployments).forEach(([siteName, deployment]) => {
+                    const siteCard = document.createElement('div');
+                    siteCard.classList.add('site-card');
+                    siteCard.innerHTML = `
+                        <div class="live-status">LIVE</div>
+                        <h3>${siteName}</h3>
+                        <div class="site-details">
+                            <p>Deployed at: ${deployment.url}</p>
+                        </div>
+                        <a href="${deployment.url}" target="_blank" class="btn">Launch Site</a>
+                    `;
+                    liveSitesContainer.appendChild(siteCard);
                 });
             } catch (error) {
                 console.error('Error fetching live sites:', error);
                 const liveSitesContainer = document.getElementById('live-sites');
                 liveSitesContainer.innerHTML = `
-                    <p>Error loading live sites. Please try again later.</p>
+                    <div class="site-card">
+                        <h3>Error</h3>
+                        <p>Unable to load live sites. Please try again later.</p>
+                    </div>
                 `;
             }
         });

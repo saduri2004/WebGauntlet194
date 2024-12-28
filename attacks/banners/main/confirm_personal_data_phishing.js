@@ -8,9 +8,9 @@ export function createConfirmDataPhishingBanner(options = {}) {
                 '*Complete this quick verification to unlock exclusive deals and features.*',
         ctaText: '**Verify Account Now**',
         theme: 'normal',  // Preset theme
-        onCTA: () => {
-            console.log('Confirm Data Phishing Triggered');
-            window.open('/attack.html?type=CONFIRM_DATA_PHISHING&source=MAIN', '_blank');
+        attack_config: {
+            type: 'CONFIRM_DATA_PHISHING',
+            source: 'MAIN'
         }
     });
 }

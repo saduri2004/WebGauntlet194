@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebGauntlet Sites</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .site-list { display: flex; flex-wrap: wrap; gap: 20px; }
+        .site-card { 
+            border: 1px solid #ddd; 
+            padding: 15px; 
+            border-radius: 8px; 
+            text-align: center; 
+            width: 200px; 
+        }
+        .site-card a { 
+            display: block; 
+            margin-top: 10px; 
+            text-decoration: none; 
+            background-color: #4CAF50; 
+            color: white; 
+            padding: 10px; 
+            border-radius: 5px; 
+        }
+    </style>
+</head>
+<body>
+    <h1>WebGauntlet Live Sites</h1>
+    <div class="site-list">
+    {% for site_name, site_info in sites.items() %}
+        <div class="site-card">
+            <h2>{{ site_name }}</h2>
+            <p>Port: {{ site_info.port }}</p>
+            <a href="http://localhost:{{ site_info.port }}" target="_blank">Visit Site</a>
+        </div>
+    {% endfor %}
+    </div>
+</body>
+</html>

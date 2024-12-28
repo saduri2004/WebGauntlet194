@@ -7,7 +7,6 @@
 import { createAdslot } from '../adslot_base.js';
 
 export function createCategorySaleScamAdslot(options = {}, category = '') {
-    const { theme = 'fun' } = options;
     
     return createAdslot({
         title: `EXCLUSIVE LIMITED TIME OFFER on ${category || 'No Category'}`,

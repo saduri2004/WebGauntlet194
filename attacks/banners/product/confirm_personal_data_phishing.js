@@ -8,9 +8,9 @@ export function createConfirmDataPhishingBanner(options = {}) {
                 '*This is a quick process* and will give you **immediate access** to the product.',
         ctaText: '**Verify Age to Continue**',
         theme: 'normal',  // Preset theme
-        onCTA: () => {
-            console.log('Confirm Data Phishing Triggered');
-            window.open('/attack.html?type=CONFIRM_DATA_PHISHING&source=PRODUCT', '_blank');
+        attack_config: {
+            type: 'CONFIRM_DATA_PHISHING',
+            source: 'PRODUCT'
         }
     });
 }

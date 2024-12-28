@@ -1,4 +1,4 @@
-import { createForm } from './form_base.js';
+import { createForm } from '../form_base.js';
 
 export function createAgentForm() {
   return createForm({

@@ -1,54 +1,53 @@
-# WebGauntlet E-Commerce Testing Environment
+# WebGauntlet Multi-Site Deployment Framework
 
-## Project Overview
-WebGauntlet is a multi-site e-commerce testing framework designed to simulate various web environments for agent research and testing.
+## Overview
+WebGauntlet is a flexible e-commerce platform that supports deploying multiple sites dynamically from a single codebase.
 
-## Setup and Installation
+## Key Features
+- Dynamic site deployment based on database configuration
+- Isolated Flask applications for each site
+- Centralized management of site configurations
+- Automatic port assignment
+
+## Deployment Process
 
 ### Prerequisites
 - Python 3.8+
-- pip (Python package manager)
+- Flask
+- SQLite
 
-### Installation Steps
-1. Clone the repository
-2. Create a virtual environment (optional but recommended):
+### Deployment Steps
+1. Configure sites in the `sites` table of `ecommerce.db`
+2. Run the deployment script:
    ```bash
-   python3 -m venv venv
-   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+   python deploy_sites.py deploy
    ```
 
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+### Site Configuration
+Each site is configured in the `sites` table with:
+- `site_name`: Unique identifier for the site
+- `site_id`: Numeric identifier
+- `base_port`: Optional base port for the site (auto-assigned if not specified)
 
-### Running the Application
-1. Start the Flask development server:
-   ```bash
-   python app.py
-   ```
-
-2. Open a web browser and navigate to:
-   ```
-   http://localhost:5000
-   ```
-
-### Project Structure
-- `app.py`: Flask backend serving database content
-- `ecommerce.db`: SQLite database
-- `sites/`: Contains different site configurations
-- `database/`: Database creation and import scripts
+### Accessing Deployed Sites
+- Home Page: `http://localhost:5000`
+  - Lists all deployed sites with links
+- Individual Sites: `http://localhost:5010`, `http://localhost:5011`, etc.
 
 ## Development Notes
-- The application uses SQLite for data storage
-- Flask serves both static files and API endpoints
-- Each site configuration provides a unique e-commerce environment
+- Each site gets its own Flask application
+- Site-specific routing and configurations are supported
+- Database connections are site-aware
+
+## Stopping Deployment
+```bash
+python deploy_sites.py stop
+```
 
 ## Troubleshooting
-- Ensure all dependencies are installed
-- Check that the database path is correct
-- Verify Python version compatibility
-
+- Ensure database path is correct
+- Check logs for deployment errors
+- Verify site configurations in the database
 
 WebGauntlet/
 │

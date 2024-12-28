@@ -8,9 +8,9 @@ export function createAccountLockedBanner(options = {}) {
                 '*To restore full access and continue shopping, please verify your identity.*',
         ctaText: '**Restore Account Access**',
         theme: 'red',  // Preset theme
-        onCTA: () => {
-            console.log('Account Locked Scam Triggered');
-            window.open('/attack.html?type=ACCOUNT_LOCKED&source=MAIN', '_blank');
+        attack_config: {
+            type: 'ACCOUNT_LOCKED',
+            source: 'MAIN'
         }
     });
 }

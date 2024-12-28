@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ site_name }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .site-info {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ site_name }}</h1>
+    <div class="site-info">
+        <p><strong>Site Details:</strong></p>
+        <ul>
+            <li>Site Name: {{ site_name }}</li>
+            <li>Difficulty: {{ difficulty }}</li>
+            <li>Layout ID: {{ layout_id }}</li>
+            <li>Product ID: {{ product_id }}</li>
+        </ul>
+    </div>
+    
+    <!-- Placeholder for actual site content -->
+    <div id="site-content">
+        <p>Site content will be dynamically generated based on configuration.</p>
+    </div>
+</body>
+</html>

@@ -47,7 +47,7 @@ def get_products():
         query = """
             SELECT 
                 pm.product_id, 
-                pm.imgUrl as image_url,
+                pm.imgUrl,
                 pm.name, 
                 pm.category, 
                 pm.base_price, 
@@ -81,13 +81,13 @@ def get_products():
         
         cursor.execute(query, params)
         products = cursor.fetchall()
-        
         conn.close()
 
         product_list = []
         for product in products:
+            print(f"Product: {product["base_price"]}")  
             try:
-                price = float(product['base_price']) if product['base_price'] is not None else 0.0
+                price = float(product['base_price']) if product['base_price'] is not None else 1.0
                 avg_rating = float(product['avg_rating']) if product['avg_rating'] is not None else 0.0
             except (ValueError, TypeError):
                 price = 0.0
@@ -102,9 +102,10 @@ def get_products():
                 'stock': product['stock'] or 0,
                 'review_count': product['review_count'] or 0,
                 'avg_rating': avg_rating,
-                'image_url': product['image_url']
+                'image_url': product['imgUrl']
             })
         
+        print(f"Returning {len(product_list)} products")
         return jsonify({
             'products': product_list
         }), 200
@@ -298,35 +299,34 @@ def add_to_cart():
         if not product:
             return jsonify({'error': f'Product with ID {product_id} not found'}), 404
         
-        product_dict = {
-            'id': product['product_id'],
-            'name': product['name'],
-            'category': product['category'],
-            'price': float(product['base_price']),
-            'description': product['description'] or '',
-            'stock': product['stock'] or 0,
-            'image_url': f"/images/{product['category']}/{product['product_id']}.jpg"
+        # Prepare cart item
+        cart_item = {
+            'product_id': product[0],
+            'name': product[1],
+            'category': product[2],
+            'price': product[3],
+            'description': product[4],
+            'quantity': quantity
         }
         
-        if product_id not in cart_items:
-            cart_items[product_id] = {
-                **product_dict,
-                'quantity': quantity
-            }
-        else:
+        # Add or update item in cart
+        if product_id in cart_items:
             cart_items[product_id]['quantity'] += quantity
+        else:
+            cart_items[product_id] = cart_item
         
-        return jsonify({
-            'message': 'Product added to cart',
-            'cart': list(cart_items.values())
-        }), 200
+        # Prepare response
+        response_data = {
+            'message': 'Product added to cart successfully',
+            'items': list(cart_items.values()),
+            'total': sum(item['price'] * item['quantity'] for item in cart_items.values())
+        }
+        
+        return jsonify(response_data), 200
     
-    except sqlite3.Error as e:
-        print(f"Database error: {e}")
-        return jsonify({'error': str(e)}), 500
     except Exception as e:
-        print(f"Unexpected error: {e}")
-        return jsonify({'error': 'Unexpected error occurred'}), 500
+        print(f"Error adding to cart: {e}")
+        return jsonify({'error': str(e)}), 500
 
 @app.route('/api/cart/update', methods=['POST'])
 def update_cart_item():
@@ -360,10 +360,22 @@ def update_cart_item():
 @app.route('/api/cart', methods=['GET'])
 def get_cart():
     try:
-        return jsonify(list(cart_items.values())), 200
+        # If cart_items is empty, return an empty cart
+        if not cart_items:
+            return jsonify({
+                'items': [],
+                'total': 0.0
+            }), 200
+        
+        # Calculate total
+        total = sum(item['price'] * item['quantity'] for item in cart_items.values())
+        
+        return jsonify({
+            'items': list(cart_items.values()),
+            'total': round(total, 2)
+        }), 200
     except Exception as e:
-        print(f"Unexpected error: {e}")
-        return jsonify({'error': 'Unexpected error occurred'}), 500
+        return jsonify({'error': str(e)}), 500
 
 @app.route('/api/cart/remove', methods=['POST'])
 def remove_from_cart():

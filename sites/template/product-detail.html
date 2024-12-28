@@ -154,7 +154,7 @@
         
         .notification {
             position: fixed;
-            top: 20px;
+            top: 60px;
             right: 20px;
             z-index: 1000;
             padding: 10px;
@@ -427,12 +427,27 @@
                 // Render reviews
                 const reviewsContainer = document.getElementById('product-reviews');
                 if (reviewsContainer) {
+
+                    console.log(Object.keys(product))
+                    console.log(product)
                     reviewsContainer.innerHTML = ''; // Clear existing reviews
                     
+                    console.log("product.reviews.length", product.reviews.length)
+                    console.log("product.scam_reviews_count.length", product.scam_review_count)
+
+
+                    if (product.reviews.length === 0 && product.scam_review_count.length === 0) {
+                        const noReviewsDiv = document.createElement('div');
+                        noReviewsDiv.textContent = 'No reviews available for this product.';
+                        reviewsContainer.appendChild(noReviewsDiv);
+                        return;
+                    }
+
+
                     // Combine reviews from the API
                     const allReviews = [
                         ...product.reviews,
-                        ...product.scam_reviews
+                       // ...product.scam_review_count
                     ];
                     
                     // Separate sponsored and non-sponsored reviews
@@ -526,7 +541,8 @@
                 // Get product ID from URL
                 const urlParams = new URLSearchParams(window.location.search);
                 const productId = urlParams.get('id');
-                
+                console.log("productId", productId)
+
                 if (!productId) {
                     showNotification('No product selected', 'error');
                     return;
@@ -544,7 +560,7 @@
                 });
                 
                 const result = await response.json();
-                
+                console.log("result", result)
                 if (response.ok) {
                     showNotification('Product added to cart', 'success');
                     

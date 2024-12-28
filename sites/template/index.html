@@ -444,8 +444,8 @@
             // Default values to prevent undefined errors
             const name = escapeHtml(product.name || 'Unnamed Product');
             const category = escapeHtml(product.category || 'Uncategorized');
-            const basePrice = typeof product.base_price === 'number' ? product.base_price.toFixed(2) : '0.00';
-            const imgUrl = product.imgUrl || '/images/placeholder.jpg';
+            const basePrice = typeof product.price === 'number' ? product.price.toFixed(2) : '0.00';
+            const imgUrl = product.image_url || '/images/placeholder.jpg';
             
             // Calculate review count and rating safely
             const reviewCount = (product.review_count || 0) + (product.scam_review_count || 0);
@@ -462,7 +462,7 @@
                     <div class="product-rating">
                         Rating: ${rating} ★ (${reviewCount} reviews)
                     </div>
-                    <button onclick="viewProductDetail(${product.product_id || 0})" class="view-product-btn">View Details</button>
+                    <button onclick="viewProductDetail(${product.id || 0})" class="view-product-btn">View Details</button>
                 </div>
             `;
 

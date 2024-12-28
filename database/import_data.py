@@ -160,26 +160,13 @@ def main():
     # Prepare data for insertion
     data_to_insert = data[['imgUrl', 'name', 'category', 'base_price', 'description', 'stock']].copy()
 
-    # Convert base_price to numeric, handling various input types
+    # Clean price function
     def clean_price(price):
-        if pd.isna(price):
+        try:
+            # Remove '$' and convert to float
+            return float(str(price).replace('$', '').replace(',', ''))
+        except (ValueError, TypeError):
             return 0.0
-        
-        # If it's already a number, return it
-        if isinstance(price, (int, float)):
-            return float(price)
-        
-        # If it's a string, try to clean and convert
-        if isinstance(price, str):
-            # Remove currency symbols, commas, and whitespace
-            price = price.replace('$', '').replace(',', '').strip()
-            
-            try:
-                return float(price)
-            except ValueError:
-                return 0.0
-        
-        return 0.0
 
     # Apply price cleaning
     data_to_insert['base_price'] = data_to_insert['base_price'].apply(clean_price)
@@ -187,7 +174,7 @@ def main():
     # Fill NaN values
     data_to_insert = data_to_insert.fillna('')
 
-    # Insert new data
+    # Insert new data with explicit columns
     insert_query = '''
     INSERT INTO products_main (imgUrl, name, category, base_price, description, stock) 
     VALUES (?, ?, ?, ?, ?, ?)

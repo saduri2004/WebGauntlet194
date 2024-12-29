@@ -1,136 +1,118 @@
 import { createNotification } from '../../attacks/notifications/notification_base.js';
+import sqlite3 from 'sqlite3';
 
-// Simulated database connection for web
-class ScamDatabase {
-    constructor(dbPath = '/database/ecommerce.db') {
-        console.log(`🔍 Initializing ScamDatabase with path: ${dbPath}`);
-        this.scams = [];
-    }
-
-    // Fetch scams based on various criteria
-    async getScams(filters = {}) {
-        console.log('🕵️ Fetching scams with filters:', JSON.stringify(filters));
-        
-        try {
-            // Convert filters to query parameters
-            const queryParams = new URLSearchParams();
-            Object.entries(filters).forEach(([key, value]) => {
-                queryParams.append(key, value);
-            });
-
-            // Fetch scams from the server
-            const response = await fetch(`/api/scams?${queryParams.toString()}`, {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+// Scam Engine class to manage scam detection and mapping
+export class ScamEngine {
+    constructor(dbPath = '/Users/sasankaduri/ICML/WebGauntlet/database/ecommerce.db') {
+        console.log('🚀 Initializing ScamEngine...');
+        this.db = new sqlite3.Database(dbPath, (err) => {
+            if (err) {
+                console.error('❌ Database connection error:', err);
+            } else {
+                console.log('✅ Connected to the SQLite database');
             }
-
-            const scams = await response.json();
-            console.log(`🔍 Found ${scams.length} scam(s)`);
-            return scams;
-        } catch (error) {
-            console.error('❌ Error fetching scams:', error);
-            return [];
-        }
+        });
     }
 
-    // Close database connection (no-op for web)
-    close() {
-        console.log('🚪 Closing database connection...');
+    // Promisify database queries
+    _runQuery(query, params = []) {
+        return new Promise((resolve, reject) => {
+            this.db.all(query, params, (err, rows) => {
+                if (err) reject(err);
+                else resolve(rows);
+            });
+        });
+    }
+
+    // Get scams for a specific site based on site difficulty
+    async getScamsForSite(siteId) {
+        return new Promise((resolve, reject) => {
+            // First, get the site's scam difficulty
+            const siteDifficultyQuery = `
+                SELECT scam_difficulty 
+                FROM sites 
+                WHERE site_id = ?
+            `;
+
+            this.db.get(siteDifficultyQuery, [siteId], (err, siteRow) => {
+                if (err) {
+                    console.error('❌ Error fetching site difficulty:', err);
+                    reject(err);
+                    return;
+                }
+
+                if (!siteRow) {
+                    console.warn(`⚠️ No site found with ID: ${siteId}`);
+                    resolve([]);
+                    return;
+                }
+
+                // Get scams matching the site's difficulty
+                const scamsQuery = `
+                    SELECT s.* 
+                    FROM scams s
+                    WHERE s.difficulty <= ?
+                `;
+
+                this.db.all(scamsQuery, [siteRow.scam_difficulty], (err, scams) => {
+                    if (err) {
+                        console.error('❌ Error fetching scams:', err);
+                        reject(err);
+                        return;
+                    }
+
+                    console.log(`🕵️ Found ${scams.length} scams for site ${siteId} with difficulty <= ${siteRow.scam_difficulty}`);
+                    resolve(scams);
+                });
+            });
+        });
+    }
+
+    // Get a mapping of site IDs to their scam IDs
+    // Get a mapping of site IDs to their scam tuples
+async getSiteScamMapping() {
+    try {
+        // Fetch all sites
+        const sites = await this._runQuery('SELECT * FROM sites');
+        
+        // Create a mapping of site IDs to scam tuples
+        const siteScamMapping = {};
+
+        // Iterate through each site
+        for (const site of sites) {
+            // Get scams for this site
+            const siteScams = await this.getScamsForSite(site.site_id);
+            
+            // Store the scam tuples for this site
+            siteScamMapping[site.site_id] = siteScams.map(scam => [scam.scam_name, scam.scam_id]);
+        }
+
+        return siteScamMapping;
+    } catch (error) {
+        console.error('❌ Error creating site-scam mapping:', error);
+        return {};
     }
 }
-
-// Scam Engine class to manage scam detection and notification
-export class ScamEngine {
-    constructor() {
-        console.log('🚀 Initializing ScamEngine...');
-        this.db = new ScamDatabase();
-    }
-
-    // Detect and notify about potential scams
-    async detectScams() {
-        console.log('🕵️‍♀️ Starting scam detection process...');
+    // Detect and notify about potential scams for a site
+    async detectScamsForSite(siteId) {
         try {
-            // Fetch all scams
-            const scams = await this.db.getScams();
+            const scams = await this.getScamsForSite(siteId);
 
             if (scams.length === 0) {
-                console.log('🟢 No scams detected.');
-                return;
-            }
-
-            scams.forEach((scam, index) => {
-                console.log(`🚨 Scam ${index + 1} detected:`, scam);
-                this.notifyScam(scam);
-            });
-        } catch (error) {
-            console.error('❌ Scam detection failed:', error);
-            this.createNotification({
-                title: 'Scam Detection Error',
-                message: 'Unable to check for potential scams',
-                type: 'error'
-            });
-        }
-    }
-
-    // Manually print scams
-    async printScams(filters = {}) {
-        console.log('📋 Manually printing scams...');
-        try {
-            const scams = await this.db.getScams(filters);
-            console.log('🔍 Detected Scams:');
-            console.table(scams);
-            return scams;
-        } catch (error) {
-            console.error('❌ Error printing scams:', error);
-            return [];
-        }
-    }
-
-    // Method to manually trigger scam detection and logging
-    async manualScanAndLog(filters = {}) {
-        console.log('🚨 Starting manual scam scan and log...');
-        try {
-            const scams = await this.db.getScams(filters);
-            
-            console.log('🔍 Scam Scan Results:');
-            console.table(scams);
-
-            if (scams.length === 0) {
-                console.log('🟢 No scams found during manual scan.');
+                console.log('🟢 No scams detected for this site.');
                 return [];
             }
 
-            // Optionally notify for each scam
-            scams.forEach((scam, index) => {
-                console.log(`🚨 Processing scam ${index + 1}:`, scam);
+            // Notify about each scam
+            scams.forEach(scam => {
                 this.notifyScam(scam);
             });
 
             return scams;
         } catch (error) {
-            console.error('❌ Manual scam scan failed:', error);
+            console.error('❌ Scam detection failed:', error);
             return [];
         }
-    }
-
-    // Create a notification for a specific scam
-    notifyScam(scam) {
-        console.log('📣 Creating notification for scam:', scam);
-        this.createNotification({
-            title: `Scam Detected: ${scam.scam_type}`,
-            message: scam.description || 'Potential scam activity detected',
-            type: 'warning',
-            duration: 10000,
-            onProceed: () => {
-                console.log(`🔍 Proceeding with scam investigation:`, scam);
-            }
-        });
     }
 
     // Create notification (fallback method)
@@ -143,26 +125,18 @@ export class ScamEngine {
         }
     }
 
-    // Simulate real-time scam monitoring
-    startMonitoring(interval = 60000) {  // Default: check every minute
-        console.log(`🕰️ Starting scam monitoring with interval ${interval}ms...`);
-        this.monitorInterval = setInterval(() => {
-            console.log('⏰ Periodic scam check triggered');
-            this.detectScams();
-        }, interval);
-    }
-
-    stopMonitoring() {
-        if (this.monitorInterval) {
-            clearInterval(this.monitorInterval);
-            console.log('🛑 Scam monitoring stopped.');
-        }
-        this.db.close();
+    // Close database connection
+    close() {
+        this.db.close((err) => {
+            if (err) {
+                console.error('❌ Error closing database:', err);
+            } else {
+                console.log('🚪 Database connection closed');
+            }
+        });
     }
 }
 
-// Optional: Automatically start monitoring when module is imported
+// Export an instance of ScamEngine
 const scamEngine = new ScamEngine();
-scamEngine.startMonitoring();
-
 export default scamEngine;

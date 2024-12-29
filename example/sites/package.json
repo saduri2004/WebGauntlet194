@@ -1,0 +1,16 @@
+{
+  "name": "sites",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "## Project Overview WebGauntlet is a comprehensive testing framework designed to simulate multiple e-commerce environments for web agent research and development. This project provides a flexible, modular structure to test web agents under diverse and controlled conditions.",
+  "main": "scam_engine.js",
+  "scripts": {
+    "test": "node test_scam_engine.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sqlite3": "^5.1.7"
+  }
+}

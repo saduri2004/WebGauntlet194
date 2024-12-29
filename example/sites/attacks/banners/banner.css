@@ -1,0 +1,94 @@
+.banner {
+    width: 100%;
+    background-color: var(--background-primary, #3498db);
+    border: 3px solid var(--border-color, #ccc);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: var(--text-primary, white);
+    font-family: system-ui, -apple-system, sans-serif;
+    z-index: 9999;
+    padding: 15px;
+}
+  
+.banner-content {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 80% 20%;
+    gap: 16px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.banner-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    height: 100%;
+}
+
+.banner-action-btn, 
+.banner-cancel-btn {
+    width: 200px;
+    padding: 8px 16px;
+    margin: 0;
+}
+.banner-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+  
+.banner-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    height: 100%;
+}
+  
+.banner-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+    color: var(--text-primary, white);
+}
+  
+.banner-description {
+    font-size: 16px;
+    margin-top: 5px;
+    color: var(--text-secondary, #f0f0f0);
+}
+  
+.banner-action-btn {
+    background-color: var(--action-color, #e74c3c);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 200px;
+    transition: background-color 0.2s ease;
+}
+  
+.banner-action-btn:hover {
+    background-color: var(--action-color-hover, #c0392b);
+}
+  
+.banner-cancel-btn {
+    background: none;
+    border: 1px solid var(--text-primary, white);
+    color: var(--text-primary, white);
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    width: 200px;
+    transition: all 0.2s ease;
+}

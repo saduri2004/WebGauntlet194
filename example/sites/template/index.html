@@ -7,65 +7,7 @@
     <link rel="stylesheet" href="/sites/css_configs/ecommerce.css">
     <link rel="stylesheet" href="/public/scam-containers.css" type="text/css">
     <style>
-        .notification-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
 
-        .notification {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 0.5s;
-        }
-
-        .notification.info {
-            background-color: #f0f0f0;
-            border-color: #ccc;
-        }
-
-        .notification.success {
-            background-color: #dff0d8;
-            border-color: #d6e9c6;
-        }
-
-        .notification.error {
-            background-color: #f2dede;
-            border-color: #ebccd1;
-        }
-
-        .notification.fade-out {
-            animation: fadeOut 0.5s;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateX(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeOut {
-            from {
-                opacity: 1;
-                transform: translateX(0);
-            }
-
-            to {
-                opacity: 0;
-                transform: translateX(20px);
-            }
-        }
 
         .product-count-display {
             text-align: center;
@@ -345,8 +287,6 @@
     <!-- Add these just after the main content or in an appropriate location -->
     <div id="banner-slot"></div>
     <div id="popup-slot"></div>
-    <div id="notification-slot"></div>
-    <div id="adslot-slot"></div>
     <div id="invisible-slot"></div>
 
 
@@ -435,6 +375,8 @@
     </section>
 
     <section id="products-section" class="products-container">
+        <div id="adslot-slot"></div>
+
         <div id="top-pagination-container" class="pagination-container"></div>
 
         <div id="product-count-display" class="product-count-display"></div>
@@ -450,12 +392,6 @@
         <!-- Cart content will go here -->
     </section>
 
-    <div id="notification-container" style="
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        z-index: 1000;
-    "></div>
 
     <script>
         function escapeHtml(unsafe) {
@@ -704,7 +640,7 @@
     </script>
 
     <!-- Import scam system -->
-
+    <div id = "notification-slot"></div>
 </body>
 
 </html>

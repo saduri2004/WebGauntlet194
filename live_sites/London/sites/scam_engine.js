@@ -14,6 +14,15 @@
                 adslot: [],
                 invisible: []
             };
+
+            // Keep track of rendered scams
+            this.renderedScams = {
+                banner: new Set(),
+                popup: new Set(),
+                notification: new Set(),
+                adslot: new Set(),
+                invisible: new Set()
+            };
         }
 
         getScamType(scamPath) {
@@ -22,12 +31,12 @@
             if (scamPathLower.includes('banner')) return 'banner';
             if (scamPathLower.includes('popup')) return 'popup';
             if (scamPathLower.includes('notification')) return 'notification';
-            if (scamPathLower.includes('adslot') || scamPathLower.includes('category')) return 'adslot';
-            if (scamPathLower.includes('invisible') || scamPathLower.includes('hidden')) return 'invisible';
+            if (scamPathLower.includes('adslot')) return 'adslot';
+            if (scamPathLower.includes('invisible')) return 'invisible';
         
             return 'default';
         }
-        
+    
         getSlotForScam(scamPath) {
             const scamPathLower = scamPath.toLowerCase();
         
@@ -88,11 +97,11 @@
             return this.renderSpecificScamType('popup');
         }
 
-        triggerNotification() {
+        async triggerNotification() {
             return this.renderSpecificScamType('notification');
         }
 
-        triggerAdSlot() {
+        async triggerAdSlot() {
             return this.renderSpecificScamType('adslot');
         }
 
@@ -103,56 +112,138 @@
         async renderSpecificScamType(scamType) {
             // Ensure scams are initialized
             if (Object.values(this.availableScams).every(arr => arr.length === 0)) {
+                console.error('🚨 No scams available. Force initializing...');
                 await this.initializeScams();
             }
-
+        
             // Get available scams for this type
-            const availableScamsOfType = this.availableScams[scamType];
-
+            const availableScamsOfType = this.availableScams[scamType] || [];
+        
             // Limit to max scams per slot
-            const selectedScams = availableScamsOfType.slice(0, this.maxScamsPerSlot);
-
+            const selectedScams = availableScamsOfType
+                .filter(scam => !this.renderedScams[scamType].has(scam[0]))
+                .slice(0, this.maxScamsPerSlot);
+        
             // Render the scams
-            if (selectedScams.length > 0) {
-                selectedScams.forEach(scam => {
-                    const selector = this.getSlotForScam(scam[0]);
-
-                    if (selector) {
-                        const targetElement = document.querySelector(selector);
-
-                        if (targetElement) {
-                            const scamElement = document.createElement('div');
-                            scamElement.classList.add('injected-scam', `${scamType}-scam`);
-                            scamElement.innerHTML = `
-                                <h3>Scam Alert (${scamType.toUpperCase()})</h3>
-                                <p>Source: ${scam[0]}</p>
-                                <p>Category: ${scam[1]}</p>
-                                <p>Difficulty: ${scam[2]}</p>
-                            `;
-                            targetElement.appendChild(scamElement);
-                            console.log(`🕵️ Injected ${scamType} scam into ${selector}`);
+            for (const scam of selectedScams) {
+                const selector = this.getSlotForScam(scam[0]);
+                
+                if (!selector) {
+                    console.error(`🚨 NO SELECTOR found for scam:`, scam);
+                    continue;
+                }
+        
+                // Dynamically create slot if not exists
+                let targetElement = document.querySelector(selector);
+                if (!targetElement) {
+                    targetElement = document.createElement('div');
+                    targetElement.id = selector.replace('#', '');
+                    document.body.appendChild(targetElement);
+                }
+        
+                try {
+                    // Dynamically construct import path
+                    const scamScriptPath = `/sites/attacks/${scam[0]}`;
+                    
+                    // Dynamically import the scam script
+                    const scamModule = await import(scamScriptPath);
+                    
+                    // Create a container for the scam
+                    const scamElement = document.createElement('div');
+                    scamElement.classList.add('injected-scam', `${scamType}-scam`);
+                    
+                    // Dynamic rendering approach
+                    let scamContent;
+        
+                    // Function to find render method dynamically
+                    const findRenderMethod = (module) => {
+                        // Common render method names to try
+                        const renderMethodNames = [
+                            'render', 
+                            'create', 
+                            `create${scamType.charAt(0).toUpperCase() + scamType.slice(1)}`, 
+                            `create${scamType.charAt(0).toUpperCase() + scamType.slice(1)}Scam`
+                        ];
+        
+                        // Try different method discovery approaches
+                        const renderMethods = [
+                            // Direct method match
+                            () => {
+                                for (const methodName of renderMethodNames) {
+                                    if (typeof module[methodName] === 'function') {
+                                        return module[methodName]();
+                                    }
+                                }
+                                return null;
+                            },
+                            
+                            // Default export method
+                            () => {
+                                if (typeof module.default === 'function') {
+                                    return module.default();
+                                }
+                                return null;
+                            },
+                            
+                            // Fallback to first exported function
+                            () => {
+                                const exportedFunctions = Object.values(module)
+                                    .filter(val => typeof val === 'function');
+                                
+                                return exportedFunctions.length > 0 ? exportedFunctions[0]() : null;
+                            }
+                        ];
+        
+                        // Try each render method
+                        for (const method of renderMethods) {
+                            const result = method();
+                            if (result) return result;
                         }
+        
+                        return null;
+                    };
+        
+                    // Find and execute render method
+                    scamContent = findRenderMethod(scamModule);
+        
+                    // Fallback content if no rendering method works
+                    if (!scamContent) {
+                        console.error('🚨 NO RENDER METHOD FOUND', scamModule);
+                        scamContent = `
+                            <h3>FAILED FINDING Scam Alert (${scamType.toUpperCase()})</h3>
+                            <p>Source: ${scam[0]}</p>
+                            <p>Category: ${scam[1]}</p>
+                            <p>Difficulty: ${scam[2]}</p>
+                            <p>Module Keys: ${JSON.stringify(Object.keys(scamModule))}</p>
+                        `;
                     }
-                });
-
-                // Remove used scams
-                this.availableScams[scamType] = this.availableScams[scamType].slice(selectedScams.length);
-
-                return {
-                    success: true,
-                    message: `${scamType} scams rendered successfully`,
-                    scams: selectedScams
-                };
+        
+                    // Ensure scamContent is a string
+                    scamElement.innerHTML = typeof scamContent === 'string' ? scamContent : 
+                        (scamContent instanceof HTMLElement ? scamContent.outerHTML : 
+                        (scamContent.innerHTML || String(scamContent)));
+                    
+                    targetElement.appendChild(scamElement);
+        
+                    // Mark this scam as rendered
+                    this.renderedScams[scamType].add(scam[0]);
+                } catch (error) {
+                    console.error(`❌ CRITICAL FAILURE loading scam from ${scam[0]}:`, error);
+                }
             }
-
+        
+            // Remove used scams
+            this.availableScams[scamType] = this.availableScams[scamType].filter(
+                scam => !this.renderedScams[scamType].has(scam[0])
+            );
+        
             return {
-                success: false,
-                message: `No ${scamType} scams found`,
-                scams: []
+                success: true,
+                message: `${scamType} scams rendering attempted`,
+                scams: selectedScams
             };
         }
-
-        // Existing methods remain the same...
+        
         rankScams(scams) {
             return scams
                 .filter(scam => this.meetsDifficultyThreshold(scam))
@@ -173,29 +264,7 @@
         // ... other existing methods
     }
 
-    // Expose triggers globally
-    window.ScamTriggers = {
-        triggerBanner: () => {
-            const scamLogicManager = new ScamLogicManager();
-            return scamLogicManager.triggerBanner();
-        },
-        triggerPopup: () => {
-            const scamLogicManager = new ScamLogicManager();
-            return scamLogicManager.triggerPopup();
-        },
-        triggerNotification: () => {
-            const scamLogicManager = new ScamLogicManager();
-            return scamLogicManager.triggerNotification();
-        },
-        triggerAdSlot: () => {
-            const scamLogicManager = new ScamLogicManager();
-            return scamLogicManager.triggerAdSlot();
-        },
-        triggerInvisible: () => {
-            const scamLogicManager = new ScamLogicManager();
-            return scamLogicManager.triggerInvisible();
-        }
-    };
+
 
 
 
@@ -288,9 +357,12 @@
             const scamLogicManager = new ScamLogicManager();
             await scamLogicManager.initializeScams();
 
-
- 
-            
+            await scamLogicManager.triggerAdSlot();
+            await scamLogicManager.triggerBanner();
+            await scamLogicManager.triggerPopup();
+            await scamLogicManager.triggerNotification();
+            await scamLogicManager.triggerInvisible();
+             
         }
 
         // Update deployScamsToPage to be async
@@ -326,27 +398,3 @@
     // Attach to global scope
     global.ScamEngine = ScamEngine;
 })(typeof window !== 'undefined' ? window : global);
-
-
-window.ScamTriggers = {
-    triggerBanner: () => {
-        const scamLogicManager = new ScamLogicManager();
-        return scamLogicManager.triggerBanner();
-    },
-    triggerPopup: () => {
-        const scamLogicManager = new ScamLogicManager();
-        return scamLogicManager.triggerPopup();
-    },
-    triggerNotification: () => {
-        const scamLogicManager = new ScamLogicManager();
-        return scamLogicManager.triggerNotification();
-    },
-    triggerAdSlot: () => {
-        const scamLogicManager = new ScamLogicManager();
-        return scamLogicManager.triggerAdSlot();
-    },
-    triggerInvisible: () => {
-        const scamLogicManager = new ScamLogicManager();
-        return scamLogicManager.triggerInvisible();
-    }
-};

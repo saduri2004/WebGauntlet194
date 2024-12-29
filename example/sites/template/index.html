@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Product Catalog</title>
@@ -12,7 +13,7 @@
             right: 20px;
             z-index: 1000;
         }
-        
+
         .notification {
             background-color: #fff;
             border: 1px solid #ddd;
@@ -22,42 +23,44 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             animation: fadeIn 0.5s;
         }
-        
+
         .notification.info {
             background-color: #f0f0f0;
             border-color: #ccc;
         }
-        
+
         .notification.success {
             background-color: #dff0d8;
             border-color: #d6e9c6;
         }
-        
+
         .notification.error {
             background-color: #f2dede;
             border-color: #ebccd1;
         }
-        
+
         .notification.fade-out {
             animation: fadeOut 0.5s;
         }
-        
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
                 transform: translateX(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
             }
         }
-        
+
         @keyframes fadeOut {
             from {
                 opacity: 1;
                 transform: translateX(0);
             }
+
             to {
                 opacity: 0;
                 transform: translateX(20px);
@@ -116,13 +119,13 @@
             transition: all 0.3s ease;
             font-size: 14px;
             min-width: 80px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
         .pagination-container button:hover:not(:disabled) {
             background-color: #e9ecef;
             border-color: #ced4da;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
         }
 
         .pagination-container button.current-page {
@@ -155,7 +158,7 @@
             width: 100%;
         }
 
-        .filters-wrapper > * {
+        .filters-wrapper>* {
             flex: 1;
             min-width: 150px;
             max-width: 250px;
@@ -170,7 +173,7 @@
             width: 100%;
         }
 
-        .filter-row input, 
+        .filter-row input,
         .filter-row select {
             width: 100%;
             padding: 6px 10px;
@@ -215,7 +218,7 @@
             overflow: hidden;
             transition: transform 0.2s;
             margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         @media (max-width: 1200px) {
@@ -303,10 +306,10 @@
             align-items: center;
             padding: 15px 30px;
             background-color: #f8f9fa;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
-        .navbar-left, 
+        .navbar-left,
         .navbar-right {
             display: flex;
             gap: 15px;
@@ -336,10 +339,18 @@
             color: #007bff;
         }
     </style>
-    <script type="module" src="/public/init-scams.js"></script>
 </head>
 
 <body>
+    <!-- Add these just after the main content or in an appropriate location -->
+    <div id="banner-slot"></div>
+    <div id="popup-slot"></div>
+    <div id="notification-slot"></div>
+    <div id="adslot-slot"></div>
+    <div id="invisible-slot"></div>
+
+
+
     <nav id="site-nav" name="main-navigation" class="navbar">
         <div class="navbar-left">
             <a href="index.html" id="nav-products-link" name="products-link" class="nav-link">Products</a>
@@ -352,12 +363,21 @@
         </div>
     </nav>
 
+
+    <script src="../scam_engine.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            console.log('Setting up site name dynamically');
+
             fetch('/getname')
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('site-title').textContent = data.site_name;
+
+                    console.log('Setting up scam system');
+                    const scamEngine = new ScamEngine();
+                    console.log('ScamEngine initialized');
+                    scamEngine.deployScamsToPage();
                 })
                 .catch(error => {
                     console.error('Error fetching site name:', error);
@@ -365,6 +385,7 @@
                 });
         });
     </script>
+
 
     <section id="search-section" class="search-container">
         <div id="filters-container" class="filters-wrapper">
@@ -389,9 +410,11 @@
             <div id="price-filter-container" name="price-filter-wrapper" class="price-filters">
                 <div class="filter-row">
                     <label for="price-range">$</label>
-                    <input type="number" id="price-min" name="product-price-min" min="0" placeholder="Min" class="price-input">
+                    <input type="number" id="price-min" name="product-price-min" min="0" placeholder="Min"
+                        class="price-input">
                     <span class="price-separator">-</span>
-                    <input type="number" id="price-max" name="product-price-max" min="0" placeholder="Max" class="price-input">
+                    <input type="number" id="price-max" name="product-price-max" min="0" placeholder="Max"
+                        class="price-input">
                 </div>
             </div>
 
@@ -460,7 +483,7 @@
             const category = escapeHtml(product.category || 'Uncategorized');
             const basePrice = typeof product.price === 'number' ? product.price.toFixed(2) : '0.00';
             const imgUrl = product.image_url || '/images/placeholder.jpg';
-            
+
             // Calculate review count and rating safely
             const reviewCount = (product.review_count || 0) + (product.scam_review_count || 0);
             const rating = reviewCount > 0 ? (reviewCount / 5).toFixed(1) : '0.0';
@@ -555,11 +578,11 @@
         function renderPagination(currentPage) {
             const productsPerPage = 12;
             const totalPages = Math.ceil(allProducts.length / productsPerPage);
-            
+
             // Top pagination container
             const topPaginationContainer = document.getElementById('top-pagination-container');
             const bottomPaginationContainer = document.getElementById('bottom-pagination-container');
-            
+
             [topPaginationContainer, bottomPaginationContainer].forEach(paginationContainer => {
                 paginationContainer.innerHTML = '';
 
@@ -587,10 +610,10 @@
 
                 // Calculate unique middle pages
                 let middlePages = [];
-                
+
                 // Start with current page
                 middlePages.push(currentPage);
-                
+
                 // Add pages before and after current page
                 if (currentPage > 1) {
                     middlePages.unshift(currentPage - 1);
@@ -598,7 +621,7 @@
                 if (currentPage < totalPages) {
                     middlePages.push(currentPage + 1);
                 }
-                
+
                 // Ensure we have 3 unique pages, adjusting as needed
                 while (middlePages.length < 3) {
                     if (middlePages[0] > 1) {
@@ -630,7 +653,7 @@
 
                 const categoryFilter = document.getElementById('category-filter');
                 categoryFilter.innerHTML = '<option value="">All Categories</option>';
-                
+
                 data.categories.forEach(category => {
                     const option = document.createElement('option');
                     option.value = category;
@@ -681,14 +704,7 @@
     </script>
 
     <!-- Import scam system -->
-    <script type="module">
-        import { initScamSystem } from '/public/init-scams.js';
-        
-        // Initialize scam system after DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('Initializing scam system');
-            initScamSystem(1);  // Initialize with site ID 1
-        });
-    </script>
+
 </body>
+
 </html>

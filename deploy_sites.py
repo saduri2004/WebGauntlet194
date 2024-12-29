@@ -8,49 +8,13 @@ import time
 import threading
 import socket
 import json
-import psutil
-import signal
-
-def kill_ports():
-    """
-    Kill processes running on ports 5000-5010 and 8000
-    """
-    ports_to_kill = list(range(5000, 5011)) + [8000]
-    for port in ports_to_kill:
-        try:
-            # Use lsof to find processes using the port
-            result = subprocess.run(['lsof', '-ti', f':{port}'], capture_output=True, text=True, timeout=5)
-            if result.stdout:
-                pids = result.stdout.strip().split('\n')
-                for pid in pids:
-                    try:
-                        pid = int(pid)
-                        print(f"Killing process on port {port} (PID: {pid})")
-                        os.kill(pid, signal.SIGKILL)  # Use SIGKILL instead of SIGTERM
-                        time.sleep(0.5)
-                    except Exception as e:
-                        print(f"Error killing process on port {port}: {e}")
-        except subprocess.TimeoutExpired:
-            print(f"Timeout checking port {port}")
-        except Exception as e:
-            print(f"Error checking port {port}: {e}")
 
 class SiteDeployer:
     def __init__(self):
-        """
-        Initialize SiteDeployer
-        """
         self.sites = []
         self.logger = print  # Replace with your actual logger
         self.running_processes = []
         self.site_ports = {}  # Track ports for each site
-
-        # Attempt to kill ports, but don't fail if it doesn't work
-        try:
-            kill_ports()
-        except Exception as e:
-            print(f"Warning: Could not kill ports: {e}")
-            pass
 
     def get_sites(self):
         """
@@ -262,9 +226,6 @@ class SiteDeployer:
             # Launch site
             self.launch_site(site_path, site_name, port)
 
-        # Start HTTP server
-        start_http_server()
-
         # Output site ports
         print("\n" + "=" * 50)
         print(f"{Fore.GREEN}🌐 Site Deployment Summary{Style.RESET_ALL}")
@@ -272,9 +233,6 @@ class SiteDeployer:
         for site, port in self.site_ports.items():
             site_url = f"http://localhost:{port}/sites/template/index.html"
             print(f"   🔗 {site}: {site_url}")
-        
-        # Highlight home page
-        print(f"\n{Fore.GREEN}🏠 Home Dashboard: http://localhost:8000/index.html{Style.RESET_ALL}")
         print("=" * 50 + "\n")
 
         # Keep main process alive
@@ -297,17 +255,6 @@ class SiteDeployer:
                 site_process['process'].terminate()
             except:
                 pass
-
-def start_http_server():
-    """
-    Start HTTP server in a separate thread
-    """
-    def run_server():
-        os.chdir(os.path.dirname(os.path.abspath(__file__)))
-        subprocess.run(['python', '-m', 'http.server', '8000'])
-
-    http_thread = threading.Thread(target=run_server, daemon=True)
-    http_thread.start()
 
 # If script is run directly, launch all sites
 if __name__ == '__main__':

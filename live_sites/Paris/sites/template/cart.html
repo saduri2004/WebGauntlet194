@@ -356,13 +356,21 @@
             </div>
         </div>
     </div>
+    
+    <script src="../scam_engine.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            console.log('Setting up site name dynamically');
+
             fetch('/getname')
-                .then(response => response.json() )
-                .then(response => console.log("website name: ", response))
+                .then(response => response.json())
                 .then(data => {
                     document.getElementById('site-title').textContent = data.site_name;
+
+                    console.log('Setting up scam system');
+                    const scamEngine = new ScamEngine();
+                    console.log('ScamEngine initialized');
+                    scamEngine.deployScamsToPage();
                 })
                 .catch(error => {
                     console.error('Error fetching site name:', error);

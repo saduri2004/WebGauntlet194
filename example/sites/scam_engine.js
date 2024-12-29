@@ -1,142 +1,352 @@
-import { createNotification } from '../../attacks/notifications/notification_base.js';
-import sqlite3 from 'sqlite3';
+(function (global) {
+    class ScamLogicManager {
+        constructor() {
+            // Configurable parameters for scam selection
+            this.maxScamsPerSlot = 1;
+            this.difficultyThreshold = 'medium';
+            this.diversityFactor = true;
 
-// Scam Engine class to manage scam detection and mapping
-export class ScamEngine {
-    constructor(dbPath = '/Users/sasankaduri/ICML/WebGauntlet/database/ecommerce.db') {
-        console.log('🚀 Initializing ScamEngine...');
-        this.db = new sqlite3.Database(dbPath, (err) => {
-            if (err) {
-                console.error('❌ Database connection error:', err);
-            } else {
-                console.log('✅ Connected to the SQLite database');
-            }
-        });
-    }
+            // Store all available scams by type and location
+            this.availableScams = {
+                banner: [],
+                popup: [],
+                notification: [],
+                adslot: [],
+                invisible: []
+            };
+        }
 
-    // Promisify database queries
-    _runQuery(query, params = []) {
-        return new Promise((resolve, reject) => {
-            this.db.all(query, params, (err, rows) => {
-                if (err) reject(err);
-                else resolve(rows);
-            });
-        });
-    }
-
-    // Get scams for a specific site based on site difficulty
-    async getScamsForSite(siteId) {
-        return new Promise((resolve, reject) => {
-            // First, get the site's scam difficulty
-            const siteDifficultyQuery = `
-                SELECT scam_difficulty 
-                FROM sites 
-                WHERE site_id = ?
-            `;
-
-            this.db.get(siteDifficultyQuery, [siteId], (err, siteRow) => {
-                if (err) {
-                    console.error('❌ Error fetching site difficulty:', err);
-                    reject(err);
-                    return;
-                }
-
-                if (!siteRow) {
-                    console.warn(`⚠️ No site found with ID: ${siteId}`);
-                    resolve([]);
-                    return;
-                }
-
-                // Get scams matching the site's difficulty
-                const scamsQuery = `
-                    SELECT s.* 
-                    FROM scams s
-                    WHERE s.difficulty <= ?
-                `;
-
-                this.db.all(scamsQuery, [siteRow.scam_difficulty], (err, scams) => {
-                    if (err) {
-                        console.error('❌ Error fetching scams:', err);
-                        reject(err);
-                        return;
-                    }
-
-                    console.log(`🕵️ Found ${scams.length} scams for site ${siteId} with difficulty <= ${siteRow.scam_difficulty}`);
-                    resolve(scams);
-                });
-            });
-        });
-    }
-
-    // Get a mapping of site IDs to their scam IDs
-    // Get a mapping of site IDs to their scam tuples
-async getSiteScamMapping() {
-    try {
-        // Fetch all sites
-        const sites = await this._runQuery('SELECT * FROM sites');
+        getScamType(scamPath) {
+            const scamPathLower = scamPath.toLowerCase();
         
-        // Create a mapping of site IDs to scam tuples
-        const siteScamMapping = {};
-
-        // Iterate through each site
-        for (const site of sites) {
-            // Get scams for this site
-            const siteScams = await this.getScamsForSite(site.site_id);
-            
-            // Store the scam tuples for this site
-            siteScamMapping[site.site_id] = siteScams.map(scam => [scam.scam_name, scam.scam_id]);
+            if (scamPathLower.includes('banner')) return 'banner';
+            if (scamPathLower.includes('popup')) return 'popup';
+            if (scamPathLower.includes('notification')) return 'notification';
+            if (scamPathLower.includes('adslot') || scamPathLower.includes('category')) return 'adslot';
+            if (scamPathLower.includes('invisible') || scamPathLower.includes('hidden')) return 'invisible';
+        
+            return 'default';
+        }
+        
+        getSlotForScam(scamPath) {
+            const scamPathLower = scamPath.toLowerCase();
+        
+            if (scamPathLower.includes('banner')) return '#banner-slot';
+            if (scamPathLower.includes('popup')) return '#popup-slot';
+            if (scamPathLower.includes('notification')) return '#notification-slot';
+            if (scamPathLower.includes('adslot') || scamPathLower.includes('category')) return '#adslot-slot';
+            if (scamPathLower.includes('invisible') || scamPathLower.includes('hidden')) return '#invisible-slot';
+        
+            return null;
         }
 
-        return siteScamMapping;
-    } catch (error) {
-        console.error('❌ Error creating site-scam mapping:', error);
-        return {};
-    }
-}
-    // Detect and notify about potential scams for a site
-    async detectScamsForSite(siteId) {
-        try {
-            const scams = await this.getScamsForSite(siteId);
+        async initializeScams() {
+            // Fetch all scams once and categorize them
+            const scamEngine = new ScamEngine();
+            const scams = await scamEngine.getScamsForSite();
 
-            if (scams.length === 0) {
-                console.log('🟢 No scams detected for this site.');
-                return [];
-            }
-
-            // Notify about each scam
-            scams.forEach(scam => {
-                this.notifyScam(scam);
+            // Clear existing available scams
+            Object.keys(this.availableScams).forEach(key => {
+                this.availableScams[key] = [];
             });
 
-            return scams;
-        } catch (error) {
-            console.error('❌ Scam detection failed:', error);
-            return [];
-        }
-    }
+            // Current page location
+            const currentPath = window.location.pathname;
+            let scamLocation;
 
-    // Create notification (fallback method)
-    createNotification(options) {
-        // Check if createNotification is available globally or imported
-        if (typeof createNotification === 'function') {
-            createNotification(options);
-        } else {
-            console.warn('Notification function not available', options);
-        }
-    }
-
-    // Close database connection
-    close() {
-        this.db.close((err) => {
-            if (err) {
-                console.error('❌ Error closing database:', err);
-            } else {
-                console.log('🚪 Database connection closed');
+            if (currentPath.includes('product-detail.html')) {
+                scamLocation = 'product';
+            } else if (currentPath.includes('cart.html')) {
+                scamLocation = 'checkout';
+            } else if (currentPath.includes('index.html')) {
+                scamLocation = 'main';
             }
-        });
-    }
-}
 
-// Export an instance of ScamEngine
-const scamEngine = new ScamEngine();
-export default scamEngine;
+            // Filter and rank scams
+            const rankedScams = this.rankScams(
+                Object.entries(scams)
+                    .filter(([key, scam]) => scam[3] === scamLocation)
+                    .map(([key, scam]) => scam)
+            );
+
+            // Categorize scams by type
+            rankedScams.forEach(scam => {
+                const scamType = this.getScamType(scam[0]);
+                if (this.availableScams[scamType]) {
+                    this.availableScams[scamType].push(scam);
+                }
+            });
+
+            console.log('🚨 Available Scams:', this.availableScams);
+        }
+
+        triggerBanner() {
+            return this.renderSpecificScamType('banner');
+        }
+
+        triggerPopup() {
+            return this.renderSpecificScamType('popup');
+        }
+
+        triggerNotification() {
+            return this.renderSpecificScamType('notification');
+        }
+
+        triggerAdSlot() {
+            return this.renderSpecificScamType('adslot');
+        }
+
+        triggerInvisible() {
+            return this.renderSpecificScamType('invisible');
+        }
+
+        async renderSpecificScamType(scamType) {
+            // Ensure scams are initialized
+            if (Object.values(this.availableScams).every(arr => arr.length === 0)) {
+                await this.initializeScams();
+            }
+
+            // Get available scams for this type
+            const availableScamsOfType = this.availableScams[scamType];
+
+            // Limit to max scams per slot
+            const selectedScams = availableScamsOfType.slice(0, this.maxScamsPerSlot);
+
+            // Render the scams
+            if (selectedScams.length > 0) {
+                selectedScams.forEach(scam => {
+                    const selector = this.getSlotForScam(scam[0]);
+
+                    if (selector) {
+                        const targetElement = document.querySelector(selector);
+
+                        if (targetElement) {
+                            const scamElement = document.createElement('div');
+                            scamElement.classList.add('injected-scam', `${scamType}-scam`);
+                            scamElement.innerHTML = `
+                                <h3>Scam Alert (${scamType.toUpperCase()})</h3>
+                                <p>Source: ${scam[0]}</p>
+                                <p>Category: ${scam[1]}</p>
+                                <p>Difficulty: ${scam[2]}</p>
+                            `;
+                            targetElement.appendChild(scamElement);
+                            console.log(`🕵️ Injected ${scamType} scam into ${selector}`);
+                        }
+                    }
+                });
+
+                // Remove used scams
+                this.availableScams[scamType] = this.availableScams[scamType].slice(selectedScams.length);
+
+                return {
+                    success: true,
+                    message: `${scamType} scams rendered successfully`,
+                    scams: selectedScams
+                };
+            }
+
+            return {
+                success: false,
+                message: `No ${scamType} scams found`,
+                scams: []
+            };
+        }
+
+        // Existing methods remain the same...
+        rankScams(scams) {
+            return scams
+                .filter(scam => this.meetsDifficultyThreshold(scam))
+                .sort((a, b) => {
+                    const difficultyOrder = [1, 2, 3];
+                    return difficultyOrder.indexOf(b[2]) - difficultyOrder.indexOf(a[2]);
+                });
+        }
+
+        meetsDifficultyThreshold(scam) {
+            const difficultyOrder = [1, 2, 3];
+            const currentThresholdIndex = difficultyOrder.indexOf(this.difficultyThreshold);
+            const scamDifficultyIndex = difficultyOrder.indexOf(scam[2]);
+
+            return scamDifficultyIndex >= currentThresholdIndex;
+        }
+
+        // ... other existing methods
+    }
+
+    // Expose triggers globally
+    window.ScamTriggers = {
+        triggerBanner: () => {
+            const scamLogicManager = new ScamLogicManager();
+            return scamLogicManager.triggerBanner();
+        },
+        triggerPopup: () => {
+            const scamLogicManager = new ScamLogicManager();
+            return scamLogicManager.triggerPopup();
+        },
+        triggerNotification: () => {
+            const scamLogicManager = new ScamLogicManager();
+            return scamLogicManager.triggerNotification();
+        },
+        triggerAdSlot: () => {
+            const scamLogicManager = new ScamLogicManager();
+            return scamLogicManager.triggerAdSlot();
+        },
+        triggerInvisible: () => {
+            const scamLogicManager = new ScamLogicManager();
+            return scamLogicManager.triggerInvisible();
+        }
+    };
+
+
+
+
+
+    class ScamEngine {
+        constructor() {
+            // Remove database initialization for browser
+            this.__filename = window.location.pathname;
+        }
+
+        // Get current site ID from environment or configuration
+        getSiteId() {
+            // Check environment variable first
+            const siteId = localStorage.getItem('SITE_ID');
+            if (siteId) return parseInt(siteId, 10);
+
+            // Extract site ID from file path
+            const sitesIndex = this.__filename.indexOf('/sites/');
+
+            if (sitesIndex === -1) return null;
+
+            const pathAfterSites = this.__filename.slice(sitesIndex + 6);
+            const siteFolderName = pathAfterSites.split('/')[0];
+
+            // Try to convert site folder name to a number, fallback to null
+            return isNaN(parseInt(siteFolderName, 10)) ? null : parseInt(siteFolderName, 10);
+        }
+
+        // Fetch scams via API instead of direct database access
+        async getScamsForSite() {
+            return new Promise((resolve, reject) => {
+                const siteId = this.getSiteId();
+                console.log(`🕵️ Site ID: ${siteId}`);
+
+                // Fetch scams from backend API
+                fetch(`/api/scams?siteId=${siteId}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(scams => {
+
+                        // Convert to dictionary, preserving all scams
+                        const scamsDictionary = scams.reduce((dict, scam) => {
+                            // Use a unique key to prevent overwriting
+                            const uniqueKey = `${scam.scam_name}_${scam.scam_source}`;
+                            dict[uniqueKey] = [
+                                scam.scam_source,
+                                scam.scam_category,
+                                scam.difficulty,
+                                scam.scam_location
+                            ];
+                            return dict;
+                        }, {});
+
+                        console.log('🕵️ Scams Dictionary:', scamsDictionary);
+                        console.log('🕵️ Total Scams in Dictionary:', Object.keys(scamsDictionary).length);
+
+                        resolve(scamsDictionary);
+                    })
+                    .catch(error => {
+                        console.error('❌ Error fetching scams:', error);
+                        reject(error);
+                    });
+            });
+        }
+
+        async renderScamsForCurrentPage(scams) {
+            // Determine current page
+            const currentPath = window.location.pathname;
+            let scamLocation;
+
+            if (currentPath.includes('product-detail.html')) {
+                scamLocation = 'product';
+            } else if (currentPath.includes('cart.html')) {
+                scamLocation = 'checkout';
+            } else if (currentPath.includes('index.html')) {
+                scamLocation = 'main';
+            }
+
+            // Filter scams for current location
+            const relevantScams = Object.entries(scams)
+                .filter(([key, scam]) => scam[3] === scamLocation)
+                .map(([key, scam]) => scam);
+
+            // Use ScamLogicManager to select final scams
+            const scamLogicManager = new ScamLogicManager();
+            await scamLogicManager.initializeScams();
+
+
+ 
+            
+        }
+
+        // Update deployScamsToPage to be async
+        async deployScamsToPage() {
+            console.log('🚀 Deploying Scams to Page...');
+            try {
+                const scams = await this.getScamsForSite();
+                console.log('Total Scams:', scams);
+                await this.renderScamsForCurrentPage(scams);
+            } catch (error) {
+                console.error('❌ Scam Deployment Failed:', error);
+            }
+        }
+
+        // Deploy scams to specific pages
+        async deployScamsToPage() {
+            console.log('🚀 Deploying Scams to Page...');
+            try {
+                const scams = await this.getScamsForSite();
+                console.log('Total Scams:', scams);
+                this.renderScamsForCurrentPage(scams);
+            } catch (error) {
+                console.error('❌ Scam Deployment Failed:', error);
+            }
+        }
+
+        // Placeholder for potential future cleanup
+        close() {
+            console.log('🚪 ScamEngine closed');
+        }
+    }
+
+    // Attach to global scope
+    global.ScamEngine = ScamEngine;
+})(typeof window !== 'undefined' ? window : global);
+
+
+window.ScamTriggers = {
+    triggerBanner: () => {
+        const scamLogicManager = new ScamLogicManager();
+        return scamLogicManager.triggerBanner();
+    },
+    triggerPopup: () => {
+        const scamLogicManager = new ScamLogicManager();
+        return scamLogicManager.triggerPopup();
+    },
+    triggerNotification: () => {
+        const scamLogicManager = new ScamLogicManager();
+        return scamLogicManager.triggerNotification();
+    },
+    triggerAdSlot: () => {
+        const scamLogicManager = new ScamLogicManager();
+        return scamLogicManager.triggerAdSlot();
+    },
+    triggerInvisible: () => {
+        const scamLogicManager = new ScamLogicManager();
+        return scamLogicManager.triggerInvisible();
+    }
+};

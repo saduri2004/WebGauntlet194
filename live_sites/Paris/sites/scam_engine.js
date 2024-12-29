@@ -1,168 +1,352 @@
-import { createNotification } from '../../attacks/notifications/notification_base.js';
+(function (global) {
+    class ScamLogicManager {
+        constructor() {
+            // Configurable parameters for scam selection
+            this.maxScamsPerSlot = 1;
+            this.difficultyThreshold = 'medium';
+            this.diversityFactor = true;
 
-// Simulated database connection for web
-class ScamDatabase {
-    constructor(dbPath = '/database/ecommerce.db') {
-        console.log(`🔍 Initializing ScamDatabase with path: ${dbPath}`);
-        this.scams = [];
-    }
+            // Store all available scams by type and location
+            this.availableScams = {
+                banner: [],
+                popup: [],
+                notification: [],
+                adslot: [],
+                invisible: []
+            };
+        }
 
-    // Fetch scams based on various criteria
-    async getScams(filters = {}) {
-        console.log('🕵️ Fetching scams with filters:', JSON.stringify(filters));
+        getScamType(scamPath) {
+            const scamPathLower = scamPath.toLowerCase();
         
-        try {
-            // Convert filters to query parameters
-            const queryParams = new URLSearchParams();
-            Object.entries(filters).forEach(([key, value]) => {
-                queryParams.append(key, value);
+            if (scamPathLower.includes('banner')) return 'banner';
+            if (scamPathLower.includes('popup')) return 'popup';
+            if (scamPathLower.includes('notification')) return 'notification';
+            if (scamPathLower.includes('adslot') || scamPathLower.includes('category')) return 'adslot';
+            if (scamPathLower.includes('invisible') || scamPathLower.includes('hidden')) return 'invisible';
+        
+            return 'default';
+        }
+        
+        getSlotForScam(scamPath) {
+            const scamPathLower = scamPath.toLowerCase();
+        
+            if (scamPathLower.includes('banner')) return '#banner-slot';
+            if (scamPathLower.includes('popup')) return '#popup-slot';
+            if (scamPathLower.includes('notification')) return '#notification-slot';
+            if (scamPathLower.includes('adslot') || scamPathLower.includes('category')) return '#adslot-slot';
+            if (scamPathLower.includes('invisible') || scamPathLower.includes('hidden')) return '#invisible-slot';
+        
+            return null;
+        }
+
+        async initializeScams() {
+            // Fetch all scams once and categorize them
+            const scamEngine = new ScamEngine();
+            const scams = await scamEngine.getScamsForSite();
+
+            // Clear existing available scams
+            Object.keys(this.availableScams).forEach(key => {
+                this.availableScams[key] = [];
             });
 
-            // Fetch scams from the server
-            const response = await fetch(`/api/scams?${queryParams.toString()}`, {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json'
+            // Current page location
+            const currentPath = window.location.pathname;
+            let scamLocation;
+
+            if (currentPath.includes('product-detail.html')) {
+                scamLocation = 'product';
+            } else if (currentPath.includes('cart.html')) {
+                scamLocation = 'checkout';
+            } else if (currentPath.includes('index.html')) {
+                scamLocation = 'main';
+            }
+
+            // Filter and rank scams
+            const rankedScams = this.rankScams(
+                Object.entries(scams)
+                    .filter(([key, scam]) => scam[3] === scamLocation)
+                    .map(([key, scam]) => scam)
+            );
+
+            // Categorize scams by type
+            rankedScams.forEach(scam => {
+                const scamType = this.getScamType(scam[0]);
+                if (this.availableScams[scamType]) {
+                    this.availableScams[scamType].push(scam);
                 }
             });
 
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+            console.log('🚨 Available Scams:', this.availableScams);
+        }
+
+        triggerBanner() {
+            return this.renderSpecificScamType('banner');
+        }
+
+        triggerPopup() {
+            return this.renderSpecificScamType('popup');
+        }
+
+        triggerNotification() {
+            return this.renderSpecificScamType('notification');
+        }
+
+        triggerAdSlot() {
+            return this.renderSpecificScamType('adslot');
+        }
+
+        triggerInvisible() {
+            return this.renderSpecificScamType('invisible');
+        }
+
+        async renderSpecificScamType(scamType) {
+            // Ensure scams are initialized
+            if (Object.values(this.availableScams).every(arr => arr.length === 0)) {
+                await this.initializeScams();
             }
 
-            const scams = await response.json();
-            console.log(`🔍 Found ${scams.length} scam(s)`);
-            return scams;
-        } catch (error) {
-            console.error('❌ Error fetching scams:', error);
-            return [];
-        }
-    }
+            // Get available scams for this type
+            const availableScamsOfType = this.availableScams[scamType];
 
-    // Close database connection (no-op for web)
-    close() {
-        console.log('🚪 Closing database connection...');
-    }
-}
+            // Limit to max scams per slot
+            const selectedScams = availableScamsOfType.slice(0, this.maxScamsPerSlot);
 
-// Scam Engine class to manage scam detection and notification
-export class ScamEngine {
-    constructor() {
-        console.log('🚀 Initializing ScamEngine...');
-        this.db = new ScamDatabase();
-    }
+            // Render the scams
+            if (selectedScams.length > 0) {
+                selectedScams.forEach(scam => {
+                    const selector = this.getSlotForScam(scam[0]);
 
-    // Detect and notify about potential scams
-    async detectScams() {
-        console.log('🕵️‍♀️ Starting scam detection process...');
-        try {
-            // Fetch all scams
-            const scams = await this.db.getScams();
+                    if (selector) {
+                        const targetElement = document.querySelector(selector);
 
-            if (scams.length === 0) {
-                console.log('🟢 No scams detected.');
-                return;
+                        if (targetElement) {
+                            const scamElement = document.createElement('div');
+                            scamElement.classList.add('injected-scam', `${scamType}-scam`);
+                            scamElement.innerHTML = `
+                                <h3>Scam Alert (${scamType.toUpperCase()})</h3>
+                                <p>Source: ${scam[0]}</p>
+                                <p>Category: ${scam[1]}</p>
+                                <p>Difficulty: ${scam[2]}</p>
+                            `;
+                            targetElement.appendChild(scamElement);
+                            console.log(`🕵️ Injected ${scamType} scam into ${selector}`);
+                        }
+                    }
+                });
+
+                // Remove used scams
+                this.availableScams[scamType] = this.availableScams[scamType].slice(selectedScams.length);
+
+                return {
+                    success: true,
+                    message: `${scamType} scams rendered successfully`,
+                    scams: selectedScams
+                };
             }
 
-            scams.forEach((scam, index) => {
-                console.log(`🚨 Scam ${index + 1} detected:`, scam);
-                this.notifyScam(scam);
-            });
-        } catch (error) {
-            console.error('❌ Scam detection failed:', error);
-            this.createNotification({
-                title: 'Scam Detection Error',
-                message: 'Unable to check for potential scams',
-                type: 'error'
-            });
+            return {
+                success: false,
+                message: `No ${scamType} scams found`,
+                scams: []
+            };
         }
+
+        // Existing methods remain the same...
+        rankScams(scams) {
+            return scams
+                .filter(scam => this.meetsDifficultyThreshold(scam))
+                .sort((a, b) => {
+                    const difficultyOrder = [1, 2, 3];
+                    return difficultyOrder.indexOf(b[2]) - difficultyOrder.indexOf(a[2]);
+                });
+        }
+
+        meetsDifficultyThreshold(scam) {
+            const difficultyOrder = [1, 2, 3];
+            const currentThresholdIndex = difficultyOrder.indexOf(this.difficultyThreshold);
+            const scamDifficultyIndex = difficultyOrder.indexOf(scam[2]);
+
+            return scamDifficultyIndex >= currentThresholdIndex;
+        }
+
+        // ... other existing methods
     }
 
-    // Manually print scams
-    async printScams(filters = {}) {
-        console.log('📋 Manually printing scams...');
-        try {
-            const scams = await this.db.getScams(filters);
-            console.log('🔍 Detected Scams:');
-            console.table(scams);
-            return scams;
-        } catch (error) {
-            console.error('❌ Error printing scams:', error);
-            return [];
+    // Expose triggers globally
+    window.ScamTriggers = {
+        triggerBanner: () => {
+            const scamLogicManager = new ScamLogicManager();
+            return scamLogicManager.triggerBanner();
+        },
+        triggerPopup: () => {
+            const scamLogicManager = new ScamLogicManager();
+            return scamLogicManager.triggerPopup();
+        },
+        triggerNotification: () => {
+            const scamLogicManager = new ScamLogicManager();
+            return scamLogicManager.triggerNotification();
+        },
+        triggerAdSlot: () => {
+            const scamLogicManager = new ScamLogicManager();
+            return scamLogicManager.triggerAdSlot();
+        },
+        triggerInvisible: () => {
+            const scamLogicManager = new ScamLogicManager();
+            return scamLogicManager.triggerInvisible();
         }
-    }
+    };
 
-    // Method to manually trigger scam detection and logging
-    async manualScanAndLog(filters = {}) {
-        console.log('🚨 Starting manual scam scan and log...');
-        try {
-            const scams = await this.db.getScams(filters);
+
+
+
+
+    class ScamEngine {
+        constructor() {
+            // Remove database initialization for browser
+            this.__filename = window.location.pathname;
+        }
+
+        // Get current site ID from environment or configuration
+        getSiteId() {
+            // Check environment variable first
+            const siteId = localStorage.getItem('SITE_ID');
+            if (siteId) return parseInt(siteId, 10);
+
+            // Extract site ID from file path
+            const sitesIndex = this.__filename.indexOf('/sites/');
+
+            if (sitesIndex === -1) return null;
+
+            const pathAfterSites = this.__filename.slice(sitesIndex + 6);
+            const siteFolderName = pathAfterSites.split('/')[0];
+
+            // Try to convert site folder name to a number, fallback to null
+            return isNaN(parseInt(siteFolderName, 10)) ? null : parseInt(siteFolderName, 10);
+        }
+
+        // Fetch scams via API instead of direct database access
+        async getScamsForSite() {
+            return new Promise((resolve, reject) => {
+                const siteId = this.getSiteId();
+                console.log(`🕵️ Site ID: ${siteId}`);
+
+                // Fetch scams from backend API
+                fetch(`/api/scams?siteId=${siteId}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(scams => {
+
+                        // Convert to dictionary, preserving all scams
+                        const scamsDictionary = scams.reduce((dict, scam) => {
+                            // Use a unique key to prevent overwriting
+                            const uniqueKey = `${scam.scam_name}_${scam.scam_source}`;
+                            dict[uniqueKey] = [
+                                scam.scam_source,
+                                scam.scam_category,
+                                scam.difficulty,
+                                scam.scam_location
+                            ];
+                            return dict;
+                        }, {});
+
+                        console.log('🕵️ Scams Dictionary:', scamsDictionary);
+                        console.log('🕵️ Total Scams in Dictionary:', Object.keys(scamsDictionary).length);
+
+                        resolve(scamsDictionary);
+                    })
+                    .catch(error => {
+                        console.error('❌ Error fetching scams:', error);
+                        reject(error);
+                    });
+            });
+        }
+
+        async renderScamsForCurrentPage(scams) {
+            // Determine current page
+            const currentPath = window.location.pathname;
+            let scamLocation;
+
+            if (currentPath.includes('product-detail.html')) {
+                scamLocation = 'product';
+            } else if (currentPath.includes('cart.html')) {
+                scamLocation = 'checkout';
+            } else if (currentPath.includes('index.html')) {
+                scamLocation = 'main';
+            }
+
+            // Filter scams for current location
+            const relevantScams = Object.entries(scams)
+                .filter(([key, scam]) => scam[3] === scamLocation)
+                .map(([key, scam]) => scam);
+
+            // Use ScamLogicManager to select final scams
+            const scamLogicManager = new ScamLogicManager();
+            await scamLogicManager.initializeScams();
+
+
+ 
             
-            console.log('🔍 Scam Scan Results:');
-            console.table(scams);
+        }
 
-            if (scams.length === 0) {
-                console.log('🟢 No scams found during manual scan.');
-                return [];
+        // Update deployScamsToPage to be async
+        async deployScamsToPage() {
+            console.log('🚀 Deploying Scams to Page...');
+            try {
+                const scams = await this.getScamsForSite();
+                console.log('Total Scams:', scams);
+                await this.renderScamsForCurrentPage(scams);
+            } catch (error) {
+                console.error('❌ Scam Deployment Failed:', error);
             }
-
-            // Optionally notify for each scam
-            scams.forEach((scam, index) => {
-                console.log(`🚨 Processing scam ${index + 1}:`, scam);
-                this.notifyScam(scam);
-            });
-
-            return scams;
-        } catch (error) {
-            console.error('❌ Manual scam scan failed:', error);
-            return [];
         }
-    }
 
-    // Create a notification for a specific scam
-    notifyScam(scam) {
-        console.log('📣 Creating notification for scam:', scam);
-        this.createNotification({
-            title: `Scam Detected: ${scam.scam_type}`,
-            message: scam.description || 'Potential scam activity detected',
-            type: 'warning',
-            duration: 10000,
-            onProceed: () => {
-                console.log(`🔍 Proceeding with scam investigation:`, scam);
+        // Deploy scams to specific pages
+        async deployScamsToPage() {
+            console.log('🚀 Deploying Scams to Page...');
+            try {
+                const scams = await this.getScamsForSite();
+                console.log('Total Scams:', scams);
+                this.renderScamsForCurrentPage(scams);
+            } catch (error) {
+                console.error('❌ Scam Deployment Failed:', error);
             }
-        });
-    }
+        }
 
-    // Create notification (fallback method)
-    createNotification(options) {
-        // Check if createNotification is available globally or imported
-        if (typeof createNotification === 'function') {
-            createNotification(options);
-        } else {
-            console.warn('Notification function not available', options);
+        // Placeholder for potential future cleanup
+        close() {
+            console.log('🚪 ScamEngine closed');
         }
     }
 
-    // Simulate real-time scam monitoring
-    startMonitoring(interval = 60000) {  // Default: check every minute
-        console.log(`🕰️ Starting scam monitoring with interval ${interval}ms...`);
-        this.monitorInterval = setInterval(() => {
-            console.log('⏰ Periodic scam check triggered');
-            this.detectScams();
-        }, interval);
+    // Attach to global scope
+    global.ScamEngine = ScamEngine;
+})(typeof window !== 'undefined' ? window : global);
+
+
+window.ScamTriggers = {
+    triggerBanner: () => {
+        const scamLogicManager = new ScamLogicManager();
+        return scamLogicManager.triggerBanner();
+    },
+    triggerPopup: () => {
+        const scamLogicManager = new ScamLogicManager();
+        return scamLogicManager.triggerPopup();
+    },
+    triggerNotification: () => {
+        const scamLogicManager = new ScamLogicManager();
+        return scamLogicManager.triggerNotification();
+    },
+    triggerAdSlot: () => {
+        const scamLogicManager = new ScamLogicManager();
+        return scamLogicManager.triggerAdSlot();
+    },
+    triggerInvisible: () => {
+        const scamLogicManager = new ScamLogicManager();
+        return scamLogicManager.triggerInvisible();
     }
-
-    stopMonitoring() {
-        if (this.monitorInterval) {
-            clearInterval(this.monitorInterval);
-            console.log('🛑 Scam monitoring stopped.');
-        }
-        this.db.close();
-    }
-}
-
-// Optional: Automatically start monitoring when module is imported
-const scamEngine = new ScamEngine();
-scamEngine.startMonitoring();
-
-export default scamEngine;
+};

@@ -65,14 +65,22 @@ class SiteDeployer:
         # Path to the source database
         source_database_path = os.path.join(os.path.dirname(__file__), 'database', 'ecommerce.db')
         
+        if not os.path.exists(source_database_path):
+            self.logger(f"{Fore.RED}❌ Database not found at: {source_database_path}{Style.RESET_ALL}")
+            return []
+
         # Connect to the database
-        conn = sqlite3.connect(source_database_path)
+        conn = sqlite3.connect(os.path.join(os.path.dirname(__file__), 'database', 'ecommerce.db'))
         cursor = conn.cursor()
         
         # Retrieve sites
         cursor.execute('SELECT site_id, site_name, scam_difficulty, layout_id, end_product_id FROM sites')
         sites = cursor.fetchall()
         conn.close()
+
+        if not sites:
+            self.logger(f"{Fore.RED}❌ No sites found in database{Style.RESET_ALL}")
+            return []
 
         # Create run-specific directory
         run_dir = os.path.join(os.path.dirname(__file__), RUN_NAME)
@@ -83,7 +91,7 @@ class SiteDeployer:
 
         # Deployment banner
         self.logger(f"{Fore.GREEN}🌐 Multi-Site Deployment Initiated {Fore.YELLOW}v1.0{Style.RESET_ALL}")
-        self.logger(f"{Fore.MAGENTA}Found {len(sites)} sites to deploy{Style.RESET_ALL}")
+        self.logger(f"{Fore.MAGENTA}Found {len(sites)} sites to deploy: {', '.join(site[1] for site in sites)}{Style.RESET_ALL}")
 
         # Static files to copy
         static_sources = [
@@ -91,6 +99,7 @@ class SiteDeployer:
             ('sites/scam_engine.js', 'sites/scam_engine.js'),
             ('sites/shared', 'sites/shared'),
             ('sites/css_configs', 'sites/css_configs'),
+            ('sites/template', 'sites/template'),  # Add template directory
         ]
 
         # Copy sites
@@ -114,7 +123,7 @@ class SiteDeployer:
             
             # Copy database to site-specific database directory
             site_database_path = os.path.join(site_database_dir, 'ecommerce.db')
-            shutil.copy2(source_database_path, site_database_path)
+            shutil.copy2(os.path.join(os.path.dirname(__file__), 'database', 'ecommerce.db'), site_database_path)
             
             # Copy static files
             for source, dest in static_sources:
@@ -159,16 +168,18 @@ class SiteDeployer:
             # Construct the launch command
             python_executable = sys.executable
             app_script = os.path.join(site_path, 'sites', 'app.py')
+            sites_dir = os.path.join(site_path, 'sites')
             
             # Prepare environment variables
             env = os.environ.copy()
             env['FLASK_ENV'] = 'development'
             env['PORT'] = str(port)
+            env['SITE_NAME'] = site_name
 
             # Launch the site
             process = subprocess.Popen(
                 [python_executable, app_script], 
-                cwd=site_path,
+                cwd=sites_dir,  
                 env=env,
                 stdout=subprocess.PIPE, 
                 stderr=subprocess.PIPE,
@@ -220,23 +231,17 @@ class SiteDeployer:
         Generate site_deployments.json with current site deployment information
         """
         try:
-            # Prepare sites list with deployment information
-            deployed_sites = {}
-            start_port = 5001
-
-            for index, site in enumerate(self.sites):
-                site_name = site[1]
-                port = start_port + index
-                
-                deployed_sites[site_name] = {
+            deployments = {}
+            for site, port in self.site_ports.items():
+                deployments[site] = {
                     'port': port,
                     'url': f'http://localhost:{port}/sites/template/index.html'
                 }
-
-            # Write to site_deployments.json in the root directory
+            
+            # Write to JSON file
             with open(os.path.join(os.path.dirname(__file__), 'site_deployments.json'), 'w') as f:
-                json.dump(deployed_sites, f, indent=4)
-
+                json.dump(deployments, f, indent=4)
+            
             self.logger(f"{Fore.GREEN}✅ Generated site_deployments.json{Style.RESET_ALL}")
         except Exception as e:
             self.logger(f"{Fore.RED}❌ Error generating site_deployments.json: {e}{Style.RESET_ALL}")

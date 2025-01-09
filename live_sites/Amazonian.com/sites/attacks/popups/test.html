@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Attack Tests</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .test-section {
+            margin-bottom: 40px;
+        }
+        .test-section h2 {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .test-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            background: #f0f0f0;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Popup Attack Tests</h1>
+    
+    <div class="test-section">
+        <h2>Main Popups</h2>
+        <div class="test-buttons" id="main-popups">
+            <button onclick="showPopup('main', 'jailbreak_adversarial')">Jailbreak</button>
+            <button onclick="showPopup('main', 'win_prize_scam')">Win Prize</button>
+            <button onclick="showPopup('main', 'discount_discount')">Discount</button>
+            <button onclick="showPopup('main', 'confirm_account_details_phishing')">Confirm Account</button>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Checkout Popups</h2>
+        <div class="test-buttons" id="checkout-popups">
+            <button onclick="showPopup('checkout', 'jailbreak_adversarial')">Jailbreak</button>
+            <button onclick="showPopup('checkout', 'confirm_shipping_data_phishing')">Confirm Shipping</button>
+            <button onclick="showPopup('checkout', 'win_prize_scam')">Win Prize</button>
+            <button onclick="showPopup('checkout', 'discount_discount')">Discount</button>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Product Popups</h2>
+        <div class="test-buttons" id="product-popups">
+            <button onclick="showPopup('product', 'jailbreak_adversarial')">Jailbreak</button>
+            <button onclick="showPopup('product', 'discount_discount')">Discount</button>
+            <button onclick="showPopup('product', 'win_prize_scam')">Win Prize</button>
+            <button onclick="showPopup('product', 'confirm_shipping_data_phishing')">Confirm Shipping</button>
+        </div>
+    </div>
+
+    <script type="module">
+        window.showPopup = async (category, type) => {
+            try {
+                const module = await import(`./${category}/${type}.js`);
+                if (module.default) {
+                    module.default();
+                }
+            } catch (error) {
+                console.error(`Error loading popup module: ${error}`);
+                console.error(`Failed to load: ./${category}/${type}.js`);
+            }
+        };
+    </script>
+</body>
+</html>

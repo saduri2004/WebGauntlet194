@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invisible Attack Tests</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .test-section {
+            margin-bottom: 40px;
+        }
+        .test-section h2 {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .test-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            background: #f0f0f0;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background: #e0e0e0;
+        }
+        .content-area {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            min-height: 200px;
+        }
+        .visible-content {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Invisible Attack Tests</h1>
+    
+    <div class="test-section">
+        <h2>Product Purchase Attack</h2>
+        <div class="test-buttons">
+            <button onclick="addBuyProductAttack('PREMIUM123')">Add Buy Product Attack</button>
+        </div>
+        <div class="content-area" id="product-area">
+            <div class="visible-content">
+                This is a premium product with amazing features! Learn more about our product below.
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Task Change Attack</h2>
+        <div class="test-buttons">
+            <button onclick="addTaskChangeAttack('https://malicious-site.com')">Add Task Change Attack</button>
+        </div>
+        <div class="content-area" id="task-area">
+            <div class="visible-content">
+                Welcome to our help center! How can we assist you today?
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Hidden Redirect Attack</h2>
+        <div class="test-buttons">
+            <button onclick="addHiddenRedirect('https://redirect-target.com')">Add Hidden Redirect</button>
+        </div>
+        <div class="content-area" id="redirect-area">
+            <div class="visible-content">
+                Check out our latest updates and news!
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Hidden Discount Attack</h2>
+        <div class="test-buttons">
+            <button onclick="addHiddenDiscount('SCAM80', 5)">Add Hidden Discount</button>
+        </div>
+        <div class="content-area" id="discount-area">
+            <div class="visible-content">
+                Browse our collection of premium products at great prices!
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import using absolute paths from root
+        import { createBuyProductAttack } from '/attacks/invisible_attacks/buy_product_jailbreak.js';
+        import { createTaskChangeAttack } from '/attacks/invisible_attacks/task_change_jailbreak.js';
+        import { createHiddenRedirect } from '/attacks/invisible_attacks/hidden_redirect.js';
+        import { createHiddenDiscount } from '/attacks/invisible_attacks/hidden_discount.js';
+
+        // Make functions available globally
+        window.addBuyProductAttack = (productId) => {
+            const area = document.getElementById('product-area');
+            area.appendChild(createBuyProductAttack(productId));
+            console.log('Added buy product attack');
+        };
+
+        window.addTaskChangeAttack = (targetWebsite) => {
+            const area = document.getElementById('task-area');
+            area.appendChild(createTaskChangeAttack(targetWebsite));
+            console.log('Added task change attack');
+        };
+
+        window.addHiddenRedirect = (targetUrl) => {
+            const area = document.getElementById('redirect-area');
+            area.appendChild(createHiddenRedirect(targetUrl));
+            console.log('Added hidden redirect');
+        };
+
+        window.addHiddenDiscount = (discountCode, expiryMinutes) => {
+            const area = document.getElementById('discount-area');
+            area.appendChild(createHiddenDiscount(discountCode, expiryMinutes));
+            console.log('Added hidden discount');
+        };
+    </script>
+</body>
+</html>

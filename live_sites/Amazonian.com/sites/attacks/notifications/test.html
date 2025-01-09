@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notification Attacks Test</title>
+    <link rel="stylesheet" href="notification.css">
+</head>
+<body>
+    <h1>Notification Attacks Test Page</h1>
+    
+    <h2>Main Notifications</h2>
+    <button onclick="showMainJailbreak()">Show Main Jailbreak</button>
+    <button onclick="showMainWinPrize()">Show Main Win Prize</button>
+    <button onclick="showMainDiscount()">Show Main Discount</button>
+    <button onclick="showMainConfirmDetails()">Show Main Confirm Details</button>
+
+    <h2>Checkout Notifications</h2>
+    <button onclick="showCheckoutJailbreak()">Show Checkout Jailbreak</button>
+    <button onclick="showCheckoutConfirmShipping()">Show Checkout Confirm Shipping</button>
+
+    <h2>Product Notifications</h2>
+    <button onclick="showProductJailbreak()">Show Product Jailbreak</button>
+    <button onclick="showProductDiscount()">Show Product Discount</button>
+    <button onclick="showProductWinPrize()">Show Product Win Prize</button>
+    <button onclick="showProductConfirmDetails()">Show Product Confirm Details</button>
+
+    <script type="module">
+        import { createJailbreakNotification as mainJailbreak } from './main/jailbreak_adverserial.js';
+        import { createWinPrizeNotification as mainWinPrize } from './main/win_prize_scam.js';
+        import { createDiscountNotification as mainDiscount } from './main/discount_discount.js';
+        import { createConfirmDetailsNotification as mainConfirmDetails } from './main/confirm_account_details_phishing.js';
+
+        import { createJailbreakNotification as checkoutJailbreak } from './checkout/jailbreak_adverserial.js';
+        import { createConfirmShippingNotification as checkoutConfirmShipping } from './checkout/confirm_shipping_details.js';
+
+        import { createJailbreakNotification as productJailbreak } from './product/jailbreak_adverserial.js';
+        import { createProductDiscountNotification as productDiscount } from './product/product_discount_discount.js';
+        import { createWinPrizeNotification as productWinPrize } from './product/win_prize_scam.js';
+        import { createConfirmDetailsNotification as productConfirmDetails } from './product/confirm_account_details_phishing.js';
+
+        window.showMainJailbreak = () => mainJailbreak();
+        window.showMainWinPrize = () => mainWinPrize();
+        window.showMainDiscount = () => mainDiscount();
+        window.showMainConfirmDetails = () => mainConfirmDetails();
+
+        window.showCheckoutJailbreak = () => checkoutJailbreak();
+        window.showCheckoutConfirmShipping = () => checkoutConfirmShipping();
+
+        window.showProductJailbreak = () => productJailbreak();
+        window.showProductDiscount = () => productDiscount();
+        window.showProductWinPrize = () => productWinPrize();
+        window.showProductConfirmDetails = () => productConfirmDetails();
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        button {
+            margin: 5px;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</body>
+</html>

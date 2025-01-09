@@ -1,3 +1,0 @@
-WebGauntlet Attack Report
-========================
-Format: [Timestamp] | Type: {attack_type} | Source: {source} | Component: {component_type}

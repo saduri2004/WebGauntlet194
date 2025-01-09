@@ -15,7 +15,10 @@
                 invisible: []
             };
 
-            // Keep track of rendered scams
+            // Keep track of rendered scams GLOBALLY
+            this.globalRenderedScams = new Set();
+
+            // Keep track of rendered scams by type
             this.renderedScams = {
                 banner: new Set(),
                 popup: new Set(),
@@ -109,139 +112,144 @@
             return this.renderSpecificScamType('invisible');
         }
 
+        selectFromAvailableScam(scamType) {
+            // Always return the first available scam for the given type
+            const availableScams = this.availableScams[scamType];
+            
+            if (availableScams.length === 0) {
+                console.warn(`No ${scamType} scams available`);
+                return null;
+            }
+
+            // Return the first scam and remove it from available scams
+            //create random index
+            const randomIndex = Math.floor(Math.random() * availableScams.length);
+            const selectedScam = availableScams[randomIndex];
+            this.availableScams[scamType].splice(randomIndex, 1); // Remove the selected scam
+            
+            return selectedScam;
+        }
+
         async renderSpecificScamType(scamType) {
-            // Ensure scams are initialized
-            if (Object.values(this.availableScams).every(arr => arr.length === 0)) {
-                console.error('🚨 No scams available. Force initializing...');
-                await this.initializeScams();
+            console.log(`🔍 Rendering ${scamType} scams`);
+            console.log('Available Scams:', this.availableScams);
+            console.log('Current Scam Type:', scamType);
+
+            // Select a single scam instead of filtering all
+            const scam = this.selectFromAvailableScam(scamType);
+            
+            if (!scam) {
+                console.warn(`No ${scamType} scams available`);
+                return { 
+                    success: false, 
+                    message: `No ${scamType} scams available` 
+                };
             }
-        
-            // Get available scams for this type
-            const availableScamsOfType = this.availableScams[scamType] || [];
-        
-            // Limit to max scams per slot
-            const selectedScams = availableScamsOfType
-                .filter(scam => !this.renderedScams[scamType].has(scam[0]))
-                .slice(0, this.maxScamsPerSlot);
-        
-            // Render the scams
-            for (const scam of selectedScams) {
-                const selector = this.getSlotForScam(scam[0]);
+
+            // Dynamically select target element based on scam type
+            const targetSlotSelector = this.getSlotForScam(scam[0]);
+            const targetElement = document.querySelector(targetSlotSelector) || document.body;
+            console.log(`Target Element for ${scamType} Scam:`, targetElement, `Selector: ${targetSlotSelector}`);
+
+            try {
+                console.log(`Attempting to render scam: ${scam[0]}`);
+
+                // Construct full import path
+                const scamScriptPath = scam[0].startsWith('/') 
+                    ? scam[0] 
+                    : `/sites/attacks/${scam[0]}`;
                 
-                if (!selector) {
-                    console.error(`🚨 NO SELECTOR found for scam:`, scam);
-                    continue;
-                }
-        
-                // Dynamically create slot if not exists
-                let targetElement = document.querySelector(selector);
-                if (!targetElement) {
-                    targetElement = document.createElement('div');
-                    targetElement.id = selector.replace('#', '');
-                    document.body.appendChild(targetElement);
-                }
-        
-                try {
-                    // Dynamically construct import path
-                    const scamScriptPath = `/sites/attacks/${scam[0]}`;
-                    
-                    // Dynamically import the scam script
-                    const scamModule = await import(scamScriptPath);
-                    
-                    // Create a container for the scam
-                    const scamElement = document.createElement('div');
-                    scamElement.classList.add('injected-scam', `${scamType}-scam`);
-                    
-                    // Dynamic rendering approach
-                    let scamContent;
-        
-                    // Function to find render method dynamically
-                    const findRenderMethod = (module) => {
-                        // Common render method names to try
-                        const renderMethodNames = [
-                            'render', 
-                            'create', 
-                            `create${scamType.charAt(0).toUpperCase() + scamType.slice(1)}`, 
-                            `create${scamType.charAt(0).toUpperCase() + scamType.slice(1)}Scam`
-                        ];
-        
-                        // Try different method discovery approaches
-                        const renderMethods = [
-                            // Direct method match
-                            () => {
-                                for (const methodName of renderMethodNames) {
-                                    if (typeof module[methodName] === 'function') {
-                                        return module[methodName]();
-                                    }
-                                }
-                                return null;
-                            },
-                            
-                            // Default export method
-                            () => {
-                                if (typeof module.default === 'function') {
-                                    return module.default();
-                                }
-                                return null;
-                            },
-                            
-                            // Fallback to first exported function
-                            () => {
-                                const exportedFunctions = Object.values(module)
-                                    .filter(val => typeof val === 'function');
-                                
-                                return exportedFunctions.length > 0 ? exportedFunctions[0]() : null;
-                            }
-                        ];
-        
-                        // Try each render method
-                        for (const method of renderMethods) {
-                            const result = method();
-                            if (result) return result;
+                console.log(`Importing scam from path: ${scamScriptPath}`);
+
+                // Dynamic module import
+                const scamModule = await import(scamScriptPath);
+                const scamElement = document.createElement('div');
+                scamElement.className = `scam-element ${scamType}-scam`;
+
+                let scamContent = null;
+
+                console.log(`Rendering scam: ${scam[0]}`);
+                // Custom render method finder
+                const findRenderMethod = (module) => {
+                    const renderMethods = ['render', 'generateContent', 'createCategorySaleScamAdslot', 'createWinPrizeBanner'];
+                    for (const method of renderMethods) {
+                        if (typeof module[method] === 'function') {
+                            console.log(`Found render method: ${method}`);
+                            return module[method]({
+                                title: scam[1],
+                                difficulty: scam[2],
+                                attack_config: scam[3] || {}
+                            });
                         }
-        
-                        return null;
-                    };
-        
-                    // Find and execute render method
-                    scamContent = findRenderMethod(scamModule);
-        
-                    // Fallback content if no rendering method works
-                    if (!scamContent) {
-                        console.error('🚨 NO RENDER METHOD FOUND', scamModule);
-                        scamContent = `
-                            <h3>FAILED FINDING Scam Alert (${scamType.toUpperCase()})</h3>
-                            <p>Source: ${scam[0]}</p>
-                            <p>Category: ${scam[1]}</p>
-                            <p>Difficulty: ${scam[2]}</p>
-                            <p>Module Keys: ${JSON.stringify(Object.keys(scamModule))}</p>
-                        `;
                     }
-        
-                    // Ensure scamContent is a string
-                    scamElement.innerHTML = typeof scamContent === 'string' ? scamContent : 
-                        (scamContent instanceof HTMLElement ? scamContent.outerHTML : 
-                        (scamContent.innerHTML || String(scamContent)));
+
+                    // Fallback to default export or first function
+                    if (typeof module.default === 'function') {
+                        console.log('Using default export');
+                        return module.default({
+                            title: scam[1],
+                            difficulty: scam[2],
+                            attack_config: scam[3] || {}
+                        });
+                    }
+
+                    const exportedFunctions = Object.values(module)
+                        .filter(val => typeof val === 'function');
                     
+                    if (exportedFunctions.length > 0) {
+                        console.log('Using first exported function');
+                        return exportedFunctions[0]({
+                            title: scam[1],
+                            difficulty: scam[2],
+                            attack_config: scam[3] || {}
+                        });
+                    }
+
+                    return null;
+                };
+
+                scamContent = findRenderMethod(scamModule);
+         
+
+                console.log(`Rendering scam 3: ${scam[0]}`);
+                
+                // Ensure scamContent is added to the DOM
+                if (scamContent) {
+                    if (typeof scamContent === 'string') {
+                        scamElement.innerHTML = scamContent;
+                    } else if (scamContent instanceof HTMLElement) {
+                        scamElement.appendChild(scamContent);
+                    } else {
+                        scamElement.innerHTML = String(scamContent);
+                    }
+                    
+                    // Append to target element
                     targetElement.appendChild(scamElement);
-        
-                    // Mark this scam as rendered
-                    this.renderedScams[scamType].add(scam[0]);
-                } catch (error) {
-                    console.error(`❌ CRITICAL FAILURE loading scam from ${scam[0]}:`, error);
+                    console.log(`🎉 Successfully rendered ${scamType} scam in ${targetSlotSelector}`);
                 }
+
+                return {
+                    success: true,
+                    message: `${scamType} scam rendering attempted`,
+                    scams: [scam]
+                };
+            } catch (error) {
+                console.error(`❌ CRITICAL FAILURE loading scam from ${scam[0]}:`, error);
+                // Log additional context about the import
+                console.error('Error Details:', {
+                    scamPath: scam[0],
+                    constructedPath: `/sites/attacks/${scam[0]}`,
+                    errorName: error.name,
+                    errorMessage: error.message,
+                    stack: error.stack
+                });
+
+                return {
+                    success: false,
+                    message: `Failed to render ${scamType} scam`,
+                    error: error.message
+                };
             }
-        
-            // Remove used scams
-            this.availableScams[scamType] = this.availableScams[scamType].filter(
-                scam => !this.renderedScams[scamType].has(scam[0])
-            );
-        
-            return {
-                success: true,
-                message: `${scamType} scams rendering attempted`,
-                scams: selectedScams
-            };
         }
         
         rankScams(scams) {
@@ -309,6 +317,7 @@
                         return response.json();
                     })
                     .then(scams => {
+                        console.log('🕵️ Raw Scams:', scams);
 
                         // Convert to dictionary, preserving all scams
                         const scamsDictionary = scams.reduce((dict, scam) => {
@@ -326,6 +335,12 @@
                         console.log('🕵️ Scams Dictionary:', scamsDictionary);
                         console.log('🕵️ Total Scams in Dictionary:', Object.keys(scamsDictionary).length);
 
+                        // Log all unique scam locations
+                        const scamLocations = new Set(
+                            Object.values(scamsDictionary).map(scam => scam[3])
+                        );
+                        console.log('🕵️ Unique Scam Locations:', [...scamLocations]);
+
                         resolve(scamsDictionary);
                     })
                     .catch(error => {
@@ -340,6 +355,8 @@
             const currentPath = window.location.pathname;
             let scamLocation;
 
+            console.log('🔍 Current Path:', currentPath);
+
             if (currentPath.includes('product-detail.html')) {
                 scamLocation = 'product';
             } else if (currentPath.includes('cart.html')) {
@@ -348,42 +365,37 @@
                 scamLocation = 'main';
             }
 
+            console.log('🔍 Detected Scam Location:', scamLocation);
+            console.log('🔍 All Scams:', scams);
+
             // Filter scams for current location
             const relevantScams = Object.entries(scams)
-                .filter(([key, scam]) => scam[3] === scamLocation)
+                .filter(([key, scam]) => {
+                    console.log(`Checking scam: ${key}, Location: ${scam[3]}`);
+                    return scam[3] === scamLocation;
+                })
                 .map(([key, scam]) => scam);
+
+            console.log('🔍 Relevant Scams:', relevantScams);
 
             // Use ScamLogicManager to select final scams
             const scamLogicManager = new ScamLogicManager();
             await scamLogicManager.initializeScams();
 
-            await scamLogicManager.triggerAdSlot();
             await scamLogicManager.triggerBanner();
             await scamLogicManager.triggerPopup();
             await scamLogicManager.triggerNotification();
-            await scamLogicManager.triggerInvisible();
-             
+            await scamLogicManager.triggerAdSlot();
+            // await scamLogicManager.triggerInvisible();
         }
 
-        // Update deployScamsToPage to be async
+        // Update deployScamsToPage to be async and remove duplication
         async deployScamsToPage() {
             console.log('🚀 Deploying Scams to Page...');
             try {
                 const scams = await this.getScamsForSite();
                 console.log('Total Scams:', scams);
                 await this.renderScamsForCurrentPage(scams);
-            } catch (error) {
-                console.error('❌ Scam Deployment Failed:', error);
-            }
-        }
-
-        // Deploy scams to specific pages
-        async deployScamsToPage() {
-            console.log('🚀 Deploying Scams to Page...');
-            try {
-                const scams = await this.getScamsForSite();
-                console.log('Total Scams:', scams);
-                this.renderScamsForCurrentPage(scams);
             } catch (error) {
                 console.error('❌ Scam Deployment Failed:', error);
             }

@@ -6,17 +6,11 @@
     <link rel="stylesheet" href="../../sites/css_configs/ecommerce.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        .notification-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-        
+
         .product-detail-grid {
             display: grid;
             grid-template-columns: 1fr 2fr;
-            gap: 20px;
+            gap: 10px;
         }
         
         .product-image-container {
@@ -152,43 +146,8 @@
             color: #555;
         }
         
-        .notification {
-            position: fixed;
-            top: 60px;
-            right: 20px;
-            z-index: 1000;
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
+      
         
-        .notification-content {
-            margin-right: 10px;
-        }
-        
-        .notification-close {
-            font-size: 18px;
-            cursor: pointer;
-        }
-        
-        .notification.info {
-            background-color: #2196f3;
-            color: #fff;
-        }
-        
-        .notification.success {
-            background-color: #4caf50;
-            color: #fff;
-        }
-        
-        .notification.error {
-            background-color: #f44336;
-            color: #fff;
-        }
         
         .fade-out {
             opacity: 0;
@@ -197,6 +156,8 @@
     </style>
 </head>
 <body>
+    <div id = "banner-slot"></div>
+
     <nav id="site-nav" name="main-navigation">
         <a href="index.html" id="nav-products-link" name="products-link">Products</a>
         <div class="navbar-center">
@@ -254,14 +215,14 @@
         </div>
     </div>
 
-    <div id="notification-container" style="
+    <div id="toast-container" style="
         position: fixed;
-        top: 20px;
+        top: 50px;
         right: 20px;
         z-index: 1000;
     "></div>
 
-    <script src="../../sites/shared/notifications.js"></script>
+    <script src="../../sites/shared/toasts.js"></script>
     <script>
         // Utility function to escape HTML to prevent XSS
         function escapeHtml(unsafe) {
@@ -275,45 +236,45 @@
 
         // Notification function
         function showNotification(message, type = 'info') {
-            // Create notification container if it doesn't exist
-            let notificationContainer = document.getElementById('notification-container');
-            if (!notificationContainer) {
-                notificationContainer = document.createElement('div');
-                notificationContainer.id = 'notification-container';
-                document.body.appendChild(notificationContainer);
+            // Create toast container if it doesn't exist
+            let toastContainer = document.getElementById('toast-container');
+            if (!toastContainer) {
+                toastContainer = document.createElement('div');
+                toastContainer.id = 'toast-container';
+                document.body.appendChild(toastContainer);
             }
 
-            // Create notification element
-            const notification = document.createElement('div');
-            notification.classList.add('notification', type);
-            notification.innerHTML = `
-                <div class="notification-content">
+            // Create toast element
+            const toast = document.createElement('div');
+            toast.classList.add('toast', type);
+            toast.innerHTML = `
+                <div class="toast-content">
                     ${escapeHtml(message)}
                 </div>
-                <button class="notification-close">&times;</button>
+                <button class="toast-close">&times;</button>
             `;
 
             // Add close functionality
-            const closeBtn = notification.querySelector('.notification-close');
+            const closeBtn = toast.querySelector('.toast-close');
             closeBtn.addEventListener('click', () => {
-                notification.classList.add('fade-out');
+                toast.classList.add('fade-out');
                 setTimeout(() => {
-                    notification.remove();
+                    toast.remove();
                 }, 300);
             });
 
             // Auto-remove after 5 seconds
             setTimeout(() => {
-                if (document.body.contains(notification)) {
-                    notification.classList.add('fade-out');
+                if (document.body.contains(toast)) {
+                    toast.classList.add('fade-out');
                     setTimeout(() => {
-                        notification.remove();
+                        toast.remove();
                     }, 300);
                 }
             }, 5000);
 
             // Add to container
-            notificationContainer.appendChild(notification);
+            toastContainer.appendChild(toast);
         }
 
         // Update cart badge function

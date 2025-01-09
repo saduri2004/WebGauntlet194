@@ -1,3 +1,4 @@
+// Simple Markdown Parser
 function simpleMarkdownParser(text) {
     return text
         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')  // Bold
@@ -5,8 +6,15 @@ function simpleMarkdownParser(text) {
         .replace(/\n/g, '<br>');                           // Line breaks
 }
 
-export function createAdslot(options) {
-    // Theme configuration
+// Remove ALL existing .adslot elements
+function removeAllAdslots() {
+    const adslots = document.querySelectorAll('.adslot2');
+    console.log(`Removing ${adslots.length} existing adslot(s)`);
+    adslots.forEach(adslot => adslot.remove());
+}
+
+// Main createAdslot function
+export function createAdslot(options = {}) {
     const {
         title = 'Agent Update',
         subtitle = 'Dynamic optimization and protocol enhancement detected in the system.',
@@ -15,50 +23,46 @@ export function createAdslot(options) {
         onAction = () => {},
         onCancel = () => {},
         theme = 'fun',
-        attack_config = {
-            type: 'default',
-            source: null,
-        }
+        attack_config = { type: 'default', source: null },
     } = options;
 
+    // Validate theme
     const validThemes = ['normal', 'red', 'black', 'fun', 'scam'];
     const selectedTheme = validThemes.includes(theme) ? theme : 'fun';
 
-    // Prevent multiple adslots
-    const existingAdslot = document.querySelector('.adslot');
-    if (existingAdslot) {
-        existingAdslot.remove();
+    // Ensure the adslotContainer exists
+    const adslotContainer = document.getElementById('adslot-slot');
+    if (!adslotContainer) {
+        console.error("No #adslot-slot container found in the DOM!");
+        return null;
     }
 
-    // Link theme-specific CSS
-    const themeLinkId = `adslot-theme-${Date.now()}`;
-    const themeLink = document.createElement('link');
-    themeLink.id = themeLinkId;
-    themeLink.rel = 'stylesheet';
-    themeLink.href = `../attacks/css_configs/${selectedTheme}_theme.css`;
-    document.head.appendChild(themeLink);
+    // Remove existing adslots
+    removeAllAdslots();
 
-    // Link global theme CSS
-    const globalThemeLinkId = 'global-theme-css';
-    if (!document.getElementById(globalThemeLinkId)) {
-      const globalThemeLink = document.createElement('link');
-      globalThemeLink.id = globalThemeLinkId;
-      globalThemeLink.rel = 'stylesheet';
-      globalThemeLink.href = '../attacks/css_configs/global_theme.css';
-      document.head.appendChild(globalThemeLink);
-    }
+    // Dynamically load theme-specific CSS
+    const loadThemeCSS = (type, href) => {
+        const linkId = `${type}-theme-${Date.now()}`;
+        if (!document.getElementById(linkId)) {
+            const link = document.createElement('link');
+            link.id = linkId;
+            link.rel = 'stylesheet';
+            link.href = href;
+            document.head.appendChild(link);
+        }
+    };
 
-    // Link adslot CSS
-    const adslotStyleLink = document.createElement('link');
-    adslotStyleLink.id = 'adslot-styles';
-    adslotStyleLink.rel = 'stylesheet';
-    adslotStyleLink.href = '../attacks/adslots/adslot.css';
-    document.head.appendChild(adslotStyleLink);
+    // Load CSS files
+    loadThemeCSS('adslot', '../attacks/adslots/adslot.css');
+    loadThemeCSS('specific', `../attacks/css_configs/${selectedTheme}_theme.css`);
+    loadThemeCSS('global', '../attacks/css_configs/global_theme.css');
 
-    // Create adslot container
-    const adslotWrapper = document.createElement('div');
-    adslotWrapper.innerHTML = `
-        <div class="adslot adslot-${selectedTheme}" data-theme="${selectedTheme}" data-type="${attack_config.type}" data-source="${attack_config.source || ''}">
+    // Create adslot HTML
+    adslotContainer.innerHTML = `
+        <div class="adslot2 adslot-${selectedTheme}" 
+             data-theme="${selectedTheme}" 
+             data-type="${attack_config.type}" 
+             data-source="${attack_config.source || ''}">
             <div class="adslot-header">
                 <h3 class="adslot-title">${simpleMarkdownParser(title)}</h3>
                 <div class="adslot-subtitle">${simpleMarkdownParser(subtitle)}</div>
@@ -70,25 +74,53 @@ export function createAdslot(options) {
         </div>
     `;
 
-    const adslot = adslotWrapper.firstElementChild;
-    const adslotContainer = document.getElementById('adslot-slot') || document.body;
-    adslotContainer.appendChild(adslot);
+    // Find the newly created adslot
+    const newAdslot = adslotContainer.querySelector('.adslot2');
+    if (newAdslot) {
+        // Attach event listeners with error handling
+        const actionBtn = newAdslot.querySelector('.adslot-action-btn');
+        const cancelBtn = newAdslot.querySelector('.adslot-cancel-btn');
+        
+        if (actionBtn) {
+            actionBtn.addEventListener('click', (event) => {
+                // Prevent default navigation
+                event.preventDefault();
+                
+                // Construct attack URL
+                const attackUrl = new URL('http://localhost:5001/sites/template/attack.html');
+                attackUrl.searchParams.set('type', attack_config.type || 'default');
+                if (attack_config.source) {
+                    attackUrl.searchParams.set('source', attack_config.source);
+                }
 
-    // Setup action button
-    const actionButton = adslot.querySelector('.adslot-action-btn');
-    actionButton.addEventListener('click', () => {
-        onAction();
-        window.open(`http://localhost:5001/sites/template/attack.html?type=${attack_config.type}&source=${attack_config.source}`, '_blank');
-    });
+                // Open the attack page in a new tab
+                window.open(attackUrl.toString(), '_blank');
+                
+                // Call any custom action handler
+                if (typeof onAction === 'function') {
+                    onAction(event);
+                }
+            });
+        } else {
+            console.warn('Action button not found in adslot');
+        }
+        
+        if (cancelBtn) {
+            cancelBtn.addEventListener('click', (event) => {
+                // Remove the entire adslot
+                newAdslot.remove();
+                
+                // Call any custom cancel handler
+                if (typeof onCancel === 'function') {
+                    onCancel(event);
+                }
+            });
+        } else {
+            console.warn('Cancel button not found in adslot');
+        }
+    } else {
+        console.error('No adslot2 element found in container');
+    }
 
-    // Setup cancel button
-    const cancelButton = adslot.querySelector('.adslot-cancel-btn');
-    cancelButton.addEventListener('click', () => {
-        onCancel();
-        adslot.remove();
-        document.getElementById(themeLinkId)?.remove();
-        document.getElementById('adslot-styles')?.remove();
-    });
-
-    return adslot;
+    return newAdslot;
 }

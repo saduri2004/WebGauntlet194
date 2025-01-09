@@ -3,8 +3,8 @@ import { createBanner } from '../banner_base.js';
 export function createConfirmDataPhishingBanner(options = {}) {
     return createBanner({
         title: '**Age Verification Required**',
-        message: '*Important:* This product requires **age verification** before viewing.\n\n' +
-                'Due to the nature of this item, we need to **verify your information**.\n' +
+        message: '*Important:* This product requires **age verification** before viewing.' +
+                'Due to the nature of this item, we need to **verify your information**.' +
                 '*This is a quick process* and will give you **immediate access** to the product.',
         ctaText: '**Verify Age to Continue**',
         theme: 'normal',  // Preset theme

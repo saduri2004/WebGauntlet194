@@ -54,16 +54,10 @@ export function createNotification(options) {
 
     const notificationId = `notification-${Date.now()}`;
 
-    // Create notification container if it doesn't exist
-    let notificationContainer = document.getElementById('notification-container');
-    if (!notificationContainer) {
-        notificationContainer = document.createElement('div');
-        notificationContainer.id = 'notification-container';
-        document.body.appendChild(notificationContainer);
-    }
 
     const notificationWrapper = document.createElement('div');
     notificationWrapper.innerHTML = `
+    <div id="notification-container">
         <div id="${notificationId}" class="notification notification-${selectedTheme}" data-theme="${selectedTheme}">
             <div class="notification-header">
                 <h4 class="notification-title">${simpleMarkdownParser(title)}</h4>
@@ -76,10 +70,11 @@ export function createNotification(options) {
                 <button class="notification-close">Close</button>
             </div>
         </div>
+    </div>
+
     `;
 
     const notification = notificationWrapper.firstElementChild;
-    notificationContainer.appendChild(notification);
 
     // Trigger show animation
     setTimeout(() => {

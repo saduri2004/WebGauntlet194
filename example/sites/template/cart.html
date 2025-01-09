@@ -1,50 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Your Shopping Cart</title>
     <link rel="stylesheet" href="../../sites/css_configs/ecommerce.css">
-<style>
+    <style>
         .row {
             display: flex;
             justify-content: space-between;
             margin-bottom: 15px;
         }
+
+        .inline-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+
         .col {
             flex: 1;
             margin-right: 10px;
         }
+
         .col:last-child {
             margin-right: 0;
         }
+
         .text-right {
             text-align: right;
         }
+
         #checkout-form input {
             width: 100%;
             box-sizing: border-box;
         }
+
         .cart-total-section {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
         }
+
         .checkout-portal {
             margin-top: 30px;
             padding-top: 20px;
             border-top: 1px solid #e0e0e0;
+        }
+
+        /* Container for the item details */
+        .cart-item-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            /* Spacing between elements */
+            border: 1px solid #ddd;
+            padding: 1rem;
+            border-radius: 6px;
+            background-color: #fff;
+            width: 100%;
+        }
+
+        /* Product name styling */
+        .cart-item-details h3 {
+            font-size: 1.2rem;
+            margin: 0;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Price & Subtotal paragraphs */
+        .cart-item-details p {
+            margin: 0.25rem 0;
+            color: #555;
+        }
+
+        /* Quantity Control Wrapper */
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+
+        /* Quantity Buttons */
+        .quantity-control button {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        .quantity-control button:hover {
+            background-color: #eee;
+        }
+
+        /* 'Remove' Button */
+        .remove-item-btn {
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin-top: 0.5rem;
+            /* spacing above the button */
+            max-width: 200px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        .remove-item-btn:hover {
+            background-color: #c0392b;
         }
     </style>
     <script>
         // Utility function to escape HTML to prevent XSS
         function escapeHtml(unsafe) {
             return unsafe
-                 .replace(/&/g, "&amp;")
-                 .replace(/</g, "&lt;")
-                 .replace(/>/g, "&gt;")
-                 .replace(/"/g, "&quot;")
-                 .replace(/'/g, "&#039;");
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
         }
 
         // Fetch and display cart items
@@ -84,8 +167,11 @@
                                 <span>${item.quantity}</span>
                                 <button onclick="updateQuantity(${item.product_id}, ${item.quantity + 1})">+</button>
                             </div>
-                            <p>Subtotal: $${(item.price * item.quantity).toFixed(2)}</p>
-                            <button onclick="removeFromCart(${item.product_id})" class="remove-item-btn">Remove</button>
+
+                        <div class="inline-row">
+  <p>Subtotal: $${(item.price * item.quantity).toFixed(2)}</p>
+  <button onclick="removeFromCart(${item.product_id})" class="remove-item-btn">Remove</button>
+</div>
                         </div>
                     `;
                     cartItemsContainer.appendChild(cartItemElement);
@@ -110,7 +196,7 @@
             try {
                 // First remove the item
                 const removeResponse = await fetch(`/api/cart/remove/${productId}`, { method: 'DELETE' });
-                
+
                 // Then add it back with new quantity
                 const addResponse = await fetch('/api/cart/add', {
                     method: 'POST',
@@ -136,7 +222,7 @@
         async function removeFromCart(productId) {
             try {
                 const response = await fetch(`/api/cart/remove/${productId}`, { method: 'DELETE' });
-                
+
                 // Refresh cart
                 await fetchCartItems();
                 await updateCartBadge();
@@ -152,7 +238,7 @@
                 // In this simple implementation, we'll just reset the cart
                 const sessionId = 'default_session';
                 const response = await fetch('/api/cart/clear', { method: 'POST' });
-                
+
                 // Refresh cart
                 await fetchCartItems();
                 await updateCartBadge();
@@ -165,11 +251,11 @@
         // Process checkout
         async function processCheckout(event) {
             event.preventDefault();
-            
+
             // Gather form data
             const form = event.target;
             const formData = new FormData(form);
-            
+
             const checkoutData = {
                 firstName: formData.get('firstName'),
                 lastName: formData.get('lastName'),
@@ -179,9 +265,9 @@
                 cardExpiry: formData.get('cardExpiry'),
                 cardCVV: formData.get('cardCVV')
             };
-            
+
             console.log('Checkout data:', checkoutData);
-            
+
             try {
                 const response = await fetch('/api/checkout', {
                     method: 'POST',
@@ -190,12 +276,12 @@
                     },
                     body: JSON.stringify(checkoutData)
                 });
-                
+
                 console.log('Checkout response status:', response.status);
-                
+
                 const text = await response.text();
                 console.log('Checkout response text:', text);
-                
+
                 let data;
                 try {
                     data = JSON.parse(text);
@@ -203,33 +289,33 @@
                     console.error('Failed to parse response:', parseError);
                     throw new Error(`HTTP error! status: ${response.status}, text: ${text}`);
                 }
-                
+
                 console.log('Checkout response:', data);
-                
+
                 // Hide checkout form
                 const checkoutForm = document.getElementById('checkout-form');
                 checkoutForm.reset(); // Clear form inputs
-                
+
                 // Refresh cart to show it's now empty
                 await fetchCartItems();
-                
+
                 // Show success card
                 const successCard = document.getElementById('checkout-success');
                 successCard.style.display = 'block';
-                
+
                 // Populate success card details
                 const orderIdElement = document.getElementById('success-order-id');
                 const totalElement = document.getElementById('success-total');
                 const cardLast4Element = document.getElementById('success-card-last4');
-                
+
                 orderIdElement.textContent = data.order_id;
                 totalElement.textContent = data.total.toFixed(2);
                 cardLast4Element.textContent = data.cardLast4;
-                
+
                 // Simple alert for success
             } catch (error) {
                 console.error('Checkout error:', error);
-                
+
                 // Simple alert for error
                 alert('Checkout failed. Please try again.');
             }
@@ -241,7 +327,7 @@
                 const response = await fetch('/api/cart');
                 const cart = await response.json();
                 const badge = document.querySelector('.cart-badge');
-                
+
                 if (badge) {
                     const totalItems = cart.items?.reduce((sum, item) => sum + item.quantity, 0) || 0;
                     badge.textContent = totalItems > 0 ? totalItems : '';
@@ -272,7 +358,10 @@
         });
     </script>
 </head>
+
 <body>
+    <div id="banner-slot"></div>
+
     <nav id="site-nav" name="main-navigation">
         <a href="index.html" id="nav-products-link" name="products-link">Products</a>
         <div class="navbar-center">
@@ -286,17 +375,17 @@
 
     <div class="cart-container">
         <h1>Your Shopping Cart</h1>
-        <div id = "adslot-slot"></div>
+        <div id="adslot-slot"></div>
 
         <div id="cart-items" class="cart-items">
             <!-- Cart items will be dynamically populated here -->
         </div>
-        
+
         <div class="cart-total-section">
             <button onclick="clearCart()" class="clear-cart-btn">Clear Cart</button>
             <p id="cart-total" class="cart-total">Total: $0.00</p>
         </div>
-        
+
         <div class="checkout-portal">
             <form id="checkout-form">
                 <div class="row">
@@ -341,7 +430,7 @@
                     </div>
                 </div>
             </form>
-            
+
             <div id="checkout-success" class="success-card" style="display: none;">
                 <div class="card">
                     <div class="card-body">
@@ -357,7 +446,7 @@
             </div>
         </div>
     </div>
-    
+
     <script src="../scam_engine.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -379,11 +468,11 @@
                 });
         });
     </script>
-    <div id = "notification-slot"></div>
-    <div id = "banner-slot"></div>
-    <div id = "popup-slot"></div>
-    <div id = "invisible-slot"></div>
+    <div id="notification-slot"></div>
+    <div id="popup-slot"></div>
+    <div id="invisible-slot"></div>
 
 
 </body>
+
 </html>

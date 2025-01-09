@@ -33,97 +33,95 @@ const BannerManager = {
             }
         } = options || {};
 
-        // Ensure CSS is loaded
-        this.loadRequiredCSS(theme);
+        // Validate and select theme
+        const validThemes = ['normal', 'red', 'black', 'fun', 'scam'];
+        const selectedTheme = validThemes.includes(theme) ? theme : 'fun';
+
+        // Link theme-specific CSS
+        const themeLinkId = `banner-theme-${Date.now()}`;
+        const themeLink = document.createElement('link');
+        themeLink.id = themeLinkId;
+        themeLink.rel = 'stylesheet';
+        themeLink.href = `../attacks/css_configs/${selectedTheme}_theme.css`;
+        document.head.appendChild(themeLink);
+
+        // Link global theme CSS
+        const globalThemeLinkId = 'global-theme-css';
+        if (!document.getElementById(globalThemeLinkId)) {
+            const globalThemeLink = document.createElement('link');
+            globalThemeLink.id = globalThemeLinkId;
+            globalThemeLink.rel = 'stylesheet';
+            globalThemeLink.href = '../attacks/css_configs/global_theme.css';
+            document.head.appendChild(globalThemeLink);
+        }
+
+        // Link banner CSS
+        const bannerStyleLink = document.createElement('link');
+        bannerStyleLink.id = 'banner-styles';
+        bannerStyleLink.rel = 'stylesheet';
+        bannerStyleLink.href = '../attacks/banners/banner.css';
+        document.head.appendChild(bannerStyleLink);
 
         // Create banner container
         const banner = document.createElement('div');
-        banner.className = `banner banner-${theme}`;
-        banner.setAttribute('data-theme', theme);
+        banner.className = `banner banner-${selectedTheme}`;
+        banner.setAttribute('data-theme', selectedTheme);
         banner.setAttribute('data-type', attack_config.type);
         banner.setAttribute('data-source', attack_config.source);
 
-        // Set critical styling to ensure visibility
-        Object.assign(banner.style, {
-            position: 'fixed',
-            top: '0',
-            left: '0',
-            width: '100%',
-            zIndex: '9999',
-            display: 'block',
-            visibility: 'visible',
-            opacity: '1'
-        });
+        // Markdown parsing for title and message
+        const parsedTitle = this.parseMarkdown(title);
+        const parsedMessage = this.parseMarkdown(message);
 
-        // Generate banner HTML
+        // Banner content
         banner.innerHTML = `
-            <div class="banner-content">
-                <div class="banner-left">
-                    <h3 class="banner-title">${this.parseMarkdown(title)}</h3>
-                    <p class="banner-message">${this.parseMarkdown(message)}</p>
-                </div>
-                <div class="banner-right">
-                    <button class="banner-action-btn">${this.parseMarkdown(ctaText)}</button>
-                    <button class="banner-cancel-btn">Close</button>
-                </div>
-            </div>
+          <div class="banner-content">
+            <div class="banner-close">×</div>
+            <h3 class="banner-title">${parsedTitle}</h3>
+            <p class="banner-message">${parsedMessage}</p>
+            <button class="banner-cta">
+                ${this.parseMarkdown(ctaText)}
+            </button>
+          </div>
         `;
 
-        // Setup buttons
-        const actionBtn = banner.querySelector('.banner-action-btn');
-        const cancelBtn = banner.querySelector('.banner-cancel-btn');
-
-        // Action button handler
-        actionBtn.addEventListener('click', (event) => {
-            event.preventDefault();
-            try {
-                onCTA();
-                window.open(`http://localhost:5001/sites/template/attack.html?type=${attack_config.type}&source=${attack_config.source}`, '_blank');
-            } catch (error) {
-                console.error('Action button error:', error);
-            }
+        // Close button functionality
+        const closeButton = banner.querySelector('.banner-close');
+        closeButton.addEventListener('click', () => {
+            this.removePreviousBanner();
+            onClose();
         });
 
-        // Cancel button handler
-        cancelBtn.addEventListener('click', (event) => {
-            event.preventDefault();
-            try {
-                onClose();
-                banner.style.transform = 'translateY(-100%)';
-                setTimeout(() => {
-                    banner.remove();
-                    this.currentBanner = null;
-                }, 300);
-            } catch (error) {
-                console.error('Cancel button error:', error);
-            }
+        // CTA button functionality
+        const ctaButton = banner.querySelector('.banner-cta');
+        ctaButton.addEventListener('click', () => {
+            onCTA();
         });
 
-
-
-        // Store reference to current banner
+        // Store current banner
         this.currentBanner = banner;
 
         return banner;
     },
 
     loadRequiredCSS(theme) {
-        const cssFiles = [
-            { id: 'global-theme-css', href: '../attacks/css_configs/global_theme.css' },
-            { id: 'banner-styles', href: '../attacks/banners/banner.css' },
-            { id: `banner-theme-${theme}-css`, href: `../attacks/css_configs/${theme}_theme.css` }
-        ];
-
-        cssFiles.forEach(({ id, href }) => {
-            if (!document.getElementById(id)) {
-                const link = document.createElement('link');
-                link.id = id;
-                link.rel = 'stylesheet';
-                link.href = href;
-                document.head.appendChild(link);
-            }
-        });
-    },
+      const cssFiles = [
+          { id: 'global-theme-css', href: '../attacks/css_configs/global_theme.css' },
+          { id: 'banner-styles', href: '../attacks/banners/banner.css' },
+          { id: `banner-theme-${theme}-css`, href: `../attacks/css_configs/${theme}_theme.css` }
+      ];
+  
+      cssFiles.forEach(({ id, href }) => {
+          // Check if CSS is already loaded
+          if (!document.getElementById(id)) {
+              const link = document.createElement('link');
+              link.id = id;
+              link.rel = 'stylesheet';
+              link.href = href;
+              document.head.appendChild(link);
+          }
+      });
+  },
 
     parseMarkdown(text) {
         return text

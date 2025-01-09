@@ -1,94 +1,99 @@
 .banner {
     width: 100%;
-    background-color: var(--background-primary, #3498db);
-    border: 3px solid var(--border-color, #ccc);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    color: var(--text-primary, white);
-    font-family: system-ui, -apple-system, sans-serif;
-    z-index: 9999;
-    padding: 15px;
-}
+    background-color: var(--primary-color, #28a745);
+    position: relative;
+    box-sizing: border-box;
   
-.banner-content {
-    padding: 10px;
-    display: grid;
-    grid-template-columns: 80% 20%;
-    gap: 16px;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.banner-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    height: 100%;
-}
-
-.banner-action-btn, 
-.banner-cancel-btn {
-    width: 200px;
-    padding: 8px 16px;
-    margin: 0;
-}
-.banner-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+    /* Create a 4px "striped" border around the entire banner */
+    border: 4px solid transparent;
+    
+    /* Use border-image with a diagonal stripe pattern */
+    border-image: repeating-linear-gradient(
+      70deg,
+      var(--primary-color, #28a745) 0,
+      var(--text-secondary, #28a745) 10px, /* stripe color & thickness */
+      #fff 10px,    /* spacer color */
+      #fff 20px     /* spacer thickness */
+    )
+    /* Scale factor for how large each slice is; tweak as needed */
+    20;
+    
+    /* Tells the browser how to slice up the image and tile it around the edges */
+    border-image-slice: 20;
+  }
   
-.banner-actions {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    height: 100%;
-}
   
-.banner-title {
-    font-size: 18px;
+  /* Removed gradient animations & keyframes entirely */
+  
+  .banner-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: 2px solid var(--border-color-accent, #28a745);
+    color: var(--border-color-accent, #28a745);
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
     font-weight: 600;
-    margin: 0 0 5px 0;
-    color: var(--text-primary, white);
-}
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .banner-close:hover {
+    background-color: var(--border-color-accent, #28a745);
+    color: #fff;
+  }
   
-.banner-description {
-    font-size: 16px;
-    margin-top: 5px;
-    color: var(--text-secondary, #f0f0f0);
-}
+  .banner-content {
+    width: 100%;
+    text-align: left;
   
-.banner-action-btn {
-    background-color: var(--action-color, #e74c3c);
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    font-size: 13px;
+    /* Lightly tinted background for improved contrast */
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #000;
+    padding: 20px;
+  
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .banner-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    
+    text-transform: uppercase;
+    color: var(--text-primary, #000);
+  }
+  
+  .banner-message {
+    font-size: 1rem;
+    margin: 0;
+    line-height: 1.5;
     font-weight: 500;
-    cursor: pointer;
-    width: 200px;
-    transition: background-color 0.2s ease;
-}
+    color: var(--text-secondary, #1a1a1a);
+  }
   
-.banner-action-btn:hover {
-    background-color: var(--action-color-hover, #c0392b);
-}
-  
-.banner-cancel-btn {
-    background: none;
-    border: 1px solid var(--text-primary, white);
-    color: var(--text-primary, white);
-    padding: 8px 16px;
+  .banner-cta {
+    background-color: var(--action-color, #28a745);
+    color: var(--action-text, #fff);
+    border: none;
+    padding: 10px 24px;
     border-radius: 4px;
-    font-size: 13px;
     cursor: pointer;
-    width: 200px;
-    transition: all 0.2s ease;
-}
+    font-size: 1rem;
+    font-weight: 700;
+    max-width: 400px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .banner-cta:hover {
+    background-color: var(--action-color-hover, #218838);
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  

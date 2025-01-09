@@ -11,6 +11,7 @@ export function createAccountLockedBanner(options = {}) {
         attack_config: {
             type: 'ACCOUNT_LOCKED',
             source: 'MAIN'
-        }
+        },
+        
     });
 }

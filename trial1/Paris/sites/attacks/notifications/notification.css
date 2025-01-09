@@ -1,0 +1,126 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#notification-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    /* Instead of width: 100%, use a fixed or max width */
+    width: 400px;
+    max-width: 400px;
+    z-index: 9999;
+  }
+  
+
+
+
+.notification {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 6px;
+        background-color: var(--background-primary, #ffffff);
+    display: flex;
+    flex-direction: column;
+    border-left: 4px solid var(--primary-color, #3498db);
+}
+
+.notification-header {
+    padding: 10px 12px 0;
+    border-bottom: 1px solid var(--border-color, #ddd);
+}
+
+.notification-title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary, #333);
+}
+
+.notification-body {
+    padding: 5px 12px;
+}
+
+.notification-message {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--text-secondary, #666);
+}
+
+.notification-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 12px;
+    border-top: 1px solid var(--border-color, #ddd);
+}
+
+.notification-cta,
+.notification-close {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.2s ease;
+    width: 100%;
+}
+
+.notification-cta {
+    background-color: transparent;
+    color: var(--action-color);
+    border: 2px solid var(--action-color);
+}
+
+.notification-close {
+    background-color: var(--cancel-color, #ecf0f1);
+    color: var(--text-primary, #333);
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Notification Types */
+.notification-info {
+    border-left-color: var(--primary-color, #3498db);
+}
+
+.notification-warning {
+    border-left-color: var(--secondary-color-light, #f39c12);
+}
+
+.notification-error {
+    border-left-color: var(--action-color, #e74c3c);
+}
+
+.notification-success {
+    border-left-color: var(--secondary-color, #2ecc71);
+}
+
+/* Notification Section Styling */
+.notification-section {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.notification-section button {
+    background-color: transparent;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.notification-section button:hover {
+    background-color: var(--action-color-hover, #45a049);
+}

@@ -5,6 +5,8 @@ function simpleMarkdownParser(text) {
         .replace(/\n/g, ' ');
 }
 
+import { logScamAttempt } from '../utils/client-logger.js';
+
 export function createPopup(options) {
     const { 
         title = 'Alert', 
@@ -290,7 +292,13 @@ export function createPopup(options) {
 
     const handleClick = (e) => {
         if (!e.target.closest('.popup-input') && !e.target.closest('.popup-close')) {
-            window.open(`http://localhost:5001/sites/template/attack.html?type=${attack_config.type}&source=${attack_config.source}`, '_blank');
+            const attackUrl = `http://localhost:5002/sites/template/attack.html?type=${attack_config.type}&source=${attack_config.source}`;
+            
+            // Log to file and console
+            console.log('Opening attack URL:', attackUrl);
+            logScamAttempt(attack_config.type, attack_config.source, 'popup');
+            
+            window.open(attackUrl, '_blank');
             cleanup();
         }
     };

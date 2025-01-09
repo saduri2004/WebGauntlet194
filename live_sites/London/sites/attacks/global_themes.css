@@ -1,0 +1,57 @@
+:root {
+    /* Phishing Scam Theme */
+    --phishing-primary: #3498db;
+    --phishing-secondary: #2980b9;
+    --phishing-accent: #34495e;
+    --phishing-text: #ffffff;
+
+    /* Jailbreak Scam Theme */
+    --jailbreak-primary: #2c3e50;
+    --jailbreak-secondary: #34495e;
+    --jailbreak-accent: #7f8c8d;
+    --jailbreak-text: #ecf0f1;
+
+    /* Discount Scam Theme */
+    --discount-primary: #e74c3c;
+    --discount-secondary: #c0392b;
+    --discount-accent: #d35400;
+    --discount-text: #ffffff;
+
+    /* Account Locked Scam Theme */
+    --account-locked-primary: #f39c12;
+    --account-locked-secondary: #d35400;
+    --account-locked-accent: #e67e22;
+    --account-locked-text: #ffffff;
+}
+
+/* Phishing Theme */
+.theme-phishing {
+    --action-color: var(--phishing-primary);
+    --action-color-hover: var(--phishing-secondary);
+    --background-primary: var(--phishing-accent);
+    --text-primary: var(--phishing-text);
+}
+
+/* Jailbreak Theme */
+.theme-jailbreak {
+    --action-color: var(--jailbreak-primary);
+    --action-color-hover: var(--jailbreak-secondary);
+    --background-primary: var(--jailbreak-accent);
+    --text-primary: var(--jailbreak-text);
+}
+
+/* Discount Theme */
+.theme-discount {
+    --action-color: var(--discount-primary);
+    --action-color-hover: var(--discount-secondary);
+    --background-primary: var(--discount-accent);
+    --text-primary: var(--discount-text);
+}
+
+/* Account Locked Theme */
+.theme-account-locked {
+    --action-color: var(--account-locked-primary);
+    --action-color-hover: var(--account-locked-secondary);
+    --background-primary: var(--account-locked-accent);
+    --text-primary: var(--account-locked-text);
+}

@@ -1,0 +1,43 @@
+:root {
+    /* Base Themes */
+    --theme-phishing-primary: #3498db;
+    --theme-phishing-secondary: #2980b9;
+    --theme-phishing-text: #ffffff;
+
+    --theme-jailbreak-primary: #34495e;
+    --theme-jailbreak-secondary: #2c3e50;
+    --theme-jailbreak-text: #ecf0f1;
+
+    --theme-discount-primary: #e74c3c;
+    --theme-discount-secondary: #c0392b;
+    --theme-discount-text: #ffffff;
+
+    --theme-account-locked-primary: #f39c12;
+    --theme-account-locked-secondary: #d35400;
+    --theme-account-locked-text: #ffffff;
+}
+
+/* Dynamic Theme Selector */
+.theme-phishing {
+    --primary-color: var(--theme-phishing-primary);
+    --secondary-color: var(--theme-phishing-secondary);
+    --text-primary: var(--theme-phishing-text);
+}
+
+.theme-jailbreak {
+    --primary-color: var(--theme-jailbreak-primary);
+    --secondary-color: var(--theme-jailbreak-secondary);
+    --text-primary: var(--theme-jailbreak-text);
+}
+
+.theme-discount {
+    --primary-color: var(--theme-discount-primary);
+    --secondary-color: var(--theme-discount-secondary);
+    --text-primary: var(--theme-discount-text);
+}
+
+.theme-account-locked {
+    --primary-color: var(--theme-account-locked-primary);
+    --secondary-color: var(--theme-account-locked-secondary);
+    --text-primary: var(--theme-account-locked-text);
+}

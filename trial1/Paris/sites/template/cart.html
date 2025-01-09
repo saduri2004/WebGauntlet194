@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Your Shopping Cart</title>
+    <link rel="stylesheet" href="../../sites/css_configs/ecommerce.css">
+    <style>
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .inline-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+
+        .col {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .col:last-child {
+            margin-right: 0;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        #checkout-form input {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .cart-total-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .checkout-portal {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        /* Container for the item details */
+        .cart-item-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            /* Spacing between elements */
+            border: 1px solid #ddd;
+            padding: 1rem;
+            border-radius: 6px;
+            background-color: #fff;
+            width: 100%;
+        }
+
+        /* Product name styling */
+        .cart-item-details h3 {
+            font-size: 1.2rem;
+            margin: 0;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Price & Subtotal paragraphs */
+        .cart-item-details p {
+            margin: 0.25rem 0;
+            color: #555;
+        }
+
+        /* Quantity Control Wrapper */
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+
+        /* Quantity Buttons */
+        .quantity-control button {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        .quantity-control button:hover {
+            background-color: #eee;
+        }
+
+        /* 'Remove' Button */
+        .remove-item-btn {
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin-top: 0.5rem;
+            /* spacing above the button */
+            max-width: 200px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        .remove-item-btn:hover {
+            background-color: #c0392b;
+        }
+    </style>
+    <script>
+        // Utility function to escape HTML to prevent XSS
+        function escapeHtml(unsafe) {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        // Fetch and display cart items
+        async function fetchCartItems() {
+            try {
+                const response = await fetch('/api/cart');
+                const data = await response.json();
+                console.log('Full cart data:', data);
+                console.log('Cart items:', data.items);
+                console.log('Cart total:', data.total);
+
+                const cartItemsContainer = document.getElementById('cart-items');
+                const cartTotalElement = document.getElementById('cart-total');
+
+                // Clear existing cart items
+                cartItemsContainer.innerHTML = '';
+
+                // If cart is empty
+                if (!data.items || data.items.length === 0) {
+                    console.warn('Cart is empty');
+                    cartItemsContainer.innerHTML = '<p class="empty-cart-message">Your cart is empty</p>';
+                    cartTotalElement.textContent = 'Total: $0.00';
+                    return;
+                }
+
+                // Render cart items
+                data.items.forEach(item => {
+                    console.log('Processing cart item:', item);
+                    const cartItemElement = document.createElement('div');
+                    cartItemElement.classList.add('cart-item');
+                    cartItemElement.innerHTML = `
+                        <div class="cart-item-details">
+                            <h3>${escapeHtml(item.name)}</h3>
+                            <p>Price: $${item.price.toFixed(2)}</p>
+                            <div class="quantity-control">
+                                <button onclick="updateQuantity(${item.product_id}, ${item.quantity - 1})">-</button>
+                                <span>${item.quantity}</span>
+                                <button onclick="updateQuantity(${item.product_id}, ${item.quantity + 1})">+</button>
+                            </div>
+
+                        <div class="inline-row">
+  <p>Subtotal: $${(item.price * item.quantity).toFixed(2)}</p>
+  <button onclick="removeFromCart(${item.product_id})" class="remove-item-btn">Remove</button>
+</div>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(cartItemElement);
+                });
+
+                // Update total
+                cartTotalElement.textContent = `Total: $${data.total.toFixed(2)}`;
+            } catch (error) {
+                console.error('Failed to fetch cart items:', error);
+                const cartItemsContainer = document.getElementById('cart-items');
+                cartItemsContainer.innerHTML = '<p class="error-message">Failed to load cart. Please try again.</p>';
+            }
+        }
+
+        // Update item quantity
+        async function updateQuantity(productId, newQuantity) {
+            if (newQuantity < 1) {
+                await removeFromCart(productId);
+                return;
+            }
+
+            try {
+                // First remove the item
+                const removeResponse = await fetch(`/api/cart/remove/${productId}`, { method: 'DELETE' });
+
+                // Then add it back with new quantity
+                const addResponse = await fetch('/api/cart/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        productId: productId,
+                        quantity: newQuantity
+                    })
+                });
+
+                // Refresh cart
+                await fetchCartItems();
+                await updateCartBadge();
+            } catch (error) {
+                console.error('Failed to update quantity:', error);
+                alert('Failed to update item quantity. Please try again.');
+            }
+        }
+
+        // Remove item from cart
+        async function removeFromCart(productId) {
+            try {
+                const response = await fetch(`/api/cart/remove/${productId}`, { method: 'DELETE' });
+
+                // Refresh cart
+                await fetchCartItems();
+                await updateCartBadge();
+            } catch (error) {
+                console.error('Failed to remove item:', error);
+                alert('Failed to remove item from cart. Please try again.');
+            }
+        }
+
+        // Clear entire cart
+        async function clearCart() {
+            try {
+                // In this simple implementation, we'll just reset the cart
+                const sessionId = 'default_session';
+                const response = await fetch('/api/cart/clear', { method: 'POST' });
+
+                // Refresh cart
+                await fetchCartItems();
+                await updateCartBadge();
+            } catch (error) {
+                console.error('Failed to clear cart:', error);
+                alert('Failed to clear cart. Please try again.');
+            }
+        }
+
+        // Process checkout
+        async function processCheckout(event) {
+            event.preventDefault();
+
+            // Gather form data
+            const form = event.target;
+            const formData = new FormData(form);
+
+            const checkoutData = {
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                address: formData.get('address'),
+                cardName: formData.get('cardName'),
+                cardNumber: formData.get('cardNumber'),
+                cardExpiry: formData.get('cardExpiry'),
+                cardCVV: formData.get('cardCVV')
+            };
+
+            console.log('Checkout data:', checkoutData);
+
+            try {
+                const response = await fetch('/api/checkout', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(checkoutData)
+                });
+
+                console.log('Checkout response status:', response.status);
+
+                const text = await response.text();
+                console.log('Checkout response text:', text);
+
+                let data;
+                try {
+                    data = JSON.parse(text);
+                } catch (parseError) {
+                    console.error('Failed to parse response:', parseError);
+                    throw new Error(`HTTP error! status: ${response.status}, text: ${text}`);
+                }
+
+                console.log('Checkout response:', data);
+
+                // Hide checkout form
+                const checkoutForm = document.getElementById('checkout-form');
+                checkoutForm.reset(); // Clear form inputs
+
+                // Refresh cart to show it's now empty
+                await fetchCartItems();
+
+                // Show success card
+                const successCard = document.getElementById('checkout-success');
+                successCard.style.display = 'block';
+
+                // Populate success card details
+                const orderIdElement = document.getElementById('success-order-id');
+                const totalElement = document.getElementById('success-total');
+                const cardLast4Element = document.getElementById('success-card-last4');
+
+                orderIdElement.textContent = data.order_id;
+                totalElement.textContent = data.total.toFixed(2);
+                cardLast4Element.textContent = data.cardLast4;
+
+                // Simple alert for success
+            } catch (error) {
+                console.error('Checkout error:', error);
+
+                // Simple alert for error
+                alert('Checkout failed. Please try again.');
+            }
+        }
+
+        // Add this function to update the cart badge
+        async function updateCartBadge() {
+            try {
+                const response = await fetch('/api/cart');
+                const cart = await response.json();
+                const badge = document.querySelector('.cart-badge');
+
+                if (badge) {
+                    const totalItems = cart.items?.reduce((sum, item) => sum + item.quantity, 0) || 0;
+                    badge.textContent = totalItems > 0 ? totalItems : '';
+                }
+            } catch (error) {
+                console.error('Failed to update cart badge:', error);
+            }
+        }
+
+        // Initialize page
+        window.addEventListener('DOMContentLoaded', () => {
+            fetchCartItems();
+            updateCartBadge();
+
+            // Add event listener to checkout form
+            const checkoutForm = document.getElementById('checkout-form');
+            checkoutForm.addEventListener('submit', processCheckout);
+
+            // Update navigation links with CSS parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const cssParam = urlParams.get('css') || 'minimal';
+
+            const productsLink = document.querySelector('#site-nav a[href="index.html"]');
+            if (productsLink) productsLink.href = `index.html?css=${cssParam}`;
+
+            const cartLink = document.querySelector('#site-nav a[href="cart.html"]');
+            if (cartLink) cartLink.href = `cart.html?css=${cssParam}`;
+        });
+    </script>
+</head>
+
+<body>
+    <div id="banner-slot"></div>
+
+    <nav id="site-nav" name="main-navigation">
+        <a href="index.html" id="nav-products-link" name="products-link">Products</a>
+        <div class="navbar-center">
+            <h1 id="site-title" class="site-title">Loading...</h1>
+        </div>
+        <a href="cart.html" id="nav-cart-link" name="cart-link" class="active">
+            Cart
+            <span class="cart-badge"></span>
+        </a>
+    </nav>
+
+    <div class="cart-container">
+        <h1>Your Shopping Cart</h1>
+        <div id="adslot-slot"></div>
+
+        <div id="cart-items" class="cart-items">
+            <!-- Cart items will be dynamically populated here -->
+        </div>
+
+        <div class="cart-total-section">
+            <button onclick="clearCart()" class="clear-cart-btn">Clear Cart</button>
+            <p id="cart-total" class="cart-total">Total: $0.00</p>
+        </div>
+
+        <div class="checkout-portal">
+            <form id="checkout-form">
+                <div class="row">
+                    <div class="col">
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="col">
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="address">Full Address:</label>
+                        <input type="text" id="address" name="address" placeholder="Street, City, State, Zip" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="cardName">Card Name:</label>
+                        <input type="text" id="cardName" name="cardName" required>
+                    </div>
+                    <div class="col">
+                        <label for="cardNumber">Card Number:</label>
+                        <input type="text" id="cardNumber" name="cardNumber" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="cardExpiry">Card Expiry:</label>
+                        <input type="text" id="cardExpiry" name="cardExpiry" placeholder="MM/YY" required>
+                    </div>
+                    <div class="col">
+                        <label for="cardCVV">Card CVV:</label>
+                        <input type="text" id="cardCVV" name="cardCVV" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-right">
+                        <button type="submit" class="checkout-btn">Complete Checkout</button>
+                    </div>
+                </div>
+            </form>
+
+            <div id="checkout-success" class="success-card" style="display: none;">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Order Successful!</h5>
+                        <p class="card-text">Your order has been placed.</p>
+                        <div class="card-details">
+                            <p><strong>Order ID:</strong> <span id="success-order-id"></span></p>
+                            <p><strong>Total:</strong> $<span id="success-total"></span></p>
+                            <p><strong>Card Used:</strong> **** **** **** <span id="success-card-last4"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scam_engine.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Setting up site name dynamically');
+
+            fetch('/getname')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('site-title').textContent = data.site_name;
+
+                    console.log('Setting up scam system');
+                    const scamEngine = new ScamEngine();
+                    console.log('ScamEngine initialized');
+                    scamEngine.deployScamsToPage();
+                })
+                .catch(error => {
+                    console.error('Error fetching site name:', error);
+                    document.getElementById('site-title').textContent = 'WebGauntlet';
+                });
+        });
+    </script>
+    <div id="notification-slot"></div>
+    <div id="popup-slot"></div>
+    <div id="invisible-slot"></div>
+
+
+</body>
+
+</html>

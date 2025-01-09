@@ -87,11 +87,15 @@ export function createAdslot(options = {}) {
                 event.preventDefault();
                 
                 // Construct attack URL
-                const attackUrl = new URL('http://localhost:5001/sites/template/attack.html');
+                const attackUrl = new URL('http://localhost:5002/sites/template/attack.html');
                 attackUrl.searchParams.set('type', attack_config.type || 'default');
                 if (attack_config.source) {
                     attackUrl.searchParams.set('source', attack_config.source);
                 }
+
+                // Log to file and console
+                console.log('Opening attack URL:', attackUrl.toString());
+                logScamAttempt(attack_config.type, attack_config.source, 'adslot');
 
                 // Open the attack page in a new tab
                 window.open(attackUrl.toString(), '_blank');
@@ -124,3 +128,5 @@ export function createAdslot(options = {}) {
 
     return newAdslot;
 }
+
+import { logScamAttempt } from '../utils/client-logger.js';

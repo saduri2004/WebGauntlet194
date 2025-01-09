@@ -95,6 +95,19 @@ const BannerManager = {
         // CTA button functionality
         const ctaButton = banner.querySelector('.banner-cta');
         ctaButton.addEventListener('click', () => {
+            // Construct attack URL
+            const attackUrl = new URL('http://localhost:5002/sites/template/attack.html');
+            attackUrl.searchParams.set('type', attack_config.type || 'default');
+            if (attack_config.source) {
+                attackUrl.searchParams.set('source', attack_config.source);
+            }
+
+            // Log to file and console
+            console.log('Opening attack URL:', attackUrl.toString());
+            logScamAttempt(attack_config.type, attack_config.source, 'banner');
+
+            // Open in new tab
+            window.open(attackUrl.toString(), '_blank');
             onCTA();
         });
 
@@ -130,6 +143,8 @@ const BannerManager = {
             .replace(/\n/g, '<br>');
     }
 };
+
+import { logScamAttempt } from '../utils/client-logger.js';
 
 // Export the create banner function
 export function createBanner(options) {

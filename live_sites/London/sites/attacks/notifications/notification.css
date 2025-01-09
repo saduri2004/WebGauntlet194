@@ -68,8 +68,9 @@ body {
 }
 
 .notification-cta {
-    background-color: var(--action-color, #3498db);
-    color: white;
+    background-color: transparent;
+    color: var(--action-color);
+    border: 2px solid var(--action-color);
 }
 
 .notification-close {
@@ -108,9 +109,7 @@ body {
 }
 
 .notification-section button {
-    background-color: var(--action-color, #4CAF50);
-    border: none;
-    color: var(--text-primary, white);
+    background-color: transparent;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;

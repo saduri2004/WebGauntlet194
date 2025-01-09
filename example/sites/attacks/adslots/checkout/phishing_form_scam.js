@@ -7,7 +7,7 @@ export function createPhishingCheckoutAdslot(options = {}) {
         subtitle: `Click here to complete your checkout process. This is a secure checkout process.`,
         theme: "fun",
         actionText: 'PURCHASE NOW (SECURE)',
-        cancelText: 'I don\'t want to buy',
+        cancelText: 'Discard Cart',
         attack_config: {
             type: 'PHISHING CHECKOUT',
             source: 'CHECKOUT'

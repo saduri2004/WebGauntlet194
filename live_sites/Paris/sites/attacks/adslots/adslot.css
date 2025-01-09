@@ -6,7 +6,7 @@
     height: fit-content;
     margin: 10px auto; /* More spacing */
     /* Subtle gradient background for a more modern look */
-    background: linear-gradient(135deg, var(--background-primary, #ffffff), #f9f9f9 70%);
+    background: var(--background-primary);
     border: 1px solid var(--border-color, #e0e0e0);
     border-top: 6px solid var(--primary-color, #3498db);
     border-radius: 12px; /* Slightly bigger for a modern look */
@@ -37,8 +37,7 @@
 }
 
 .adslot-title {
-    color: var(--text-primary, #2c3e50);
-    /* A bit bigger font-size and refined letter-spacing */
+    color: var(--action-color);
     font-size: 1.4rem;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -77,12 +76,13 @@
 }
 
 .adslot-action-btn {
-    background-color: var(--action-color, #3498db);
-    color: #fff;
+    background-color: transparent;
+    color: var(--action-color);
+    border: 2px solid var(--action-color);
 }
 
 .adslot-action-btn:hover {
-    background-color: var(--action-color-hover, #2980b9);
+    border: 2px solid var(--action-color-hover, #2980b9);
     transform: scale(1.03);
 }
 

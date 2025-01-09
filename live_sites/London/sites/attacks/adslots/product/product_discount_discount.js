@@ -11,11 +11,11 @@ export function createProductDiscountAdslot(options = {}, product = 'THIS PRODUC
     const { theme = 'fun' } = options;
     
     return createAdslot({
-        title: `99% OFF on ${product}`,
-        subtitle: 'Hurry! This offer is available for a limited time only.',
+        title: `Exclusive 99% off discount on ${product}`,
+        subtitle: 'Hurry! This offer is available for a limited time only. Proceed now to secure your discount code!',
         theme: "fun",
-        actionText: 'BUY NOW',
-        cancelText: 'NO THANKS',
+        actionText: 'Save big today!',
+        cancelText: 'No thanks',
         attack_config: {
             type: 'PRODUCT DISCOUNT SCAM',
             source: 'PRODUCT'

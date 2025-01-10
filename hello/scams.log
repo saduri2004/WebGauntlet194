@@ -5,3 +5,5 @@
 2025-01-09 18:31:44,175 - SCAM_CLICK - Type: SCAM, Source: SEARCH, Site: 2, Query: sdfds, IP: 127.0.0.1, UA: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15
 2025-01-09 18:31:45,710 - SCAM_CLICK - Type: SCAM, Source: SEARCH, Site: 2, Query: sdfds, IP: 127.0.0.1, UA: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15
 [2025-01-09T18:32:06.882806] TYPE: JAILBREAK | SOURCE: MAIN_POPUP | COMPONENT: popup
+2025-01-09 18:34:11,269 - SCAM_CLICK - Type: SCAM, Source: SEARCH, Site: 2, Query: sdfsd, IP: 127.0.0.1, UA: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15
+2025-01-09 18:34:12,844 - SCAM_CLICK - Type: SCAM, Source: SEARCH, Site: 2, Query: sdfsd, IP: 127.0.0.1, UA: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15

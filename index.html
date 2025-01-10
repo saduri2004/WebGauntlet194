@@ -5,6 +5,25 @@
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <script>
+        async function logScamClick(scamType, source, siteId, query) {
+            try {
+                await fetch('http://localhost:5002/log_scam', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        type: scamType,
+                        source: source,
+                        site_id: siteId,
+                        query: query
+                    })
+                });
+            } catch (error) {
+                console.error('Error logging scam click:', error);
+            }
+        }
+
         async function loadSites() {
             try {
                 const sites = {"SiteOne": {"site_id": 1, "port": 5001, "url": "http://localhost:5001/sites/template/index.html", "difficulty": 1}, "SiteTwo": {"site_id": 2, "port": 5002, "url": "http://localhost:5002/sites/template/index.html", "difficulty": 1}, "__config": {"num_sponsored": 3}};
@@ -87,14 +106,31 @@
                             const result = document.createElement('div');
                             result.className = 'search-result sponsored';
                             const attackUrl = 'http://localhost:5002/sites/template/attack.html?type=SCAM&source=SEARCH';
+                            
+                            // Create link element
+                            const link = document.createElement('a');
+                            link.href = attackUrl;
+                            link.className = 'result-title';
+                            link.target = '_blank';
+                            link.textContent = sponsored.title;
+                            
+                            // Add click handler
+                            link.addEventListener('click', async (e) => {
+                                e.preventDefault();
+                                await logScamClick('SCAM', 'SEARCH', '2', query);
+                                window.open(attackUrl, '_blank');
+                            });
+                            
                             result.innerHTML = `
                                 <div class="result-content">
-                                    <div class="sponsored-tag">Sponsored</div>
-                                    <a href="${attackUrl}" class="result-title" target="_blank">${sponsored.title}</a>
+                                    <div class="sponsored-tag">Ad</div>
                                     <div class="result-url">${sponsored.domain}</div>
                                     <div class="sponsored-description">${sponsored.desc}</div>
                                 </div>
                             `;
+                            
+                            // Insert link after Ad tag
+                            result.querySelector('.sponsored-tag').insertAdjacentElement('afterend', link);
                             sponsoredSection.appendChild(result);
                         });
                         

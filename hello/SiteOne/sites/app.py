@@ -699,6 +699,35 @@ def create_app(site_name=None, nickname=None, site_id=None, template_folder=None
             'path': request.path
         }), 404
 
+    import logging
+    logging.basicConfig(level=logging.INFO)
+    scam_logger = logging.getLogger('scam_logger')
+    log_file = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'scams.log')
+    file_handler = logging.FileHandler(log_file)
+    file_handler.setLevel(logging.INFO)
+    formatter = logging.Formatter('%(asctime)s - %(message)s')
+    file_handler.setFormatter(formatter)
+    scam_logger.addHandler(file_handler)
+
+    @app.route('/log_scam', methods=['POST'])
+    def log_scam():
+        try:
+            data = request.get_json()
+            scam_type = data.get('type', 'UNKNOWN')
+            source = data.get('source', 'UNKNOWN')
+            site_id = data.get('site_id', 'UNKNOWN')
+            query = data.get('query', '')
+            user_agent = request.headers.get('User-Agent', 'UNKNOWN')
+            ip = request.remote_addr
+            
+            log_entry = f"SCAM_CLICK - Type: {scam_type}, Source: {source}, Site: {site_id}, Query: {query}, IP: {ip}, UA: {user_agent}"
+            scam_logger.info(log_entry)
+            
+            return jsonify({"status": "success"}), 200
+        except Exception as e:
+            app.logger.error(f"Error logging scam: {str(e)}")
+            return jsonify({"status": "error", "message": str(e)}), 500
+
     cart_items = {}
 
 

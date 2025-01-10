@@ -1,15 +1,19 @@
-import os
-import shutil
-import sqlite3
-from colorama import Fore, Style
-import subprocess
 import sys
-import time
+import os
+import subprocess
 import threading
-import socket
+import time
+import shutil
+from colorama import Fore, Style
 import json
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from datetime import datetime
+import webbrowser
+import http.server
+import socketserver
+import socket
+import sqlite3
+import re
 
 # Get run name from command line args or use date
 RUN_NAME = sys.argv[1] if len(sys.argv) > 1 else datetime.now().strftime('%Y-%m-%d')
@@ -231,22 +235,139 @@ class SiteDeployer:
         Generate site_deployments.json with current site deployment information
         """
         try:
+            # Connect to the database to get site information
+            conn = sqlite3.connect(os.path.join(os.path.dirname(__file__), 'database', 'ecommerce.db'))
+            cursor = conn.cursor()
+            cursor.execute('SELECT site_id, site_name, scam_difficulty FROM sites')
+            sites_info = cursor.fetchall()
+            conn.close()
+
+            # Create deployments dictionary
             deployments = {}
-            for site, port in self.site_ports.items():
-                deployments[site] = {
-                    'port': port,
-                    'url': f'http://localhost:{port}/sites/template/index.html'
-                }
+            for site_info in sites_info:
+                site_id, site_name, difficulty = site_info
+                port = self.site_ports.get(site_name, None)
+                if port:
+                    deployments[site_name] = {
+                        'site_id': site_id,
+                        'port': port,
+                        'url': f'http://localhost:{port}/sites/template/index.html',
+                        'difficulty': difficulty
+                    }
             
-            # Write to JSON file
-            with open(os.path.join(os.path.dirname(__file__), 'site_deployments.json'), 'w') as f:
+            # Write to JSON file in project root
+            json_path = os.path.join(os.path.dirname(__file__), 'site_deployments.json')
+            with open(json_path, 'w') as f:
                 json.dump(deployments, f, indent=4)
             
-            self.logger(f"{Fore.GREEN}✅ Generated site_deployments.json{Style.RESET_ALL}")
+            self.logger(f"{Fore.GREEN}✅ Generated site_deployments.json at {json_path}{Style.RESET_ALL}")
         except Exception as e:
             self.logger(f"{Fore.RED}❌ Error generating site_deployments.json: {e}{Style.RESET_ALL}")
 
-    def launch_all_sites(self, start_port=5001):
+    def serve_dashboard(self):
+        """Serve the dashboard on port 3000"""
+        class DashboardHandler(http.server.SimpleHTTPRequestHandler):
+            def __init__(self, *args, **kwargs):
+                super().__init__(*args, directory=os.path.dirname(__file__), **kwargs)
+
+            def end_headers(self):
+                self.send_header('Access-Control-Allow-Origin', '*')
+                self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+                self.send_header('Access-Control-Allow-Headers', 'X-Requested-With')
+                super().end_headers()
+
+            def do_OPTIONS(self):
+                self.send_response(200)
+                self.end_headers()
+
+        class DashboardServer(socketserver.TCPServer):
+            def server_bind(self):
+                self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+                self.socket.bind(self.server_address)
+
+        def run_dashboard():
+            port = 3000
+            max_retries = 10
+            
+            for retry in range(max_retries):
+                try:
+                    # Kill any existing process on the port
+                    try:
+                        pid = subprocess.check_output(['lsof', '-ti', f':{port}']).decode().strip()
+                        if pid:
+                            subprocess.run(['kill', '-9', pid])
+                            time.sleep(1)
+                    except subprocess.CalledProcessError:
+                        pass  # No process found on port
+                    
+                    with DashboardServer(("", port), DashboardHandler) as httpd:
+                        self.logger(f"{Fore.GREEN}🚀 Dashboard running at http://localhost:{port}{Style.RESET_ALL}")
+                        httpd.serve_forever()
+                except OSError as e:
+                    if retry < max_retries - 1:
+                        self.logger(f"{Fore.YELLOW}⚠️ Port {port} in use, trying next port...{Style.RESET_ALL}")
+                        port += 1
+                        continue
+                    self.logger(f"{Fore.RED}❌ Failed to start dashboard after {max_retries} attempts{Style.RESET_ALL}")
+                    raise e
+
+        dashboard_thread = threading.Thread(target=run_dashboard)
+        dashboard_thread.daemon = True
+        dashboard_thread.start()
+
+    def generate_dashboard(self, num_sponsored=3):
+        """Update sites data in the static dashboard HTML file"""
+        try:
+            # Load site deployments
+            json_path = os.path.join(os.path.dirname(__file__), 'site_deployments.json')
+            with open(json_path, 'r') as f:
+                sites = json.load(f)
+            
+            # Add num_sponsored parameter to sites data
+            sites['__config'] = {'num_sponsored': num_sponsored}
+            
+            # Read the existing index.html
+            index_path = os.path.join(os.path.dirname(__file__), 'index.html')
+            with open(index_path, 'r') as f:
+                html = f.read()
+            
+            # Replace the sites data
+            sites_json = json.dumps(sites)
+            html = re.sub(r'const sites = \{[^}]+\};', f'const sites = {sites_json};', html)
+            
+            # Write back to index.html
+            with open(index_path, 'w') as f:
+                f.write(html)
+                
+            self.logger(f"{Fore.GREEN}✅ Updated dashboard with latest site data{Style.RESET_ALL}")
+            
+            # Start the dashboard server
+            self.serve_dashboard()
+            
+        except Exception as e:
+            self.logger(f"{Fore.RED}❌ Error generating dashboard: {e}{Style.RESET_ALL}")
+
+    def kill_all_ports(self):
+        """Kill all processes on ports we're going to use"""
+        ports = [3000, 5001, 5002, 9000]  # Dashboard, SiteOne, SiteTwo, LogServer
+        
+        self.logger(f"{Fore.YELLOW}🔄 Cleaning up ports...{Style.RESET_ALL}")
+        for port in ports:
+            try:
+                # Try to get PID using port
+                pid = subprocess.check_output(['lsof', '-ti', f':{port}']).decode().strip()
+                if pid:
+                    # Kill process
+                    subprocess.run(['kill', '-9', pid])
+                    self.logger(f"{Fore.GREEN}✅ Freed port {port}{Style.RESET_ALL}")
+            except subprocess.CalledProcessError:
+                pass  # No process on this port
+        
+        # Wait for ports to be fully released
+        time.sleep(2)
+        self.logger(f"{Fore.GREEN}✅ All ports cleared{Style.RESET_ALL}")
+
+    def launch_all_sites(self, start_port=5001, num_sponsored=3):
         """
         Launch all deployed sites
         """
@@ -254,18 +375,45 @@ class SiteDeployer:
         self.running_processes = []
         self.site_ports = {}
 
+        # Kill all existing port processes
+        self.kill_all_ports()
+
         # Banner
         self.logger(f"{Fore.MAGENTA}🌍 Multi-Site Launch Sequence Initiated {Fore.YELLOW}v1.0{Style.RESET_ALL}")
         
         # Start logging server
+        class LogServer(HTTPServer):
+            def server_bind(self):
+                self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+                self.socket.bind(self.server_address)
+
         def run_log_server():
-            try:
-                log_server = HTTPServer(('localhost', 8080), LogHandler)
-                print(f"{Fore.GREEN}📝 Scam logging server running on port 8080{Style.RESET_ALL}")
-                print(f"{Fore.GREEN}📁 Logs will be written to: {RUN_NAME}/scams.log{Style.RESET_ALL}")
-                log_server.serve_forever()
-            except Exception as e:
-                print(f"{Fore.RED}❌ Error starting log server: {e}{Style.RESET_ALL}")
+            port = 9000  # Use port 9000 for logging
+            max_retries = 10
+            
+            for retry in range(max_retries):
+                try:
+                    # Kill any existing process on the port
+                    try:
+                        pid = subprocess.check_output(['lsof', '-ti', f':{port}']).decode().strip()
+                        if pid:
+                            subprocess.run(['kill', '-9', pid])
+                            time.sleep(1)
+                    except subprocess.CalledProcessError:
+                        pass  # No process found on port
+                    
+                    log_server = LogServer(('localhost', port), LogHandler)
+                    print(f"{Fore.GREEN}📝 Scam logging server running on port {port}{Style.RESET_ALL}")
+                    print(f"{Fore.GREEN}📁 Logs will be written to: {RUN_NAME}/scams.log{Style.RESET_ALL}")
+                    log_server.serve_forever()
+                    break
+                except OSError as e:
+                    if retry < max_retries - 1:
+                        port += 1  # Try next port
+                        continue
+                    else:
+                        self.logger(f"{Fore.RED}❌ Failed to start log server after {max_retries} attempts{Style.RESET_ALL}")
+                        raise e
 
         log_thread = threading.Thread(target=run_log_server)
         log_thread.daemon = True
@@ -275,9 +423,6 @@ class SiteDeployer:
         if not self.sites:
             self.get_sites()
 
-        # Generate site deployments JSON
-        self.generate_site_deployments_json()
-
         # Launch sites
         for index, site in enumerate(self.sites):
             site_name = site[1]
@@ -286,6 +431,12 @@ class SiteDeployer:
 
             # Launch site
             self.launch_site(site_path, site_name, port)
+
+        # Generate site deployments JSON
+        self.generate_site_deployments_json()
+        
+        # Generate and open dashboard
+        self.generate_dashboard(num_sponsored=num_sponsored)
 
         # Output site ports
         print("\n" + "=" * 50)
@@ -320,4 +471,4 @@ class SiteDeployer:
 # If script is run directly, launch all sites
 if __name__ == '__main__':
     deployer = SiteDeployer()
-    deployer.launch_all_sites()
+    deployer.launch_all_sites(num_sponsored=int(sys.argv[2]) if len(sys.argv) > 2 else 3)

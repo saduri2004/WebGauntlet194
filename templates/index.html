@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebGauntlet Sites</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0;
+            padding: 20px;
+            background: #f0f2f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 { 
+            color: #1a1a1a;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        #sites-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .site-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+        .site-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .site-name {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        .site-difficulty {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .difficulty-1 { background: #e8f5e9; color: #2e7d32; }
+        .difficulty-2 { background: #fff3e0; color: #f57c00; }
+        .difficulty-3 { background: #ffebee; color: #c62828; }
+        .visit-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 16px;
+            background: #4a90e2;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .visit-button:hover {
+            background: #357abd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌐 WebGauntlet Sites</h1>
+        <div id="sites-container">
+            <!-- Sites will be loaded here -->
+        </div>
+    </div>
+
+    <script>
+        async function loadSites() {
+            try {
+                const response = await fetch('/sites');
+                const sites = await response.json();
+                const container = document.getElementById('sites-container');
+                
+                Object.entries(sites).forEach(([siteName, info]) => {
+                    const card = document.createElement('div');
+                    card.className = 'site-card';
+                    card.innerHTML = `
+                        <div class="site-name">${siteName}</div>
+                        <div class="site-difficulty difficulty-${info.difficulty}">
+                            Level ${info.difficulty}
+                        </div>
+                        <a href="${info.url}" class="visit-button">Visit Site</a>
+                    `;
+                    container.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Error loading sites:', error);
+            }
+        }
+
+        // Load sites when page loads
+        window.addEventListener('load', loadSites);
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+/* Banner Global Theme Variables */
+:root {
+    /* Normal Theme */
+    --banner-normal-primary-color: #007bff;
+    --banner-normal-primary-color-hover: #0056b3;
+    --banner-normal-secondary-color: #6c757d;
+    --banner-normal-secondary-color-light: #f8f9fa;
+    --banner-normal-background-primary: #ffffff;
+    --banner-normal-background-secondary: #f8f9fa;
+    --banner-normal-text-primary: #212529;
+    --banner-normal-text-secondary: #6c757d;
+    --banner-normal-border-color: #dee2e6;
+    --banner-normal-action-color: #28a745;
+    --banner-normal-action-color-hover: #218838;
+    --banner-normal-cancel-color: #dc3545;
+    --banner-normal-cancel-color-hover: #c82333;
+
+    /* Red Theme */
+    --banner-red-primary-color: #dc3545;
+    --banner-red-primary-color-hover: #c82333;
+    --banner-red-secondary-color: #6c757d;
+    --banner-red-secondary-color-light: #f8f9fa;
+    --banner-red-background-primary: #ffffff;
+    --banner-red-background-secondary: #f8d7da;
+    --banner-red-text-primary: #721c24;
+    --banner-red-text-secondary: #6c757d;
+    --banner-red-border-color: #f5c6cb;
+    --banner-red-action-color: #28a745;
+    --banner-red-action-color-hover: #218838;
+    --banner-red-cancel-color: #6c757d;
+    --banner-red-cancel-color-hover: #5a6268;
+
+    /* Fun Theme */
+    --banner-fun-primary-color: #2ecc71;
+    --banner-fun-primary-color-hover: #27ae60;
+    --banner-fun-secondary-color: #27ae60;
+    --banner-fun-secondary-color-light: #2ecc71;
+    --banner-fun-background-primary: #ffffff;
+    --banner-fun-background-secondary: #f0fff4;
+    --banner-fun-text-primary: #2ecc71;
+    --banner-fun-text-secondary: #27ae60;
+    --banner-fun-border-color: #c4f6d4;
+    --banner-fun-action-color: #2ecc71;
+    --banner-fun-action-color-hover: #27ae60;
+    --banner-fun-cancel-color: #d4edda;
+    --banner-fun-cancel-color-hover: #c3e6cb;
+}
+
+/* Theme Selector */
+[data-theme="normal"] {
+    --primary-color: var(--banner-normal-primary-color);
+    --primary-color-hover: var(--banner-normal-primary-color-hover);
+    --secondary-color: var(--banner-normal-secondary-color);
+    --secondary-color-light: var(--banner-normal-secondary-color-light);
+    --background-primary: var(--banner-normal-background-primary);
+    --background-secondary: var(--banner-normal-background-secondary);
+    --text-primary: var(--banner-normal-text-primary);
+    --text-secondary: var(--banner-normal-text-secondary);
+    --border-color: var(--banner-normal-border-color);
+    --action-color: var(--banner-normal-action-color);
+    --action-color-hover: var(--banner-normal-action-color-hover);
+    --cancel-color: var(--banner-normal-cancel-color);
+    --cancel-color-hover: var(--banner-normal-cancel-color-hover);
+}
+
+[data-theme="red"] {
+    --primary-color: var(--banner-red-primary-color);
+    --primary-color-hover: var(--banner-red-primary-color-hover);
+    --secondary-color: var(--banner-red-secondary-color);
+    --secondary-color-light: var(--banner-red-secondary-color-light);
+    --background-primary: var(--banner-red-background-primary);
+    --background-secondary: var(--banner-red-background-secondary);
+    --text-primary: var(--banner-red-text-primary);
+    --text-secondary: var(--banner-red-text-secondary);
+    --border-color: var(--banner-red-border-color);
+    --action-color: var(--banner-red-action-color);
+    --action-color-hover: var(--banner-red-action-color-hover);
+    --cancel-color: var(--banner-red-cancel-color);
+    --cancel-color-hover: var(--banner-red-cancel-color-hover);
+}
+
+[data-theme="fun"] {
+    --primary-color: var(--banner-fun-primary-color);
+    --primary-color-hover: var(--banner-fun-primary-color-hover);
+    --secondary-color: var(--banner-fun-secondary-color);
+    --secondary-color-light: var(--banner-fun-secondary-color-light);
+    --background-primary: var(--banner-fun-background-primary);
+    --background-secondary: var(--banner-fun-background-secondary);
+    --text-primary: var(--banner-fun-text-primary);
+    --text-secondary: var(--banner-fun-text-secondary);
+    --border-color: var(--banner-fun-border-color);
+    --action-color: var(--banner-fun-action-color);
+    --action-color-hover: var(--banner-fun-action-color-hover);
+    --cancel-color: var(--banner-fun-cancel-color);
+    --cancel-color-hover: var(--banner-fun-cancel-color-hover);
+}

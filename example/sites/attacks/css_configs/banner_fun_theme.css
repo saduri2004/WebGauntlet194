@@ -1,0 +1,15 @@
+[data-theme="fun"] {
+    --primary-color: var(--banner-fun-primary-color);
+    --primary-color-hover: var(--banner-fun-primary-color-hover);
+    --secondary-color: var(--banner-fun-secondary-color);
+    --secondary-color-light: var(--banner-fun-secondary-color-light);
+    --background-primary: var(--banner-fun-background-primary);
+    --background-secondary: var(--banner-fun-background-secondary);
+    --text-primary: var(--banner-fun-text-primary);
+    --text-secondary: var(--banner-fun-text-secondary);
+    --border-color: var(--banner-fun-border-color);
+    --action-color: var(--banner-fun-action-color);
+    --action-color-hover: var(--banner-fun-action-color-hover);
+    --cancel-color: var(--banner-fun-cancel-color);
+    --cancel-color-hover: var(--banner-fun-cancel-color-hover);
+}

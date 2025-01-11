@@ -1,0 +1,47 @@
+/* Adslot Global Theme Variables */
+:root {
+    /* Normal Theme */
+    --adslot-normal-primary-color: #007bff;
+    --adslot-normal-primary-color-hover: #0056b3;
+    --adslot-normal-secondary-color: #6c757d;
+    --adslot-normal-secondary-color-light: #f8f9fa;
+    --adslot-normal-background-primary: #ffffff;
+    --adslot-normal-background-secondary: #f8f9fa;
+    --adslot-normal-text-primary: #212529;
+    --adslot-normal-text-secondary: #6c757d;
+    --adslot-normal-border-color: #dee2e6;
+    --adslot-normal-action-color: #28a745;
+    --adslot-normal-action-color-hover: #218838;
+    --adslot-normal-cancel-color: #dc3545;
+    --adslot-normal-cancel-color-hover: #c82333;
+
+    /* Red Theme */
+    --adslot-red-primary-color: #dc3545;
+    --adslot-red-primary-color-hover: #c82333;
+    --adslot-red-secondary-color: #6c757d;
+    --adslot-red-secondary-color-light: #f8f9fa;
+    --adslot-red-background-primary: #ffffff;
+    --adslot-red-background-secondary: #f8d7da;
+    --adslot-red-text-primary: #721c24;
+    --adslot-red-text-secondary: #6c757d;
+    --adslot-red-border-color: #f5c6cb;
+    --adslot-red-action-color: #28a745;
+    --adslot-red-action-color-hover: #218838;
+    --adslot-red-cancel-color: #6c757d;
+    --adslot-red-cancel-color-hover: #5a6268;
+
+    /* Fun Theme */
+    --adslot-fun-primary-color: #2ecc71;
+    --adslot-fun-primary-color-hover: #27ae60;
+    --adslot-fun-secondary-color: #27ae60;
+    --adslot-fun-secondary-color-light: #2ecc71;
+    --adslot-fun-background-primary: #ffffff;
+    --adslot-fun-background-secondary: #f0fff4;
+    --adslot-fun-text-primary: #2ecc71;
+    --adslot-fun-text-secondary: #27ae60;
+    --adslot-fun-border-color: #c4f6d4;
+    --adslot-fun-action-color: #2ecc71;
+    --adslot-fun-action-color-hover: #27ae60;
+    --adslot-fun-cancel-color: #d4edda;
+    --adslot-fun-cancel-color-hover: #c3e6cb;
+}

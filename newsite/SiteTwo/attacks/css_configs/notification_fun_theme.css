@@ -1,0 +1,15 @@
+[data-theme="fun"] {
+    --primary-color: var(--notification-fun-primary-color);
+    --primary-color-hover: var(--notification-fun-primary-color-hover);
+    --secondary-color: var(--notification-fun-secondary-color);
+    --secondary-color-light: var(--notification-fun-secondary-color-light);
+    --background-primary: var(--notification-fun-background-primary);
+    --background-secondary: var(--notification-fun-background-secondary);
+    --text-primary: var(--notification-fun-text-primary);
+    --text-secondary: var(--notification-fun-text-secondary);
+    --border-color: var(--notification-fun-border-color);
+    --action-color: var(--notification-fun-action-color);
+    --action-color-hover: var(--notification-fun-action-color-hover);
+    --cancel-color: var(--notification-fun-cancel-color);
+    --cancel-color-hover: var(--notification-fun-cancel-color-hover);
+}

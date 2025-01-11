@@ -1,0 +1,26 @@
+:root {
+    /* Primary Colors */
+    --primary-color: #000000;
+    --primary-color-hover: #1a1a1a;
+    
+    /* Secondary Colors */
+    --secondary-color: #fff01f; /* Neon Yellow */
+    --secondary-color-light: #fff01f;
+    
+    /* Background Colors */
+    --background-primary: #121212;
+    --background-secondary: #1e1e1e;
+    
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    
+    /* Border Colors */
+    --border-color: #fff01f; /* Neon Yellow border */
+    
+    /* Action Colors */
+    --action-color: #fff01f; /* Neon Yellow */
+    --action-color-hover: #fff01f;
+    --cancel-color: #333333;
+    --cancel-color-hover: #4d4d4d;
+}

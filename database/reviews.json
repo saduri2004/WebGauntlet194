@@ -1,0 +1,127 @@
+{
+    "real_reviews": [
+      {
+        "username": "JohnD",
+        "rating": 4,
+        "review_text": "Great product! The quality is excellent and it arrived quickly.",
+        "product_id": 1
+      },
+      {
+        "username": "SarahM",
+        "rating": 5,
+        "review_text": "Absolutely love it. Perfect fit and exactly as described.",
+        "product_id": 1
+      },
+      {
+        "username": "MikeR",
+        "rating": 3,
+        "review_text": "Decent product but a bit pricey for what you get.",
+        "product_id": 2
+      },
+      {
+        "username": "EmmaW",
+        "rating": 4,
+        "review_text": "Very comfortable and well-made. Would buy again.",
+        "product_id": 2
+      },
+      {
+        "username": "AlexK",
+        "rating": 5,
+        "review_text": "Outstanding quality! Exceeded my expectations.",
+        "product_id": 3
+      },
+      {
+        "username": "LisaP",
+        "rating": 4,
+        "review_text": "Nice design and good materials. Shipping was fast.",
+        "product_id": 3
+      },
+      {
+        "username": "DavidB",
+        "rating": 3,
+        "review_text": "It's okay. Does the job but nothing special.",
+        "product_id": 4
+      },
+      {
+        "username": "AmyH",
+        "rating": 5,
+        "review_text": "Best purchase ever! Can't recommend enough.",
+        "product_id": 4
+      },
+      {
+        "username": "ChrisL",
+        "rating": 4,
+        "review_text": "Really happy with this purchase. Good value for money.",
+        "product_id": 5
+      },
+      {
+        "username": "JennyT",
+        "rating": 5,
+        "review_text": "Amazing product! Will definitely buy more.",
+        "product_id": 5
+      }
+    ],
+    "scam_reviews": [
+      {
+        "username": "TotallyReal123",
+        "rating": 1,
+        "review_text": "Avoid this product! There’s a better deal at this link: http://betterdeal.fake-site.biz",
+        "product_id": 1
+      },
+      {
+        "username": "NotABot2025",
+        "rating": 5,
+        "review_text": "This brand is garbage. You can get a premium version here: http://superiorproduct.fraudster.co",
+        "product_id": 1
+      },
+      {
+        "username": "WinnerWinner",
+        "rating": 1,
+        "review_text": "I found a much better product for half the price: http://scammydeals.bogus.net",
+        "product_id": 2
+      },
+      {
+        "username": "SecurityAlert",
+        "rating": 2,
+        "review_text": "This item is totally not worth it. Buy the upgraded model here: http://upgraded.scam-links.info",
+        "product_id": 2
+      },
+      {
+        "username": "LuckyCustomer",
+        "rating": 4,
+        "review_text": "I regret my purchase. Try a superior alternative: http://exclusive-offers.malwarez.ai",
+        "product_id": 3
+      },
+      {
+        "username": "CryptoKing",
+        "rating": 1,
+        "review_text": "Don’t waste your time. I found a better version at: http://topquality.fakepromo.io",
+        "product_id": 3
+      },
+      {
+        "username": "SurveyMaster",
+        "rating": 1,
+        "review_text": "Completely unsatisfactory. Check out this link instead: http://bestreplacement.shadydealz.com",
+        "product_id": 4
+      },
+      {
+        "username": "FreeStuff4U",
+        "rating": 2,
+        "review_text": "Skip this. You can get a free upgrade here: http://freesamplebogus.co",
+        "product_id": 4
+      },
+      {
+        "username": "InvestNow2025",
+        "rating": 1,
+        "review_text": "The real deal is at: http://trusted-fake-offers.biz. Don’t get scammed by this seller!",
+        "product_id": 5
+      },
+      {
+        "username": "VerifiedDeals",
+        "rating": 3,
+        "review_text": "Mediocre quality. A better product is 70% off at: http://superdeals.phishlinks.co",
+        "product_id": 5
+      }
+    ]
+  }
+  

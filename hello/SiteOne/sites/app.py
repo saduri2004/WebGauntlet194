@@ -213,9 +213,6 @@ def create_app(site_name=None, nickname=None, site_id=None, template_folder=None
         Retrieve product details with site-specific context.
         """
         try:
-            # Extremely verbose debug logging
-
-          
             # Use site-specific context if available
             site_name = app.config.get('SITE_NAME')
             site_id = app.config.get('SITE_ID')
@@ -229,48 +226,45 @@ def create_app(site_name=None, nickname=None, site_id=None, template_folder=None
             # Query with site-specific filter if site_name is provided
             query = '''
                 SELECT 
-                    product_id, 
-                    imgUrl,
-                    name, 
-                    category, 
-                    CAST(base_price AS REAL) as base_price, 
-                    description, 
-                    stock,
-                    review_count,
-                    scam_review_count
-                FROM products_main
-                WHERE product_id = ?
+                    p.product_id, 
+                    p.imgUrl,
+                    p.name, 
+                    p.description,
+                    p.base_price,
+                    p.review_count,
+                    p.scam_review_count,
+                    COALESCE(AVG(r.rating), 0) as avg_rating,
+                    COUNT(r.review_id) as total_reviews
+                FROM products_main p
+                LEFT JOIN reviews r ON p.product_id = r.product_id
+                WHERE p.product_id = ?
+                GROUP BY p.product_id
             '''
-            params = [product_id]
             
-            cursor.execute(query, params)
-            product = cursor.fetchone()
+            cursor.execute(query, (product_id,))
+            product = dict(cursor.fetchone())
+            
+            # Get reviews for the product
+            cursor.execute('''
+                SELECT review_id, username, rating, text, is_fake, 
+                       strftime('%Y-%m-%d', review_date) as review_date
+                FROM reviews 
+                WHERE product_id = ? 
+                ORDER BY review_date DESC
+            ''', (product_id,))
+            
+            reviews = [dict(row) for row in cursor.fetchall()]
             
             conn.close()
             
-            if not product:
-                return jsonify({'error': f'Product with ID {product_id} not found'}), 404
-            
-            # Construct product dictionary
-            product_dict = {
-                'id': product['product_id'],
-                'name': product['name'],
-                'category': product['category'],
-                'price': float(product['base_price'] or 0),
-                'description': product['description'],
-                'stock': product['stock'],
-                'review_count': product['review_count'],
-                'scam_review_count': product['scam_review_count'],
-                'image_url': product['imgUrl'] or '/placeholder.jpg'
-            }
-            return jsonify(product_dict)
-        
-        except Exception as e:
-            logger.error(f"Error fetching product details: {e}")
             return jsonify({
-                'error': 'Failed to fetch product details',
-                'details': str(e)
-            }), 500
+                'product': product,
+                'reviews': reviews
+            })
+            
+        except Exception as e:
+            print(f"Error in get_product_detail: {str(e)}")
+            return jsonify({'error': str(e)}), 500
 
     @app.route('/api/products/<int:product_id>/reviews', methods=['GET'])
     def get_product_reviews(product_id):

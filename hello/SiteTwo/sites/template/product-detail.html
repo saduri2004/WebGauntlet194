@@ -28,130 +28,158 @@
             margin-top: 20px;
         }
         
-        .product-reviews-section {
-            margin-top: 40px;
-        }
-        
-        .reviews-list {
+        .reviews-section {
             margin-top: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
         }
         
-        .review {
-            background-color: #f7f7f7;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-        
-        .review-header {
+        .reviews-header {
+            background: #f5f5f5;
+            padding: 8px 16px;
+            border-bottom: 1px solid #e0e0e0;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            justify-content: space-between;
+        }
+        
+        .reviews-title {
+            font-size: 1.1em;
+            color: #333;
+            margin: 0;
+            font-weight: 500;
+        }
+        
+        .reviews-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .reviews-table tr {
+            border-bottom: 1px solid #eee;
+        }
+        
+        .reviews-table tr:last-child {
+            border-bottom: none;
+        }
+        
+        .reviews-table td {
+            padding: 8px 16px;
+            vertical-align: middle;
         }
         
         .review-username {
-            font-weight: bold;
+            font-weight: 500;
+            color: #2c3e50;
+            width: 120px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .review-rating {
-            color: #ffd700;
-        }
-        
-        .review-comment {
-            margin-bottom: 10px;
-        }
-        
-        .review-date {
-            color: #666;
-            font-size: 14px;
-        }
-        
-        .no-reviews {
-            color: #666;
-            font-size: 16px;
-            text-align: center;
-            padding: 20px;
-        }
-        
-        .error-message {
-            color: #f44336;
-            font-size: 16px;
-            text-align: center;
-            padding: 20px;
-        }
-        
-        .scam-review {
-            border: 1px solid #ccc;
-            background-color: #fff;
-        }
-        
-        .scam-badge {
-            font-size: 12px;
-            color: #666;
-            margin-left: 5px;
-        }
-        
-        .sponsored-review {
-            background-color: #f0f4ff;
-            border: 2px solid #4a90e2;
-            border-radius: 12px;
-            box-shadow: 0 6px 12px rgba(74, 144, 226, 0.3);
-            padding: 15px;
-            margin-bottom: 15px;
-            transition: all 0.3s ease;
-        }
-        
-        .sponsored-badge {
-            background-color: #ff4d4d;
-            color: white;
-            font-size: 10px;
-            padding: 3px 8px;
-            border-radius: 15px;
-            margin-left: 10px;
-            text-transform: uppercase;
-            font-weight: bold;
-            letter-spacing: 0.5px;
-        }
-        
-        .sponsored-review .review-text {
-            color: #333;
-            font-weight: 500;
-            background-color: #f8f9ff;
-            padding: 10px;
-            border-radius: 8px;
-        }
-        
-        .sponsored-review .review-user-info {
-            background-color: #e6f2ff;
-            padding: 5px 10px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
-        
-        .sponsored-review .review-rating {
-            color: #4a90e2;
-            font-size: 1.2em;
-        }
-        
-        .review-user-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
+            color: #ffc107;
+            width: 100px;
+            font-size: 0.9em;
+            white-space: nowrap;
         }
         
         .review-text {
-            font-style: italic;
-            color: #555;
+            color: #4a4a4a;
+            line-height: 1.4;
+            padding-right: 16px;
         }
         
-      
+        .scam-review {
+            background-color: #fff8f8;
+        }
         
+        .scam-badge {
+            display: inline-block;
+            padding: 2px 6px;
+            background: #dc3545;
+            color: white;
+            border-radius: 3px;
+            font-size: 0.75em;
+            white-space: nowrap;
+        }
+        
+        .no-reviews {
+            padding: 12px 16px;
+            color: #666;
+            font-style: italic;
+            text-align: center;
+        }
+        
+        .product-rating {
+            margin-bottom: 10px;
+        }
+        
+        .product-description-container {
+            margin-bottom: 20px;
+        }
+        
+        .product-description {
+            overflow: hidden;
+            height: 100px;
+        }
+        
+        .expanded .product-description {
+            height: auto;
+            overflow: visible;
+        }
+        
+        .see-more-btn {
+            margin-top: 10px;
+        }
         
         .fade-out {
             opacity: 0;
             transform: translateY(20px);
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .product-name {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .product-rating {
+            color: #ffc107;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+        
+        .rating-count {
+            color: #666;
+            font-size: 0.9em;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        
+        .product-price {
+            font-size: 1.5em;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            line-height: 1;
+        }
+        
+        .product-description {
+            color: #4a4a4a;
+            line-height: 1.6;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -209,10 +237,7 @@
             </div>
         </div>
         
-        <div class="product-reviews-section">
-            <h2>Customer Reviews</h2>
-            <div id="product-reviews" class="reviews-list"></div>
-        </div>
+        <div id="reviews-container" class="reviews-section"></div>
     </div>
 
     <div id="toast-container" style="
@@ -325,187 +350,83 @@
         }
 
         async function fetchProductDetails() {
-            try {
-                // Get product ID from URL
-                const urlParams = new URLSearchParams(window.location.search);
-                const productId = urlParams.get('id');
-                
-                console.log("Current URL:", window.location.href);
-                console.log("URL Parameters:", urlParams.toString());
-                console.log("Extracted Product ID:", productId);
-                
-                if (!productId) {
-                    throw new Error('No product ID provided');
-                }
-                
-                // Fetch product details
-                const response = await fetch(`/api/products/${productId}`);
-                console.log("Fetch URL:", `/api/products/${productId}`);
-                console.log("response", response)
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                
-                const product = await response.json();
-                console.log("product", product)
-                console.log("Product fields", Object.keys(product))
-                // Safely handle product details with null checks
-                const avgRating = product.avg_rating || 0;
-                const reviewCount = product.review_count || 0;
-                
-                // Update product details with null checks
-                const nameElement = document.getElementById('product-name');
-                if (nameElement) {
-                    nameElement.textContent = product.name || 'Unnamed Product';
-                }
-                
-                const descriptionElement = document.getElementById('product-description');
-                if (descriptionElement) {
-                    descriptionElement.textContent = product.description || 'No description available';
-                }
-                
-                const priceElement = document.getElementById('product-price');
-                if (priceElement) {
-                    priceElement.textContent = `$${(product.price || 0).toFixed(2)}`;
-                }
-                
-                const categoryElement = document.getElementById('product-category');
-                if (categoryElement) {
-                    categoryElement.textContent = product.category || 'Uncategorized';
-                }
-                
-                // Update rating
-                const ratingElement = document.getElementById('product-rating');
-                if (ratingElement) {
-                    ratingElement.innerHTML = `
-                        ${'★'.repeat(Math.round(avgRating)) + '☆'.repeat(5 - Math.round(avgRating))}
-                        <span class="rating-text">(${avgRating.toFixed(1)} from ${reviewCount} reviews)</span>
-                    `;
-                }
-                
-                // Update stock
-                const stockElement = document.getElementById('product-stock');
-                if (stockElement) {
-                    stockElement.textContent = `Stock: ${product.stock || 0}`;
-                }
-                
-                // Update product image
-                const imageElement = document.getElementById('product-image');
-                if (imageElement) {
-                    imageElement.src = product.image_url || 'placeholder.jpg';
-                    imageElement.alt = product.name || 'Product Image';
-                }
-                
-                // Render reviews
-                const reviewsContainer = document.getElementById('product-reviews');
-                if (reviewsContainer) {
-
-                    console.log(Object.keys(product))
-                    console.log(product)
-                    reviewsContainer.innerHTML = ''; // Clear existing reviews
-                    
-                    console.log("product.reviews.length", product.review_count)
-                    console.log("product.scam_reviews_count.length", product.scam_review_count)
-
-
-                    if (product.review_count === 0 && product.scam_review_count.length === 0) {
-                        const noReviewsDiv = document.createElement('div');
-                        noReviewsDiv.textContent = 'No reviews available for this product.';
-                        reviewsContainer.appendChild(noReviewsDiv);
-                        return;
-                    }
-
-
-                    // Combine reviews from the API
-                    const allReviews = [
-                        //...product.reviews,
-                       // ...product.scam_review_count
-                    ];
-                    
-                    // Separate sponsored and non-sponsored reviews
-                    const sponsoredReviews = allReviews.filter(review => review.is_fake);
-                    const genuineReviews = allReviews.filter(review => !review.is_fake);
-                    
-                    // Combine reviews with sponsored reviews first
-                    const orderedReviews = [...sponsoredReviews, ...genuineReviews];
-                    
-                    if (orderedReviews.length > 0) {
-                        orderedReviews.forEach(review => {
-                            const reviewElement = document.createElement('div');
-                            reviewElement.classList.add('review');
-                            
-                            // Add special styling for sponsored/fake reviews
-                            if (review.is_fake) {
-                                reviewElement.classList.add('sponsored-review');
-                            }
-                            
-                            // Create username and sponsored badge
-                            const userInfoDiv = document.createElement('div');
-                            userInfoDiv.classList.add('review-user-info');
-                            
-                            const usernameSpan = document.createElement('span');
-                            usernameSpan.classList.add('review-username');
-                            usernameSpan.textContent = review.username;
-                            
-                            const locationSpan = document.createElement('span');
-                            locationSpan.classList.add('review-location');
-                            locationSpan.textContent = review.city;
-                            
-                            const sponsoredBadge = document.createElement('span');
-                            sponsoredBadge.classList.add('sponsored-badge');
-                            sponsoredBadge.textContent = review.is_fake ? 'Sponsored' : '';
-                            
-                            userInfoDiv.appendChild(usernameSpan);
-                            userInfoDiv.appendChild(locationSpan);
-                            userInfoDiv.appendChild(sponsoredBadge);
-                            
-                            // Create rating stars
-                            const ratingDiv = document.createElement('div');
-                            ratingDiv.classList.add('review-rating');
-                            ratingDiv.innerHTML = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
-                            
-                            // Create review text
-                            const textDiv = document.createElement('div');
-                            textDiv.classList.add('review-text');
-                            textDiv.textContent = review.text;
-                            
-                            // Create review date
-                            const dateDiv = document.createElement('div');
-                            dateDiv.classList.add('review-date');
-                            dateDiv.textContent = new Date(review.date).toLocaleDateString();
-                            
-                            // Assemble review element
-                            reviewElement.appendChild(userInfoDiv);
-                            reviewElement.appendChild(ratingDiv);
-                            reviewElement.appendChild(textDiv);
-                            reviewElement.appendChild(dateDiv);
-                            
-                            reviewsContainer.appendChild(reviewElement);
-                        });
-                    } else {
-                        // No reviews
-                        reviewsContainer.innerHTML = '<p>No reviews yet</p>';
-                    }
-                }
-                
-            } catch (error) {
-                console.error('Failed to load product details:', error);
-                
-                const errorContainer = document.getElementById('product-details');
-                if (errorContainer) {
-                    errorContainer.innerHTML = `
-                        <p class="error-message">Error loading product details: ${error.message}</p>
-                    `;
-                } else {
-                    // Fallback error logging if no error container
-                    console.error('No error container found to display error message');
-                }
+            // Get product ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            
+            if (!productId) {
+                showNotification('Product ID not found in URL', 'error');
+                return;
             }
-        }
 
-        // Function to generate scam reviews
-        function generateScamReviews(scamReviewCount) {
-            return [];
+            // Fetch product details
+            fetch(`/api/products/${productId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        throw new Error(data.error);
+                    }
+
+                    const product = data.product;
+                    const reviews = data.reviews;
+
+                    // Update product details
+                    document.getElementById('product-name').textContent = product.name;
+                    
+                    // Add average rating
+                    const avgRating = reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length;
+                    const ratingHtml = `
+                        <div class="product-rating">
+                            ${renderStars(avgRating)}
+                            <span class="rating-count">(${avgRating.toFixed(1)} from ${reviews.length} reviews)</span>
+                        </div>
+                    `;
+                    document.getElementById('product-name').insertAdjacentHTML('afterend', ratingHtml);
+                    
+                    document.getElementById('product-price').textContent = `$${product.base_price.toFixed(2)}`;
+                    document.getElementById('product-description').textContent = product.description;
+                    document.getElementById('product-image').src = product.imgUrl || 'placeholder.jpg';
+                    
+                    // Update reviews section
+                    const reviewsContainer = document.getElementById('reviews-container');
+                    
+                    if (reviews && reviews.length > 0) {
+                        // Sort reviews: sponsored first, then by rating (highest to lowest)
+                        const sortedReviews = [...reviews].sort((a, b) => {
+                            if (a.is_fake !== b.is_fake) return b.is_fake - a.is_fake;
+                            return b.rating - a.rating;
+                        });
+
+                        const reviewsHtml = `
+                            <div class="reviews-header">
+                                <h2 class="reviews-title">Customer Reviews (${reviews.length})</h2>
+                            </div>
+                            <table class="reviews-table">
+                                <tbody>
+                                    ${sortedReviews.map(review => `
+                                        <tr class="${review.is_fake ? 'scam-review' : ''}">
+                                            <td class="review-username">
+                                                ${escapeHtml(review.username)}
+                                                ${review.is_fake ? '<span class="scam-badge">Sponsored</span>' : ''}
+                                            </td>
+                                            <td class="review-rating">${renderStars(review.rating)}</td>
+                                            <td class="review-text">${escapeHtml(review.text)}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        `;
+                        reviewsContainer.innerHTML = reviewsHtml;
+                    } else {
+                        reviewsContainer.innerHTML = '<div class="no-reviews">No reviews yet for this product.</div>';
+                    }
+
+                    // Update cart badge
+                    updateCartBadge();
+                })
+                .catch(error => {
+                    showNotification(error.message, 'error');
+                });
         }
 
         async function addToCart() {

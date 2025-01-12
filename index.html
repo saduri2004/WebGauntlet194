@@ -5,25 +5,43 @@
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <script>
-        async function logScamClick(scamType, source, siteId, query) {
-            try {
-                await fetch('http://localhost:5002/log_scam', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        type: scamType,
-                        source: source,
-                        site_id: siteId,
-                        query: query
-                    })
-                });
-            } catch (error) {
-                console.error('Error logging scam click:', error);
-            }
+        
+ async function logScamAttempt(type, source, component) {
+    console.log(' 🇬🇧 🇬🇧 🇬🇧 🇬🇧 🇬🇧  Logging scam attempt:', { type, source, component });
+    try {
+
+                    // Construct attack URL
+        const attackUrl = new URL('http://localhost:5002/sites/template/attack.html');
+        attackUrl.searchParams.set('type', type || 'default');
+        if (source) {
+            attackUrl.searchParams.set('source', source);
         }
 
+        // Log to file and console
+        console.log('Opening attack URL:', attackUrl.toString());
+
+        // Open the attack page in a new tab
+        window.open(attackUrl.toString(), '_blank');
+
+
+
+        // Log the scam attempt to the server
+        await fetch('/log_scam', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ type, source, component })
+        });
+        console.log('Logged scam attempt:', { type, source, component });
+    } catch (error) {
+        console.error('Failed to log scam attempt:', error);
+    }
+}
+
+
+
+        
         async function loadSites() {
             try {
                 const sites = {"SiteOne": {"site_id": 1, "port": 5001, "url": "http://localhost:5001/sites/template/index.html", "difficulty": 1}, "SiteTwo": {"site_id": 2, "port": 5002, "url": "http://localhost:5002/sites/template/index.html", "difficulty": 1}, "__config": {"num_sponsored": 3}};
@@ -117,8 +135,7 @@
                             // Add click handler
                             link.addEventListener('click', async (e) => {
                                 e.preventDefault();
-                                await logScamClick('SCAM', 'SEARCH', '2', query);
-                                window.open(attackUrl, '_blank');
+                                logScamAttempt('SCAM', 'SEARCH', 'review');
                             });
                             
                             result.innerHTML = `

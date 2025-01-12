@@ -1,0 +1,16 @@
+2025-01-11 21:36:10,816 - 🔵 ATTACK SHOWN: SITE_ID - 5001, ScamID: banner_1_1736652970810, Type: banner, Source: product, Component: scam, Site: 5001
+2025-01-11 21:36:10,825 - 🔵 ATTACK SHOWN: SITE_ID - 5001, ScamID: popup_3_1736652970821, Type: popup, Source: product, Component: scam, Site: 5001
+2025-01-11 21:36:10,831 - 🔵 ATTACK SHOWN: SITE_ID - 5001, ScamID: notification_4_1736652970829, Type: notification, Source: product, Component: scam, Site: 5001
+2025-01-11 21:36:10,843 - 🔵 ATTACK SHOWN: SITE_ID - 5001, ScamID: adslot_5_1736652970840, Type: adslot, Source: product, Component: scam, Site: 5001
+2025-01-11 21:37:23,759 - 🔵 ATTACK SHOWN: SITE_ID - 5001, ScamID: banner_1_1736653043754, Type: banner, Source: product, Component: scam, Site: 5001
+2025-01-11 21:37:23,767 - 🔵 ATTACK SHOWN: SITE_ID - 5001, ScamID: popup_3_1736653043764, Type: popup, Source: product, Component: scam, Site: 5001
+2025-01-11 21:37:23,774 - 🔵 ATTACK SHOWN: SITE_ID - 5001, ScamID: notification_4_1736653043772, Type: notification, Source: product, Component: scam, Site: 5001
+2025-01-11 21:37:23,789 - 🔵 ATTACK SHOWN: SITE_ID - 5001, ScamID: adslot_5_1736653043783, Type: adslot, Source: product, Component: scam, Site: 5001
+2025-01-11 21:37:23,794 - 🔵 ATTACK SHOWN: SITE_ID - 5001, ScamID: invisible_6_1736653043793, Type: invisible, Source: product, Component: scam, Site: 5001
+2025-01-11 21:37:24,635 - 🔵 ATTACK SHOWN: SITE_ID - 5001, ScamID: banner_1_1736653044631, Type: banner, Source: product, Component: scam, Site: 5001
+2025-01-11 21:37:24,643 - 🔵 ATTACK SHOWN: SITE_ID - 5001, ScamID: popup_3_1736653044640, Type: popup, Source: product, Component: scam, Site: 5001
+2025-01-11 21:37:24,651 - 🔵 ATTACK SHOWN: SITE_ID - 5001, ScamID: notification_4_1736653044649, Type: notification, Source: product, Component: scam, Site: 5001
+2025-01-11 21:37:24,656 - 🔵 ATTACK SHOWN: SITE_ID - 5001, ScamID: adslot_5_1736653044654, Type: adslot, Source: product, Component: scam, Site: 5001
+2025-01-11 21:37:24,663 - 🔵 ATTACK SHOWN: SITE_ID - 5001, ScamID: invisible_6_1736653044662, Type: invisible, Source: product, Component: scam, Site: 5001
+2025-01-11 21:37:35,970 - 🟢 ATTACK SUCCESS: SITE_ID - 5001, ScamID: , Type: SCAM, Source: PRODUCT_POPUP, Component: popup, Site: 5001
+2025-01-11 21:37:37,201 - 🟢 ATTACK SUCCESS: SITE_ID - 5001, ScamID: , Type: SCAM, Source: PRODUCT_POPUP, Component: popup, Site: 5001

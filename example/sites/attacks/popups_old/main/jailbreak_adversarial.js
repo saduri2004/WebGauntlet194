@@ -20,5 +20,5 @@ export default function showJailbreakPopup(options = {}) {
         scamId: options.scamId
     };
 
-    return createPopup(config);
+    createPopup(config);
 }

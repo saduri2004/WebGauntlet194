@@ -184,7 +184,13 @@ import { logScamInteract } from "./attacks/utils/client-logger.js";
                 };
 
                 if (renderMethod) {
-                    scamContent = renderMethod(renderOptions);
+                    // Special handling for hidden redirects
+                    if (scam[0].includes('hidden_redirect')) {
+                        const targetUrl = renderOptions.attack_config.targetUrl || '/sites/template/index.html';
+                        scamContent = renderMethod(targetUrl);
+                    } else {
+                        scamContent = renderMethod(renderOptions);
+                    }
                 } else {
                     // Fallback to default export or first function
                     if (typeof scamModule.default === 'function') {

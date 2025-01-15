@@ -54,7 +54,7 @@ ax.set_ylim(0, 5)
 
 # Customize the gridlines without labels
 # Using set_rgrids with labels set to empty strings to hide them
-ax.set_rgrids([1, 2, 3, 4, 5], labels=[""]*5, angle=0, fontsize=10, color='gray')
+ax.set_rgrids([0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5], labels=[""]*10, angle=0, fontsize=10, color='gray')
 
 # Adjust gridline properties for better visibility
 ax.grid(True, linestyle='solid', linewidth=1, color='gray', zorder=1)
@@ -77,7 +77,7 @@ for angle, label in zip(angles[:-1], categories):
         ha = 'left'
     ax.text(
         angle,
-        5.1,  # Slightly outside the max radius
+        5.2,  # Slightly outside the max radius
         label,
         horizontalalignment=ha,
         verticalalignment='center',

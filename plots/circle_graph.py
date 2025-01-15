@@ -27,53 +27,68 @@ angles += angles[:1]
 # Initialize the radar plot
 fig, ax = plt.subplots(figsize=(8, 8), subplot_kw=dict(polar=True))
 
-# num_circles = 5  # Number of concentric circles
-# ax.set_rgrids(np.linspace(0, 5, num_circles + 1), labels=None, color="gray", linestyle="solid", linewidth=0.5)
-
-
 # Draw one line per data group
-ax.plot(angles, values_human, linestyle='solid', label='Human', color='blue')
-ax.fill(angles, values_human, color='blue', alpha=0.1)
+ax.plot(angles, values_human, linestyle='solid', label='Human', color='blue', zorder=3)
+ax.fill(angles, values_human, color='blue', alpha=0.1, zorder=2)
 
-ax.plot(angles, values_o1, linestyle='dashed', label='O1', color='lightblue')
-ax.fill(angles, values_o1, color='lightblue', alpha=0.1)
+ax.plot(angles, values_o1, linestyle='dashed', label='O1', color='lightblue', zorder=3)
+ax.fill(angles, values_o1, color='lightblue', alpha=0.1, zorder=2)
 
-ax.plot(angles, values_o1_safety, linestyle='solid', label='O1 + Safety Prompt', color='lightblue')
-ax.fill(angles, values_o1_safety, color='lightblue', alpha=0.1)
+ax.plot(angles, values_o1_safety, linestyle='solid', label='O1 + Safety Prompt', color='cyan', zorder=3)
+ax.fill(angles, values_o1_safety, color='cyan', alpha=0.1, zorder=2)
 
-ax.plot(angles, values_gpt4, linestyle='dashed', label='GPT4o', color='green')
-ax.fill(angles, values_gpt4, color='green', alpha=0.1)
+ax.plot(angles, values_gpt4, linestyle='dashed', label='GPT4o', color='green', zorder=3)
+ax.fill(angles, values_gpt4, color='green', alpha=0.1, zorder=2)
 
-ax.plot(angles, values_gpt4_safety, linestyle='solid', label='GPT4o + Safety Prompt', color='green')
-ax.fill(angles, values_gpt4_safety, color='green', alpha=0.1)
+ax.plot(angles, values_gpt4_safety, linestyle='solid', label='GPT4o + Safety Prompt', color='lime', zorder=3)
+ax.fill(angles, values_gpt4_safety, color='lime', alpha=0.1, zorder=2)
 
-ax.plot(angles, values_claude, linestyle='dashed', label='Claude 3.5 Sonnet', color='orange')
-ax.fill(angles, values_claude, color='orange', alpha=0.1)
+ax.plot(angles, values_claude, linestyle='dashed', label='Claude 3.5 Sonnet', color='orange', zorder=3)
+ax.fill(angles, values_claude, color='orange', alpha=0.1, zorder=2)
 
-ax.plot(angles, values_claude_safety, linestyle='solid', label='Claude 3.5 Sonnet + Safety Prompt', color='orange')
-ax.fill(angles, values_claude_safety, color='orange', alpha=0.1)
+ax.plot(angles, values_claude_safety, linestyle='solid', label='Claude 3.5 Sonnet + Safety Prompt', color='gold', zorder=3)
+ax.fill(angles, values_claude_safety, color='gold', alpha=0.1, zorder=2)
 
-# Add repeating thin circle lines
-ax.yaxis.grid(True, linestyle='dotted', linewidth=0.5, color='gray')
+# Set the radial limits
+ax.set_ylim(0, 5)
 
-# Add category labels
-ax.set_yticks([])
+# Customize the gridlines without labels
+# Using set_rgrids with labels set to empty strings to hide them
+ax.set_rgrids([1, 2, 3, 4, 5], labels=[""]*5, angle=0, fontsize=10, color='gray')
+
+# Adjust gridline properties for better visibility
+ax.grid(True, linestyle='solid', linewidth=1, color='gray', zorder=1)
+
+# Remove y-tick labels to ensure no labels on gridlines
+ax.set_yticklabels([])
+
+# Add category labels back to the same positions as the original code
 ax.set_xticks(angles[:-1])
-ax.set_xticklabels([])
+ax.set_xticklabels([])  # We'll add custom labels manually
 
+# Add custom labels with proper alignment
 for angle, label in zip(angles[:-1], categories):
+    angle_deg = np.degrees(angle)
+    if angle_deg == 0 or angle_deg == 180:
+        ha = 'center'
+    elif 90 < angle_deg < 270:
+        ha = 'right'
+    else:
+        ha = 'left'
     ax.text(
-        angle,  # Angle of the label
-        max(max(values_human), max(values_o1), max(values_gpt4), max(values_claude)) + 1.2,  # Distance from the center
+        angle,
+        5.1,  # Slightly outside the max radius
         label,
-        horizontalalignment='center',
+        horizontalalignment=ha,
         verticalalignment='center',
-        fontsize=12
+        fontsize=12,
     )
 
 # Add legend
 ax.legend(loc='right', bbox_to_anchor=(1.3, 1.1))
 
-# Show the plot
+# Improve layout
 plt.tight_layout()
+
+# Show the plot
 plt.show()

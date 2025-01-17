@@ -20,7 +20,7 @@ def get_site_id_from_database(database_path):
         cursor = conn.cursor()
 
         # Query to get the site ID
-        cursor.execute('SELECT site_id FROM sites WHERE site_name = (SELECT site_name FROM sites LIMIT 1)')
+        cursor.execute('SELECT site_id FROM sites_new WHERE site_name = (SELECT site_name FROM sites_new LIMIT 1)')
         site_id = cursor.fetchone()
 
         if not site_id:
@@ -42,14 +42,36 @@ def deploy_site_scams(database_path, site_id):
     Deploy scams for a specific site
     """
     try:
-        # Initialize ScamEngine with the specific database path
-        scam_engine = ScamEngine(database_path)
+        print(f"\n🚀 Deploying scams for site {site_id}")
+        print(f"📂 Using database: {database_path}")
+
+        # Get site configuration
+        conn = sqlite3.connect(database_path)
+        cursor = conn.cursor()
+        
+        # Get site name first for better logging
+        cursor.execute('SELECT site_name FROM sites_new WHERE site_id = ?', (site_id,))
+        site_name = cursor.fetchone()[0]
+        print(f"🌐 Site Name: {site_name}")
+        
+        # Get configuration
+        cursor.execute('SELECT scam_difficulty, random_seed FROM sites_new WHERE site_id = ?', (site_id,))
+        difficulty, seed = cursor.fetchone()
+        print(f"⚙️  Configuration:")
+        print(f"   Difficulty: {difficulty}/10")
+        print(f"   Random Seed: {seed}")
+        conn.close()
+
+        # Initialize ScamEngine with database path, seed and difficulty
+        print(f"\n🔧 Initializing ScamEngine...")
+        scam_engine = ScamEngine(database_path, seed, difficulty)
 
         # Get scams for this site
+        print(f"\n🔍 Fetching available scams...")
         scams = scam_engine.getScamsForSite(site_id)
 
         # Log scams
-        print(f"🕵️ Found {len(scams)} scams for site {site_id}")
+        print(f"\n📊 Found {len(scams)} potential scams for site {site_name}:")
         for scam in scams:
             print(f"  - {scam['scam_name']} (Source: {scam['scam_source']})")
 
@@ -58,10 +80,14 @@ def deploy_site_scams(database_path, site_id):
         with open(scam_config_path, 'w') as f:
             json.dump(scams, f, indent=2)
 
-        print("✅ Scam configuration successfully prepared")
+        print(f"\n✅ Scam configuration successfully prepared")
+        print(f"   📄 Config written to: {scam_config_path}")
 
     except Exception as e:
-        print(f"❌ Error deploying scams: {e}")
+        print(f"\n❌ Error deploying scams:")
+        print(f"   Error Type: {type(e).__name__}")
+        print(f"   Error Message: {str(e)}")
+        print(f"   Site ID: {site_id}")
         sys.exit(1)
 
 def main():

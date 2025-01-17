@@ -70,7 +70,11 @@ def create_app(site_name=None, nickname=None, site_id=None, template_folder=None
         try:
             # Get the site-specific database path
             current_dir = os.path.dirname(os.path.abspath(__file__))
-            database_path = os.path.join(os.path.dirname(current_dir), 'database', 'ecommerce.db')
+            database_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(current_dir))), 'database', 'ecommerce.db')
+            
+            # Use site-specific database if configured
+            if app.config.get('DATABASE_PATH'):
+                database_path = app.config['DATABASE_PATH']
             
             if not os.path.exists(database_path):
                 print(f"❌ ERROR: Database not found at {database_path}")
@@ -84,15 +88,15 @@ def create_app(site_name=None, nickname=None, site_id=None, template_folder=None
             conn = sqlite3.connect(database_path)
             conn.row_factory = sqlite3.Row
             
-            # Verify table exists
+            # Verify tables exist
             cursor = conn.cursor()
-            cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='products_main'")
-            table_exists = cursor.fetchone()
-            
-            if not table_exists:
-                print("❌ ERROR: 'products_main' table does not exist!")
-                conn.close()
-                return None
+            required_tables = ['products_main', 'sites_new']
+            for table in required_tables:
+                cursor.execute(f"SELECT name FROM sqlite_master WHERE type='table' AND name=?", (table,))
+                if not cursor.fetchone():
+                    print(f"❌ ERROR: '{table}' table does not exist!")
+                    conn.close()
+                    return None
             
             return conn
         except Exception as e:
@@ -232,76 +236,103 @@ def create_app(site_name=None, nickname=None, site_id=None, template_folder=None
                     p.description,
                     p.base_price,
                     p.review_count,
-                    p.scam_review_count,
-                    COALESCE(AVG(r.rating), 0) as avg_rating,
-                    COUNT(r.review_id) as total_reviews
+                    p.scam_review_count
                 FROM products_main p
-                LEFT JOIN reviews r ON p.product_id = r.product_id
                 WHERE p.product_id = ?
-                GROUP BY p.product_id
             '''
             
             cursor.execute(query, (product_id,))
             product = dict(cursor.fetchone())
-            
-            # Get reviews for the product
-            cursor.execute('''
-                SELECT review_id, username, rating, text, is_fake, 
-                       strftime('%Y-%m-%d', review_date) as review_date
-                FROM reviews 
-                WHERE product_id = ? 
-                ORDER BY review_date DESC
-            ''', (product_id,))
-            
-            reviews = [dict(row) for row in cursor.fetchall()]
+        
             
             conn.close()
             
             return jsonify({
-                'product': product,
-                'reviews': reviews
-            })
+                'product': product            })
             
         except Exception as e:
             print(f"Error in get_product_detail: {str(e)}")
             return jsonify({'error': str(e)}), 500
 
-    @app.route('/api/products/<int:product_id>/reviews', methods=['GET'])
-    def get_product_reviews(product_id):
+    @app.route('/api/products/<int:product_id>/reviews', methods=['GET', 'POST'])
+    def product_reviews(product_id):
         conn = get_db_connection()
         cursor = conn.cursor()
         
         try:
-            # Fetch reviews directly from the database
-            cursor.execute("""
-                SELECT 
-                    username, 
-                    rating, 
-                    text, 
-                    review_date,
-                    is_fake
-                FROM reviews 
-                WHERE product_id = ?
-                ORDER BY review_date DESC
-            """, (product_id,))
+            if request.method == 'GET':
+                # Fetch reviews directly from the database
+                cursor.execute("""
+                    SELECT 
+                        username, 
+                        rating, 
+                        text, 
+                        review_date,
+                        is_fake
+                    FROM reviews 
+                    WHERE product_id = ?
+                    ORDER BY review_date DESC
+                """, (product_id,))
+                
+                reviews = cursor.fetchall()
+                
+                # Convert to list of dictionaries
+                review_list = [{
+                    'username': review['username'] or 'Anonymous',
+                    'rating': review['rating'],
+                    'text': review['text'] or 'No review text',
+                    'date': review['review_date'],
+                    'is_fake': bool(review['is_fake'])
+                } for review in reviews]
+                
+                conn.close()
+                
+                return jsonify(review_list), 200
             
-            reviews = cursor.fetchall()
-            
-            # Convert to list of dictionaries
-            review_list = [{
-                'username': review['username'] or 'Anonymous',
-                'rating': review['rating'],
-                'text': review['text'] or 'No review text',
-                'date': review['review_date'],
-                'is_fake': bool(review['is_fake'])
-            } for review in reviews]
-            
-            conn.close()
-            
-            return jsonify(review_list), 200
+            elif request.method == 'POST':
+                # Add a new review
+                data = request.get_json()
+                
+                # Validate required fields
+                if not all(k in data for k in ['username', 'rating', 'text']):
+                    conn.close()
+                    return jsonify({'error': 'Missing required fields'}), 400
+                
+                # Insert the review
+                cursor.execute("""
+                    INSERT INTO reviews 
+                    (product_id, username, rating, text, is_fake, review_date) 
+                    VALUES (?, ?, ?, ?, ?, datetime('now'))
+                """, (
+                    product_id,
+                    data['username'],
+                    data['rating'],
+                    data['text'],
+                    data.get('is_fake', 0)
+                ))
+                
+                # Update review counts
+                if data.get('is_fake', 0):
+                    cursor.execute("""
+                        UPDATE products_main 
+                        SET scam_review_count = scam_review_count + 1 
+                        WHERE product_id = ?
+                    """, (product_id,))
+                else:
+                    cursor.execute("""
+                        UPDATE products_main 
+                        SET review_count = review_count + 1 
+                        WHERE product_id = ?
+                    """, (product_id,))
+                
+                conn.commit()
+                conn.close()
+                
+                return jsonify({'message': 'Review added successfully'}), 201
         
         except Exception as e:
-            conn.close()
+            if conn:
+                conn.close()
             return jsonify({'error': str(e)}), 500
 
     @app.route('/api/cart/add', methods=['POST'])
@@ -583,9 +614,9 @@ def create_app(site_name=None, nickname=None, site_id=None, template_folder=None
                     site_id, 
                     site_name, 
                     scam_difficulty, 
-                    layout_id, 
-                    end_product_id 
-                FROM sites
+                    random_seed
+                FROM sites_new
+                WHERE site_id = ?
             ''')
             
             sites = cursor.fetchall()
@@ -596,8 +627,7 @@ def create_app(site_name=None, nickname=None, site_id=None, template_folder=None
                 'site_id': site[0],
                 'site_name': site[1],
                 'scam_difficulty': site[2],
-                'layout_id': site[3],
-                'end_product_id': site[4]
+                'random_seed': site[3]
             } for site in sites]
             
             return jsonify(site_list), 200
@@ -620,7 +650,7 @@ def create_app(site_name=None, nickname=None, site_id=None, template_folder=None
                 return jsonify({'error': 'Database connection failed'}), 500
             
             cursor = conn.cursor()
-            cursor.execute('SELECT site_name FROM sites LIMIT 1')
+            cursor.execute('SELECT site_name FROM sites_new LIMIT 1')
             site = cursor.fetchone()
             conn.close()
             
@@ -631,6 +661,45 @@ def create_app(site_name=None, nickname=None, site_id=None, template_folder=None
         except Exception as e:
             print(f"❌ Error getting site name: {e}")
             return jsonify({'site_name': 'WebGauntlet'})
+
+    @app.route('/getconfig', methods=['GET'])
+    def get_site_config():
+        """
+        API endpoint to retrieve the site configuration
+        """
+        try:
+            conn = get_db_connection()
+            if not conn:
+                return jsonify({'error': 'Database connection failed'}), 500
+            
+            cursor = conn.cursor()
+            cursor.execute('''
+                SELECT site_id, site_name, scam_difficulty, random_seed 
+                FROM sites_new 
+                LIMIT 1
+            ''')
+            site = cursor.fetchone()
+            conn.close()
+            
+            if site:
+                current_dir = os.path.dirname(os.path.abspath(__file__))
+                database_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(current_dir))), 'database', 'ecommerce.db')
+                
+                # Store database path in app config
+                app.config['DATABASE_PATH'] = database_path
+                
+                return jsonify({
+                    'site_id': site[0],
+                    'site_name': site[1],
+                    'difficulty': site[2],
+                    'seed': site[3],
+                    'database_path': database_path
+                })
+            else:
+                return jsonify({'error': 'No site configuration found'}), 404
+        except Exception as e:
+            print(f"❌ Error getting site config: {e}")
+            return jsonify({'error': str(e)}), 500
 
     @app.route('/')
     def serve_index():

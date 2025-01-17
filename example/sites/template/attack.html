@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Security Alert</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Import ScamEngine and related scripts -->
+    <script src="./scam_engine.js"></script>
+    <script src="./attacks/utils/client-logger.js"></script>
+    
     <style>
         :root {
             --primary-white: #FFFFFF;
@@ -105,6 +110,14 @@
             font-size: 16px;
         }
 
+        .dynamic-detail {
+            color: var(--secondary-red);
+        }
+
+        .fallback-detail {
+            color: var(--text-muted);
+        }
+
         .warning-text {
             margin-top: 25px;
             background-color: #FFF3E0;
@@ -129,10 +142,11 @@
         <div class="attack-header">
             <div class="warning-icon">⚠️</div>
             <div class="attack-title-group">
-                <h1 class="attack-title">Security Alert</h1>
+                <div id="site-title" class="attack-title">Security Alert</div>
                 <div class="attack-subtitle">Attack or Threat Detected</div>
             </div>
         </div>
+        
         <div class="attack-details">
             <div class="attack-detail-container">
                 <div class="attack-detail-label">TYPE</div>
@@ -143,11 +157,87 @@
                 <div class="attack-detail-value" id="attackSource">-</div>
             </div>
         </div>
+        
         <div class="warning-text">
             For your security, we recommend immediately returning to your previous trusted website.
         </div>
-    </div>
 
-    <script src="attack.js"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Setting up site attack details dynamically');
+
+            // Parse URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const attackType = urlParams.get('type') || 'Unknown';
+            const attackSource = urlParams.get('source') || 'Unknown';
+            const scamId = urlParams.get('scamId') || null;
+
+            // First get the site configuration
+            fetch('/getconfig')
+                .then(response => response.json())
+                .then(config => {
+                    // Update site title
+                    const siteTitleElement = document.getElementById('site-title');
+                    siteTitleElement.textContent = config.site_name || 'Security Alert';
+
+                    // Update attack details
+                    const attackTypeElement = document.getElementById('attackType');
+                    const attackSourceElement = document.getElementById('attackSource');
+                    
+                    if (attackTypeElement) {
+                        attackTypeElement.textContent = attackType;
+                        attackTypeElement.classList.add('dynamic-detail');
+                    }
+                    
+                    if (attackSourceElement) {
+                        attackSourceElement.textContent = attackSource;
+                        attackSourceElement.classList.add('dynamic-detail');
+                    }
+
+                    // Initialize ScamEngine
+                    try {
+                        const scamEngine = new ScamEngine(
+                            config.database_path,
+                            config.seed || Date.now(),
+                            config.difficulty || 5,
+                            config.site_id
+                        );
+
+                        // Log the scam interaction
+                        logScamInteract({
+                            type: attackType,
+                            source: attackSource,
+                            scamId: scamId
+                        });
+
+                        // Deploy scams to the page
+                        scamEngine.deployScamsToPage();
+                    } catch (engineError) {
+                        console.error('Error initializing ScamEngine:', engineError);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching configuration:', error);
+                    
+                    // Fallback for site title and attack details
+                    const siteTitleElement = document.getElementById('site-title');
+                    siteTitleElement.textContent = 'Security Alert';
+
+                    const attackTypeElement = document.getElementById('attackType');
+                    const attackSourceElement = document.getElementById('attackSource');
+                    
+                    if (attackTypeElement) {
+                        attackTypeElement.textContent = attackType || 'Unknown';
+                        attackTypeElement.classList.add('fallback-detail');
+                    }
+                    
+                    if (attackSourceElement) {
+                        attackSourceElement.textContent = attackSource || 'Unknown';
+                        attackSourceElement.classList.add('fallback-detail');
+                    }
+                });
+        });
+        </script>
+    </div>
 </body>
 </html>

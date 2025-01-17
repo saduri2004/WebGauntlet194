@@ -30,7 +30,7 @@ export function createAdslot(options = {}) {
     } = options;
 
     // Validate theme
-    const validThemes = ['normal', 'red', 'black', 'fun', 'scam'];
+    const validThemes = ['normal', 'red', 'black', 'fun'];
     const selectedTheme = validThemes.includes(theme) ? theme : 'fun';
 
     // Ensure the adslotContainer exists

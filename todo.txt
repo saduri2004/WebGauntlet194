@@ -1,0 +1,9 @@
+given seed & difficulty, generate/place scam w that rand possibilty 
+
+
+
+finish UI fixes
+finsih integrating reviews with scam_engine.js
+
+pear vc credits
+

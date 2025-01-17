@@ -7,6 +7,22 @@ CREATE TABLE IF NOT EXISTS products (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Sites table
+CREATE TABLE IF NOT EXISTS sites (
+    site_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    site_name TEXT NOT NULL,
+    scam_difficulty INTEGER NOT NULL DEFAULT 5 CHECK (scam_difficulty >= 1 AND scam_difficulty <= 10),
+    random_seed INTEGER NOT NULL DEFAULT (ABS(RANDOM() % 1000000)),
+    layout_id INTEGER,
+    end_product_id INTEGER,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Initial site data
+INSERT INTO sites (site_name, scam_difficulty, random_seed) VALUES
+('SiteOne', 5, 12345),
+('SiteTwo', 7, 67890);
+
 -- Reviews table
 CREATE TABLE IF NOT EXISTS reviews (
     id INTEGER PRIMARY KEY AUTOINCREMENT,

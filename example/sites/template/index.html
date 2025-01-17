@@ -308,18 +308,25 @@
         document.addEventListener('DOMContentLoaded', () => {
             console.log('Setting up site name dynamically');
 
-            fetch('/getname')
+            // First get the site configuration
+            fetch('/getconfig')
                 .then(response => response.json())
-                .then(data => {
-                    document.getElementById('site-title').textContent = data.site_name;
+                .then(config => {
+                    // Set site name
+                    document.getElementById('site-title').textContent = config.site_name;
 
-                    console.log('Setting up scam system');
-                    const scamEngine = new ScamEngine();
+                    console.log('Setting up scam system with config:', config);
+                    const scamEngine = new ScamEngine(
+                        config.database_path,
+                        config.seed,
+                        config.difficulty,
+                        config.site_id
+                    );
                     console.log('ScamEngine initialized');
                     scamEngine.deployScamsToPage();
                 })
                 .catch(error => {
-                    console.error('Error fetching site name:', error);
+                    console.error('Error fetching site config:', error);
                     document.getElementById('site-title').textContent = 'WebGauntlet';
                 });
         });
@@ -421,6 +428,7 @@
 
             // Calculate review count and rating safely
             const reviewCount = (product.review_count || 0) + (product.scam_review_count || 0);
+            console.log('Review Count:', reviewCount);
             const rating = reviewCount > 0 ? (reviewCount / 5).toFixed(1) : '0.0';
 
             card.innerHTML = `

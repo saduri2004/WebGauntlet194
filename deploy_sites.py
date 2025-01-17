@@ -78,7 +78,7 @@ class SiteDeployer:
         cursor = conn.cursor()
         
         # Retrieve sites
-        cursor.execute('SELECT site_id, site_name, scam_difficulty, layout_id, end_product_id FROM sites')
+        cursor.execute('SELECT site_id, site_name, scam_difficulty, random_seed FROM sites_new')
         sites = cursor.fetchall()
         conn.close()
 
@@ -238,21 +238,22 @@ class SiteDeployer:
             # Connect to the database to get site information
             conn = sqlite3.connect(os.path.join(os.path.dirname(__file__), 'database', 'ecommerce.db'))
             cursor = conn.cursor()
-            cursor.execute('SELECT site_id, site_name, scam_difficulty FROM sites')
+            cursor.execute('SELECT site_id, site_name, scam_difficulty, random_seed FROM sites_new')
             sites_info = cursor.fetchall()
             conn.close()
 
             # Create deployments dictionary
             deployments = {}
             for site_info in sites_info:
-                site_id, site_name, difficulty = site_info
+                site_id, site_name, difficulty, seed = site_info
                 port = self.site_ports.get(site_name, None)
                 if port:
                     deployments[site_name] = {
                         'site_id': site_id,
                         'port': port,
                         'url': f'http://localhost:{port}/sites/template/index.html',
-                        'difficulty': difficulty
+                        'difficulty': difficulty,
+                        'seed': seed
                     }
             
             # Write to JSON file in project root

@@ -2,7 +2,7 @@
 
 
 export async function logScamInteract(type, source, component, interaction, scamId) {
-    console.log(' 🇬🇧 🇬🇧 🇬🇧 🇬🇧 🇬🇧  Logging scam attempt:', { type, source, component, interaction, scamId });
+    console.log(' 🟢🟢🟢🟢  Logging scam attempt:', { type, source, component, interaction, scamId });
     try {
 
         // Construct attack URL using current base URL

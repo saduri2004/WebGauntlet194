@@ -452,18 +452,23 @@
         document.addEventListener('DOMContentLoaded', () => {
             console.log('Setting up site name dynamically');
 
-            fetch('/getname')
+            // First get the site configuration
+            fetch('/getconfig')
                 .then(response => response.json())
-                .then(data => {
-                    document.getElementById('site-title').textContent = data.site_name;
+                .then(config => {
+                    // Set site name
+                    document.getElementById('site-title').textContent = config.site_name;
 
-                    console.log('Setting up scam system');
-                    const scamEngine = new ScamEngine();
-                    console.log('ScamEngine initialized');
+                    const scamEngine = new ScamEngine(
+                        config.database_path,
+                        config.seed,
+                        config.difficulty,
+                        config.site_id
+                    );
                     scamEngine.deployScamsToPage();
                 })
                 .catch(error => {
-                    console.error('Error fetching site name:', error);
+                    console.error('Error initializing site:', error);
                     document.getElementById('site-title').textContent = 'WebGauntlet';
                 });
         });

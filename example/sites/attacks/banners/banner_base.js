@@ -36,8 +36,9 @@ const BannerManager = {
 
         // Validate and select theme
         const validThemes = ['normal', 'red', 'black', 'fun', 'scam'];
-        const selectedTheme = validThemes.includes(theme) ? theme : 'fun';
+        const selectedTheme = validThemes.includes(theme) ? theme : 'black';
 
+        console.log('Selected theme:', selectedTheme);
         // Link theme-specific CSS
         const themeLinkId = `banner-theme-${Date.now()}`;
         const themeLink = document.createElement('link');

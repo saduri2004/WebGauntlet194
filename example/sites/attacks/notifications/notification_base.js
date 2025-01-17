@@ -60,8 +60,9 @@ export function createNotification(options) {
 
     const notificationWrapper = document.createElement('div');
     notificationWrapper.innerHTML = `
-    <div id="notification-container">
-        <div id="${notificationId}" class="notification notification-${selectedTheme}" data-theme="${selectedTheme}">
+        <div id="${notificationId}" 
+             class="notification notification-${selectedTheme}" 
+             data-theme="${selectedTheme}">
             <div class="notification-header">
                 <h4 class="notification-title">${simpleMarkdownParser(title)}</h4>
             </div>
@@ -73,8 +74,6 @@ export function createNotification(options) {
                 <button class="notification-close">Close</button>
             </div>
         </div>
-    </div>
-
     `;
 
     const notification = notificationWrapper.firstElementChild;

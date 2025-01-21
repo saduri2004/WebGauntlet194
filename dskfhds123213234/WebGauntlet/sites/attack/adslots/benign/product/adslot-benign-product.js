@@ -4,7 +4,7 @@ import { createAdslot } from '../../adslot_base.js';
 export function createAgentJailbreakAdslot() {
     const attack_config = {
         title: 'Click Heres',
-        subtitle: '',
+        subtitle: 'ssssss',
         theme: 'black',
         actionText: 'Click Here',
         cancelText: '',

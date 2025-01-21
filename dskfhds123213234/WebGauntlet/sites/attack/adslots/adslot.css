@@ -1,142 +1,96 @@
+/* General container styling */
 .adslot2 {
-    position: relative;
-    width: 90%;
-    min-height: 150px; /* Ensures adequate height for content */
-    height: fit-content;
-    margin: 10px auto; /* Centers the adslot with appropriate spacing */
-    background: var(--background-primary, #ffffff); /* Fallback for primary background */
-    border: 1px solid var(--border-color, #e0e0e0); /* Clean border */
-    border-top: 6px solid var(--primary-color, #3498db); /* Accent color for emphasis */
-    border-radius: 12px; /* Modern rounded corners */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); /* Subtle elevation */
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    padding: 20px; /* Generous padding for layout clarity */
-    box-sizing: border-box;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .adslot2:hover {
-    transform: translateY(-4px); /* Slight hover lift */
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */
-  }
-  
-  .adslot-header {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0 15px; /* Consistent spacing */
-    margin-bottom: 10px;
-  }
-  
-  .adslot-title {
-    color: var(--action-color, #3498db); /* Highlight color for titles */
-    font-size: 1.4rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    margin: 0 0 5px 0;
-    transition: color 0.3s ease;
-  }
-  
-  .adslot-title:hover {
-    color: var(--action-color-hover, #2980b9); /* Interactive hover effect */
-  }
-  
-  .adslot-subtitle {
-    color: var(--text-secondary, #2c3e50);
-    font-size: 1rem;
-    line-height: 1.6;
-    margin: 0;
-    overflow: hidden; /* Ensures clean wrapping */
-    text-overflow: ellipsis;
-    transition: color 0.3s ease;
-  }
-  
-  .adslot-actions {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-    margin-top: 15px;
-    padding: 0 15px; /* Balanced padding */
-    width: 100%;
-  }
-  
-  .adslot-action-btn, 
-  .adslot-cancel-btn {
-    padding: 10px 20px; /* Comfortable size for interaction */
-    border: none;
-    border-radius: 5px; /* Subtle rounding for a premium feel */
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .adslot-action-btn {
-    background-color: transparent;
-    color: var(--action-color, #3498db);
-    border: 2px solid var(--action-color, #3498db);
-  }
-  
-  .adslot-action-btn:hover {
-    background-color: var(--action-color-hover, #2980b9);
-    color: #fff; /* White text for contrast */
-    transform: scale(1.03); /* Slight enlargement for hover feedback */
-  }
-  
-  .adslot-cancel-btn {
-    background-color: var(--cancel-color, #ecf0f1);
-    color: var(--text-primary, #2c3e50);
-  }
-  
-  .adslot-cancel-btn:hover {
-    background-color: var(--cancel-color-hover, #dcdcdc);
-    transform: scale(1.03);
-  }
-  
-  .adslot-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 15px;
-    margin-top: 15px;
-  }
-  
-  .adslot-image {
-    max-width: 220px; /* Ideal size for most contexts */
-    margin-bottom: 20px;
-    border-radius: 8px; /* Rounded corners for aesthetics */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Subtle depth */
-    transition: transform 0.3s ease;
-  }
-  
-  .adslot-image:hover {
-    transform: scale(1.02); /* Minor hover effect for engagement */
-  }
-  
-  .adslot-text {
-    color: var(--text-secondary, #34495e);
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    transition: color 0.3s ease;
-  }
-  
-  .adslot-link {
-    display: inline-block;
-    background-color: var(--action-color, #3498db);
-    color: #fff; /* White text for contrast */
-    padding: 12px 24px; /* Larger, comfortable button size */
-    text-decoration: none;
-    border-radius: 5px; /* Smooth rounding */
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .adslot-link:hover {
-    background-color: var(--action-color-hover, #2980b9);
-    transform: scale(1.02); /* Interactive scaling */
-  }
-  
+  position: relative;
+  width: 90%;
+  min-height: 150px; /* Minimum height for content */
+  margin: 10px auto; /* Center horizontally */
+  background: var(--background-primary, #222); /* Dark background */
+  border: 1px solid var(--border-color, #e0e0e0); /* Light border */
+  border-radius: 12px; /* Rounded corners */
+  padding: 20px; /* Padding inside the container */
+  box-sizing: border-box;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+}
+
+/* Header styling: Title and Close Button */
+.adslot-header {
+  display: flex;
+  justify-content: space-between; /* Space between title and button */
+  align-items: center; /* Center items vertically */
+  margin-bottom: 10px; /* Spacing below header */
+}
+
+.adslot-title {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--title-color, #FFD700); /* Gold color for title */
+}
+
+/* Close button styling */
+#adslot-close-btn {
+  background: var(--button-bg, #444); /* Background for close button */
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--button-text, #FFF); /* White text */
+  padding: 5px 10px;
+  border-radius: 5px; /* Rounded corners */
+}
+
+#adslot-close-btn:hover {
+  background: var(--button-hover-bg, #666); /* Darker on hover */
+  color: var(--button-hover-text, #FFF);
+}
+
+/* Subtitle styling */
+.adslot-subtitle {
+  color: var(--text-secondary, #CCC); /* Light gray */
+  font-size: 1rem;
+  line-height: 1.4;
+  margin: 0 0 15px 0; /* Spacing below subtitle */
+}
+
+/* Actions section styling */
+.adslot-actions {
+  display: flex;
+  justify-content: flex-start; /* Align buttons to the left */
+  gap: 10px; /* Space between buttons */
+  margin-top: 15px; /* Space above actions */
+}
+
+/* Button styling */
+.adslot-action-btn,
+.adslot-cancel-btn {
+  padding: 10px 20px; /* Comfortable padding */
+  border: none;
+  border-radius: 5px; /* Rounded buttons */
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.adslot-action-btn {
+  background-color: transparent;
+  color: var(--action-color, #FFD700); /* Gold border */
+  border: 2px solid var(--action-color, #FFD700);
+}
+
+.adslot-action-btn:hover {
+  background-color: var(--action-hover-bg, #FFC107); /* Gold hover */
+  color: #000; /* Black text for contrast */
+  transform: scale(1.03); /* Slight enlargement */
+}
+
+.adslot-cancel-btn {
+  background-color: var(--cancel-color, #666); /* Dark gray button */
+  color: #FFF;
+}
+
+.adslot-cancel-btn:hover {
+  background-color: var(--cancel-hover-color, #888); /* Light gray hover */
+  transform: scale(1.03);
+}

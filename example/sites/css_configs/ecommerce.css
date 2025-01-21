@@ -137,14 +137,12 @@ body {
     font-size: 1rem;
     font-weight: 600;
     color: var(--text-color);
-    margin-bottom: 0.25rem;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
     max-height: 3em; /* Approximately 2 lines */
-    line-height: 1.5;
 }
 
 .product-category {
@@ -222,6 +220,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    gap: 0.25rem;
 }
 
 .product-detail-image {
@@ -236,22 +235,19 @@ body {
 }
 
 .product-title {
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--text-color);
-    margin-bottom: 0.5rem;
 }
 
 .product-category {
     color: var(--secondary-color);
     font-size: 1rem;
-    margin-bottom: 0.5rem;
 }
 
 .product-rating {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
 }
 
 .product-rating > span:first-child {

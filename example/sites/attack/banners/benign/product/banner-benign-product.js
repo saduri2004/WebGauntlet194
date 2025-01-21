@@ -2,7 +2,7 @@ import { createBanner } from '../../banner_base.js';
 
 export function createNewBanner() {
     const attack_config = {
-        title: 'Click Here',
+        title: '',
         message: '',
         ctaText: 'Click Here',
         theme: 'red',

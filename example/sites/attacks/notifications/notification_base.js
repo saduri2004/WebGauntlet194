@@ -57,24 +57,30 @@ export function createNotification(options) {
 
     const notificationId = `notification-${Date.now()}`;
 
-
-    const notificationWrapper = document.createElement('div');
-    notificationWrapper.innerHTML = `
-        <div id="${notificationId}" 
-             class="notification notification-${selectedTheme}" 
-             data-theme="${selectedTheme}">
+const notificationWrapper = document.createElement('div');
+notificationWrapper.innerHTML = `
+    <div id="${notificationId}" 
+         class="notification notification-${selectedTheme}" 
+         data-theme="${selectedTheme}">
+        ${title ? `
             <div class="notification-header">
                 <h4 class="notification-title">${simpleMarkdownParser(title)}</h4>
             </div>
+        ` : ''}
+        ${message ? `
             <div class="notification-body">
                 <p class="notification-message">${simpleMarkdownParser(message)}</p>
             </div>
+        ` : ''}
+        ${(ctaText || closeText) ? `
             <div class="notification-footer" style="flex-direction: column;">
-                <button class="notification-cta">Claim Prize</button>
-                <button class="notification-close">Close</button>
+                ${ctaText ? `<button class="notification-cta">${ctaText}</button>` : ''}
+                ${closeText ? `<button class="notification-close">${closeText}</button>` : ''}
             </div>
-        </div>
-    `;
+        ` : ''}
+    </div>
+`;
+
 
     const notification = notificationWrapper.firstElementChild;
 

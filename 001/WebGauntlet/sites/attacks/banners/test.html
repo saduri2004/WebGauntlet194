@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Banner Attacks Test</title>
+    <!-- Base styles -->
+    <link rel="stylesheet" href="banner.css">
+    <link rel="stylesheet" href="../css_configs/normal_theme.css" id="base-theme">
+    <style>
+        body { font-family: Arial, sans-serif; width: 100%; margin: 0; padding: 20px; background-color: #f4f4f4; }
+        .attack-section { background-color: white; border: 1px solid #e0e0e0; margin-bottom: 20px; padding: 15px; border-radius: 5px; }
+        button { margin: 10px 5px; padding: 10px 15px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        #theme-selector { margin-bottom: 20px; text-align: center; }
+        #error-display { color: red; margin: 10px 0; text-align: center; }
+    </style>
+</head>
+<body>
+    <h1>Banner Attacks Test Page</h1>
+
+    <div id="theme-selector">
+        <label for="theme-select">Select Theme: </label>
+        <select id="theme-select">
+            <option value="normal">Normal</option>
+            <option value="red">Red</option>
+            <option value="black">Black</option>
+            <option value="fun">Fun</option>
+            <option value="scam">Scam</option>
+        </select>
+    </div>
+
+    <div id="error-display"></div>
+
+    <div class="attack-section">
+        <h2>Checkout Attacks</h2>
+        <button onclick="loadCheckoutLockedScam()">Account Locked Scam</button>
+        <button onclick="loadConfirmDataPhishing()">Confirm Data Phishing</button>
+        <button onclick="loadJailbreakAdverserial()">Jailbreak Adversarial</button>
+        <button onclick="loadWinPrizeScam()">Win Prize Scam</button>
+    </div>
+
+    <div class="attack-section">
+        <h2>Main Page Attacks</h2>
+        <button onclick="loadMainLockedScam()">Account Locked Scam</button>
+        <button onclick="loadMainConfirmDataPhishing()">Confirm Data Phishing</button>
+        <button onclick="loadMainJailbreakAdverserial()">Jailbreak Adversarial</button>
+        <button onclick="loadMainWinPrizeScam()">Win Prize Scam</button>
+        <button onclick="loadStorewideDiscountScam()">Storewide Discount</button>
+    </div>
+
+    <div class="attack-section">
+        <h2>Product Page Attacks</h2>
+        <button onclick="loadProductLockedScam()">Account Locked Scam</button>
+        <button onclick="loadProductConfirmDataPhishing()">Confirm Data Phishing</button>
+        <button onclick="loadProductJailbreakAdverserial()">Jailbreak Adversarial</button>
+        <button onclick="loadProductWinPrizeScam()">Win Prize Scam</button>
+        <button onclick="loadProductDiscountScam()">Product Discount Scam</button>
+    </div>
+
+    <script type="module">
+        const errorDisplay = document.getElementById('error-display');
+        const themeSelect = document.getElementById('theme-select');
+        const baseTheme = document.getElementById('base-theme');
+        
+        // Update base theme when dropdown changes
+        themeSelect.addEventListener('change', (e) => {
+            baseTheme.href = `../css_configs/${e.target.value}_theme.css`;
+        });
+        
+        async function safeImportAndExecute(modulePath, createFunction) {
+            try {
+                errorDisplay.textContent = '';
+                const module = await import(modulePath);
+                const bannerCreator = module[createFunction];
+                
+                if (!bannerCreator) {
+                    throw new Error(`Function ${createFunction} not found in module`);
+                }
+                
+                // Remove any existing banners
+                const existingBanner = document.querySelector('.banner');
+                if (existingBanner) {
+                    existingBanner.remove();
+                }
+                
+                bannerCreator({
+                    theme: themeSelect.value
+                });
+            } catch (error) {
+                console.error('Import or execution error:', error);
+                errorDisplay.textContent = `Error: ${error.message}. Check console for details.`;
+            }
+        }
+
+        // Checkout attacks
+        window.loadCheckoutLockedScam = () => safeImportAndExecute('./checkout/acct_locked_scam.js', 'createAccountLockedBanner');
+        window.loadConfirmDataPhishing = () => safeImportAndExecute('./checkout/confirm_personal_data_phishing.js', 'createConfirmDataPhishingBanner');
+        window.loadJailbreakAdverserial = () => safeImportAndExecute('./checkout/jailbreak_adverserial.js', 'createJailbreakBanner');
+        window.loadWinPrizeScam = () => safeImportAndExecute('./checkout/win_prize_scam.js', 'createWinPrizeBanner');
+
+        // Main page attacks
+        window.loadMainLockedScam = () => safeImportAndExecute('./main/acct_locked_scam.js', 'createAccountLockedBanner');
+        window.loadMainConfirmDataPhishing = () => safeImportAndExecute('./main/confirm_personal_data_phishing.js', 'createConfirmDataPhishingBanner');
+        window.loadMainJailbreakAdverserial = () => safeImportAndExecute('./main/jailbreak_adverserial.js', 'createJailbreakBanner');
+        window.loadMainWinPrizeScam = () => safeImportAndExecute('./main/win_prize_scam.js', 'createWinPrizeBanner');
+        window.loadStorewideDiscountScam = () => safeImportAndExecute('./main/discount_discount.js', 'createStorewideDiscountBanner');
+
+        // Product page attacks
+        window.loadProductLockedScam = () => safeImportAndExecute('./product/acct_locked_scam.js', 'createAccountLockedBanner');
+        window.loadProductConfirmDataPhishing = () => safeImportAndExecute('./product/confirm_personal_data_phishing.js', 'createConfirmDataPhishingBanner');
+        window.loadProductJailbreakAdverserial = () => safeImportAndExecute('./product/jailbreak_adverserial.js', 'createJailbreakBanner');
+        window.loadProductWinPrizeScam = () => safeImportAndExecute('./product/win_prize_scam.js', 'createWinPrizeBanner');
+        window.loadProductDiscountScam = () => safeImportAndExecute('./product/product_discount_discount.js', 'createProductDiscountBanner');
+    </script>
+</body>
+</html>

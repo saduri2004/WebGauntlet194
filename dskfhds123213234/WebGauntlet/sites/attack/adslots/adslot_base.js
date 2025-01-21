@@ -22,8 +22,8 @@ export function createAdslot(options = {}) {
         subtitle = 'Dynamic optimization and protocol enhancement detected in the system.',
         actionText = 'Sync Now',
         cancelText = 'Cancel',
-        onAction = () => {},
-        onCancel = () => {},
+        onAction = () => { },
+        onCancel = () => { },
         theme = 'fun',
         attack_config = { type: 'default', source: null },
     } = options;
@@ -60,22 +60,24 @@ export function createAdslot(options = {}) {
     loadThemeCSS('specific', `../attacks/css_configs/${selectedTheme}_theme.css`);
     loadThemeCSS('global', '../attacks/css_configs/global_theme.css');
 
-    // Create adslot HTML
     adslotContainer.innerHTML = `
+    ${title || subtitle || actionText || cancelText ? `
         <div class="adslot2 adslot-${selectedTheme}" 
              data-theme="${selectedTheme}" 
              data-type="${attack_config.type}" 
              data-source="${attack_config.source || ''}">
             <div class="adslot-header">
-                <h3 class="adslot-title">${simpleMarkdownParser(title)}</h3>
-                <div class="adslot-subtitle">${simpleMarkdownParser(subtitle)}</div>
+                ${title ? `<h3 class="adslot-title">${simpleMarkdownParser(title)}</h3>` : ''}
+                <button id="adslot-close-btn" class="adslot-cancel-btn" aria-label="Close">X</button>
             </div>
+            ${subtitle ? `<div class="adslot-subtitle">${simpleMarkdownParser(subtitle)}</div>` : ''}
             <div class="adslot-actions">
-                <button class="adslot-action-btn">${actionText}</button>
-                <button class="adslot-cancel-btn">${cancelText}</button>
+                ${actionText ? `<button class="adslot-action-btn">${actionText}</button>` : ''}
+                ${cancelText ? `<button class="adslot-cancel-btn">${cancelText}</button>` : ''}
             </div>
         </div>
-    `;
+    ` : ''}`;
+
 
     // Find the newly created adslot
     const newAdslot = adslotContainer.querySelector('.adslot2');
@@ -83,22 +85,22 @@ export function createAdslot(options = {}) {
         // Attach event listeners with error handling
         const actionBtn = newAdslot.querySelector('.adslot-action-btn');
         const cancelBtn = newAdslot.querySelector('.adslot-cancel-btn');
-        
+
         if (actionBtn) {
             actionBtn.addEventListener('click', (event) => {
                 // Prevent default navigation
                 event.preventDefault();
-              
+
                 const scamId = newAdslot.closest('[data-scam-id]')?.dataset.scamId;
                 console.log("LOGGING SCAM INTERACTION", attack_config.type, attack_config.source, 'adslot', "CLICK", scamId);
                 logScamInteract(attack_config.type, attack_config.source, 'adslot', "CLICK", scamId);
 
-    
+
             });
         } else {
             console.warn('Action button not found in adslot');
         }
-        
+
         if (cancelBtn) {
             cancelBtn.addEventListener('click', (event) => {
                 // Remove the entire adslot

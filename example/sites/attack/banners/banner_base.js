@@ -77,15 +77,13 @@ const BannerManager = {
 
         // Banner content
         banner.innerHTML = `
-          <div class="banner-content">
-            <div class="banner-close">×</div>
-            <h3 class="banner-title">${parsedTitle}</h3>
-            <p class="banner-message">${parsedMessage}</p>
-            <button class="banner-cta">
-                ${this.parseMarkdown(ctaText)}
-            </button>
-          </div>
-        `;
+        <div class="banner-content">
+            <button class="banner-close" style="margin-left: auto;">X</button>
+            ${parsedTitle ? `<h3 class="banner-title">${parsedTitle}</h3>` : ''}
+            ${parsedMessage ? `<p class="banner-message">${parsedMessage}</p>` : ''}
+            ${ctaText ? `<button class="banner-cta">${this.parseMarkdown(ctaText)}</button>` : ''}
+        </div>
+    `;
 
         // Close button functionality
         const closeButton = banner.querySelector('.banner-close');

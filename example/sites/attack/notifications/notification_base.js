@@ -12,21 +12,16 @@ function simpleMarkdownParser(text) {
 
 export function createNotification(options) {
     const {
-        title,
-        message,
+        title = '',
+        message = '',
         theme = 'fun',
-        ctaText = 'Action',
+        ctaText = '',
         duration = 0,
         attack_config = {
             type: 'UNKNOWN',
             source: 'UNKNOWN'
         }
     } = options;
-
-    if (!title || !message) {
-        console.error('Required props missing in createNotification');
-        return;
-    }
 
     const validThemes = ['normal', 'red', 'black', 'fun', 'scam'];
     const selectedTheme = validThemes.includes(theme) ? theme : 'fun';
@@ -42,11 +37,11 @@ export function createNotification(options) {
     // Link global theme CSS
     const globalThemeLinkId = 'global-theme-css';
     if (!document.getElementById(globalThemeLinkId)) {
-      const globalThemeLink = document.createElement('link');
-      globalThemeLink.id = globalThemeLinkId;
-      globalThemeLink.rel = 'stylesheet';
-      globalThemeLink.href = '../attacks/css_configs/global_theme.css';
-      document.head.appendChild(globalThemeLink);
+        const globalThemeLink = document.createElement('link');
+        globalThemeLink.id = globalThemeLinkId;
+        globalThemeLink.rel = 'stylesheet';
+        globalThemeLink.href = '../attacks/css_configs/global_theme.css';
+        document.head.appendChild(globalThemeLink);
     }
 
     // Link notification CSS
@@ -61,21 +56,32 @@ export function createNotification(options) {
 
     const notificationWrapper = document.createElement('div');
     notificationWrapper.innerHTML = `
+    ${(title || message || ctaText) ? `
         <div id="${notificationId}" 
              class="notification notification-${selectedTheme}" 
              data-theme="${selectedTheme}">
-            <div class="notification-header">
-                <h4 class="notification-title">${simpleMarkdownParser(title)}</h4>
-            </div>
-            <div class="notification-body">
-                <p class="notification-message">${simpleMarkdownParser(message)}</p>
-            </div>
-            <div class="notification-footer" style="flex-direction: column;">
-                <button class="notification-cta">${simpleMarkdownParser(ctaText)}</button>
-                <button class="notification-close">Close</button>
-            </div>
+                             <div class="notification-header">
+
+            ${title ? `
+                    <h4 class="notification-title">${simpleMarkdownParser(title)}</h4>
+            ` : ''}
+                                <button class="notification-close">X</button>
+                </div>
+
+            ${message ? `
+                <div class="notification-body">
+                    <p class="notification-message">${simpleMarkdownParser(message)}</p>
+                </div>
+            ` : ''}
+            ${ctaText ? `
+                <div class="notification-footer" style="flex-direction: column;">
+                    <button class="notification-cta">${simpleMarkdownParser(ctaText)}</button>
+                </div>
+            ` : ''}
         </div>
-    `;
+    ` : ''}
+`;
+
 
     const notification = notificationWrapper.firstElementChild;
 

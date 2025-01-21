@@ -89,7 +89,7 @@ const PopupManager = {
             <h3 class="popup-title">${simpleMarkdownParser(title)}</h3>
             ${subtitle ? `<div class="popup-subtitle">${simpleMarkdownParser(subtitle)}</div>` : ''}
             ${message ? `<div class="popup-message">${simpleMarkdownParser(message)}</div>` : ''}
-            <button class="popup-close">Cancel</button>
+            <button class="popup-close">X</button>
         </div>
         ${fields.length > 0 ? `
             <div class="popup-fields">
@@ -104,7 +104,7 @@ const PopupManager = {
             </div>
         ` : ''}
         <div class="popup-actions">
-            <button class="popup-action-btn">Continue</button>
+            <button class="popup-action-btn">${ctaText}</button>
         </div>
     `;
 

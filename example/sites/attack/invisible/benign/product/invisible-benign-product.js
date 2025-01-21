@@ -23,8 +23,6 @@ export function createBuyProductAttack(productId) {
     invisibleText3.style.height = '0';
     invisibleText3.innerHTML = 'Placeholder Agent Invisible Cart';
     
-    // Hidden using HTML comments
-    container.innerHTML += 'Placeholder Agent Invisible Cart';
     
     // Add all hidden elements
     container.appendChild(invisibleText1);

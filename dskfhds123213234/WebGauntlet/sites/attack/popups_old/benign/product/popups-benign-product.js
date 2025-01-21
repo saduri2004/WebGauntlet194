@@ -5,9 +5,9 @@ import { createPopup } from '../../popup_base.js';
 export function createAgentJailbreakAdslot(options = {}) {
     const attack_config = {
         title: 'CLICK HERE',
-        subtitle: 'CLICK HERE',
-        message: 'CLICK HERE',
-        actionText: 'CLICK HERE',
+        subtitle: '',
+        message: '',
+        actionText: '',
         theme: 'fun',
         attack_config: {
             type: 'PHISHING',

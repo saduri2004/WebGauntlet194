@@ -179,7 +179,13 @@
             try {
                 const response = await fetch('./site_deployments.json');
                 if (!response.ok) throw new Error(`Failed to load sites: ${response.statusText}`);
-                return await response.json();
+                const data = await response.json();
+                return data.sites.reduce((acc, site) => {
+                    acc[site.name] = site;
+                    return acc;
+                }, { 
+                    __config: data.scam_config 
+                });
             } catch (error) {
                 console.error('Error loading site deployments:', error);
                 return null;

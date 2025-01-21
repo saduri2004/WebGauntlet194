@@ -1,0 +1,26 @@
+:root {
+    /* Primary Colors */
+    --primary-color: #2ecc71;
+    --primary-color-hover: #27ae60;
+    
+    /* Secondary Colors */
+    --secondary-color: #27ae60;
+    --secondary-color-light: #2ecc71;
+    
+    /* Background Colors */
+    --background-primary: #ffffff;
+    --background-secondary: #f0fff4;
+    
+    /* Text Colors */
+    --text-primary: #2ecc71;
+    --text-secondary: #27ae60;
+    
+    /* Border Colors */
+    --border-color: #c4f6d4;
+    
+    /* Action Colors */
+    --action-color: #2ecc71;
+    --action-color-hover: #27ae60;
+    --cancel-color: #d4edda;
+    --cancel-color-hover: #c3e6cb;
+}

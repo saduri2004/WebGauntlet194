@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -163,6 +164,7 @@
         }
     </style>
 </head>
+
 <body onload="loadSites()">
     <div class="search-container">
         <div class="logo">WebGauntlet</div>
@@ -180,12 +182,15 @@
                 const response = await fetch('./site_deployments.json');
                 if (!response.ok) throw new Error(`Failed to load sites: ${response.statusText}`);
                 const data = await response.json();
-                return data.sites.reduce((acc, site) => {
-                    acc[site.name] = site;
+                console.log(data)
+
+                const result = Object.keys(data).reduce((acc, key) => {
+                    acc[key] = data[key]; // Add the original key-value pairs
                     return acc;
-                }, { 
-                    __config: data.scam_config 
-                });
+                }, { __config: data.scam_config });
+
+                console.log('Transformed data:', result);
+                return result;
             } catch (error) {
                 console.error('Error loading site deployments:', error);
                 return null;
@@ -230,4 +235,5 @@
         }
     </script>
 </body>
+
 </html>

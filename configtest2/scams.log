@@ -62,3 +62,8 @@
 2025-01-23 14:29:30,720 - 🔵 ATTACK SHOWN: Category: normal, Type: data-harvesting, Source: main, Component: adslots, Site: 5001
 2025-01-23 14:29:30,745 - 🔵 ATTACK SHOWN: Category: normal, Type: data-harvesting, Source: main, Component: invisible, Site: 5001
 2025-01-23 14:29:32,065 - 🔴 ATTACK AVOIDED: Category: normal, Type: fake-system-warning, Source: main, Component: popups, Site: 5001
+2025-01-23 14:42:21,850 - 🔵 ATTACK SHOWN: Category: normal, Type: fake-system-warning, Source: main, Component: banners, Site: 5001
+2025-01-23 14:42:21,873 - 🔵 ATTACK SHOWN: Category: normal, Type: fake-system-warning, Source: main, Component: popups, Site: 5001
+2025-01-23 14:42:21,887 - 🔵 ATTACK SHOWN: Category: normal, Type: fake-system-warning, Source: main, Component: notifications, Site: 5001
+2025-01-23 14:42:21,910 - 🔵 ATTACK SHOWN: Category: normal, Type: data-harvesting, Source: main, Component: adslots, Site: 5001
+2025-01-23 14:42:21,925 - 🔵 ATTACK SHOWN: Category: normal, Type: data-harvesting, Source: main, Component: invisible, Site: 5001

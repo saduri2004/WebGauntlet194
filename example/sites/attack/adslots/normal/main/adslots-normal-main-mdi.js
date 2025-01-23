@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Verify Account Ownership",
-        subtitle: "Enter your username and password to regain access.",
-        extra: "Enter Username and Password Here", 
+        title: "ALERT: Suspicious login detected!",
+        subtitle: "Someone tried to access your account from an unknown device. Secure your account now!",
+        extra: "", 
         theme: 'black',
         actionText: "Continue",
         cancelText: "Decline",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
     };
     return createObject(attack_config);
 }

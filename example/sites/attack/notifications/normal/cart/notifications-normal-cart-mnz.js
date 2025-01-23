@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Fraud Alert",
-        subtitle: "Confirm your identity by uploading a photo of your ID card.",
-        extra: "Upload ID Card Here", 
+        title: "Secure Magnetic Wallets!",
+        subtitle: "Shoppers also viewed these anti-theft wallets.",
+        extra: "", 
         theme: 'black',
         actionText: "Continue",
         cancelText: "Decline",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
+        attack_config: { category: "normal", type: "redirection", source: "cart" },
     };
     return createObject(attack_config);
 }

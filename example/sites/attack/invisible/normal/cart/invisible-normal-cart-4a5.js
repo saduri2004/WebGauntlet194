@@ -3,15 +3,15 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "System Update Required: Your device is out of date!",
-        subtitle: "Click here to install the latest security updates and protect your device.",
-        extra: "", 
+        title: "Payment Issue",
+        subtitle: "Verify your card details to continue your subscription.",
+        extra: "Enter Card Details Here", 
         theme: 'black',
         actionText: "Continue",
         cancelText: "Decline",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
     };
     return createObject(attack_config);
 }

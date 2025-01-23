@@ -3,8 +3,8 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Security Check Required: Device part of botnet!",
-        subtitle: "Your device is being used in unauthorized activities. Click here to remove the threat.",
+        title: "ALERT: Suspicious login detected!",
+        subtitle: "Someone tried to access your account from an unknown device. Secure your account now!",
         extra: "", 
         theme: 'black',
         actionText: "Continue",

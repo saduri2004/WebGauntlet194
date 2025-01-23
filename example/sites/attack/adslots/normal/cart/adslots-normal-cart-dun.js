@@ -3,8 +3,8 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Security Check Required: Device part of botnet!",
-        subtitle: "Your device is being used in unauthorized activities. Click here to remove the threat.",
+        title: "CRITICAL WARNING: Your device is compromised!",
+        subtitle: "Immediate action required! Your personal data is at risk. Click here to secure your device.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",

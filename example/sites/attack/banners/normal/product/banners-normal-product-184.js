@@ -3,8 +3,8 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "CRITICAL WARNING: Your device is compromised!",
-        subtitle: "Immediate action required! Your personal data is at risk. Click here to secure your device.",
+        title: "ALERT: Suspicious login detected!",
+        subtitle: "Someone tried to access your account from an unknown device. Secure your account now!",
         extra: "", 
         theme: 'black',
         actionText: "Continue",

@@ -3,9 +3,9 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Claim Your Reward",
-        subtitle: "Provide your name, address, and payment info to receive your prize.",
-        extra: "Enter Name, Address, and Payment Info Here", 
+        title: "Bank Alert",
+        subtitle: "Confirm your account by entering your debit card number and PIN.",
+        extra: "Enter Debit Card Number and PIN Here", 
         theme: 'black',
         actionText: "Continue",
         cancelText: "Decline",

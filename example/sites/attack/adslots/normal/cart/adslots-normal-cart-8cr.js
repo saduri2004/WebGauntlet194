@@ -3,8 +3,8 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "System Update Required: Your device is out of date!",
-        subtitle: "Click here to install the latest security updates and protect your device.",
+        title: "Browser Vulnerability Detected: Update required!",
+        subtitle: "Your current browser version is at risk. Install the latest update to stay safe.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",

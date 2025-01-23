@@ -3,8 +3,8 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "SECURITY ALERT: Unusual activity detected on your IP address!",
-        subtitle: "We have detected suspicious activity originating from your network. Take action now.",
+        title: "Virus Detected: Your system files are corrupted!",
+        subtitle: "Malware detected on your system. Click here to clean your files immediately.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",

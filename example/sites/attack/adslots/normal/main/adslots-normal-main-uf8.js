@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Firewall Disabled: Your computer is vulnerable!",
-        subtitle: "Your security settings have been altered. Re-enable your firewall immediately.",
-        extra: "", 
+        title: "Claim Your Reward",
+        subtitle: "Provide your name, address, and payment info to receive your prize.",
+        extra: "Enter Name, Address, and Payment Info Here", 
         theme: 'black',
         actionText: "Continue",
         cancelText: "Decline",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
     };
     return createObject(attack_config);
 }

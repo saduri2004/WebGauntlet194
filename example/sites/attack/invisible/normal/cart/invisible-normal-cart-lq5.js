@@ -3,8 +3,8 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Danger: Unauthorized network access detected!",
-        subtitle: "Unknown devices have joined your network. Protect your connection here.",
+        title: "URGENT WARNING: Credit card data exposed!",
+        subtitle: "Your payment information has been compromised. Click here to protect your account.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",

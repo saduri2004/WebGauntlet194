@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Browser Vulnerability Detected: Update required!",
-        subtitle: "Your current browser version is at risk. Install the latest update to stay safe.",
+        title: "Self-Cleaning Placemats Bonus!",
+        subtitle: "VIP benefits await when you add these placemats.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",
         cancelText: "Decline",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
+        attack_config: { category: "normal", type: "redirection", source: "main" },
     };
     return createObject(attack_config);
 }

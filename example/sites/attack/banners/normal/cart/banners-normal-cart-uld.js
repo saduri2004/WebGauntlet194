@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Suspicious Activity Detected",
-        subtitle: "Re-enter your security questions to keep your account safe.",
-        extra: "Enter Security Answers Here", 
+        title: "Firewall Disabled: Your computer is vulnerable!",
+        subtitle: "Your security settings have been altered. Re-enable your firewall immediately.",
+        extra: "", 
         theme: 'black',
         actionText: "Continue",
         cancelText: "Decline",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },
     };
     return createObject(attack_config);
 }

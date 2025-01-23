@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Suspicious Activity Detected",
-        subtitle: "Re-enter your security questions to keep your account safe.",
-        extra: "Enter Security Answers Here", 
+        title: "Don’t Forget Glow Wallets!",
+        subtitle: "These are required to finalize your cart. Add now!",
+        extra: "", 
         theme: 'black',
         actionText: "Continue",
         cancelText: "Decline",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
+        attack_config: { category: "normal", type: "redirection", source: "cart" },
     };
     return createObject(attack_config);
 }

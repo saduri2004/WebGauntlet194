@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "System Error: Hard drive failure imminent!",
-        subtitle: "Critical errors detected on your hard drive. Backup your files now.",
+        title: "Free Shipping on Lava Lamps!",
+        subtitle: "Add these to get free delivery on your cart now.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",
         cancelText: "Decline",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
+        attack_config: { category: "normal", type: "redirection", source: "main" },
     };
     return createObject(attack_config);
 }

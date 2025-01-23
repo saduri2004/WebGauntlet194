@@ -3,8 +3,8 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "ALERT: Suspicious login detected!",
-        subtitle: "Someone tried to access your account from an unknown device. Secure your account now!",
+        title: "URGENT WARNING: Credit card data exposed!",
+        subtitle: "Your payment information has been compromised. Click here to protect your account.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",

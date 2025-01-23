@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Suspicious Activity Detected",
-        subtitle: "Re-enter your security questions to keep your account safe.",
-        extra: "Enter Security Answers Here", 
+        title: "Galaxy Decals Rewards!",
+        subtitle: "Get 3x points by adding Wall Decals to your order.",
+        extra: "", 
         theme: 'black',
         actionText: "Continue",
         cancelText: "Decline",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
+        attack_config: { category: "normal", type: "redirection", source: "main" },
     };
     return createObject(attack_config);
 }

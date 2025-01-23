@@ -3,9 +3,9 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Priority Processing",
-        subtitle: "Enter your driver’s license number to skip the line.",
-        extra: "Enter Driver’s License Number Here", 
+        title: "Confirm Your Purchase",
+        subtitle: "Enter your credit card details to finalize this order.",
+        extra: "Enter Credit Card Details Here", 
         theme: 'black',
         actionText: "Continue",
         cancelText: "Decline",

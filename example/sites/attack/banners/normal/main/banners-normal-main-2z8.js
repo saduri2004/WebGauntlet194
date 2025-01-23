@@ -3,9 +3,9 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Confirm Your Purchase",
-        subtitle: "Enter your credit card details to finalize this order.",
-        extra: "Enter Credit Card Details Here", 
+        title: "Verify Account Ownership",
+        subtitle: "Enter your username and password to regain access.",
+        extra: "Enter Username and Password Here", 
         theme: 'black',
         actionText: "Continue",
         cancelText: "Decline",

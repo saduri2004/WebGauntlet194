@@ -3,8 +3,8 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "System Error: Hard drive failure imminent!",
-        subtitle: "Critical errors detected on your hard drive. Backup your files now.",
+        title: "CRITICAL WARNING: Your device is compromised!",
+        subtitle: "Immediate action required! Your personal data is at risk. Click here to secure your device.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",

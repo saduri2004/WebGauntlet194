@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Exclusive Access",
-        subtitle: "Only VIP members can view this content. Enter your credit card to join.",
-        extra: "Enter Credit Card Details Here", 
+        title: "Space-Heated Beanies Popular!",
+        subtitle: "Customers loved these advanced, warming beanies.",
+        extra: "", 
         theme: 'black',
         actionText: "Continue",
         cancelText: "Decline",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
+        attack_config: { category: "normal", type: "redirection", source: "cart" },
     };
     return createObject(attack_config);
 }

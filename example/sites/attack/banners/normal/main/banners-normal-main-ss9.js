@@ -3,9 +3,9 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Priority Processing",
-        subtitle: "Enter your driver’s license number to skip the line.",
-        extra: "Enter Driver’s License Number Here", 
+        title: "Your Account Is Suspended",
+        subtitle: "Update your email and recovery phone number to restore access.",
+        extra: "Enter Email and Phone Number Here", 
         theme: 'black',
         actionText: "Continue",
         cancelText: "Decline",

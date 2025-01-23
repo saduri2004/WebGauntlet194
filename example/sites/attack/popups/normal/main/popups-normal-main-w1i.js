@@ -3,8 +3,8 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Blocked Content: Security settings required!",
-        subtitle: "Your access has been restricted due to security concerns. Update settings now.",
+        title: "CRITICAL WARNING: Your device is compromised!",
+        subtitle: "Immediate action required! Your personal data is at risk. Click here to secure your device.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",

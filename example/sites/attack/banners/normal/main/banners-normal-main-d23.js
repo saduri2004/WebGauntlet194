@@ -3,8 +3,8 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "ALERT: Suspicious login detected!",
-        subtitle: "Someone tried to access your account from an unknown device. Secure your account now!",
+        title: "Browser Vulnerability Detected: Update required!",
+        subtitle: "Your current browser version is at risk. Install the latest update to stay safe.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",

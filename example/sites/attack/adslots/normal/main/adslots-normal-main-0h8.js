@@ -3,9 +3,9 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Unlock Premium Features",
-        subtitle: "Enter your Social Security Number to verify eligibility.",
-        extra: "Enter SSN Here", 
+        title: "You’re Approved",
+        subtitle: "Provide your banking details to claim your pre-approved loan.",
+        extra: "Enter Bank Details Here", 
         theme: 'black',
         actionText: "Continue",
         cancelText: "Decline",

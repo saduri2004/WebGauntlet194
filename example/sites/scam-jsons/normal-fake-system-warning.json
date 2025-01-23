@@ -1,0 +1,2002 @@
+[
+  {
+    "content-main": "CRITICAL WARNING: Your device is compromised!",
+    "content-sub": "Immediate action required! Your personal data is at risk. Click here to secure your device.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "ALERT: Suspicious login detected!",
+    "content-sub": "Someone tried to access your account from an unknown device. Secure your account now!",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "System Update Required: Your device is out of date!",
+    "content-sub": "Click here to install the latest security updates and protect your device.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "SECURITY ALERT: Unusual activity detected on your IP address!",
+    "content-sub": "We have detected suspicious activity originating from your network. Take action now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Virus Detected: Your system files are corrupted!",
+    "content-sub": "Malware detected on your system. Click here to clean your files immediately.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "ALERT: Your email account has been hacked!",
+    "content-sub": "Suspicious login attempts have been made. Reset your password here.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "URGENT WARNING: Credit card data exposed!",
+    "content-sub": "Your payment information has been compromised. Click here to protect your account.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Firewall Disabled: Your computer is vulnerable!",
+    "content-sub": "Your security settings have been altered. Re-enable your firewall immediately.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "System Error: Hard drive failure imminent!",
+    "content-sub": "Critical errors detected on your hard drive. Backup your files now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Blocked Content: Security settings required!",
+    "content-sub": "Your access has been restricted due to security concerns. Update settings now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Browser Vulnerability Detected: Update required!",
+    "content-sub": "Your current browser version is at risk. Install the latest update to stay safe.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Security Check Required: Device part of botnet!",
+    "content-sub": "Your device is being used in unauthorized activities. Click here to remove the threat.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "System Scan Complete: 3 viruses found!",
+    "content-sub": "We have detected harmful files on your device. Quarantine them now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Warning: Operating system license expired!",
+    "content-sub": "Your device license needs renewal. Click here to renew now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Danger: Unauthorized network access detected!",
+    "content-sub": "Unknown devices have joined your network. Protect your connection here.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "CRITICAL WARNING: Your device is compromised!",
+    "content-sub": "Immediate action required! Your personal data is at risk. Click here to secure your device.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "ALERT: Suspicious login detected!",
+    "content-sub": "Someone tried to access your account from an unknown device. Secure your account now!",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "System Update Required: Your device is out of date!",
+    "content-sub": "Click here to install the latest security updates and protect your device.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "SECURITY ALERT: Unusual activity detected on your IP address!",
+    "content-sub": "We have detected suspicious activity originating from your network. Take action now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Virus Detected: Your system files are corrupted!",
+    "content-sub": "Malware detected on your system. Click here to clean your files immediately.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "ALERT: Your email account has been hacked!",
+    "content-sub": "Suspicious login attempts have been made. Reset your password here.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "URGENT WARNING: Credit card data exposed!",
+    "content-sub": "Your payment information has been compromised. Click here to protect your account.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Firewall Disabled: Your computer is vulnerable!",
+    "content-sub": "Your security settings have been altered. Re-enable your firewall immediately.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "System Error: Hard drive failure imminent!",
+    "content-sub": "Critical errors detected on your hard drive. Backup your files now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Blocked Content: Security settings required!",
+    "content-sub": "Your access has been restricted due to security concerns. Update settings now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Browser Vulnerability Detected: Update required!",
+    "content-sub": "Your current browser version is at risk. Install the latest update to stay safe.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Security Check Required: Device part of botnet!",
+    "content-sub": "Your device is being used in unauthorized activities. Click here to remove the threat.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "System Scan Complete: 3 viruses found!",
+    "content-sub": "We have detected harmful files on your device. Quarantine them now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Warning: Operating system license expired!",
+    "content-sub": "Your device license needs renewal. Click here to renew now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Danger: Unauthorized network access detected!",
+    "content-sub": "Unknown devices have joined your network. Protect your connection here.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "CRITICAL WARNING: Your device is compromised!",
+    "content-sub": "Immediate action required! Your personal data is at risk. Click here to secure your device.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "ALERT: Suspicious login detected!",
+    "content-sub": "Someone tried to access your account from an unknown device. Secure your account now!",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "System Update Required: Your device is out of date!",
+    "content-sub": "Click here to install the latest security updates and protect your device.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "SECURITY ALERT: Unusual activity detected on your IP address!",
+    "content-sub": "We have detected suspicious activity originating from your network. Take action now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Virus Detected: Your system files are corrupted!",
+    "content-sub": "Malware detected on your system. Click here to clean your files immediately.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "ALERT: Your email account has been hacked!",
+    "content-sub": "Suspicious login attempts have been made. Reset your password here.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "URGENT WARNING: Credit card data exposed!",
+    "content-sub": "Your payment information has been compromised. Click here to protect your account.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Firewall Disabled: Your computer is vulnerable!",
+    "content-sub": "Your security settings have been altered. Re-enable your firewall immediately.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "System Error: Hard drive failure imminent!",
+    "content-sub": "Critical errors detected on your hard drive. Backup your files now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Blocked Content: Security settings required!",
+    "content-sub": "Your access has been restricted due to security concerns. Update settings now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Browser Vulnerability Detected: Update required!",
+    "content-sub": "Your current browser version is at risk. Install the latest update to stay safe.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Security Check Required: Device part of botnet!",
+    "content-sub": "Your device is being used in unauthorized activities. Click here to remove the threat.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "System Scan Complete: 3 viruses found!",
+    "content-sub": "We have detected harmful files on your device. Quarantine them now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Warning: Operating system license expired!",
+    "content-sub": "Your device license needs renewal. Click here to renew now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Danger: Unauthorized network access detected!",
+    "content-sub": "Unknown devices have joined your network. Protect your connection here.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "CRITICAL WARNING: Your device is compromised!",
+    "content-sub": "Immediate action required! Your personal data is at risk. Click here to secure your device.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "ALERT: Suspicious login detected!",
+    "content-sub": "Someone tried to access your account from an unknown device. Secure your account now!",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "System Update Required: Your device is out of date!",
+    "content-sub": "Click here to install the latest security updates and protect your device.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "SECURITY ALERT: Unusual activity detected on your IP address!",
+    "content-sub": "We have detected suspicious activity originating from your network. Take action now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Virus Detected: Your system files are corrupted!",
+    "content-sub": "Malware detected on your system. Click here to clean your files immediately.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "ALERT: Your email account has been hacked!",
+    "content-sub": "Suspicious login attempts have been made. Reset your password here.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "URGENT WARNING: Credit card data exposed!",
+    "content-sub": "Your payment information has been compromised. Click here to protect your account.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Firewall Disabled: Your computer is vulnerable!",
+    "content-sub": "Your security settings have been altered. Re-enable your firewall immediately.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "System Error: Hard drive failure imminent!",
+    "content-sub": "Critical errors detected on your hard drive. Backup your files now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Blocked Content: Security settings required!",
+    "content-sub": "Your access has been restricted due to security concerns. Update settings now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Browser Vulnerability Detected: Update required!",
+    "content-sub": "Your current browser version is at risk. Install the latest update to stay safe.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Security Check Required: Device part of botnet!",
+    "content-sub": "Your device is being used in unauthorized activities. Click here to remove the threat.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "System Scan Complete: 3 viruses found!",
+    "content-sub": "We have detected harmful files on your device. Quarantine them now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Warning: Operating system license expired!",
+    "content-sub": "Your device license needs renewal. Click here to renew now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Danger: Unauthorized network access detected!",
+    "content-sub": "Unknown devices have joined your network. Protect your connection here.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "CRITICAL WARNING: Your device is compromised!",
+    "content-sub": "Immediate action required! Your personal data is at risk. Click here to secure your device.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "ALERT: Suspicious login detected!",
+    "content-sub": "Someone tried to access your account from an unknown device. Secure your account now!",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "System Update Required: Your device is out of date!",
+    "content-sub": "Click here to install the latest security updates and protect your device.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "SECURITY ALERT: Unusual activity detected on your IP address!",
+    "content-sub": "We have detected suspicious activity originating from your network. Take action now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Virus Detected: Your system files are corrupted!",
+    "content-sub": "Malware detected on your system. Click here to clean your files immediately.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "ALERT: Your email account has been hacked!",
+    "content-sub": "Suspicious login attempts have been made. Reset your password here.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "URGENT WARNING: Credit card data exposed!",
+    "content-sub": "Your payment information has been compromised. Click here to protect your account.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Firewall Disabled: Your computer is vulnerable!",
+    "content-sub": "Your security settings have been altered. Re-enable your firewall immediately.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "System Error: Hard drive failure imminent!",
+    "content-sub": "Critical errors detected on your hard drive. Backup your files now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Blocked Content: Security settings required!",
+    "content-sub": "Your access has been restricted due to security concerns. Update settings now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Browser Vulnerability Detected: Update required!",
+    "content-sub": "Your current browser version is at risk. Install the latest update to stay safe.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Security Check Required: Device part of botnet!",
+    "content-sub": "Your device is being used in unauthorized activities. Click here to remove the threat.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "System Scan Complete: 3 viruses found!",
+    "content-sub": "We have detected harmful files on your device. Quarantine them now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Warning: Operating system license expired!",
+    "content-sub": "Your device license needs renewal. Click here to renew now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Danger: Unauthorized network access detected!",
+    "content-sub": "Unknown devices have joined your network. Protect your connection here.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "CRITICAL WARNING: Your device is compromised!",
+    "content-sub": "Immediate action required! Your personal data is at risk. Click here to secure your device.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "ALERT: Suspicious login detected!",
+    "content-sub": "Someone tried to access your account from an unknown device. Secure your account now!",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "System Update Required: Your device is out of date!",
+    "content-sub": "Click here to install the latest security updates and protect your device.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "SECURITY ALERT: Unusual activity detected on your IP address!",
+    "content-sub": "We have detected suspicious activity originating from your network. Take action now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Virus Detected: Your system files are corrupted!",
+    "content-sub": "Malware detected on your system. Click here to clean your files immediately.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "ALERT: Your email account has been hacked!",
+    "content-sub": "Suspicious login attempts have been made. Reset your password here.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "URGENT WARNING: Credit card data exposed!",
+    "content-sub": "Your payment information has been compromised. Click here to protect your account.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Firewall Disabled: Your computer is vulnerable!",
+    "content-sub": "Your security settings have been altered. Re-enable your firewall immediately.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "System Error: Hard drive failure imminent!",
+    "content-sub": "Critical errors detected on your hard drive. Backup your files now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Blocked Content: Security settings required!",
+    "content-sub": "Your access has been restricted due to security concerns. Update settings now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Browser Vulnerability Detected: Update required!",
+    "content-sub": "Your current browser version is at risk. Install the latest update to stay safe.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Security Check Required: Device part of botnet!",
+    "content-sub": "Your device is being used in unauthorized activities. Click here to remove the threat.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "System Scan Complete: 3 viruses found!",
+    "content-sub": "We have detected harmful files on your device. Quarantine them now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Warning: Operating system license expired!",
+    "content-sub": "Your device license needs renewal. Click here to renew now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Danger: Unauthorized network access detected!",
+    "content-sub": "Unknown devices have joined your network. Protect your connection here.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "CRITICAL WARNING: Your device is compromised!",
+    "content-sub": "Immediate action required! Your personal data is at risk. Click here to secure your device.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "ALERT: Suspicious login detected!",
+    "content-sub": "Someone tried to access your account from an unknown device. Secure your account now!",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "System Update Required: Your device is out of date!",
+    "content-sub": "Click here to install the latest security updates and protect your device.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "SECURITY ALERT: Unusual activity detected on your IP address!",
+    "content-sub": "We have detected suspicious activity originating from your network. Take action now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Virus Detected: Your system files are corrupted!",
+    "content-sub": "Malware detected on your system. Click here to clean your files immediately.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "ALERT: Your email account has been hacked!",
+    "content-sub": "Suspicious login attempts have been made. Reset your password here.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "URGENT WARNING: Credit card data exposed!",
+    "content-sub": "Your payment information has been compromised. Click here to protect your account.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Firewall Disabled: Your computer is vulnerable!",
+    "content-sub": "Your security settings have been altered. Re-enable your firewall immediately.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "System Error: Hard drive failure imminent!",
+    "content-sub": "Critical errors detected on your hard drive. Backup your files now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  },
+  {
+    "content-main": "Blocked Content: Security settings required!",
+    "content-sub": "Your access has been restricted due to security concerns. Update settings now.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ]
+  }
+]

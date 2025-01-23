@@ -132,7 +132,7 @@ import { logScamInteract } from "./attack/utils/client-logger.js";
         }
 
         isLocationMatch(scam, scamLocation) {
-            console.log('Scam Location Check:', scam[3], this.location);
+            // console.log('Scam Location Check:', scam[3], this.location);
 
             // Assuming the scam category is stored in scam[4]
             const scamLocationOriginal = scam[3]; // Update based on actual data structure
@@ -669,6 +669,19 @@ import { logScamInteract } from "./attack/utils/client-logger.js";
             });
         }
 
+
+        hashString(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                const char = str.charCodeAt(i);
+                hash = (hash << 5) - hash + char;
+                hash |= 0; // Convert to 32-bit integer
+            }
+            return Math.abs(hash); // Ensure the hash is positive
+        }
+
+        
+
         async renderScamsForCurrentPage(scams) {
             // Initialize scams with the current ScamEngine instance
             await this.logicManager.initializeScams(this);
@@ -687,7 +700,12 @@ import { logScamInteract } from "./attack/utils/client-logger.js";
                 ];
 
                 // Randomly select one of these to run
-                const randomIndex = Math.floor(this.logicManager.rng() * scamTriggers.length);
+                const randomBase = this.logicManager.rng(); // Base random value from RNG
+                const pageHash = this.hashString(window.location.pathname);
+                console.log("PAGE HASH FOR", window.location.pathname)
+                const adjustedRandom = (randomBase + (pageHash % scamTriggers.length)) % scamTriggers.length;
+                const randomIndex = Math.floor(adjustedRandom);
+
                 console.log(`Random Index Selected: ${randomIndex}`);
 
                 // Run the selected function

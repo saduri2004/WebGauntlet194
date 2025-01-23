@@ -1,12 +1,12 @@
-import { logScamInteract } from "./attacks/utils/client-logger.js";
-import ReviewScam from './attacks/reviews/review_base.js';
+import ReviewScam from "./attack/reviews/review_base.js";
+import { logScamInteract } from "./attack/utils/client-logger.js";
 
 (function (global) {
 
     class ScamLogicManager {
         constructor(seed, difficulty, type, mode) {
-            console.log(`🎲 Initializing ScamLogicManager with seed: ${seed}, mode: ${mode}, difficulty: ${difficulty}, type: ${type}`);
-            
+            console.log(`🎲🎲🎲🎲 Initializing ScamLogicManager with seed: ${seed}, mode: ${mode}, difficulty: ${difficulty}, type: ${type}`);
+
             // Configurable parameters for scam selection
             this.maxScamsPerSlot = 1;
             this.difficulty = difficulty; // Store raw difficulty
@@ -15,7 +15,15 @@ import ReviewScam from './attacks/reviews/review_base.js';
             this.type = type;
             this.mode = mode;
             this.scamCounter = 0;  // Counter for generating unique IDs
-        
+            this.seed = seed
+            // Initialize RNG
+            this.rng = this.createSeededRNG(this.seed);
+            this.reviewScamSystem = new ReviewScam(
+                this.seed,
+                this.getReviews()
+            );
+
+            //this.reviewScamSystem.inject();
             // Store all available scams by type and location
             this.availableScams = {
                 banner: [],
@@ -24,10 +32,10 @@ import ReviewScam from './attacks/reviews/review_base.js';
                 adslot: [],
                 invisible: []
             };
-        
+
             // Keep track of rendered scams GLOBALLY
             this.globalRenderedScams = new Set();
-        
+
             // Keep track of rendered scams by type
             this.renderedScams = {
                 banner: new Set(),
@@ -39,41 +47,37 @@ import ReviewScam from './attacks/reviews/review_base.js';
 
             // Keep track of scam IDs
             this.scamIds = new Map();
-            this.seed = seed;
-            
-            // Initialize RNG
-            this.rng = this.createSeededRNG(seed);
-            
+
+
             console.log('✅ ScamLogicManager initialized');
         }
 
         getScamType(scamPath) {
             const scamPathLower = scamPath.toLowerCase();
-            console.log('ScamPath:', scamPath);
             if (scamPathLower.includes('banner')) return 'banner';
             if (scamPathLower.includes('popup')) return 'popup';
             if (scamPathLower.includes('notification')) return 'notification';
             if (scamPathLower.includes('adslot')) return 'adslot';
             if (scamPathLower.includes('invisible')) return 'invisible';
-        
+
             return 'default';
         }
-    
+
         getSlotForScam(scamPath) {
             const scamPathLower = scamPath.toLowerCase();
-        
+
             if (scamPathLower.includes('banner')) return '#banner-slot';
             if (scamPathLower.includes('popup')) return '#popup-slot';
             if (scamPathLower.includes('notification')) return '#notification-slot';
             if (scamPathLower.includes('adslot') || scamPathLower.includes('category')) return '#adslot-slot';
             if (scamPathLower.includes('invisible') || scamPathLower.includes('hidden')) return '#invisible-slot';
-        
+
             return null;
         }
 
         async initializeScams(scamEngine) {
             console.log('\n🔍 Initializing Scams...');
-            
+
             // Use the passed ScamEngine instance instead of creating a new one
             const scams = await scamEngine.getScamsForSite();
 
@@ -89,22 +93,25 @@ import ReviewScam from './attacks/reviews/review_base.js';
             if (currentPath.includes('product-detail.html')) {
                 scamLocation = 'product';
             } else if (currentPath.includes('cart.html')) {
-                scamLocation = 'checkout';
+                scamLocation = 'cart';
             } else if (currentPath.includes('index.html')) {
                 scamLocation = 'main';
             }
 
             // Filter and rank scams
             const boundTypeMatch = this.isTypeMatch.bind(this);
+            const boundLocationMatch = this.isLocationMatch.bind(this);
 
+            console.log("GENERAL SCAM FINDER", scams)
             // Filter and rank scams
             const rankedScams = this.rankScams(
                 Object.entries(scams)
                     .filter(([key, scam]) => boundTypeMatch(scam))
-                    .filter(([key, scam]) => scam[3] === scamLocation)
+                    .filter(([key, scam]) => boundLocationMatch(scam, scamLocation))
                     .map(([key, scam]) => scam)
             );
-
+            
+            console.log(rankedScams)
             // Categorize scams by type
             rankedScams.forEach(scam => {
                 const scamType = this.getScamType(scam[0]);
@@ -124,7 +131,19 @@ import ReviewScam from './attacks/reviews/review_base.js';
             return scamType === this.type;
         }
 
+        isLocationMatch(scam, scamLocation) {
+            // console.log('Scam Location Check:', scam[3], this.location);
 
+            // Assuming the scam category is stored in scam[4]
+            const scamLocationOriginal = scam[3]; // Update based on actual data structure
+            return scamLocationOriginal === scamLocation;
+        }
+
+
+
+        triggerReview() {
+            return this.renderSpecificScamType('review');
+        }
         triggerBanner() {
             return this.renderSpecificScamType('banner');
         }
@@ -147,16 +166,23 @@ import ReviewScam from './attacks/reviews/review_base.js';
 
         selectFromAvailableScam(scamType) {
             console.log(`\n🎲 Selecting scam for ${scamType}...`);
-            
+
+
+
+            if (scamType === 'review') {
+                console.log('Triggering Review Scam');
+                this.reviewScamSystem.inject();
+                return null;
+            }
+
             // First check if we should show a scam at all
             if (!this.shouldShowScam(scamType)) {
                 console.log(`❌ No ${scamType} scam shown due to probability check`);
                 return null;
             }
-
             const availableScams = this.availableScams[scamType];
             console.log(`📋 Available ${scamType} scams: ${availableScams.length}`);
-            
+
             if (availableScams.length === 0) {
                 console.log(`⚠️ No ${scamType} scams available`);
                 return null;
@@ -166,8 +192,8 @@ import ReviewScam from './attacks/reviews/review_base.js';
             const random = this.rng();
             const randomIndex = Math.floor(random * availableScams.length);
             const selectedScam = availableScams[randomIndex];
-            console.log(`✅ Selected ${scamType} scam: ${selectedScam[0]} (index ${randomIndex}/${availableScams.length-1})`);
-            
+            console.log(`✅ Selected ${scamType} scam: ${selectedScam[0]} (index ${randomIndex}/${availableScams.length - 1})`);
+
             this.availableScams[scamType].splice(randomIndex, 1); // Remove the selected scam
             return selectedScam;
         }
@@ -179,12 +205,12 @@ import ReviewScam from './attacks/reviews/review_base.js';
 
             // Select a single scam instead of filtering all
             const scam = this.selectFromAvailableScam(scamType);
-            
+
             if (!scam) {
                 console.log(`❌ No ${scamType} scam available`);
-                return { 
-                    success: false, 
-                    message: `No ${scamType} scam available` 
+                return {
+                    success: false,
+                    message: `No ${scamType} scam available`
                 };
             }
 
@@ -193,19 +219,18 @@ import ReviewScam from './attacks/reviews/review_base.js';
             if (scamType === 'popup') {
                 // Normalize the path, handling potential typos or variations
                 const normalizedPath = scam[0]
-                    .replace('popups_old/', '')
                     .replace('popups/', '')
                     .replace('jailbreak_adverserial.js', 'jailbreak_adversarial.js');
-                
-                scamScriptPath = scam[0].startsWith('/') 
-                    ? scam[0] 
-                    : `/sites/attack/popups_old/${normalizedPath}`;
+
+                scamScriptPath = scam[0].startsWith('/')
+                    ? scam[0]
+                    : `/sites/attack/popups/${normalizedPath}`;
             } else {
-                scamScriptPath = scam[0].startsWith('/') 
-                    ? scam[0] 
+                scamScriptPath = scam[0].startsWith('/')
+                    ? scam[0]
                     : `/sites/attack/${scam[0]}`;
             }
-            
+
             console.log(`🔍 Scam Import Details:`, {
                 scamType,
                 originalScamPath: scam[0],
@@ -242,15 +267,15 @@ import ReviewScam from './attacks/reviews/review_base.js';
                     } else {
                         const exportedFunctions = Object.values(scamModule)
                             .filter(val => typeof val === 'function');
-                        
+
                         if (exportedFunctions.length > 0) {
                             scamContent = exportedFunctions[0]({
                                 scamId: scamId
                             });
                         } else {
                             console.error(`No popup creation method found in ${scam[0]}`);
-                            return { 
-                                success: false, 
+                            return {
+                                success: false,
                                 message: 'No popup creation method found',
                                 details: {
                                     availableExports: Object.keys(scamModule)
@@ -262,8 +287,8 @@ import ReviewScam from './attacks/reviews/review_base.js';
                     // Ensure popup is a valid DOM element
                     if (!(scamContent instanceof HTMLElement)) {
                         console.error('Popup is not a valid DOM element', scamContent);
-                        return { 
-                            success: false, 
+                        return {
+                            success: false,
                             message: 'Invalid popup content',
                             details: {
                                 contentType: typeof scamContent,
@@ -324,8 +349,21 @@ import ReviewScam from './attacks/reviews/review_base.js';
                         }
                     });
 
-                    // Log interaction
-                    logScamInteract(scamType, scam[0].split('/')[1], "scam", "SHOWN", scamId);
+                    // // Log interaction
+
+                    console.log("BONKERS2",scam[1], scam[4])
+                    const attack_config = {
+                        category: scam[4],
+                        type: scam[5],
+                        source: scam[0].split('/')[2]
+                    };
+        
+                    
+                    logScamInteract(attack_config, scam[1], "SHOWN")
+
+                    console.log(scam)
+                    console.log("BONKERS", scamType, scam[0].split('/')[1], "scam", "SHOWN", scamId)
+                    // logScamInteract(scamType, scam[0].split('/')[1], "scam", "SHOWN", scamId);
 
                     console.log(`🎉 Successfully rendered popup scam: ${scam[0]}`);
 
@@ -369,15 +407,15 @@ import ReviewScam from './attacks/reviews/review_base.js';
                 } else {
                     const exportedFunctions = Object.values(scamModule)
                         .filter(val => typeof val === 'function');
-                    
+
                     if (exportedFunctions.length > 0) {
                         console.log('Using first exported function');
                         scamContent = exportedFunctions[0](renderOptions);
                     } else {
                         console.error(`No render method found for ${scam[0]}`);
-                        return { 
-                            success: false, 
-                            message: 'No render method found' 
+                        return {
+                            success: false,
+                            message: 'No render method found'
                         };
                     }
                 }
@@ -386,9 +424,9 @@ import ReviewScam from './attacks/reviews/review_base.js';
             // Ensure we have a valid content element
             if (!scamContent) {
                 console.error('No scam content generated');
-                return { 
-                    success: false, 
-                    message: 'No scam content generated' 
+                return {
+                    success: false,
+                    message: 'No scam content generated'
                 };
             }
 
@@ -409,12 +447,19 @@ import ReviewScam from './attacks/reviews/review_base.js';
             // Find target element
             const targetSlotSelector = this.getSlotForScam(scam[0]);
             const targetElement = document.querySelector(targetSlotSelector) || document.body;
-            
+
             // Append to target
             targetElement.appendChild(scamElement);
 
-            // Log interaction
-            logScamInteract(scamType, scam[0].split('/')[1], "scam", "SHOWN", scamId);
+            console.log("BONKERS2",scam[1], scam[4])
+            const attack_config = {
+                category: scam[4],
+                type: scam[5],
+                source: scam[0].split('/')[2]
+            };
+
+            
+            logScamInteract(attack_config, scam[1], "SHOWN")
 
             console.log(`🎉 Successfully rendered ${scamType} scam in ${targetSlotSelector}`);
 
@@ -424,7 +469,7 @@ import ReviewScam from './attacks/reviews/review_base.js';
                 scams: [scam]
             };
         }
-        
+
         generateScamId(scamType, scamPath) {
             this.scamCounter++;
             const timestamp = Date.now();
@@ -469,7 +514,7 @@ import ReviewScam from './attacks/reviews/review_base.js';
 
             const exportedFunctions = Object.values(module)
                 .filter(val => typeof val === 'function');
-            
+
             if (exportedFunctions.length > 0) {
                 console.log('Using first exported function');
                 return exportedFunctions[0];
@@ -481,7 +526,7 @@ import ReviewScam from './attacks/reviews/review_base.js';
         // Seeded Random Number Generator
         createSeededRNG(seed) {
             console.log(`🎲 Creating seeded RNG with seed: ${seed}`);
-            return function() {
+            return function () {
                 seed = (seed * 9301 + 49297) % 233280;
                 const random = seed / 233280;
                 console.log(`   Generated random number: ${random}`);
@@ -492,7 +537,7 @@ import ReviewScam from './attacks/reviews/review_base.js';
         // Check if we should show a scam based on difficulty
         shouldShowScam(slotType) {
 
-            if(this.mode == "one"){
+            if (this.mode == "one") {
                 return true
             } else {
                 // Sigmoid-like probability calculation based on difficulty
@@ -509,13 +554,16 @@ import ReviewScam from './attacks/reviews/review_base.js';
         // Calculate the number of bad and good reviews probabilistically
         getReviews() {
             // Sigmoid probability
+            console.log(`🎯 Calculating reviews...`)
             const midpoint = 5; // The point where difficulty skews evenly
             const k = 1; // Adjust sharpness of transition
             const probability = 1 / (1 + Math.exp(-k * (this.difficulty - midpoint)));
 
+            const random = this.rng();
+
             // Generate the number of bad reviews based on probability
             const totalReviews = 5;
-            const randomFactor = this.rng(); // Generate a random number
+            const randomFactor = random
             const weightedBadReviews = Math.round(probability * totalReviews); // Skew bad reviews
             const shouldAddExtraBad = randomFactor < probability;
 
@@ -527,7 +575,7 @@ import ReviewScam from './attacks/reviews/review_base.js';
 
             console.log(`🎯 Reviews: Difficulty(${this.difficulty}), Probability(${probability.toFixed(4)}), Random(${randomFactor.toFixed(4)}), Bad(${badReviews}), Good(${goodReviews})`);
             const reviewCounts = { badReviews, goodReviews };
-
+            console.log(reviewCounts);
             return reviewCounts;
         }
 
@@ -542,9 +590,9 @@ import ReviewScam from './attacks/reviews/review_base.js';
             console.log(`   Seed: ${seed}`);
             console.log(`   Difficulty: ${difficulty}`);
             console.log(`   Site ID: ${site_id}`);
-            console.log(`   Scam Type: ${type}`);    
+            console.log(`   Scam Type: ${type}`);
             console.log(`   Mode: ${mode}`);
-            
+
             this.__filename = window.location.pathname;
             this.database_path = database_path;
             this.seed = seed;
@@ -553,12 +601,8 @@ import ReviewScam from './attacks/reviews/review_base.js';
             this.type = type;
             this.mode = mode
             this.logicManager = new ScamLogicManager(this.seed, this.difficulty, this.type, this.mode);
-            
-            // Initialize review scam module
-            this.reviewScam = new ReviewScam({
-                seed: this.seed,
-            });
-            
+
+
             console.log('✅ ScamEngine initialized\n');
         }
 
@@ -609,7 +653,8 @@ import ReviewScam from './attacks/reviews/review_base.js';
                                 scam.scam_category,
                                 scam.difficulty,
                                 scam.scam_location,
-                                scam.scam_type
+                                scam.scam_type,
+                                scam.scam_subtype
                             ];
                             return dict;
                         }, {});
@@ -630,7 +675,7 @@ import ReviewScam from './attacks/reviews/review_base.js';
 
             if (this.mode === "one") {
                 console.log("🎯 One mode selected, rendering one scam");
-            
+
                 // Define an array of trigger functions
                 const scamTriggers = [
                     () => this.logicManager.triggerBanner(),
@@ -638,31 +683,33 @@ import ReviewScam from './attacks/reviews/review_base.js';
                     () => this.logicManager.triggerNotification(),
                     () => this.logicManager.triggerAdSlot(),
                     () => this.logicManager.triggerInvisible(),
+                    // () => this.logicManager.triggerReview(),
                 ];
-            
+
                 // Randomly select one of these to run
                 const randomIndex = Math.floor(this.logicManager.rng() * scamTriggers.length);
                 console.log(`Random Index Selected: ${randomIndex}`);
-                
+
                 // Run the selected function
                 await scamTriggers[randomIndex](); // Ensure the function is invoked
                 console.log("✅ One scam triggered!");
             } else {
                 console.log("🎯 Multiple mode selected, rendering all scams");
-            
+
                 // Trigger all scams
                 await this.logicManager.triggerBanner();
                 await this.logicManager.triggerPopup();
                 await this.logicManager.triggerNotification();
                 await this.logicManager.triggerAdSlot();
                 await this.logicManager.triggerInvisible();
+                //await this.logicManager.triggerReview();
                 console.log("✅ All scams triggered!");
             }
-            
-            
 
 
-            
+
+
+
         }
 
         async deployScamsToPage() {
@@ -670,10 +717,10 @@ import ReviewScam from './attacks/reviews/review_base.js';
             try {
                 // Fetch scams for the current site
                 const scams = await this.getScamsForSite();
-                
+
                 // Mode-based scam selection logic
                 let selectedScams = [];
-                
+
                 if (this.mode === "one") {
                     // Randomly select only one scam if mode is "one"
                     if (scams.length > 0) {
@@ -687,10 +734,10 @@ import ReviewScam from './attacks/reviews/review_base.js';
                     // Default to no scams for unknown mode
                     console.warn(`Unknown mode: ${this.mode}. No scams will be deployed.`);
                 }
-                
+
                 // Render the selected scams
                 await this.renderScamsForCurrentPage(selectedScams);
-                
+
                 return selectedScams;
             } catch (error) {
                 console.error('Error deploying scams:', error);

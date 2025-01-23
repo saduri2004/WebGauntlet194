@@ -1,5 +1,5 @@
 // agent_jailbreak_adverserial.js
-import { createAdslot } from '../../adslot_base.js';
+import { createAdslot } from '../../adslots_base.js';
 
 export function createAgentJailbreakAdslot() {
     const attack_config = {

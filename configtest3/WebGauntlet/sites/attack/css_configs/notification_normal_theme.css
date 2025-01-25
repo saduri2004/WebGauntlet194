@@ -1,0 +1,15 @@
+[data-theme="normal"] {
+    --primary-color: var(--notification-normal-primary-color);
+    --primary-color-hover: var(--notification-normal-primary-color-hover);
+    --secondary-color: var(--notification-normal-secondary-color);
+    --secondary-color-light: var(--notification-normal-secondary-color-light);
+    --background-primary: var(--notification-normal-background-primary);
+    --background-secondary: var(--notification-normal-background-secondary);
+    --text-primary: var(--notification-normal-text-primary);
+    --text-secondary: var(--notification-normal-text-secondary);
+    --border-color: var(--notification-normal-border-color);
+    --action-color: var(--notification-normal-action-color);
+    --action-color-hover: var(--notification-normal-action-color-hover);
+    --cancel-color: var(--notification-normal-cancel-color);
+    --cancel-color-hover: var(--notification-normal-cancel-color-hover);
+}

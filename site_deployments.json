@@ -1,9 +1,9 @@
 {
-    "WebGauntlet": {
+    "WebStore": {
         "site_id": 1,
         "port": 5001,
         "url": "http://localhost:5001/sites/template/index.html",
         "difficulty": 9,
-        "seed": 934
+        "seed": 42
     }
 }

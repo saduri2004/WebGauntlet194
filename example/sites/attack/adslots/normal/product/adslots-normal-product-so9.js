@@ -3,12 +3,12 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Verify Account Ownership",
-        subtitle: "Enter your username and password to regain access.",
-        extra: "Enter Username and Password Here", 
+        title: "Pending Gift Card Credit",
+        subtitle: "We have a gift card balance under your email. Verify to claim.",
+        extra: "Enter Email & Payment Method", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Claim Gift Card",
+        cancelText: "Reject Gift",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "product" },

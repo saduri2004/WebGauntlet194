@@ -3,12 +3,12 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "ALERT: Suspicious login detected!",
-        subtitle: "Someone tried to access your account from an unknown device. Secure your account now!",
+        title: "WARNING: Potential data breach attempt!",
+        subtitle: "Unusual data downloads from unknown sources. Investigate promptly.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Investigate Now",
+        cancelText: "Ignore & Risk Breach",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },

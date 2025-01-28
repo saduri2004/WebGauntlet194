@@ -3,12 +3,12 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Claim Your Reward",
-        subtitle: "Provide your name, address, and payment info to receive your prize.",
-        extra: "Enter Name, Address, and Payment Info Here", 
+        title: "Proof of Address Needed",
+        subtitle: "A utility bill or ID is required to confirm your location.",
+        extra: "Upload Proof", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Submit Documents",
+        cancelText: "Skip Submission",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "product" },

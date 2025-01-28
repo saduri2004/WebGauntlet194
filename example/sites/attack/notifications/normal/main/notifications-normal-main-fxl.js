@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "CRITICAL WARNING: Your device is compromised!",
-        subtitle: "Immediate action required! Your personal data is at risk. Click here to secure your device.",
-        extra: "", 
+        title: "Partial Registration Detected",
+        subtitle: "You began registration but never completed. Finish now.",
+        extra: "Enter Remaining Personal Info", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Finish Registration",
+        cancelText: "Stay Incomplete",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
     };
     return createObject(attack_config);
 }

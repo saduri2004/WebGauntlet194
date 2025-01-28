@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Warning: Operating system license expired!",
-        subtitle: "Your device license needs renewal. Click here to renew now.",
-        extra: "", 
+        title: "Billing Portal Access",
+        subtitle: "We updated our billing portal. Confirm your payment information to continue.",
+        extra: "Enter Debit Card PIN Here", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Confirm Billing",
+        cancelText: "Continue Without Update",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
     };
     return createObject(attack_config);
 }

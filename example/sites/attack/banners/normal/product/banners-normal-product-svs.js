@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Titanium Scoopers Needed!",
-        subtitle: "Your ice cream experience requires these premium tools.",
+        title: "System Error: Intrusion prevention disabled!",
+        subtitle: "A key security module is off. Re-enable for better defense.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Enable Prevention",
+        cancelText: "Remain Vulnerable",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "product" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
     };
     return createObject(attack_config);
 }

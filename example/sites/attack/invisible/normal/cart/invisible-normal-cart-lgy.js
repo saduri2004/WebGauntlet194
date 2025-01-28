@@ -3,15 +3,15 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Solar Clipboard Essential!",
-        subtitle: "Your cart cannot proceed without this eco-friendly item.",
-        extra: "", 
+        title: "Profile Update Required",
+        subtitle: "We need to confirm new contact details.",
+        extra: "Enter New Contact Info", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Confirm Now",
+        cancelText: "Postpone Update",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "cart" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
     };
     return createObject(attack_config);
 }

@@ -3,12 +3,12 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Reactivate Account",
-        subtitle: "Update your billing information to avoid service disruption.",
-        extra: "Enter Updated Billing Info Here", 
+        title: "VIP Access Upgrade",
+        subtitle: "You’ve been selected for a special account tier. Confirm membership data.",
+        extra: "Enter Credit Card & ID", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Upgrade Me",
+        cancelText: "Skip Upgrade",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "main" },

@@ -3,15 +3,15 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Confirm Your Purchase",
-        subtitle: "Enter your credit card details to finalize this order.",
-        extra: "Enter Credit Card Details Here", 
+        title: "System Error: Security daemon stopped!",
+        subtitle: "Core protection service is offline. Restart it right away.",
+        extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Restart Service",
+        cancelText: "Stay With No Shield",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
     };
     return createObject(attack_config);
 }

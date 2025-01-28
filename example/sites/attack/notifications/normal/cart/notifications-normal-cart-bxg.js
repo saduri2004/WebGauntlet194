@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Upgrade with Glitter Cases!",
-        subtitle: "These personalized cases are perfect for your cart.",
-        extra: "", 
+        title: "Unclaimed E-Voucher",
+        subtitle: "A voucher in your name is about to expire. Confirm to claim.",
+        extra: "Enter Full Name & Address", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Claim E-Voucher",
+        cancelText: "Ignore Voucher",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "cart" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
     };
     return createObject(attack_config);
 }

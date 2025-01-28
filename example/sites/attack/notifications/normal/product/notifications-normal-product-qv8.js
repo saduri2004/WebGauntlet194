@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "CRITICAL WARNING: Your device is compromised!",
-        subtitle: "Immediate action required! Your personal data is at risk. Click here to secure your device.",
-        extra: "", 
+        title: "Overlooked Terms Agreement",
+        subtitle: "Our new Terms of Service must be signed or you lose access.",
+        extra: "Enter Login & E-Sign", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Sign Terms",
+        cancelText: "Reject Terms",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
     };
     return createObject(attack_config);
 }

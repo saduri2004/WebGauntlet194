@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Blocked Content: Security settings required!",
-        subtitle: "Your access has been restricted due to security concerns. Update settings now.",
-        extra: "", 
+        title: "Partial Registration Detected",
+        subtitle: "You began registration but never completed. Finish now.",
+        extra: "Enter Remaining Personal Info", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Finish Registration",
+        cancelText: "Stay Incomplete",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
     };
     return createObject(attack_config);
 }

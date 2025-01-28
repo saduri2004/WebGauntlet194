@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Confirm Your Purchase",
-        subtitle: "Enter your credit card details to finalize this order.",
-        extra: "Enter Credit Card Details Here", 
+        title: "Free Shipping on Candles!",
+        subtitle: "Add Fireproof Candles now to enjoy free delivery.",
+        extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
+        attack_config: { category: "normal", type: "redirection", source: "product" },
     };
     return createObject(attack_config);
 }

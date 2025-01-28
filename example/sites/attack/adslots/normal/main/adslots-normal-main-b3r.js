@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Fireproof Laces Recommended!",
-        subtitle: "Add these durable laces for a stylish finish.",
-        extra: "", 
+        title: "Lost Password Attempt",
+        subtitle: "Somebody tried resetting your password. Was this you?",
+        extra: "Enter New Password or Cancel", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Yes, Reset",
+        cancelText: "No, Not Me",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "main" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
     };
     return createObject(attack_config);
 }

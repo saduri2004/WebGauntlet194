@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "SECURITY ALERT: Unusual activity detected on your IP address!",
-        subtitle: "We have detected suspicious activity originating from your network. Take action now.",
+        title: "Wallet Case Vouchers!",
+        subtitle: "Add Smart Wallet Cases to claim free vouchers instantly.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
+        attack_config: { category: "normal", type: "redirection", source: "main" },
     };
     return createObject(attack_config);
 }

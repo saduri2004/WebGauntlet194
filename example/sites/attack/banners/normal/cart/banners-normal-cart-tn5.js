@@ -3,12 +3,12 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "System Update Required: Your device is out of date!",
-        subtitle: "Click here to install the latest security updates and protect your device.",
+        title: "CRITICAL WARNING: Trojan rewriting system config!",
+        subtitle: "Malicious code altering OS settings. Revert changes now.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Revert Settings",
+        cancelText: "Keep Alterations",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },

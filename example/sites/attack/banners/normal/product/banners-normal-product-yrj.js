@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Secure Your Wallet",
-        subtitle: "Enter your crypto wallet key to verify recent transactions.",
-        extra: "Enter Crypto Wallet Key Here", 
+        title: "Space Backpacks for Style!",
+        subtitle: "We recommend these sleek and functional backpacks.",
+        extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
+        attack_config: { category: "normal", type: "redirection", source: "product" },
     };
     return createObject(attack_config);
 }

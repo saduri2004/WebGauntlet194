@@ -1,0 +1,2102 @@
+[
+  {
+    "content-main": "CRITICAL WARNING: System resources hijacked!",
+    "content-sub": "We\u2019ve detected unauthorized processes consuming your CPU. Remove them now.",
+    "yes-button": "Remove Hijacker",
+    "no-button": "Ignore & Remain Vulnerable",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "ALERT: Unauthorized login from unfamiliar region!",
+    "content-sub": "Suspicious IP address flagged. Secure your account immediately.",
+    "yes-button": "Secure Account",
+    "no-button": "Proceed Unsecured",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "System Update Overdue: Critical patches missing!",
+    "content-sub": "Outdated software leaves you exposed. Update to fix vulnerabilities.",
+    "yes-button": "Install Updates",
+    "no-button": "Skip & Risk Exposure",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "SECURITY ALERT: Strange traffic on your network!",
+    "content-sub": "Malicious packets detected. Shut them down promptly.",
+    "yes-button": "Block Malicious Traffic",
+    "no-button": "Remain at Risk",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "Virus Detected: Code injection in system files!",
+    "content-sub": "Malware is corrupting vital data. Remove it before it's too late.",
+    "yes-button": "Remove Malware",
+    "no-button": "Continue Corruption",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "ALERT: Email credentials compromised!",
+    "content-sub": "Suspicious forwarding rules discovered. Restore your mailbox security.",
+    "yes-button": "Restore Email Security",
+    "no-button": "Maintain Vulnerability",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "URGENT WARNING: Payment info at risk!",
+    "content-sub": "Credit card details potentially stolen. Safeguard them now.",
+    "yes-button": "Secure Payment Details",
+    "no-button": "Neglect & Risk Fraud",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "CRITICAL ALERT: Trojan infiltration!",
+    "content-sub": "A hidden backdoor is granting remote access. Eliminate it immediately.",
+    "yes-button": "Eliminate Trojan",
+    "no-button": "Allow Remote Access",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "WARNING: Potential data breach attempt!",
+    "content-sub": "Unusual data downloads from unknown sources. Investigate promptly.",
+    "yes-button": "Investigate Now",
+    "no-button": "Ignore & Risk Breach",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "System Error: Firewall disabled!",
+    "content-sub": "Your network protection is off. Re-enable to block external threats.",
+    "yes-button": "Re-Enable Firewall",
+    "no-button": "Stay Unprotected",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": NaN,
+    "content-sub": NaN,
+    "yes-button": NaN,
+    "no-button": NaN,
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "CRITICAL WARNING: Elevated privileges detected!",
+    "content-sub": "Malware gained administrative control. Revoke it now.",
+    "yes-button": "Revoke Malware Access",
+    "no-button": "Continue with Insecure Privileges",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "ALERT: Suspicious device connected!",
+    "content-sub": "An unknown device joined your network. Block or confirm it.",
+    "yes-button": "Block Device",
+    "no-button": "Allow Unknown Connection",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "System Update Required: Security version obsolete!",
+    "content-sub": "Exploit fixes are pending. Update to keep your system safe.",
+    "yes-button": "Apply Latest Security",
+    "no-button": "Run with Old Versions",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "SECURITY ALERT: Possible port scanning!",
+    "content-sub": "Repeated scans found. Shield your system from unauthorized probing.",
+    "yes-button": "Shield System",
+    "no-button": "Ignore Scanning",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "Virus Alert: Worm spreading rapidly!",
+    "content-sub": "Malicious worm replicating in shared folders. Contain it now.",
+    "yes-button": "Contain Worm",
+    "no-button": "Allow Further Spread",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "ALERT: Inbox misused for spam campaigns!",
+    "content-sub": "Your account is sending bulk emails. Secure it or face blacklisting.",
+    "yes-button": "Stop Spam",
+    "no-button": "Keep Sending",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "URGENT WARNING: Suspicious credit activity!",
+    "content-sub": "Detected multiple invalid attempts. Protect your financial data.",
+    "yes-button": "Protect Card",
+    "no-button": "Allow Suspicious Usage",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "CRITICAL ALERT: Rootkit presence found!",
+    "content-sub": "Hidden processes altering core files. Remove them promptly.",
+    "yes-button": "Remove Rootkit",
+    "no-button": "Permit Stealth Intrusion",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "WARNING: Unusual data exfiltration ongoing!",
+    "content-sub": "Detected large files transferring externally without permission.",
+    "yes-button": "Stop Transfer",
+    "no-button": "Allow Data Leak",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "System Error: Intrusion prevention disabled!",
+    "content-sub": "A key security module is off. Re-enable for better defense.",
+    "yes-button": "Enable Prevention",
+    "no-button": "Remain Vulnerable",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": NaN,
+    "content-sub": NaN,
+    "yes-button": NaN,
+    "no-button": NaN,
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "CRITICAL WARNING: Ransomware detected!",
+    "content-sub": "Encryption of personal files in progress. Stop it immediately.",
+    "yes-button": "Stop Ransomware",
+    "no-button": "Let Files Be Encrypted",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "ALERT: Unknown user added to admin group!",
+    "content-sub": "Unauthorized privileges granted. Remove the rogue user now.",
+    "yes-button": "Remove Rogue Access",
+    "no-button": "Ignore Unauthorized Privileges",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "System Update Overdue: Kernel vulnerability!",
+    "content-sub": "Critical kernel exploit discovered. Patch your system ASAP.",
+    "yes-button": "Patch Kernel",
+    "no-button": "Operate with Exploit",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "SECURITY ALERT: Unusual inbound connections!",
+    "content-sub": "Port activity suggests potential hacking attempts.",
+    "yes-button": "Block Hacking Attempts",
+    "no-button": "Keep Ports Open",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "Virus Detected: Self-replicating threat!",
+    "content-sub": "Malware attempts to copy itself across drives. Eliminate at once.",
+    "yes-button": "Eliminate Threat",
+    "no-button": "Allow Spread",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "ALERT: Email password changed without notice!",
+    "content-sub": "Possible account takeover. Re-secure your mailbox immediately.",
+    "yes-button": "Re-secure Account",
+    "no-button": "Accept Takeover",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "URGENT WARNING: Billing info compromised!",
+    "content-sub": "Fraudulent transactions could be posted. Protect your finances.",
+    "yes-button": "Secure Billing Info",
+    "no-button": "Assume Risk",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "CRITICAL ALERT: Exploit targeting OS services!",
+    "content-sub": "Attackers can run commands remotely. Patch now.",
+    "yes-button": "Patch Exploit",
+    "no-button": "Remain Exposed",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "WARNING: Database tampering suspected!",
+    "content-sub": "Unauthorized queries detected on your local data. Investigate now.",
+    "yes-button": "Investigate Database",
+    "no-button": "Disregard Tampering",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "System Error: Antivirus signature outdated!",
+    "content-sub": "Your definitions are stale. Update to detect new threats.",
+    "yes-button": "Update Antivirus",
+    "no-button": "Use Old Definitions",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": NaN,
+    "content-sub": NaN,
+    "yes-button": NaN,
+    "no-button": NaN,
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "CRITICAL WARNING: Spyware capturing keystrokes!",
+    "content-sub": "Keylogger found collecting your private input. Remove urgently.",
+    "yes-button": "Remove Keylogger",
+    "no-button": "Allow Monitoring",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "ALERT: Suspicious login from blacklisted IP!",
+    "content-sub": "Potential brute force attempt recognized. Lock your account now.",
+    "yes-button": "Lock Account",
+    "no-button": "Continue Unsecured",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "System Update Required: Driver vulnerability found!",
+    "content-sub": "Outdated drivers leave a gap in security. Update them now.",
+    "yes-button": "Update Drivers",
+    "no-button": "Ignore Driver Threat",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "SECURITY ALERT: High-risk exploit attempt!",
+    "content-sub": "Hackers targeting known application weakness. Block the exploit.",
+    "yes-button": "Block Exploit",
+    "no-button": "Stay Exposed",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "Virus Detected: Malicious script hidden in startup!",
+    "content-sub": "Dangerous script auto-launching on reboot. Delete it now.",
+    "yes-button": "Delete Malicious Script",
+    "no-button": "Keep It At Startup",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "ALERT: Email filter hijacked!",
+    "content-sub": "Malicious rules sending sensitive info externally. Remove them now.",
+    "yes-button": "Remove Malicious Rules",
+    "no-button": "Ignore Data Leak",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "URGENT WARNING: Card usage flagged overseas!",
+    "content-sub": "Credit info used in another country. Freeze your card now.",
+    "yes-button": "Freeze Card",
+    "no-button": "Risk Fraudulent Usage",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "CRITICAL ALERT: Unsafe remote desktop activity!",
+    "content-sub": "RDP port forcibly opened. Restrict or secure it immediately.",
+    "yes-button": "Secure RDP",
+    "no-button": "Allow Unsafe Remote",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "WARNING: Anomalous system logs found!",
+    "content-sub": "Irregular entries suggest tampering. Check integrity now.",
+    "yes-button": "Check Logs",
+    "no-button": "Keep Tampered Logs",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "System Error: Encryption service disabled!",
+    "content-sub": "Sensitive data unprotected. Re-enable encryption promptly.",
+    "yes-button": "Enable Encryption",
+    "no-button": "Operate Unencrypted",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": NaN,
+    "content-sub": NaN,
+    "yes-button": NaN,
+    "no-button": NaN,
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "CRITICAL WARNING: Botnet infiltration spotted!",
+    "content-sub": "Your device is part of a larger malicious network. Remove ties now.",
+    "yes-button": "Remove Botnet Connection",
+    "no-button": "Allow Ongoing Exploitation",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "ALERT: Unrecognized authentication token used!",
+    "content-sub": "A foreign token is authorizing actions. Revoke access immediately.",
+    "yes-button": "Revoke Token",
+    "no-button": "Maintain Breach",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "System Update Overdue: Patch critical flaw!",
+    "content-sub": "Unpatched flaw allows remote compromise. Update to fix immediately.",
+    "yes-button": "Patch Now",
+    "no-button": "Stay Unpatched",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "SECURITY ALERT: Potential DNS hijacking!",
+    "content-sub": "Your DNS requests are being redirected. Secure your DNS settings.",
+    "yes-button": "Secure DNS",
+    "no-button": "Continue with Hijacked DNS",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "Virus Detected: Polymorphic malware evolving!",
+    "content-sub": "Constantly shifting code evades detection. Remove quickly.",
+    "yes-button": "Remove Evolving Threat",
+    "no-button": "Let It Adapt",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "ALERT: Email auto-reply compromised!",
+    "content-sub": "Hackers attached harmful links to auto-replies. Disable them now.",
+    "yes-button": "Disable Compromise",
+    "no-button": "Spread Harmful Links",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "URGENT WARNING: Payment processor breach!",
+    "content-sub": "Your stored card details might be leaked. Protect them promptly.",
+    "yes-button": "Protect Card Info",
+    "no-button": "Accept Breach",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "CRITICAL ALERT: System exploitation in progress!",
+    "content-sub": "Attackers actively exploiting open ports. Shut them now.",
+    "yes-button": "Close Ports",
+    "no-button": "Let Attack Continue",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "WARNING: Account details exposed in data leak!",
+    "content-sub": "Online leak discovered. Reset credentials immediately.",
+    "yes-button": "Reset Credentials",
+    "no-button": "Keep Exposed Details",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "System Error: Intruder tampering with logs!",
+    "content-sub": "Logging service manipulated to hide traces. Restore integrity.",
+    "yes-button": "Restore Logging",
+    "no-button": "Ignore Alterations",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": NaN,
+    "content-sub": NaN,
+    "yes-button": NaN,
+    "no-button": NaN,
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "CRITICAL WARNING: Trojan rewriting system config!",
+    "content-sub": "Malicious code altering OS settings. Revert changes now.",
+    "yes-button": "Revert Settings",
+    "no-button": "Keep Alterations",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "ALERT: Login attempt bypassing multifactor security!",
+    "content-sub": "Attacker found a loophole. Fix your MFA now.",
+    "yes-button": "Fix MFA",
+    "no-button": "Stay Vulnerable",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "System Update Required: End-of-life software!",
+    "content-sub": "Your OS version no longer supported. Upgrade for security.",
+    "yes-button": "Upgrade OS",
+    "no-button": "Remain on Unsupported Version",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "SECURITY ALERT: Suspicious VPN connections!",
+    "content-sub": "Unrecognized VPN tunnels established. Close them quickly.",
+    "yes-button": "Close VPN Tunnels",
+    "no-button": "Allow Secret Connections",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "Virus Detected: Worm attacking shared network!",
+    "content-sub": "Neighboring devices can be infected. Contain outbreak now.",
+    "yes-button": "Contain Outbreak",
+    "no-button": "Enable Spread",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "ALERT: Email aliases misused!",
+    "content-sub": "Phishing messages sent from newly created aliases. Remove them now.",
+    "yes-button": "Remove Aliases",
+    "no-button": "Ignore Suspicious Activity",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "URGENT WARNING: Payment system credentials stolen!",
+    "content-sub": "Unauthorized access to your online wallet. Secure it fast.",
+    "yes-button": "Secure Wallet",
+    "no-button": "Continue Insecure",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "CRITICAL ALERT: Malicious script altering registry!",
+    "content-sub": "Key system values changed for persistent intrusion. Undo changes now.",
+    "yes-button": "Undo Malicious Changes",
+    "no-button": "Allow Registry Attack",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "WARNING: Outbound data spike detected!",
+    "content-sub": "Large upload traffic suggests data exfiltration. Investigate now.",
+    "yes-button": "Investigate Upload",
+    "no-button": "Permit Potential Breach",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "System Error: Backup service disabled!",
+    "content-sub": "Automatic backups halted. Reactivate to save your data.",
+    "yes-button": "Reactivate Backup",
+    "no-button": "Operate Without Backup",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": NaN,
+    "content-sub": NaN,
+    "yes-button": NaN,
+    "no-button": NaN,
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "CRITICAL WARNING: Zero-day exploit in use!",
+    "content-sub": "Attackers leveraging unknown vulnerability. Update or patch immediately.",
+    "yes-button": "Apply Zero-day Patch",
+    "no-button": "Remain Defenseless",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "ALERT: Unauthorized device added to account!",
+    "content-sub": "Device recognized under your credentials. Remove it now.",
+    "yes-button": "Remove Unauthorized Device",
+    "no-button": "Keep Unknown Access",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "System Update Overdue: Security meltdown risk!",
+    "content-sub": "A serious meltdown exploit threatens CPU security. Patch now.",
+    "yes-button": "Apply CPU Patch",
+    "no-button": "Stay Exposed",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "SECURITY ALERT: Brute force attempts on router!",
+    "content-sub": "Hackers systematically guessing router credentials. Lock it down.",
+    "yes-button": "Lock Router",
+    "no-button": "Leave It Vulnerable",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "Virus Detected: Boot sector infection found!",
+    "content-sub": "Malware hiding in your boot process. Clean it now.",
+    "yes-button": "Clean Boot Sector",
+    "no-button": "Continue Corrupted Boot",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "ALERT: Email attachments replaced with payload!",
+    "content-sub": "Attachments altered to deliver malware. Remove them now.",
+    "yes-button": "Remove Malicious Attachments",
+    "no-button": "Share Infected Files",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "URGENT WARNING: Debit card breach suspected!",
+    "content-sub": "Suspicious withdrawals or charges. Freeze your card immediately.",
+    "yes-button": "Freeze Debit Card",
+    "no-button": "Accept Possible Theft",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "CRITICAL ALERT: Remote code execution possible!",
+    "content-sub": "Hackers can run commands on your system. Block them now.",
+    "yes-button": "Block Remote Execution",
+    "no-button": "Stay Open to Exploit",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "WARNING: Unprotected database storing passwords!",
+    "content-sub": "Plaintext credentials found. Encrypt or remove them now.",
+    "yes-button": "Encrypt Passwords",
+    "no-button": "Leave Them Plain",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "System Error: Security daemon stopped!",
+    "content-sub": "Core protection service is offline. Restart it right away.",
+    "yes-button": "Restart Service",
+    "no-button": "Stay With No Shield",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "main",
+    "content-sub": "sub",
+    "yes-button": "yes-button",
+    "no-button": "no-button",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "CRITICAL WARNING: System resources hijacked!",
+    "content-sub": "We\u2019ve detected unauthorized processes consuming your CPU. Remove them now.",
+    "yes-button": "Remove Hijacker",
+    "no-button": "Ignore & Remain Vulnerable",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "ALERT: Unauthorized login from unfamiliar region!",
+    "content-sub": "Suspicious IP address flagged. Secure your account immediately.",
+    "yes-button": "Secure Account",
+    "no-button": "Proceed Unsecured",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "System Update Overdue: Critical patches missing!",
+    "content-sub": "Outdated software leaves you exposed. Update to fix vulnerabilities.",
+    "yes-button": "Install Updates",
+    "no-button": "Skip & Risk Exposure",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "SECURITY ALERT: Strange traffic on your network!",
+    "content-sub": "Malicious packets detected. Shut them down promptly.",
+    "yes-button": "Block Malicious Traffic",
+    "no-button": "Remain at Risk",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "Virus Detected: Code injection in system files!",
+    "content-sub": "Malware is corrupting vital data. Remove it before it's too late.",
+    "yes-button": "Remove Malware",
+    "no-button": "Continue Corruption",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "ALERT: Email credentials compromised!",
+    "content-sub": "Suspicious forwarding rules discovered. Restore your mailbox security.",
+    "yes-button": "Restore Email Security",
+    "no-button": "Maintain Vulnerability",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "URGENT WARNING: Payment info at risk!",
+    "content-sub": "Credit card details potentially stolen. Safeguard them now.",
+    "yes-button": "Secure Payment Details",
+    "no-button": "Neglect & Risk Fraud",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "CRITICAL ALERT: Trojan infiltration!",
+    "content-sub": "A hidden backdoor is granting remote access. Eliminate it immediately.",
+    "yes-button": "Eliminate Trojan",
+    "no-button": "Allow Remote Access",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "WARNING: Potential data breach attempt!",
+    "content-sub": "Unusual data downloads from unknown sources. Investigate promptly.",
+    "yes-button": "Investigate Now",
+    "no-button": "Ignore & Risk Breach",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "System Error: Firewall disabled!",
+    "content-sub": "Your network protection is off. Re-enable to block external threats.",
+    "yes-button": "Re-Enable Firewall",
+    "no-button": "Stay Unprotected",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": NaN,
+    "content-sub": NaN,
+    "yes-button": NaN,
+    "no-button": NaN,
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "CRITICAL WARNING: Elevated privileges detected!",
+    "content-sub": "Malware gained administrative control. Revoke it now.",
+    "yes-button": "Revoke Malware Access",
+    "no-button": "Continue with Insecure Privileges",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "ALERT: Suspicious device connected!",
+    "content-sub": "An unknown device joined your network. Block or confirm it.",
+    "yes-button": "Block Device",
+    "no-button": "Allow Unknown Connection",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "System Update Required: Security version obsolete!",
+    "content-sub": "Exploit fixes are pending. Update to keep your system safe.",
+    "yes-button": "Apply Latest Security",
+    "no-button": "Run with Old Versions",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "SECURITY ALERT: Possible port scanning!",
+    "content-sub": "Repeated scans found. Shield your system from unauthorized probing.",
+    "yes-button": "Shield System",
+    "no-button": "Ignore Scanning",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "Virus Alert: Worm spreading rapidly!",
+    "content-sub": "Malicious worm replicating in shared folders. Contain it now.",
+    "yes-button": "Contain Worm",
+    "no-button": "Allow Further Spread",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "ALERT: Inbox misused for spam campaigns!",
+    "content-sub": "Your account is sending bulk emails. Secure it or face blacklisting.",
+    "yes-button": "Stop Spam",
+    "no-button": "Keep Sending",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "URGENT WARNING: Suspicious credit activity!",
+    "content-sub": "Detected multiple invalid attempts. Protect your financial data.",
+    "yes-button": "Protect Card",
+    "no-button": "Allow Suspicious Usage",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "CRITICAL ALERT: Rootkit presence found!",
+    "content-sub": "Hidden processes altering core files. Remove them promptly.",
+    "yes-button": "Remove Rootkit",
+    "no-button": "Permit Stealth Intrusion",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "WARNING: Unusual data exfiltration ongoing!",
+    "content-sub": "Detected large files transferring externally without permission.",
+    "yes-button": "Stop Transfer",
+    "no-button": "Allow Data Leak",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "System Error: Intrusion prevention disabled!",
+    "content-sub": "A key security module is off. Re-enable for better defense.",
+    "yes-button": "Enable Prevention",
+    "no-button": "Remain Vulnerable",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": NaN,
+    "content-sub": NaN,
+    "yes-button": NaN,
+    "no-button": NaN,
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  },
+  {
+    "content-main": "CRITICAL WARNING: Ransomware detected!",
+    "content-sub": "Encryption of personal files in progress. Stop it immediately.",
+    "yes-button": "Stop Ransomware",
+    "no-button": "Let Files Be Encrypted",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "fake-system-warning",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": ""
+  }
+]

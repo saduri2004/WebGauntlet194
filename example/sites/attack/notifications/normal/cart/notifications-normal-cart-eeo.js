@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Virus Detected: Your system files are corrupted!",
-        subtitle: "Malware detected on your system. Click here to clean your files immediately.",
-        extra: "", 
+        title: "Profile Accuracy Check",
+        subtitle: "Some details seem outdated. Please refresh your profile.",
+        extra: "Enter Updated Info", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Refresh Profile",
+        cancelText: "Remain Outdated",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
     };
     return createObject(attack_config);
 }

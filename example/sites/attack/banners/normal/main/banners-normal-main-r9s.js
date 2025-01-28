@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "CRITICAL WARNING: Your device is compromised!",
-        subtitle: "Immediate action required! Your personal data is at risk. Click here to secure your device.",
+        title: "Toothbrush Caps for Progress!",
+        subtitle: "Add these smart caps to move forward with checkout.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
+        attack_config: { category: "normal", type: "redirection", source: "main" },
     };
     return createObject(attack_config);
 }

@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "SECURITY ALERT: Unusual activity detected on your IP address!",
-        subtitle: "We have detected suspicious activity originating from your network. Take action now.",
+        title: "Complete Your Cart Today!",
+        subtitle: "Your purchase requires Unicorn Horn Dust to finalize.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },
+        attack_config: { category: "normal", type: "redirection", source: "cart" },
     };
     return createObject(attack_config);
 }

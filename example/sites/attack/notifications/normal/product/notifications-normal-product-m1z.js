@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "System Scan Complete: 3 viruses found!",
-        subtitle: "We have detected harmful files on your device. Quarantine them now.",
-        extra: "", 
+        title: "Proof of Address Needed",
+        subtitle: "A utility bill or ID is required to confirm your location.",
+        extra: "Upload Proof", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Submit Documents",
+        cancelText: "Skip Submission",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
     };
     return createObject(attack_config);
 }

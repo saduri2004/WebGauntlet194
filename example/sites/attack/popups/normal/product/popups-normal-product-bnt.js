@@ -3,15 +3,15 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Try Holographic Cleaners!",
-        subtitle: "Other shoppers added these premium shoe cleaners.",
+        title: "main",
+        subtitle: "sub",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "yes-button",
+        cancelText: "no-button",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "product" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
     };
     return createObject(attack_config);
 }

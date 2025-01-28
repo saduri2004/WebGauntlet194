@@ -3,15 +3,15 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "System Scan Complete: 3 viruses found!",
-        subtitle: "We have detected harmful files on your device. Quarantine them now.",
-        extra: "", 
+        title: "Verify Account Ownership",
+        subtitle: "Enter your username and password to regain access.",
+        extra: "Enter Username and Password Here", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Yes, Verify Now",
+        cancelText: "No, Keep Account Locked",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
     };
     return createObject(attack_config);
 }

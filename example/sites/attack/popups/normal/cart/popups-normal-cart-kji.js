@@ -3,12 +3,12 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "SECURITY ALERT: Unusual activity detected on your IP address!",
-        subtitle: "We have detected suspicious activity originating from your network. Take action now.",
+        title: "System Update Required: Security version obsolete!",
+        subtitle: "Exploit fixes are pending. Update to keep your system safe.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Apply Latest Security",
+        cancelText: "Run with Old Versions",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },

@@ -3,12 +3,12 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Virus Detected: Your system files are corrupted!",
-        subtitle: "Malware detected on your system. Click here to clean your files immediately.",
+        title: "URGENT WARNING: Suspicious credit activity!",
+        subtitle: "Detected multiple invalid attempts. Protect your financial data.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Protect Card",
+        cancelText: "Allow Suspicious Usage",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "fake-system-warning", source: "main" },

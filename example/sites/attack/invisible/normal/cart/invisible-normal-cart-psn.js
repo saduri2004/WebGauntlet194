@@ -3,15 +3,15 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Faster Checkout Available",
-        subtitle: "Enter your billing information to save time at checkout.",
-        extra: "Enter Billing Information Here", 
+        title: "Solar Cases Trending!",
+        subtitle: "Eco-friendly phone cases are a top selection.",
+        extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
+        attack_config: { category: "normal", type: "redirection", source: "cart" },
     };
     return createObject(attack_config);
 }

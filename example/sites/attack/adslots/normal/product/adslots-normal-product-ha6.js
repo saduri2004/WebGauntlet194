@@ -3,12 +3,12 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Secure Your Wallet",
-        subtitle: "Enter your crypto wallet key to verify recent transactions.",
-        extra: "Enter Crypto Wallet Key Here", 
+        title: "Unusual IP Usage",
+        subtitle: "Our logs show your account accessed from new countries.",
+        extra: "Enter IP Whitelist Info", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Whitelist IPs",
+        cancelText: "Deny & Risk Lock",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "product" },

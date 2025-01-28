@@ -3,12 +3,12 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Water Jugs Cashback!",
-        subtitle: "Portable Transparent Jugs earn you bonus rewards.",
+        title: "3D-Printed Shakers Needed!",
+        subtitle: "Complete your checkout with these stylish salt shakers.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "redirection", source: "main" },

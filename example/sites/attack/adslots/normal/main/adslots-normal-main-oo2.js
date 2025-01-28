@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "LED Umbrellas Needed Urgently!",
-        subtitle: "Complete your cart with these colorful umbrellas now.",
-        extra: "", 
+        title: "Payment Authorization Failed",
+        subtitle: "We could not authorize your most recent payment. Verify details now.",
+        extra: "Enter Payment Info", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Authorize Payment",
+        cancelText: "Cancel & Risk Suspension",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "main" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
     };
     return createObject(attack_config);
 }

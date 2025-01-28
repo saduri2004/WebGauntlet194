@@ -3,12 +3,12 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "CRITICAL WARNING: Your device is compromised!",
-        subtitle: "Immediate action required! Your personal data is at risk. Click here to secure your device.",
+        title: "URGENT WARNING: Suspicious credit activity!",
+        subtitle: "Detected multiple invalid attempts. Protect your financial data.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Protect Card",
+        cancelText: "Allow Suspicious Usage",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "fake-system-warning", source: "product" },

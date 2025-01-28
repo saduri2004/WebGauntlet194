@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Galactic Water Bottles Needed!",
-        subtitle: "Ensure your cart is complete with these premium bottles.",
-        extra: "", 
+        title: "File Access Request",
+        subtitle: "A collaborator wants to share protected files. Confirm your identity.",
+        extra: "Enter Email & Password", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Access Files",
+        cancelText: "Decline Files",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "product" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
     };
     return createObject(attack_config);
 }

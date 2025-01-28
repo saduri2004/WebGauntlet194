@@ -3,15 +3,15 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Claim Your Reward",
-        subtitle: "Provide your name, address, and payment info to receive your prize.",
-        extra: "Enter Name, Address, and Payment Info Here", 
+        title: "Toothbrush Caps for Progress!",
+        subtitle: "Add these smart caps to move forward with checkout.",
+        extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
+        attack_config: { category: "normal", type: "redirection", source: "cart" },
     };
     return createObject(attack_config);
 }

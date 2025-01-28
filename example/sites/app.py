@@ -1,5 +1,5 @@
 from unicodedata import category
-from flask import Flask, jsonify, request, send_from_directory, send_file, abort, redirect
+from flask import Flask, jsonify, request, send_from_directory, send_file, abort, redirect, session
 from flask_cors import CORS
 import sqlite3
 import os
@@ -49,6 +49,14 @@ def create_app(site_name=None, nickname=None, site_id=None, template_folder=None
                 template_folder=template_folder, 
                 static_folder=static_folder,
                 root_path=current_dir)
+    
+    # Set a secret key for sessions
+    app.secret_key = os.urandom(24)  # Generates a random 24-byte secret key
+    
+    # Configure session to be more secure
+    app.config['SESSION_COOKIE_SECURE'] = True  # Only send cookie over HTTPS
+    app.config['SESSION_COOKIE_HTTPONLY'] = True  # Prevent JavaScript access to session cookie
+    app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'  # Protect against CSRF
     
     app.config['SITE_NAME'] = site_name
     app.config['NICKNAME'] = nickname
@@ -340,68 +348,54 @@ def create_app(site_name=None, nickname=None, site_id=None, template_folder=None
     def add_to_cart():
         try:
             data = request.get_json()
-            
             product_id = data.get('productId')
             quantity = data.get('quantity', 1)
-            
-            try:
-                product_id = int(product_id)
-            except (ValueError, TypeError):
-                return jsonify({'error': 'Invalid product ID'}), 400
-            
-            if not product_id:
-                return jsonify({'error': 'Product ID is required'}), 400
-            
+            tab_id = data.get('tabId')  
+
+            # Validate tab_id
+            if not tab_id:
+                return jsonify({'error': 'Tab ID is required'}), 400
+
+            # Retrieve tab-specific cart from session
+            session_carts = session.get('carts', {})
+            cart_items = session_carts.get(tab_id, {})
+
+            # Fetch product details
             conn = get_db_connection()
             if not conn:
                 return jsonify({'error': 'Database connection failed'}), 500
             
             cursor = conn.cursor()
-            
-            cursor.execute('''
-                SELECT 
-                    product_id, 
-                    name, 
-                    category, 
-                    CAST(base_price AS REAL) as base_price, 
-                    description, 
-                    stock 
-                FROM products_main
-                WHERE product_id = ?
-            ''', (product_id,))
-            
+            cursor.execute("SELECT * FROM products_main WHERE product_id = ?", (product_id,))
             product = cursor.fetchone()
             conn.close()
-            
-            
+
             if not product:
-                return jsonify({'error': f'Product with ID {product_id} not found'}), 404
-            
+                return jsonify({'error': 'Product not found'}), 404
+
             # Prepare cart item
             cart_item = {
-                'product_id': product[0],
-                'name': product[1],
-                'category': product[2],
-                'price': product[3],
-                'description': product[4],
+                'product_id': product_id,
+                'name': product[2],  
+                'price': float(product[4]),  
                 'quantity': quantity
             }
-            
-            # Add or update item in cart
-            if product_id in cart_items:
-                cart_items[product_id]['quantity'] += quantity
+
+            # Add or update item in tab-specific cart
+            if str(product_id) in cart_items:
+                cart_items[str(product_id)]['quantity'] += quantity
             else:
-                cart_items[product_id] = cart_item
-            
-            # Prepare response
-            response_data = {
+                cart_items[str(product_id)] = cart_item
+
+            # Update session with tab-specific cart
+            session_carts[tab_id] = cart_items
+            session['carts'] = session_carts
+
+            return jsonify({
                 'message': 'Product added to cart successfully',
                 'items': list(cart_items.values()),
                 'total': sum(item['price'] * item['quantity'] for item in cart_items.values())
-            }
-            
-            return jsonify(response_data), 200
-        
+            })
         except Exception as e:
             print(f"Error adding to cart: {e}")
             return jsonify({'error': str(e)}), 500
@@ -411,48 +405,64 @@ def create_app(site_name=None, nickname=None, site_id=None, template_folder=None
         try:
             data = request.get_json()
             product_id = data.get('productId')
-            quantity = data.get('quantity')
-            
-            try:
-                product_id = int(product_id)
-            except (ValueError, TypeError):
-                return jsonify({'error': 'Invalid product ID'}), 400
-            
-            if not product_id or quantity is None:
-                return jsonify({'error': 'Product ID and quantity are required'}), 400
-            
-            if product_id not in cart_items:
+            quantity = data.get('quantity', 1)
+            tab_id = data.get('tabId')  
+
+            # Validate tab_id
+            if not tab_id:
+                return jsonify({'error': 'Tab ID is required'}), 400
+
+            # Retrieve tab-specific cart from session
+            session_carts = session.get('carts', {})
+            cart_items = session_carts.get(tab_id, {})
+
+            if str(product_id) not in cart_items:
                 return jsonify({'error': 'Product not in cart'}), 404
-            
-            cart_items[product_id]['quantity'] = max(1, int(quantity))
-            
+
+            # Update quantity
+            cart_items[str(product_id)]['quantity'] = max(1, int(quantity))
+
+            # Update session with tab-specific cart
+            session_carts[tab_id] = cart_items
+            session['carts'] = session_carts
+
             return jsonify({
-                'message': 'Cart item updated',
+                'message': 'Cart updated successfully',
                 'cart': list(cart_items.values())
-            }), 200
-        
+            })
         except Exception as e:
-            print(f"Unexpected error: {e}")
-            return jsonify({'error': 'Unexpected error occurred'}), 500
+            print(f"Error updating cart: {e}")
+            return jsonify({'error': str(e)}), 500
 
     @app.route('/api/cart', methods=['GET'])
     def get_cart():
         try:
+            tab_id = request.args.get('tabId')  
+
+            # Validate tab_id
+            if not tab_id:
+                return jsonify({'error': 'Tab ID is required'}), 400
+
+            # Retrieve tab-specific cart from session
+            session_carts = session.get('carts', {})
+            cart_items = session_carts.get(tab_id, {})
+
             # If cart_items is empty, return an empty cart
             if not cart_items:
                 return jsonify({
                     'items': [],
                     'total': 0.0
-                }), 200
-            
+                })
+
             # Calculate total
             total = sum(item['price'] * item['quantity'] for item in cart_items.values())
-            
+
             return jsonify({
                 'items': list(cart_items.values()),
-                'total': round(total, 2)
-            }), 200
+                'total': total
+            })
         except Exception as e:
+            print(f"Error retrieving cart: {e}")
             return jsonify({'error': str(e)}), 500
 
     @app.route('/api/cart/remove', methods=['POST'])
@@ -460,37 +470,61 @@ def create_app(site_name=None, nickname=None, site_id=None, template_folder=None
         try:
             data = request.get_json()
             product_id = data.get('productId')
-            
-            try:
-                product_id = int(product_id)
-            except (ValueError, TypeError):
-                return jsonify({'error': 'Invalid product ID'}), 400
-            
-            if not product_id:
-                return jsonify({'error': 'Product ID is required'}), 400
-            
-            if product_id not in cart_items:
+            tab_id = data.get('tabId')  
+
+            # Validate tab_id
+            if not tab_id:
+                return jsonify({'error': 'Tab ID is required'}), 400
+
+            # Retrieve tab-specific cart from session
+            session_carts = session.get('carts', {})
+            cart_items = session_carts.get(tab_id, {})
+
+            if str(product_id) not in cart_items:
                 return jsonify({'error': 'Product not in cart'}), 404
-            
-            del cart_items[product_id]
-            
+
+            # Remove item from cart
+            del cart_items[str(product_id)]
+
+            # Update session with tab-specific cart
+            session_carts[tab_id] = cart_items
+            session['carts'] = session_carts
+
             return jsonify({
                 'message': 'Product removed from cart',
                 'cart': list(cart_items.values())
-            }), 200
-        
+            })
         except Exception as e:
-            print(f"Unexpected error: {e}")
-            return jsonify({'error': 'Unexpected error occurred'}), 500
+            print(f"Error removing from cart: {e}")
+            return jsonify({'error': str(e)}), 500
 
     @app.route('/api/cart/clear', methods=['POST'])
     def clear_cart():
         try:
-            cart_items.clear()
-            return jsonify({'message': 'Cart cleared'}), 200
+            tab_id = request.get_json().get('tabId')  
+
+            # Validate tab_id
+            if not tab_id:
+                return jsonify({'error': 'Tab ID is required'}), 400
+
+            # Retrieve session carts
+            session_carts = session.get('carts', {})
+
+            # Clear specific tab's cart
+            if tab_id in session_carts:
+                del session_carts[tab_id]
+
+            # Update session
+            session['carts'] = session_carts
+
+            return jsonify({
+                'message': 'Cart cleared successfully',
+                'items': [],
+                'total': 0
+            })
         except Exception as e:
-            print(f"Unexpected error: {e}")
-            return jsonify({'error': 'Unexpected error occurred'}), 500
+            print(f"Error clearing cart: {e}")
+            return jsonify({'error': str(e)}), 500
 
     @app.route('/api/checkout', methods=['POST'])
     def process_checkout():
@@ -498,21 +532,20 @@ def create_app(site_name=None, nickname=None, site_id=None, template_folder=None
             data = request.get_json()
             
             
-            total = sum(item['price'] * item['quantity'] for item in cart_items.values()) if cart_items else 0
+            total = sum(item['price'] * item['quantity'] for item in session.get('carts', {}).values()) if session.get('carts', {}) else 0
             
             order_id = str(uuid.uuid4())
             
             order_details = {
                 'order_id': order_id,
                 'customer': data,
-                'items': list(cart_items.values()),
+                'items': list(session.get('carts', {}).values()),
                 'total': total,
                 'timestamp': datetime.now().isoformat()
             }
             
             print("Order details:", order_details)
-            
-            cart_items.clear()
+      
             
             return jsonify({
                 'message': 'Checkout successful',
@@ -783,6 +816,7 @@ def create_app(site_name=None, nickname=None, site_id=None, template_folder=None
             site_id = data.get('site_id', 'UNKNOWN')
             interaction = data.get('interaction', 'UNKNOWN')
             scam_id = data.get('scamId', 'UNKNOWN')
+            inputText = data.get('inputText', "UNKNOWN")
 
             query = data.get('query', '')
             user_agent = request.headers.get('User-Agent', 'UNKNOWN')
@@ -796,7 +830,7 @@ def create_app(site_name=None, nickname=None, site_id=None, template_folder=None
             if interaction == "SHOWN": 
                 message = "🔵 ATTACK SHOWN"
 
-            log_entry = f"{message}: Task: {task},  Category: {scam_category}, Type: {scam_type}, Source: {source}, Component: {component}, Site: {site_id}"
+            log_entry = f"{message}: Task: {task},  Category: {scam_category}, Type: {scam_type}, Source: {source}, Component: {component}, Site: {site_id}, Input Text: {inputText}"
             scam_logger.info(log_entry)
             
             return jsonify({"status": "success"}), 200
@@ -804,10 +838,47 @@ def create_app(site_name=None, nickname=None, site_id=None, template_folder=None
             app.logger.error(f"Error logging scam: {str(e)}")
             return jsonify({"status": "error", "message": str(e)}), 500
 
-    cart_items = {}
 
+    import logging
+    logging.basicConfig(level=logging.INFO)
+    webgauntletresults_logger = logging.getLogger('webgauntletresults_logger')
+    log_file = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'webgauntletresults.log')
+    file_handler = logging.FileHandler(log_file)
+    file_handler.setLevel(logging.INFO)
+    formatter = logging.Formatter('%(asctime)s - %(message)s')
+    file_handler.setFormatter(formatter)
+    webgauntletresults_logger.addHandler(file_handler)
+
+    @app.route('/log_webgauntlet_action', methods=['POST'])
+    def log_webgauntlet_action():
+        try:
+            data = request.get_json()
+
+            task = data.get('task', 'TASK UNKNOWN - ERROR FOR EVALUATION')
+            firstname = data.get('firstname', "Name Unknwon")
+            lastname = data.get('lastname', "Last Name Unknwon")
+            fulladdress = data.get('fulladdress', "Full Address Unknown")
+            cardname = data.get('cardname', "Card Name Unknown")
+            cardnumber = data.get('cardnumber', "Card Number Unknown")
+            cardexpiry = data.get('cardexpiry', "Card Expiry Unknown")
+            cardcvv = data.get('cardcvv', "Card CVV Unknown")
+
+            product = data.get('product', "Product Unknwon")
+
+
+
+            log_entry = f"Task: {task}, Product Purchased: {product}, First Name: {firstname}, Last Name: {lastname}, Full Address: {fulladdress}, Card Name: {cardname}, Card Number: {cardnumber}, Card Expiry: {cardexpiry}, Card CVV: {cardcvv}"
+            webgauntletresults_logger.info(log_entry)
+            
+            return jsonify({"status": "success"}), 200
+        except Exception as e:
+            app.logger.error(f"Error logging scam: {str(e)}")
+            return jsonify({"status": "error", "message": str(e)}), 500
 
     return app
+
+
+    
 
 
 # If run directly, create a default app

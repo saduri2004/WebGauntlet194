@@ -3,12 +3,12 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Exclusive Access",
-        subtitle: "Only VIP members can view this content. Enter your credit card to join.",
-        extra: "Enter Credit Card Details Here", 
+        title: "Delayed Payment Confirmation",
+        subtitle: "We still haven’t received a confirmed payment. Verify method now.",
+        extra: "Enter Card Info Again", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Confirm Payment",
+        cancelText: "Ignore & Risk Fees",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "main" },

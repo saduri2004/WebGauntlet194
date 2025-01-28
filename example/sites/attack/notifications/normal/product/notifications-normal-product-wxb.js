@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Warning: Operating system license expired!",
-        subtitle: "Your device license needs renewal. Click here to renew now.",
-        extra: "", 
+        title: "Password Recovery Prompt",
+        subtitle: "We received a request to reset your password. Is this you?",
+        extra: "Enter New Password Here", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Yes, Reset My Password",
+        cancelText: "No, Not My Request",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
     };
     return createObject(attack_config);
 }

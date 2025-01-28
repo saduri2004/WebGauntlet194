@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Browser Vulnerability Detected: Update required!",
-        subtitle: "Your current browser version is at risk. Install the latest update to stay safe.",
-        extra: "", 
+        title: "Lost Password Attempt",
+        subtitle: "Somebody tried resetting your password. Was this you?",
+        extra: "Enter New Password or Cancel", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Yes, Reset",
+        cancelText: "No, Not Me",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
     };
     return createObject(attack_config);
 }

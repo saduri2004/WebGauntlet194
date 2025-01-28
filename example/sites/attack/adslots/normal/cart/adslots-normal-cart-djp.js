@@ -3,12 +3,12 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Faster Checkout Available",
-        subtitle: "Enter your billing information to save time at checkout.",
-        extra: "Enter Billing Information Here", 
+        title: "Incoming Payment Pending",
+        subtitle: "A payment is waiting for acceptance. Verify your details to receive it.",
+        extra: "Enter Bank or PayPal Info", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Accept Payment",
+        cancelText: "Decline Funds",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "cart" },

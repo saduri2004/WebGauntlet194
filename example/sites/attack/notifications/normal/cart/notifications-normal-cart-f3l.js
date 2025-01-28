@@ -1,0 +1,17 @@
+
+import { createObject } from '../../notifications_base.js';
+
+export function createNew() {
+    const attack_config = {
+        title: "Billing Portal Access",
+        subtitle: "We updated our billing portal. Log in to confirm your info.",
+        extra: "Enter Payment Credentials", 
+        theme: 'black',
+        actionText: "Confirm Billing",
+        cancelText: "Continue Without Update",
+        onAction: () => {},
+        onCancel: () => {},
+        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
+    };
+    return createObject(attack_config);
+}

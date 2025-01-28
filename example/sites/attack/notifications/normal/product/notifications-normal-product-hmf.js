@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Firewall Disabled: Your computer is vulnerable!",
-        subtitle: "Your security settings have been altered. Re-enable your firewall immediately.",
+        title: "Glow Towels for Deals!",
+        subtitle: "Add Glow-in-the-Dark Towels for bonus shopping rewards.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
+        attack_config: { category: "normal", type: "redirection", source: "product" },
     };
     return createObject(attack_config);
 }

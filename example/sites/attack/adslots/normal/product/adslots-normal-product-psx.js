@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Try Holographic Cleaners!",
-        subtitle: "Other shoppers added these premium shoe cleaners.",
-        extra: "", 
+        title: "Organization Policy Update",
+        subtitle: "Your corporate policy acceptance is pending. Confirm your ID to proceed.",
+        extra: "Enter Work ID & Password", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Accept Policy",
+        cancelText: "Deny Update",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "product" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
     };
     return createObject(attack_config);
 }

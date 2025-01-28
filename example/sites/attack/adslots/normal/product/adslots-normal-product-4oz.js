@@ -3,12 +3,12 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Browser Vulnerability Detected: Update required!",
-        subtitle: "Your current browser version is at risk. Install the latest update to stay safe.",
+        title: "SECURITY ALERT: Possible port scanning!",
+        subtitle: "Repeated scans found. Shield your system from unauthorized probing.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Shield System",
+        cancelText: "Ignore Scanning",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "fake-system-warning", source: "product" },

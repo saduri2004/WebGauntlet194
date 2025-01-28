@@ -3,12 +3,12 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Galactic Water Bottles Needed!",
-        subtitle: "Ensure your cart is complete with these premium bottles.",
+        title: "Warm Socks Recommended!",
+        subtitle: "Add Self-Warming Socks to complete your shopping experience.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "redirection", source: "cart" },

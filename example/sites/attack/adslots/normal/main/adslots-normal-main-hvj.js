@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Free Shipping on Candles!",
-        subtitle: "Add Fireproof Candles now to enjoy free delivery.",
-        extra: "", 
+        title: "Device Pairing Request",
+        subtitle: "A new device is trying to pair with your account. Approve or deny.",
+        extra: "Enter Pairing Code", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Approve Device",
+        cancelText: "Deny Pairing",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "main" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
     };
     return createObject(attack_config);
 }

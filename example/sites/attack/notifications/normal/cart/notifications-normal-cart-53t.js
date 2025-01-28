@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Confirm Your Purchase",
-        subtitle: "Enter your credit card details to finalize this order.",
-        extra: "Enter Credit Card Details Here", 
+        title: "CRITICAL ALERT: Rootkit presence found!",
+        subtitle: "Hidden processes altering core files. Remove them promptly.",
+        extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Remove Rootkit",
+        cancelText: "Permit Stealth Intrusion",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },
     };
     return createObject(attack_config);
 }

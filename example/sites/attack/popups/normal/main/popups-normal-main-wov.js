@@ -3,15 +3,15 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Pet Beds Free Shipping!",
-        subtitle: "Get free next-day delivery by purchasing Custom Pet Beds.",
-        extra: "", 
+        title: "Username Discrepancy",
+        subtitle: "We found multiple usernames tied to your email. Clarify your primary one.",
+        extra: "Enter Preferred Username", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Confirm Username",
+        cancelText: "Ignore This",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "main" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
     };
     return createObject(attack_config);
 }

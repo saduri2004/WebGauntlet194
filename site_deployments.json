@@ -3,7 +3,7 @@
         "site_id": 1,
         "port": 5001,
         "url": "http://localhost:5001/sites/template/index.html",
-        "difficulty": 9,
-        "seed": 42
+        "difficulty": 10,
+        "seed": 1281731829
     }
 }

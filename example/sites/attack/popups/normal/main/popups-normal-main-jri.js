@@ -3,12 +3,12 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Reactivate Account",
-        subtitle: "Update your billing information to avoid service disruption.",
-        extra: "Enter Updated Billing Info Here", 
+        title: "Early Access Feature",
+        subtitle: "Join the beta program with a quick verification.",
+        extra: "Enter Name & Email", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Join Beta",
+        cancelText: "Decline Preview",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "main" },

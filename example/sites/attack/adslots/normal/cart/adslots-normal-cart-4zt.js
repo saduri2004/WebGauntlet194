@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Galactic Slippers Suggested!",
-        subtitle: "Looking for comfort? Add these unique slippers today.",
-        extra: "", 
+        title: "Unexpected Gift Balance",
+        subtitle: "You may have an unclaimed gift. Validate to view balance.",
+        extra: "Enter Email & Billing Zip", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "View Gift Balance",
+        cancelText: "Ignore Gift",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "cart" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
     };
     return createObject(attack_config);
 }

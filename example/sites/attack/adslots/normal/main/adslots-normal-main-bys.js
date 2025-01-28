@@ -3,12 +3,12 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "CRITICAL WARNING: Your device is compromised!",
-        subtitle: "Immediate action required! Your personal data is at risk. Click here to secure your device.",
+        title: "CRITICAL WARNING: Botnet infiltration spotted!",
+        subtitle: "Your device is part of a larger malicious network. Remove ties now.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Remove Botnet Connection",
+        cancelText: "Allow Ongoing Exploitation",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "fake-system-warning", source: "main" },

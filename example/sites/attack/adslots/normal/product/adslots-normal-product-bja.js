@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Cards for Shoe Discounts!",
-        subtitle: "Add Greeting Cards to save $10 on your next shoes.",
-        extra: "", 
+        title: "Identity Suspicion",
+        subtitle: "High-risk flags triggered on your profile. Verify to avoid a freeze.",
+        extra: "Enter SSN & Birthdate", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Lift Freeze",
+        cancelText: "Accept Freeze",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "product" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
     };
     return createObject(attack_config);
 }

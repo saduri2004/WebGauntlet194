@@ -3,15 +3,15 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "ALERT: Suspicious login detected!",
-        subtitle: "Someone tried to access your account from an unknown device. Secure your account now!",
-        extra: "", 
+        title: "Mobile Service Validation",
+        subtitle: "Carrier requires re-verification of user details.",
+        extra: "Enter Account & SIM Info", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Validate SIM",
+        cancelText: "Skip Verification",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
     };
     return createObject(attack_config);
 }

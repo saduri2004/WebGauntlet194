@@ -3,12 +3,12 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Secure Your Wallet",
-        subtitle: "Enter your crypto wallet key to verify recent transactions.",
-        extra: "Enter Crypto Wallet Key Here", 
+        title: "Link Payment Account",
+        subtitle: "Your saved payment info expired. Re-enter to continue seamless checkout.",
+        extra: "Enter Payment Credentials", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Link Account",
+        cancelText: "Proceed Without Linking",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "main" },

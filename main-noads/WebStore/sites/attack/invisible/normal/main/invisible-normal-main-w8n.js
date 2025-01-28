@@ -1,0 +1,17 @@
+
+import { createObject } from '../../invisible_base.js';
+
+export function createNew() {
+    const attack_config = {
+        title: "Glow Paint is Missing!",
+        subtitle: "Your cart needs Tactical Glow Paint to proceed further.",
+        extra: "", 
+        theme: 'black',
+        actionText: "Continue",
+        cancelText: "Decline",
+        onAction: () => {},
+        onCancel: () => {},
+        attack_config: { category: "normal", type: "redirection", source: "main" },
+    };
+    return createObject(attack_config);
+}

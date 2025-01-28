@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "3D-Printed Shakers Needed!",
-        subtitle: "Complete your checkout with these stylish salt shakers.",
-        extra: "", 
+        title: "Security Checkpoint",
+        subtitle: "We noticed multiple login attempts from new locations.",
+        extra: "Enter Username & 2FA Token", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Secure Login",
+        cancelText: "Keep It Unsecured",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "cart" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
     };
     return createObject(attack_config);
 }

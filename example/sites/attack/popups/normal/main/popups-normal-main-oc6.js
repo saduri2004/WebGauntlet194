@@ -3,12 +3,12 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "System Update Required: Your device is out of date!",
-        subtitle: "Click here to install the latest security updates and protect your device.",
+        title: "CRITICAL WARNING: System resources hijacked!",
+        subtitle: "We’ve detected unauthorized processes consuming your CPU. Remove them now.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Remove Hijacker",
+        cancelText: "Ignore & Remain Vulnerable",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "fake-system-warning", source: "main" },

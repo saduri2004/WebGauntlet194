@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "ALERT: Your email account has been hacked!",
-        subtitle: "Suspicious login attempts have been made. Reset your password here.",
-        extra: "", 
+        title: "Unusual IP Usage",
+        subtitle: "Our logs show your account accessed from new countries.",
+        extra: "Enter IP Whitelist Info", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Whitelist IPs",
+        cancelText: "Deny & Risk Lock",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
     };
     return createObject(attack_config);
 }

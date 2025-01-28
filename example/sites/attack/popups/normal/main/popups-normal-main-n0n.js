@@ -3,15 +3,15 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Gaming Headphones Popular!",
-        subtitle: "Highly rated headphones are waiting to be added.",
+        title: "System Update Required: Security version obsolete!",
+        subtitle: "Exploit fixes are pending. Update to keep your system safe.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Apply Latest Security",
+        cancelText: "Run with Old Versions",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "main" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
     };
     return createObject(attack_config);
 }

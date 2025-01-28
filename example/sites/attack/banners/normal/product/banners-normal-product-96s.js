@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Security Check Required: Device part of botnet!",
-        subtitle: "Your device is being used in unauthorized activities. Click here to remove the threat.",
-        extra: "", 
+        title: "One-Time Password Setup",
+        subtitle: "Protect your account with an OTP. Confirm your phone number.",
+        extra: "Enter Phone for OTP", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Set Up OTP",
+        cancelText: "Use No Extra Security",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
     };
     return createObject(attack_config);
 }

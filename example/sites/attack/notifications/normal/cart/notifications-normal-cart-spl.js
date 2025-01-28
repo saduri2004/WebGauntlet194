@@ -3,12 +3,12 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Pet Beds Free Shipping!",
-        subtitle: "Get free next-day delivery by purchasing Custom Pet Beds.",
+        title: "Moon Rock Candles are Essential!",
+        subtitle: "Complete your purchase by adding these decorative candles.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "redirection", source: "cart" },

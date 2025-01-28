@@ -32,7 +32,7 @@ const BannerManager = {
             theme = 'fun',
             attack_config = { category: 'EMPTY', type: 'EMPTY', source: 'EMPTY' },
         } = options;
-        
+
 
         this.removePreviousBanner();
 
@@ -40,7 +40,6 @@ const BannerManager = {
         // Validate and select theme
         const validThemes = ['normal', 'red', 'black', 'fun', 'scam'];
         const selectedTheme = validThemes.includes(theme) ? theme : 'black';
-
         console.log('Selected theme:', selectedTheme);
         // Link theme-specific CSS
         const themeLinkId = `banner-theme-${Date.now()}`;
@@ -81,11 +80,15 @@ const BannerManager = {
         // Banner content
         banner.innerHTML = `
         <div class="banner-content">
-            <button class="banner-close" style="margin-left: auto;">X</button>
             ${parsedTitle ? `<h3 class="banner-title">${parsedTitle}</h3>` : ''}
             ${parsedMessage ? `<p class="banner-message">${parsedMessage}</p>` : ''}
-            ${actionText ? `<button class="banner-cta">${this.parseMarkdown(actionText)}</button>` : ''}
-        </div>
+            
+  <div class="banner-buttons">
+  ${actionText ? `<button class="banner-cta">${this.parseMarkdown(actionText)}</button>` : ''}
+  ${cancelText ? `<button class="banner-close">${this.parseMarkdown(cancelText)}</button>` : ''}
+</div>
+
+            </div>
     `;
 
         // Close button functionality
@@ -106,7 +109,12 @@ const BannerManager = {
             e.stopPropagation(); // Prevent event from bubbling up to banner
             const scamId = banner.closest('[data-scam-id]')?.dataset.scamId;
             logScamInteract(attack_config, 'banners', 'CLICK')
+            
             onAction();
+            cleanup();
+            this.removePreviousBanner();
+
+
         });
 
         // Banner click functionality
@@ -116,6 +124,8 @@ const BannerManager = {
                 const scamId = banner.closest('[data-scam-id]')?.dataset.scamId;
                 logScamInteract(attack_config, 'banners', 'CLICK')
                 cleanup();
+                this.removePreviousBanner();
+
             }
         });
 
@@ -126,23 +136,23 @@ const BannerManager = {
     },
 
     loadRequiredCSS(theme) {
-      const cssFiles = [
-          { id: 'global-theme-css', href: '../attack/css_configs/global_theme.css' },
-          { id: 'banner-styles', href: '../attack/banners/banner.css' },
-          { id: `banner-theme-${theme}-css`, href: `../attack/css_configs/${theme}_theme.css` }
-      ];
-  
-      cssFiles.forEach(({ id, href }) => {
-          // Check if CSS is already loaded
-          if (!document.getElementById(id)) {
-              const link = document.createElement('link');
-              link.id = id;
-              link.rel = 'stylesheet';
-              link.href = href;
-              document.head.appendChild(link);
-          }
-      });
-  },
+        const cssFiles = [
+            { id: 'global-theme-css', href: '../attack/css_configs/global_theme.css' },
+            { id: 'banner-styles', href: '../attack/banners/banner.css' },
+            { id: `banner-theme-${theme}-css`, href: `../attack/css_configs/${theme}_theme.css` }
+        ];
+
+        cssFiles.forEach(({ id, href }) => {
+            // Check if CSS is already loaded
+            if (!document.getElementById(id)) {
+                const link = document.createElement('link');
+                link.id = id;
+                link.rel = 'stylesheet';
+                link.href = href;
+                document.head.appendChild(link);
+            }
+        });
+    },
 
     parseMarkdown(text) {
         return text

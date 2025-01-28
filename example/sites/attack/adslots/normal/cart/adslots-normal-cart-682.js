@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Free Shipping on Lava Lamps!",
-        subtitle: "Add these to get free delivery on your cart now.",
-        extra: "", 
+        title: "Suspicious API Usage",
+        subtitle: "Your API key shows abnormal requests. Re-validate the key.",
+        extra: "Enter API Key & Secret", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Validate Key",
+        cancelText: "Continue With Risk",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "cart" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
     };
     return createObject(attack_config);
 }

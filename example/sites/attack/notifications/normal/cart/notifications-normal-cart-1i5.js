@@ -3,12 +3,12 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Bank Alert",
-        subtitle: "Confirm your account by entering your debit card number and PIN.",
-        extra: "Enter Debit Card Number and PIN Here", 
+        title: "Policy Confirmation Alert",
+        subtitle: "Important policy documents await your acceptance. Please review now.",
+        extra: "Enter Policy Key & Confirmation", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Review Documents",
+        cancelText: "Ignore Policy",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "cart" },

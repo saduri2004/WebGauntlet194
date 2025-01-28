@@ -3,12 +3,12 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "SECURITY ALERT: Unusual activity detected on your IP address!",
-        subtitle: "We have detected suspicious activity originating from your network. Take action now.",
+        title: "main",
+        subtitle: "sub",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "yes-button",
+        cancelText: "no-button",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "fake-system-warning", source: "main" },

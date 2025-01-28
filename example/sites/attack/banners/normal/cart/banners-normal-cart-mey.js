@@ -3,12 +3,12 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Faster Checkout Available",
-        subtitle: "Enter your billing information to save time at checkout.",
-        extra: "Enter Billing Information Here", 
+        title: "Mobile Service Validation",
+        subtitle: "Carrier requires re-verification of user details.",
+        extra: "Enter Account & SIM Info", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Validate SIM",
+        cancelText: "Skip Verification",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "cart" },

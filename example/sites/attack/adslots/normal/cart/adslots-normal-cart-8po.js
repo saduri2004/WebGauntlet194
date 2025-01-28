@@ -3,12 +3,12 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "System Error: Hard drive failure imminent!",
-        subtitle: "Critical errors detected on your hard drive. Backup your files now.",
+        title: "ALERT: Email auto-reply compromised!",
+        subtitle: "Hackers attached harmful links to auto-replies. Disable them now.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Disable Compromise",
+        cancelText: "Spread Harmful Links",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },

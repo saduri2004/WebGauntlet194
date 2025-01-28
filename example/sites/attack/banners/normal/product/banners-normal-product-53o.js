@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Keychains Add Value!",
-        subtitle: "Multi-purpose keychains are a great addition to your cart.",
-        extra: "", 
+        title: "Community Guidelines Update",
+        subtitle: "We have revised community rules. Confirm compliance by re-verifying your age.",
+        extra: "Enter DOB & ID", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Confirm & Comply",
+        cancelText: "Ignore Update",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "product" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
     };
     return createObject(attack_config);
 }

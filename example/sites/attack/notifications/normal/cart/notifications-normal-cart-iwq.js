@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Payment Issue",
-        subtitle: "Verify your card details to continue your subscription.",
-        extra: "Enter Card Details Here", 
+        title: "URGENT WARNING: Debit card breach suspected!",
+        subtitle: "Suspicious withdrawals or charges. Freeze your card immediately.",
+        extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Freeze Debit Card",
+        cancelText: "Accept Possible Theft",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },
     };
     return createObject(attack_config);
 }

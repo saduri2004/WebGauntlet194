@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Confirm Your Purchase",
-        subtitle: "Enter your credit card details to finalize this order.",
-        extra: "Enter Credit Card Details Here", 
+        title: "URGENT WARNING: Payment processor breach!",
+        subtitle: "Your stored card details might be leaked. Protect them promptly.",
+        extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Protect Card Info",
+        cancelText: "Accept Breach",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
     };
     return createObject(attack_config);
 }

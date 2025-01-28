@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Blocked Content: Security settings required!",
-        subtitle: "Your access has been restricted due to security concerns. Update settings now.",
+        title: "Top-Rated Hat Racks!",
+        subtitle: "Titanium Hat Racks are a customer favorite. Add now!",
         extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
+        attack_config: { category: "normal", type: "redirection", source: "product" },
     };
     return createObject(attack_config);
 }

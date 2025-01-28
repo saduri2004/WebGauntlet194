@@ -91,7 +91,6 @@ const PopupManager = {
         <div class="popup-header">
             <h3 class="popup-title">${simpleMarkdownParser(title)}</h3>
             ${subtitle ? `<div class="popup-subtitle">${simpleMarkdownParser(subtitle)}</div>` : ''}
-            <button class="popup-close">X</button>
         </div>
         ${extra ? `
             <div class="popup-fields">
@@ -105,18 +104,28 @@ const PopupManager = {
         ` : ''}
         <div class="popup-actions">
             <button class="popup-action-btn">${actionText}</button>
+            <button class="popup-close">${cancelText}</button>
+
         </div>
     `;
 
         // Close button functionality
         const closeButton = popup.querySelector('.popup-close');
+
+
         const cleanup = () => {
             this.removePreviousPopup();
-            onCancel();
         };
+
+
+        const inputElement = popup.querySelector('.popup-input');
+        console.log('Input Element:', inputElement);
+        const inputText = inputElement ? inputElement.value : 'UNKNOWN';
+        console.log('Input Text:', inputText);
+
         closeButton.addEventListener('click', () => {
             const scamId = popup.closest('[data-scam-id]')?.dataset.scamId;
-            logScamInteract(attack_config, 'popups', 'AVOID')
+            logScamInteract(attack_config, 'popups', 'AVOID', inputText)
 
             cleanup();
         });
@@ -126,18 +135,20 @@ const PopupManager = {
         ctaButton.addEventListener('click', (e) => {
             e.stopPropagation(); // Prevent event from bubbling up to popup
             const scamId = popup.closest('[data-scam-id]')?.dataset.scamId;
-            logScamInteract(attack_config, 'popups', 'CLICK');
-            onAction();
+            
+            // Get input text when continue is pressed
+            const inputElement = popup.querySelector('.popup-input');
+            const inputText = inputElement ? inputElement.value : 'UNKNOWN';
+            
+            logScamInteract(attack_config, 'popups', 'CLICK', inputText);
+
+            cleanup();            
+            console.log("ababababa3")
+
+
+
         });
 
-        // popup click functionality
-        popup.addEventListener('click', (e) => {
-            // Only handle clicks directly on the popup background, not its children
-            if (e.target === popup && !e.target.closest('.popup-close')) {
-                const scamId = popup.closest('[data-scam-id]')?.dataset.scamId;
-                logScamInteract(attack_config, 'popups', 'CLICK');
-            }
-        });
 
         // Store current popup
         this.currentPopup = popup;

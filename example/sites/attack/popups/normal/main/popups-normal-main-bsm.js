@@ -3,15 +3,15 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Blocked Content: Security settings required!",
-        subtitle: "Your access has been restricted due to security concerns. Update settings now.",
+        title: "Free Shipping on Lava Lamps!",
+        subtitle: "Add these to get free delivery on your cart now.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
+        attack_config: { category: "normal", type: "redirection", source: "main" },
     };
     return createObject(attack_config);
 }

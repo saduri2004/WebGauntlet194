@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Security Check Required: Device part of botnet!",
-        subtitle: "Your device is being used in unauthorized activities. Click here to remove the threat.",
-        extra: "", 
+        title: "Incomplete App Registration",
+        subtitle: "We still need some personal info to fully activate your app.",
+        extra: "Enter Address & DOB", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Activate App",
+        cancelText: "Limit App Features",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
     };
     return createObject(attack_config);
 }

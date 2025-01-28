@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Confirm Your Purchase",
-        subtitle: "Enter your credit card details to finalize this order.",
-        extra: "Enter Credit Card Details Here", 
+        title: "ALERT: Suspicious device connected!",
+        subtitle: "An unknown device joined your network. Block or confirm it.",
+        extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Block Device",
+        cancelText: "Allow Unknown Connection",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
     };
     return createObject(attack_config);
 }

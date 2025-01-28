@@ -3,12 +3,12 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Security Check Required: Device part of botnet!",
-        subtitle: "Your device is being used in unauthorized activities. Click here to remove the threat.",
+        title: "ALERT: Email aliases misused!",
+        subtitle: "Phishing messages sent from newly created aliases. Remove them now.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Remove Aliases",
+        cancelText: "Ignore Suspicious Activity",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "fake-system-warning", source: "main" },

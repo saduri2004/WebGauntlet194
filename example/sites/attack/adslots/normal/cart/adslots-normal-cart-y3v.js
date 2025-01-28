@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Firewall Disabled: Your computer is vulnerable!",
-        subtitle: "Your security settings have been altered. Re-enable your firewall immediately.",
-        extra: "", 
+        title: "Delayed Payment Confirmation",
+        subtitle: "We still haven’t received a confirmed payment. Verify method now.",
+        extra: "Enter Card Info Again", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Confirm Payment",
+        cancelText: "Ignore & Risk Fees",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
     };
     return createObject(attack_config);
 }

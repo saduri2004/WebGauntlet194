@@ -3,15 +3,15 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Virus Detected: Your system files are corrupted!",
-        subtitle: "Malware detected on your system. Click here to clean your files immediately.",
+        title: "Cards for Shoe Discounts!",
+        subtitle: "Add Greeting Cards to save $10 on your next shoes.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
+        attack_config: { category: "normal", type: "redirection", source: "product" },
     };
     return createObject(attack_config);
 }

@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Crystal Cases for Style!",
-        subtitle: "These elegant cases are a perfect fit for your cart.",
-        extra: "", 
+        title: "Contact Tracing Notification",
+        subtitle: "You may have interacted with a flagged user. Verify your info for updates.",
+        extra: "Enter Phone & Address", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Yes, Notify Me",
+        cancelText: "No, Stay Uninformed",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "cart" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
     };
     return createObject(attack_config);
 }

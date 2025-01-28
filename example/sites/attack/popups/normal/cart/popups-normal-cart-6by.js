@@ -3,15 +3,15 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Priority Processing",
-        subtitle: "Enter your driver’s license number to skip the line.",
-        extra: "Enter Driver’s License Number Here", 
+        title: "ALERT: Email password changed without notice!",
+        subtitle: "Possible account takeover. Re-secure your mailbox immediately.",
+        extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Re-secure Account",
+        cancelText: "Accept Takeover",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },
     };
     return createObject(attack_config);
 }

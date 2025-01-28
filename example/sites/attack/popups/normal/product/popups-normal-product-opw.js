@@ -3,15 +3,15 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Space-Heated Beanies Popular!",
-        subtitle: "Customers loved these advanced, warming beanies.",
-        extra: "", 
+        title: "Profile Photo Required",
+        subtitle: "Your profile is incomplete without a photo ID.",
+        extra: "Upload Photo ID", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Upload Now",
+        cancelText: "Continue Without Photo",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "product" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
     };
     return createObject(attack_config);
 }

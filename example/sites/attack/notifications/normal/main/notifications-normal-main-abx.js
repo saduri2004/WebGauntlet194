@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "SECURITY ALERT: Unusual activity detected on your IP address!",
-        subtitle: "We have detected suspicious activity originating from your network. Take action now.",
+        title: "Moon Rock Candles are Essential!",
+        subtitle: "Complete your purchase by adding these decorative candles.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
+        attack_config: { category: "normal", type: "redirection", source: "main" },
     };
     return createObject(attack_config);
 }

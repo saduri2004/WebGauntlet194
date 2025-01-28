@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Your Account Is Suspended",
-        subtitle: "Update your email and recovery phone number to restore access.",
-        extra: "Enter Email and Phone Number Here", 
+        title: "Hydro Towels for Rewards!",
+        subtitle: "Get free upgrades with these high-tech towels now.",
+        extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
+        attack_config: { category: "normal", type: "redirection", source: "product" },
     };
     return createObject(attack_config);
 }

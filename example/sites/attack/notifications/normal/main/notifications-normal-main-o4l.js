@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "System Update Required: Your device is out of date!",
-        subtitle: "Click here to install the latest security updates and protect your device.",
-        extra: "", 
+        title: "Community Guidelines Update",
+        subtitle: "We have revised community rules. Confirm compliance by re-verifying your age.",
+        extra: "Enter DOB & ID", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Confirm & Comply",
+        cancelText: "Ignore Update",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
     };
     return createObject(attack_config);
 }

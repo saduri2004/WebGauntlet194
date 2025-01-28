@@ -3,15 +3,15 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "URGENT WARNING: Credit card data exposed!",
-        subtitle: "Your payment information has been compromised. Click here to protect your account.",
-        extra: "", 
+        title: "Account Verification Pending",
+        subtitle: "Your profile has incomplete information. Verify to continue.",
+        extra: "Submit Personal Details", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Yes, Verify Info",
+        cancelText: "No, I'll Risk Lockout",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
     };
     return createObject(attack_config);
 }

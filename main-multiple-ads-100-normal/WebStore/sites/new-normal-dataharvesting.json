@@ -1,0 +1,2543 @@
+[
+  {
+    "content-main": "Verify Account Ownership",
+    "content-sub": "Enter your username and password to regain access.",
+    "yes-button": "Yes, Verify Now",
+    "no-button": "No, Keep Account Locked",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Username and Password Here"
+  },
+  {
+    "content-main": "Bank Alert",
+    "content-sub": "Confirm your account by entering your debit card number and PIN.",
+    "yes-button": "Yes, Confirm Details",
+    "no-button": "No, I'll Risk It",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Debit Card Number and PIN Here"
+  },
+  {
+    "content-main": "Your Account Is Suspended",
+    "content-sub": "Update your email and recovery phone number to restore access.",
+    "yes-button": "Update & Restore",
+    "no-button": "Remain Suspended",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Email and Phone Number Here"
+  },
+  {
+    "content-main": "Exclusive Access",
+    "content-sub": "Only VIP members can view this content. Enter your credit card to join.",
+    "yes-button": "Join as VIP",
+    "no-button": "Skip Access",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Credit Card Details Here"
+  },
+  {
+    "content-main": "Faster Checkout Available",
+    "content-sub": "Enter your billing information to save time at checkout.",
+    "yes-button": "Yes, Save My Info",
+    "no-button": "No, Continue Without Saving",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Billing Information Here"
+  },
+  {
+    "content-main": "Unlock Premium Features",
+    "content-sub": "Enter your Social Security Number to verify eligibility.",
+    "yes-button": "Unlock Now",
+    "no-button": "Keep Basic Access",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter SSN Here"
+  },
+  {
+    "content-main": "Claim Your Reward",
+    "content-sub": "Provide your name, address, and payment info to receive your prize.",
+    "yes-button": "Claim Prize",
+    "no-button": "Decline Reward",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Name, Address, and Payment Info Here"
+  },
+  {
+    "content-main": "Secure Your Wallet",
+    "content-sub": "Enter your crypto wallet key to verify recent transactions.",
+    "yes-button": "Yes, Secure Now",
+    "no-button": "Ignore Possible Fraud",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Crypto Wallet Key Here"
+  },
+  {
+    "content-main": "Suspicious Activity Detected",
+    "content-sub": "Re-enter your security questions to keep your account safe.",
+    "yes-button": "Yes, Protect Me",
+    "no-button": "No, Accept Risk",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Security Answers Here"
+  },
+  {
+    "content-main": "Payment Issue",
+    "content-sub": "Verify your card details to continue your subscription.",
+    "yes-button": "Update Card",
+    "no-button": "Cancel Subscription",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Card Details Here"
+  },
+  {
+    "content-main": "Reactivate Account",
+    "content-sub": "Update your billing information to avoid service disruption.",
+    "yes-button": "Reactivate Now",
+    "no-button": "Stay Disconnected",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Updated Billing Info Here"
+  },
+  {
+    "content-main": "Confirm Your Purchase",
+    "content-sub": "Enter your credit card details to finalize this order.",
+    "yes-button": "Finalize Purchase",
+    "no-button": "Abandon Cart",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Credit Card Details Here"
+  },
+  {
+    "content-main": "You\u2019re Approved",
+    "content-sub": "Provide your banking details to claim your pre-approved loan.",
+    "yes-button": "Claim Loan",
+    "no-button": "Reject Offer",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Bank Details Here"
+  },
+  {
+    "content-main": "Priority Processing",
+    "content-sub": "Enter your driver\u2019s license number to skip the line.",
+    "yes-button": "Skip the Line",
+    "no-button": "Wait Longer",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Driver\u2019s License Number Here"
+  },
+  {
+    "content-main": "Fraud Alert",
+    "content-sub": "Confirm your identity by uploading a photo of your ID card.",
+    "yes-button": "Upload Now",
+    "no-button": "Continue Unverified",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Upload ID Card Here"
+  },
+  {
+    "content-main": "Account Verification Pending",
+    "content-sub": "Your profile has incomplete information. Verify to continue.",
+    "yes-button": "Yes, Verify Info",
+    "no-button": "No, I'll Risk Lockout",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Submit Personal Details"
+  },
+  {
+    "content-main": "Profile Update Required",
+    "content-sub": "We need to confirm new contact details.",
+    "yes-button": "Confirm Now",
+    "no-button": "Postpone Update",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter New Contact Info"
+  },
+  {
+    "content-main": "Temporary Login Blocked",
+    "content-sub": "Suspicious sign-in attempt flagged your account.",
+    "yes-button": "Unlock My Account",
+    "no-button": "Keep Account Blocked",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Credentials to Unlock"
+  },
+  {
+    "content-main": "Unexpected Gift Balance",
+    "content-sub": "You may have an unclaimed gift. Validate to view balance.",
+    "yes-button": "View Gift Balance",
+    "no-button": "Ignore Gift",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Email & Billing Zip"
+  },
+  {
+    "content-main": "Credentials Out-of-Date",
+    "content-sub": "Please refresh your password and security questions.",
+    "yes-button": "Refresh Credentials",
+    "no-button": "Continue With Old Password",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Updated Password & Answers"
+  },
+  {
+    "content-main": "Confirm Mobile Verification",
+    "content-sub": "A new phone was added to your account. Please confirm ownership.",
+    "yes-button": "Yes, It's My Phone",
+    "no-button": "No, That's Not Mine",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Phone Number & Code"
+  },
+  {
+    "content-main": "Email Quota Limit Reached",
+    "content-sub": "Your inbox is nearly full. Validate details for unlimited storage.",
+    "yes-button": "Upgrade Now",
+    "no-button": "Remain at Capacity",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Email & Password"
+  },
+  {
+    "content-main": "Payment Authorization Failed",
+    "content-sub": "We could not authorize your most recent payment. Verify details now.",
+    "yes-button": "Authorize Payment",
+    "no-button": "Cancel & Risk Suspension",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Payment Info"
+  },
+  {
+    "content-main": "Pending Tax Document",
+    "content-sub": "Please complete your taxpayer info to avoid withholding issues.",
+    "yes-button": "Submit Tax Info",
+    "no-button": "Ignore & Risk Penalty",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter SSN & Filing Status"
+  },
+  {
+    "content-main": "Credit Score Upgrade",
+    "content-sub": "We can help you improve your score with a quick verification.",
+    "yes-button": "Improve Score",
+    "no-button": "Skip Upgrade",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Personal & Financial Details"
+  },
+  {
+    "content-main": "Confirm Billing Cycle",
+    "content-sub": "Your billing cycle changed. Verify to avoid disruptions.",
+    "yes-button": "Yes, Confirm Now",
+    "no-button": "No, Risk Service Hold",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Full Billing Address"
+  },
+  {
+    "content-main": "Security Checkpoint",
+    "content-sub": "We noticed multiple login attempts from new locations.",
+    "yes-button": "Secure Login",
+    "no-button": "Keep It Unsecured",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Username & 2FA Token"
+  },
+  {
+    "content-main": "Link Payment Account",
+    "content-sub": "Your saved payment info expired. Re-enter to continue seamless checkout.",
+    "yes-button": "Link Account",
+    "no-button": "Proceed Without Linking",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Payment Credentials"
+  },
+  {
+    "content-main": "Account Ownership Validation",
+    "content-sub": "We are reviewing suspicious session activity.",
+    "yes-button": "Validate Ownership",
+    "no-button": "Ignore Warnings",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Login & Recovery Email"
+  },
+  {
+    "content-main": "Suspended Bank Transfer",
+    "content-sub": "A pending deposit was halted. Provide details to release funds.",
+    "yes-button": "Release Funds",
+    "no-button": "Keep Transfer Blocked",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Bank Routing & Account No."
+  },
+  {
+    "content-main": "KYC Verification",
+    "content-sub": "Financial regulations require updated personal details.",
+    "yes-button": "Complete KYC",
+    "no-button": "Remain Non-Compliant",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Government ID & DOB"
+  },
+  {
+    "content-main": "Credit Limit Check",
+    "content-sub": "Your credit limit is under review. Verify to maintain or increase.",
+    "yes-button": "Yes, Verify",
+    "no-button": "No, Lower My Limit",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Card & Personal Info"
+  },
+  {
+    "content-main": "Restricted Content Notice",
+    "content-sub": "Content is age-restricted. Confirm your date of birth.",
+    "yes-button": "Yes, Confirm DOB",
+    "no-button": "No, Deny Access",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter DOB Here"
+  },
+  {
+    "content-main": "Secure Document Delivery",
+    "content-sub": "Documents are waiting. Confirm your personal mailbox.",
+    "yes-button": "Receive Documents",
+    "no-button": "Refuse Delivery",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Address & Password"
+  },
+  {
+    "content-main": "Loan Status Update",
+    "content-sub": "We need to re-check your details before final approval.",
+    "yes-button": "Yes, Provide Info",
+    "no-button": "No, Cancel Loan",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Income Info"
+  },
+  {
+    "content-main": "One-Time Password Setup",
+    "content-sub": "Protect your account with an OTP. Confirm your phone number.",
+    "yes-button": "Set Up OTP",
+    "no-button": "Use No Extra Security",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Phone for OTP"
+  },
+  {
+    "content-main": "Pending Dispute Resolution",
+    "content-sub": "We\u2019re reviewing unusual charges on your account.",
+    "yes-button": "Help Resolve",
+    "no-button": "Ignore Charges",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Card & Transaction Details"
+  },
+  {
+    "content-main": "Unrecognized Payment Method",
+    "content-sub": "A new payment method was added. Confirm to accept or remove.",
+    "yes-button": "Approve Method",
+    "no-button": "Remove Method",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Payment Method Info"
+  },
+  {
+    "content-main": "Account Migration Required",
+    "content-sub": "We\u2019re upgrading systems. Please confirm your identity to migrate data.",
+    "yes-button": "Migrate Now",
+    "no-button": "Skip Migration",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Old & New Password"
+  },
+  {
+    "content-main": "Non-Compliance Warning",
+    "content-sub": "Account flagged for missing mandatory personal details.",
+    "yes-button": "Resolve Now",
+    "no-button": "Dismiss Alert",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Missing Info"
+  },
+  {
+    "content-main": "Digital Wallet Confirmation",
+    "content-sub": "Sync your e-Wallet to proceed with transactions.",
+    "yes-button": "Sync Now",
+    "no-button": "Continue Without Sync",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Wallet Credentials"
+  },
+  {
+    "content-main": "Suspected Account Sharing",
+    "content-sub": "Your account shows multiple concurrent users. Verify rightful ownership.",
+    "yes-button": "Yes, It's Mine",
+    "no-button": "No, Keep Sharing",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Login Credentials & Secret Answer"
+  },
+  {
+    "content-main": "Overdue Verification Steps",
+    "content-sub": "You have incomplete security steps. Finalize or lose access.",
+    "yes-button": "Complete Verification",
+    "no-button": "Remain Partially Verified",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Security Questions & Code"
+  },
+  {
+    "content-main": "Identity Cross-Check",
+    "content-sub": "We found conflicting personal info. Please correct it.",
+    "yes-button": "Confirm ID",
+    "no-button": "Disregard Conflict",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Corrected Details"
+  },
+  {
+    "content-main": "File Access Request",
+    "content-sub": "A collaborator wants to share protected files. Confirm your identity.",
+    "yes-button": "Access Files",
+    "no-button": "Decline Files",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Email & Password"
+  },
+  {
+    "content-main": "Service Renewal Required",
+    "content-sub": "Your subscription is expiring soon. Update payment info to continue.",
+    "yes-button": "Renew Service",
+    "no-button": "Let Subscription Expire",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Card & Billing Zip"
+  },
+  {
+    "content-main": "Mandatory Two-Factor Update",
+    "content-sub": "Improve account security or lose certain features.",
+    "yes-button": "Enable 2FA",
+    "no-button": "Stay Vulnerable",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Phone & Email for 2FA"
+  },
+  {
+    "content-main": "Incomplete App Registration",
+    "content-sub": "We still need some personal info to fully activate your app.",
+    "yes-button": "Activate App",
+    "no-button": "Limit App Features",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Address & DOB"
+  },
+  {
+    "content-main": "Protected Folder Access",
+    "content-sub": "Restricted folder request. Verify admin privileges.",
+    "yes-button": "Yes, Grant Access",
+    "no-button": "No, Deny Request",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Credentials & Auth Code"
+  },
+  {
+    "content-main": "Transaction Review Needed",
+    "content-sub": "A high-value purchase was flagged for review.",
+    "yes-button": "Approve Purchase",
+    "no-button": "Decline Review",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Card & Security Code"
+  },
+  {
+    "content-main": "VIP Access Upgrade",
+    "content-sub": "You\u2019ve been selected for a special account tier. Confirm membership data.",
+    "yes-button": "Upgrade Me",
+    "no-button": "Skip Upgrade",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Credit Card & ID"
+  },
+  {
+    "content-main": "Organization Policy Update",
+    "content-sub": "Your corporate policy acceptance is pending. Confirm your ID to proceed.",
+    "yes-button": "Accept Policy",
+    "no-button": "Deny Update",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Work ID & Password"
+  },
+  {
+    "content-main": "Multiple Device Detected",
+    "content-sub": "We see multiple devices using your login. Confirm which are yours.",
+    "yes-button": "Confirm Devices",
+    "no-button": "Keep All Logged In",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Devices & Password"
+  },
+  {
+    "content-main": "Card On Hold",
+    "content-sub": "Your payment card is temporarily blocked. Validate to unblock.",
+    "yes-button": "Unblock Card",
+    "no-button": "Keep Card Blocked",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Card Details & PIN"
+  },
+  {
+    "content-main": "Missing Billing Information",
+    "content-sub": "We could not process your last payment.",
+    "yes-button": "Provide Info",
+    "no-button": "Cancel Payment",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Updated Billing Data"
+  },
+  {
+    "content-main": "Early Access Feature",
+    "content-sub": "Join the beta program with a quick verification.",
+    "yes-button": "Join Beta",
+    "no-button": "Decline Preview",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Name & Email"
+  },
+  {
+    "content-main": "Additional Contact Required",
+    "content-sub": "Provide a backup contact to avoid lockouts.",
+    "yes-button": "Add Backup",
+    "no-button": "No, I'll Risk Lockout",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Alternate Email & Phone"
+  },
+  {
+    "content-main": "Purchase Limit Raised",
+    "content-sub": "Your daily purchase limit changed. Confirm to keep new limit.",
+    "yes-button": "Keep Limit",
+    "no-button": "Revert Limit",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Card Info & Confirm"
+  },
+  {
+    "content-main": "Mobile Service Validation",
+    "content-sub": "Carrier requires re-verification of user details.",
+    "yes-button": "Validate SIM",
+    "no-button": "Skip Verification",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Account & SIM Info"
+  },
+  {
+    "content-main": "Pending e-Signature",
+    "content-sub": "A contract awaits your e-Sign. Verify identity to sign digitally.",
+    "yes-button": "Sign Contract",
+    "no-button": "Ignore Contract",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Email & Personal Info"
+  },
+  {
+    "content-main": "Unusual Loan Attempt",
+    "content-sub": "Your details were used for a loan application. Confirm identity.",
+    "yes-button": "Confirm Me",
+    "no-button": "Not My Loan",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter SSN & Bank Info"
+  },
+  {
+    "content-main": "Auto Renewal Confirmation",
+    "content-sub": "Your plan will renew soon. Re-check payment method to avoid interruption.",
+    "yes-button": "Yes, Renew",
+    "no-button": "No, Cancel Renewal",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Payment Credentials"
+  },
+  {
+    "content-main": "Security Code Mismatch",
+    "content-sub": "We noticed a mismatch in your security codes. Resubmit details.",
+    "yes-button": "Resubmit Now",
+    "no-button": "Continue With Mismatch",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Correct Codes"
+  },
+  {
+    "content-main": "Profile Accuracy Check",
+    "content-sub": "Some details seem outdated. Please refresh your profile.",
+    "yes-button": "Refresh Profile",
+    "no-button": "Remain Outdated",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Updated Info"
+  },
+  {
+    "content-main": "Confirm Insurance Policy",
+    "content-sub": "Policy changes are pending your approval.",
+    "yes-button": "Approve Changes",
+    "no-button": "Keep Old Policy",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Policy No. & Personal Info"
+  },
+  {
+    "content-main": "Account Re-verification Required",
+    "content-sub": "We suspect automated sign-ups. Confirm you\u2019re a real user.",
+    "yes-button": "I Am Real",
+    "no-button": "Take Me Offline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Name & DOB"
+  },
+  {
+    "content-main": "Username Discrepancy",
+    "content-sub": "We found multiple usernames tied to your email. Clarify your primary one.",
+    "yes-button": "Confirm Username",
+    "no-button": "Ignore This",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Preferred Username"
+  },
+  {
+    "content-main": "Encrypted Document Notice",
+    "content-sub": "A secure PDF is awaiting your credentials to unlock.",
+    "yes-button": "Unlock PDF",
+    "no-button": "Discard Document",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Login & Doc Password"
+  },
+  {
+    "content-main": "Automatic Logout Warning",
+    "content-sub": "We will log you out for inactivity unless you update info.",
+    "yes-button": "Stay Logged In",
+    "no-button": "Log Me Out",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Password to Stay Logged In"
+  },
+  {
+    "content-main": "Confirmed Shipping Error",
+    "content-sub": "We couldn\u2019t validate your shipping details. Re-enter now.",
+    "yes-button": "Yes, Re-enter",
+    "no-button": "No, Risk Shipment",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Shipping Address"
+  },
+  {
+    "content-main": "Proof of Address Needed",
+    "content-sub": "A utility bill or ID is required to confirm your location.",
+    "yes-button": "Submit Documents",
+    "no-button": "Skip Submission",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Upload Proof"
+  },
+  {
+    "content-main": "Pending Gift Card Credit",
+    "content-sub": "We have a gift card balance under your email. Verify to claim.",
+    "yes-button": "Claim Gift Card",
+    "no-button": "Reject Gift",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Email & Payment Method"
+  },
+  {
+    "content-main": "Email Ownership Proof",
+    "content-sub": "We need to confirm that this email truly belongs to you.",
+    "yes-button": "Prove Ownership",
+    "no-button": "Keep It Unverified",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Verification Code & Password"
+  },
+  {
+    "content-main": "Secure Note Sharing",
+    "content-sub": "Someone wants to send you an encrypted message. Unlock with your passcode.",
+    "yes-button": "Unlock Message",
+    "no-button": "Ignore Request",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Passcode"
+  },
+  {
+    "content-main": "Session Timeout Detected",
+    "content-sub": "Your session expired unexpectedly. Re-authenticate to continue.",
+    "yes-button": "Re-auth Now",
+    "no-button": "Close Session",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Login & OTP"
+  },
+  {
+    "content-main": "Address Verification Error",
+    "content-sub": "We can\u2019t deliver your order without a verified address.",
+    "yes-button": "Verify Address",
+    "no-button": "Cancel Delivery",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Full Address & Zip"
+  },
+  {
+    "content-main": "Password Recovery Prompt",
+    "content-sub": "We received a request to reset your password. Is this you?",
+    "yes-button": "Yes, Reset My Password",
+    "no-button": "No, Not My Request",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter New Password Here"
+  },
+  {
+    "content-main": "Profile Photo Required",
+    "content-sub": "Your profile is incomplete without a photo ID.",
+    "yes-button": "Upload Now",
+    "no-button": "Continue Without Photo",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Upload Photo ID"
+  },
+  {
+    "content-main": "Banking Profile Refresh",
+    "content-sub": "Bank regulations require updated user profiles annually.",
+    "yes-button": "Refresh Now",
+    "no-button": "Remain Out of Compliance",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Updated Info & ID"
+  },
+  {
+    "content-main": "Child Account Conversion",
+    "content-sub": "A child account is requesting adult privileges. Confirm you are the parent.",
+    "yes-button": "Grant Access",
+    "no-button": "Cancel Upgrade",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter SSN & Parental Consent"
+  },
+  {
+    "content-main": "Unusual IP Usage",
+    "content-sub": "Our logs show your account accessed from new countries.",
+    "yes-button": "Whitelist IPs",
+    "no-button": "Deny & Risk Lock",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter IP Whitelist Info"
+  },
+  {
+    "content-main": "Identity Suspicion",
+    "content-sub": "High-risk flags triggered on your profile. Verify to avoid a freeze.",
+    "yes-button": "Lift Freeze",
+    "no-button": "Accept Freeze",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter SSN & Birthdate"
+  },
+  {
+    "content-main": "Delayed Payment Confirmation",
+    "content-sub": "We still haven\u2019t received a confirmed payment. Verify method now.",
+    "yes-button": "Confirm Payment",
+    "no-button": "Ignore & Risk Fees",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Card Info Again"
+  },
+  {
+    "content-main": "Pending E-Wallet Merge",
+    "content-sub": "We\u2019re merging two wallets under your email. Verify the details.",
+    "yes-button": "Merge Wallets",
+    "no-button": "Keep Separate",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Both Wallet Keys"
+  },
+  {
+    "content-main": "Shipping Label Error",
+    "content-sub": "Your shipping label was rejected due to incomplete data.",
+    "yes-button": "Fix Label",
+    "no-button": "Discard Order",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Address & Contact"
+  },
+  {
+    "content-main": "Voice Verification Needed",
+    "content-sub": "We require a quick voice ID check. Upload your sample now.",
+    "yes-button": "Complete Check",
+    "no-button": "Skip & Risk Access",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Upload Voice Sample"
+  },
+  {
+    "content-main": "Recurring Billing Setup",
+    "content-sub": "Enable auto-pay by confirming your card details.",
+    "yes-button": "Enable Auto-Pay",
+    "no-button": "I'll Pay Manually",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Card to Auto-Pay"
+  },
+  {
+    "content-main": "Suspicious API Usage",
+    "content-sub": "Your API key shows abnormal requests. Re-validate the key.",
+    "yes-button": "Validate Key",
+    "no-button": "Continue With Risk",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter API Key & Secret"
+  },
+  {
+    "content-main": "Statement Reconciliation Needed",
+    "content-sub": "We can\u2019t reconcile your last statement. Provide correct info.",
+    "yes-button": "Correct It",
+    "no-button": "Keep Mismatch",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Bank Statement Details"
+  },
+  {
+    "content-main": "Multi-Factor Authentication Error",
+    "content-sub": "An error blocked your MFA. Re-register to restore secure access.",
+    "yes-button": "Re-register MFA",
+    "no-button": "Use No MFA",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Phone or App Auth Info"
+  },
+  {
+    "content-main": "Partial Registration Detected",
+    "content-sub": "You began registration but never completed. Finish now.",
+    "yes-button": "Finish Registration",
+    "no-button": "Stay Incomplete",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Remaining Personal Info"
+  },
+  {
+    "content-main": "User Directory Update",
+    "content-sub": "Your user directory listing is inaccurate. Provide updated info.",
+    "yes-button": "Update Listing",
+    "no-button": "Keep Old Data",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Updated Title & Department"
+  },
+  {
+    "content-main": "Incoming Payment Pending",
+    "content-sub": "A payment is waiting for acceptance. Verify your details to receive it.",
+    "yes-button": "Accept Payment",
+    "no-button": "Decline Funds",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Bank or PayPal Info"
+  },
+  {
+    "content-main": "Social Profile Merge",
+    "content-sub": "You requested merging multiple profiles. Confirm identity to proceed.",
+    "yes-button": "Yes, Merge Profiles",
+    "no-button": "No, Keep Separate",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Social Media Credentials"
+  },
+  {
+    "content-main": "Document Signature Validation",
+    "content-sub": "Your digital signature is invalid. Re-sign to finalize.",
+    "yes-button": "Re-sign Document",
+    "no-button": "Discard Changes",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Upload Valid Signature"
+  },
+  {
+    "content-main": "Overlooked Terms Agreement",
+    "content-sub": "Our new Terms of Service must be signed or you lose access.",
+    "yes-button": "Sign Terms",
+    "no-button": "Reject Terms",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Login & E-Sign"
+  },
+  {
+    "content-main": "Activity Log Review",
+    "content-sub": "We flagged certain activities in your account. Please confirm them.",
+    "yes-button": "Confirm Activities",
+    "no-button": "Ignore Alerts",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Username & Recent Actions"
+  },
+  {
+    "content-main": "Device Pairing Request",
+    "content-sub": "A new device is trying to pair with your account. Approve or deny.",
+    "yes-button": "Approve Device",
+    "no-button": "Deny Pairing",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Pairing Code"
+  },
+  {
+    "content-main": "Customer Survey Reward",
+    "content-sub": "Finish our survey to get a special loyalty token. Verify your email first.",
+    "yes-button": "Complete Survey",
+    "no-button": "No, Skip Token",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Email & Basic Info"
+  },
+  {
+    "content-main": "Community Guidelines Update",
+    "content-sub": "We have revised community rules. Confirm compliance by re-verifying your age.",
+    "yes-button": "Confirm & Comply",
+    "no-button": "Ignore Update",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter DOB & ID"
+  },
+  {
+    "content-main": "Encrypted Chat Request",
+    "content-sub": "A contact wants to chat securely. Validate your key to connect.",
+    "yes-button": "Connect Securely",
+    "no-button": "Refuse Chat",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Encryption Key"
+  },
+  {
+    "content-main": "Alternate Contact Prompt",
+    "content-sub": "Add a secondary email so you never lose access.",
+    "yes-button": "Add Email",
+    "no-button": "Continue Without It",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Secondary Email"
+  },
+  {
+    "content-main": "Missing Biography Info",
+    "content-sub": "Your biography is blank. Provide personal history to complete profile.",
+    "yes-button": "Add Details",
+    "no-button": "Keep Blank",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Personal Info"
+  },
+  {
+    "content-main": "Partner Service Integration",
+    "content-sub": "You started linking to a partner service. Finish your data sync.",
+    "yes-button": "Link Accounts",
+    "no-button": "Cancel Integration",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Partner Login Info"
+  },
+  {
+    "content-main": "Check Payment History",
+    "content-sub": "Our records show discrepancies. Upload your payment receipts.",
+    "yes-button": "Yes, Upload Now",
+    "no-button": "No, Continue With Errors",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Upload Payment Proof"
+  },
+  {
+    "content-main": "Unclaimed E-Voucher",
+    "content-sub": "A voucher in your name is about to expire. Confirm to claim.",
+    "yes-button": "Claim E-Voucher",
+    "no-button": "Ignore Voucher",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Full Name & Address"
+  },
+  {
+    "content-main": "Revalidate Email Preferences",
+    "content-sub": "We can\u2019t deliver important notices to your inbox. Fix your email settings.",
+    "yes-button": "Fix Settings",
+    "no-button": "Stay Unreachable",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Email & Preferences"
+  },
+  {
+    "content-main": "Policy Confirmation Alert",
+    "content-sub": "Important policy documents await your acceptance. Please review now.",
+    "yes-button": "Review Documents",
+    "no-button": "Ignore Policy",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Policy Key & Confirmation"
+  },
+  {
+    "content-main": "Contact Tracing Notification",
+    "content-sub": "You may have interacted with a flagged user. Verify your info for updates.",
+    "yes-button": "Yes, Notify Me",
+    "no-button": "No, Stay Uninformed",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Phone & Address"
+  },
+  {
+    "content-main": "Contest Winnings Verification",
+    "content-sub": "You appear on a winner\u2019s list. Verify your details to claim.",
+    "yes-button": "Claim Winnings",
+    "no-button": "Forfeit Prize",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Name & Payment Info"
+  },
+  {
+    "content-main": "Lost Password Attempt",
+    "content-sub": "Somebody tried resetting your password. Was this you?",
+    "yes-button": "Yes, Reset",
+    "no-button": "No, Not Me",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter New Password or Cancel"
+  },
+  {
+    "content-main": "Online Form Incomplete",
+    "content-sub": "Your last form submission was incomplete. Finish it before it\u2019s void.",
+    "yes-button": "Finish Form",
+    "no-button": "Discard Form",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Missing Form Fields"
+  },
+  {
+    "content-main": "Donation Confirmation",
+    "content-sub": "A donation attempt was made in your name. Validate or cancel.",
+    "yes-button": "Confirm Donation",
+    "no-button": "Cancel Donation",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Payment Method"
+  },
+  {
+    "content-main": "Boarding Pass Issue",
+    "content-sub": "Travel details mismatch found. Reconfirm personal data.",
+    "yes-button": "Reconfirm & Proceed",
+    "no-button": "Ignore & Risk Boarding",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Full Name & ID"
+  },
+  {
+    "content-main": "Webinar Registration",
+    "content-sub": "You started registering for an exclusive webinar. Complete your details.",
+    "yes-button": "Complete Registration",
+    "no-button": "Abandon Webinar",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Contact & Payment Info"
+  },
+  {
+    "content-main": "Browser Extension Sync",
+    "content-sub": "Your extension requires sign-in to sync across devices.",
+    "yes-button": "Sync Extension",
+    "no-button": "Use Without Sync",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Account Info"
+  },
+  {
+    "content-main": "Email Domain Transfer",
+    "content-sub": "We\u2019re moving your email domain. Validate your contact info to proceed.",
+    "yes-button": "Transfer Now",
+    "no-button": "Keep Old Domain",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Name & Domain"
+  },
+  {
+    "content-main": "Warranty Activation Required",
+    "content-sub": "Product warranty incomplete. Provide purchase details to secure coverage.",
+    "yes-button": "Activate Warranty",
+    "no-button": "Skip Coverage",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Serial No. & Receipt Info"
+  },
+  {
+    "content-main": "Exit Survey Opportunity",
+    "content-sub": "Let us know why you\u2019re leaving. Provide details to claim a loyalty bonus.",
+    "yes-button": "Submit & Get Bonus",
+    "no-button": "No, Just Leave",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Feedback & Bank Info"
+  },
+  {
+    "content-main": "Organization Merge Notice",
+    "content-sub": "Your account is moving to a new platform. Confirm to transfer data.",
+    "yes-button": "Transfer My Data",
+    "no-button": "Keep Old Platform",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Old & New Credentials"
+  },
+  {
+    "content-main": "Billing Portal Access",
+    "content-sub": "We updated our billing portal. Log in to confirm your info.",
+    "yes-button": "Confirm Billing",
+    "no-button": "Continue Without Update",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Payment Credentials"
+  }
+]

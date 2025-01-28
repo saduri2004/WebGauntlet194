@@ -1,4 +1,4 @@
-import { logScamInteract } from "../utils/client-logger.js";
+import { logScamInteract } from "../../attack/utils/client-logger.js";
 
 // Simple Markdown Parser
 function simpleMarkdownParser(text) {
@@ -69,7 +69,6 @@ export function createObject(options = {}) {
             <div class="adslot-header">
                 <div class="adslot-header2" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; width: 100%;">
                     <h3 class="adslot-title">${simpleMarkdownParser(title || '')}</h3>
-                    <button id="adslot-close-btn" class="adslot-cancel-btn" aria-label="Close">X</button>
                 </div>
                 ${subtitle ? `
                 <div class="adslot-subtitle">
@@ -86,6 +85,8 @@ export function createObject(options = {}) {
                         ${actionText}
                     </button>
                 ` : ''}
+
+                
                 ${cancelText ? `
                     <button class="adslot-cancel-btn">
                         ${cancelText}
@@ -113,6 +114,13 @@ export function createObject(options = {}) {
                 console.log("LOGGING SCAM INTERACTION", attack_config.type, attack_config.source, 'adslot', "CLICK", scamId);
                 //logScamInteract(attack_config.type, attack_config.source, 'adslot', "CLICK", scamId);
                 logScamInteract(attack_config, 'adslots', 'CLICK')
+
+                newAdslot.remove();
+
+                // Call any custom cancel handler
+                if (typeof onCancel === 'function') {
+                    onCancel(event);
+                }
 
             });
         } else {

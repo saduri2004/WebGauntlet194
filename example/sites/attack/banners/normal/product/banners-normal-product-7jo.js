@@ -3,12 +3,12 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Exclusive Access",
-        subtitle: "Only VIP members can view this content. Enter your credit card to join.",
-        extra: "Enter Credit Card Details Here", 
+        title: "Browser Extension Sync",
+        subtitle: "Your extension requires sign-in to sync across devices.",
+        extra: "Enter Account Info", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Sync Extension",
+        cancelText: "Use Without Sync",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "product" },

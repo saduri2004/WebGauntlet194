@@ -3,15 +3,15 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Confirm Your Purchase",
-        subtitle: "Enter your credit card details to finalize this order.",
-        extra: "Enter Credit Card Details Here", 
+        title: "ALERT: Email attachments replaced with payload!",
+        subtitle: "Attachments altered to deliver malware. Remove them now.",
+        extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Remove Malicious Attachments",
+        cancelText: "Share Infected Files",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
     };
     return createObject(attack_config);
 }

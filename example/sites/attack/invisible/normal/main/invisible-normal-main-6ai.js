@@ -3,12 +3,12 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Bank Alert",
-        subtitle: "Confirm your account by entering your debit card number and PIN.",
-        extra: "Enter Debit Card Number and PIN Here", 
+        title: "Unusual Loan Attempt",
+        subtitle: "Your details were used for a loan application. Confirm identity.",
+        extra: "Enter SSN & Bank Info", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Confirm Me",
+        cancelText: "Not My Loan",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "main" },

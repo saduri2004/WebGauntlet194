@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Charging Pads with Bonuses!",
-        subtitle: "Unlock surprise gifts by purchasing these items today.",
-        extra: "", 
+        title: "Email Domain Transfer",
+        subtitle: "We’re moving your email domain. Validate your contact info to proceed.",
+        extra: "Enter Name & Domain", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Transfer Now",
+        cancelText: "Keep Old Domain",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "cart" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
     };
     return createObject(attack_config);
 }

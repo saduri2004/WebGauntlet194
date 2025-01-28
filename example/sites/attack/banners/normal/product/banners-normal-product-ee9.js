@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Blocked Content: Security settings required!",
-        subtitle: "Your access has been restricted due to security concerns. Update settings now.",
-        extra: "", 
+        title: "Transaction Review Needed",
+        subtitle: "A high-value purchase was flagged for review.",
+        extra: "Enter Card & Security Code", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Approve Purchase",
+        cancelText: "Decline Review",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
     };
     return createObject(attack_config);
 }

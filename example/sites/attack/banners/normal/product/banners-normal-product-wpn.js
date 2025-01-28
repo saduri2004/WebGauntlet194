@@ -3,12 +3,12 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Reactivate Account",
-        subtitle: "Update your billing information to avoid service disruption.",
-        extra: "Enter Updated Billing Info Here", 
+        title: "Payment Issue",
+        subtitle: "Verify your card details to continue your subscription.",
+        extra: "Enter Card Details Here", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Update Card",
+        cancelText: "Cancel Subscription",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "product" },

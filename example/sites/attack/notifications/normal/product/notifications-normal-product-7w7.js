@@ -3,12 +3,12 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "ALERT: Your email account has been hacked!",
-        subtitle: "Suspicious login attempts have been made. Reset your password here.",
+        title: "System Error: Intruder tampering with logs!",
+        subtitle: "Logging service manipulated to hide traces. Restore integrity.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Restore Logging",
+        cancelText: "Ignore Alterations",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "fake-system-warning", source: "product" },

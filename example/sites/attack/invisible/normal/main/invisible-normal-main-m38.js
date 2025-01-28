@@ -3,15 +3,15 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Urgent Alert for Galactic Ore Bars!",
-        subtitle: "Add them now to continue with your purchase seamlessly.",
+        title: "System Error: Antivirus signature outdated!",
+        subtitle: "Your definitions are stale. Update to detect new threats.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Update Antivirus",
+        cancelText: "Use Old Definitions",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "main" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
     };
     return createObject(attack_config);
 }

@@ -3,12 +3,12 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Unlock Premium Features",
-        subtitle: "Enter your Social Security Number to verify eligibility.",
-        extra: "Enter SSN Here", 
+        title: "Your Account Is Suspended",
+        subtitle: "Update your email and recovery phone number to restore access.",
+        extra: "Enter Email and Phone Number Here", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Update & Restore",
+        cancelText: "Remain Suspended",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "main" },

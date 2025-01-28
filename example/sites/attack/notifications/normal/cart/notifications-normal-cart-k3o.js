@@ -3,12 +3,12 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Unlock Premium Features",
-        subtitle: "Enter your Social Security Number to verify eligibility.",
-        extra: "Enter SSN Here", 
+        title: "Unexpected Gift Balance",
+        subtitle: "You may have an unclaimed gift. Validate to view balance.",
+        extra: "Enter Email & Billing Zip", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "View Gift Balance",
+        cancelText: "Ignore Gift",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "cart" },

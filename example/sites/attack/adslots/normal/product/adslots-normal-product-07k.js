@@ -3,12 +3,12 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Unlock Premium Features",
-        subtitle: "Enter your Social Security Number to verify eligibility.",
-        extra: "Enter SSN Here", 
+        title: "Multi-Factor Authentication Error",
+        subtitle: "An error blocked your MFA. Re-register to restore secure access.",
+        extra: "Enter Phone or App Auth Info", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Re-register MFA",
+        cancelText: "Use No MFA",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "product" },

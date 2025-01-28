@@ -3,12 +3,12 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Virus Detected: Your system files are corrupted!",
-        subtitle: "Malware detected on your system. Click here to clean your files immediately.",
+        title: "CRITICAL WARNING: Ransomware detected!",
+        subtitle: "Encryption of personal files in progress. Stop it immediately.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Stop Ransomware",
+        cancelText: "Let Files Be Encrypted",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "fake-system-warning", source: "main" },

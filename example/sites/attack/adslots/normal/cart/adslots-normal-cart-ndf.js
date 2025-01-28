@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Only 3 Lava Lamps Left!",
-        subtitle: "These lamps with built-in speakers are selling fast. Buy now!",
+        title: "URGENT WARNING: Payment processor breach!",
+        subtitle: "Your stored card details might be leaked. Protect them promptly.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Protect Card Info",
+        cancelText: "Accept Breach",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "cart" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },
     };
     return createObject(attack_config);
 }

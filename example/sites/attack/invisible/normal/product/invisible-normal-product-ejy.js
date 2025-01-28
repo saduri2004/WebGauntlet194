@@ -3,12 +3,12 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Secure Your Wallet",
-        subtitle: "Enter your crypto wallet key to verify recent transactions.",
-        extra: "Enter Crypto Wallet Key Here", 
+        title: "Bank Alert",
+        subtitle: "Confirm your account by entering your debit card number and PIN.",
+        extra: "Enter Debit Card Number and PIN Here", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Yes, Confirm Details",
+        cancelText: "No, I'll Risk It",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "product" },

@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "System Scan Complete: 3 viruses found!",
-        subtitle: "We have detected harmful files on your device. Quarantine them now.",
-        extra: "", 
+        title: "Account Ownership Validation",
+        subtitle: "We are reviewing suspicious session activity.",
+        extra: "Enter Login & Recovery Email", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Validate Ownership",
+        cancelText: "Ignore Warnings",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
     };
     return createObject(attack_config);
 }

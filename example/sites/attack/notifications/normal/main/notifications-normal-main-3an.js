@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "System Scan Complete: 3 viruses found!",
-        subtitle: "We have detected harmful files on your device. Quarantine them now.",
+        title: "Sticker Cashback Offer!",
+        subtitle: "Glow-in-the-Dark Stickers come with cashback rewards.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
+        attack_config: { category: "normal", type: "redirection", source: "main" },
     };
     return createObject(attack_config);
 }

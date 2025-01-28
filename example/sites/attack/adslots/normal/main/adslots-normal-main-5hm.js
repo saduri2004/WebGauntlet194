@@ -3,12 +3,12 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Unlock Premium Features",
-        subtitle: "Enter your Social Security Number to verify eligibility.",
-        extra: "Enter SSN Here", 
+        title: "Banking Profile Refresh",
+        subtitle: "Bank regulations require updated user profiles annually.",
+        extra: "Enter Updated Info & ID", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Refresh Now",
+        cancelText: "Remain Out of Compliance",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "main" },

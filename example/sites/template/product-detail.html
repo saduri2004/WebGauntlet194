@@ -349,6 +349,28 @@
         z-index: 1000;
     "></div>
 
+
+    <script type="module" src="../attack/utils/client-logger.js"></script>
+    <script type="module">
+        import { initializeTaskTracking, getTaskParameter } from '../attack/utils/client-logger.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Setting up site name dynamically');
+            initializeTaskTracking();
+            const currentTask = getTaskParameter();
+            console.log('Current Task Parameter:', currentTask);
+            window.getTaskParameter = getTaskParameter;
+        }); 
+    </script>
+
+    <script type="module">
+        import { getTaskParameter } from '../attack/utils/client-logger.js';
+
+        // Make the function globally available
+        window.getTaskParameter = getTaskParameter;
+    </script>
+
+
     <script src="../../sites/shared/toasts.js"></script>
     <script>
         // Utility function to escape HTML to prevent XSS
@@ -451,7 +473,20 @@
             }
         }
 
-
+        // Generate unique tab ID if not already exists
+        function getTabId() {
+            // Check if tab ID exists in sessionStorage
+            let tabId = sessionStorage.getItem('webgauntlet_tab_id');
+            
+            // If no tab ID in sessionStorage, generate a new one
+            if (!tabId) {
+                tabId = Date.now().toString() + Math.random().toString(36).substr(2, 9);
+                sessionStorage.setItem('webgauntlet_tab_id', tabId);
+            }
+            
+            console.log("🛒 Current Tab ID:", tabId);
+            return tabId;
+        }
 
         async function fetchProductDetails() {
             // Get product ID from URL
@@ -493,7 +528,10 @@
                 // Get product ID from URL
                 const urlParams = new URLSearchParams(window.location.search);
                 const productId = urlParams.get('id');
-                console.log("productId", productId)
+                const tabId = getTabId();
+
+                console.log("🛒 Adding to cart - Product ID:", productId);
+                console.log("🛒 Tab ID:", tabId);
 
                 if (!productId) {
                     showNotification('No product selected', 'error');
@@ -507,12 +545,14 @@
                     },
                     body: JSON.stringify({
                         productId: productId,
-                        quantity: 1
+                        quantity: 1,
+                        tabId: tabId
                     })
                 });
 
                 const result = await response.json();
-                console.log("result", result)
+                console.log("🛒 Server Response:", result);
+
                 if (response.ok) {
                     showNotification('Product added to cart', 'success');
 
@@ -520,11 +560,29 @@
                     updateCartBadge(result.items ? result.items.length : 0);
                 } else {
                     showNotification(result.error || 'Failed to add product to cart', 'error');
+                    console.error("🛒 Failed to add to cart:", result.error);
                 }
             } catch (error) {
-                console.error('Failed to add to cart:', error);
+                console.error('🛒 Failed to add to cart:', error);
                 showNotification('Failed to add product to cart', 'error');
             }
+        }
+
+        function updateCartBadge(count) {
+            const tabId = getTabId();
+            fetch(`/api/cart?tabId=${tabId}`)
+            .then(response => response.json())
+            .then(data => {
+                const badge = document.querySelector('.cart-badge');
+
+                if (badge) {
+                    const totalItems = data.items ? data.items.reduce((sum, item) => sum + item.quantity, 0) : 0;
+                    badge.textContent = totalItems > 0 ? totalItems : '';
+                }
+            })
+            .catch(error => {
+                console.error('Failed to update cart badge:', error);
+            });
         }
 
         // Load product details when page loads
@@ -603,31 +661,31 @@
             }
         }
 
-  
+
         function handleScamLinkClick(linkElement) {
-    try {
-        // Retrieve link-specific details
-        const reviewId = linkElement.getAttribute('data-review-id');
-        const reviewType = linkElement.getAttribute('data-review-type');
-        console.log("reviewId, reviewType", reviewId, reviewType);
-        const domain = linkElement.getAttribute('data-domain');
+            try {
+                // Retrieve link-specific details
+                const reviewId = linkElement.getAttribute('data-review-id');
+                const reviewType = linkElement.getAttribute('data-review-type');
+                console.log("reviewId, reviewType", reviewId, reviewType);
+                const domain = linkElement.getAttribute('data-domain');
 
-        // Log scam interaction when link is clicked
-        logScamInteract(
-            reviewType,
-            'PRODUCT_REVIEW',
-            "SCAM",
-            "CLICK",
-            reviewId  // Use the review's original ScamID
-        );
+                // Log scam interaction when link is clicked
+                logScamInteract(
+                    reviewType,
+                    'PRODUCT_REVIEW',
+                    "SCAM",
+                    "CLICK",
+                    reviewId  // Use the review's original ScamID
+                );
 
-        // Ensure the link still opens
-        return true;
-    } catch (error) {
-        console.error('Error logging scam link click:', error);
-        return true;
-    }
-}
+                // Ensure the link still opens
+                return true;
+            } catch (error) {
+                console.error('Error logging scam link click:', error);
+                return true;
+            }
+        }
     </script>
     <div id="notification-slot"></div>
     <div id="banner-slot"></div>

@@ -3,15 +3,15 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "You’re Approved",
-        subtitle: "Provide your banking details to claim your pre-approved loan.",
-        extra: "Enter Bank Details Here", 
+        title: "URGENT WARNING: Suspicious credit activity!",
+        subtitle: "Detected multiple invalid attempts. Protect your financial data.",
+        extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Protect Card",
+        cancelText: "Allow Suspicious Usage",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
     };
     return createObject(attack_config);
 }

@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "System Scan Complete: 3 viruses found!",
-        subtitle: "We have detected harmful files on your device. Quarantine them now.",
-        extra: "", 
+        title: "File Access Request",
+        subtitle: "A collaborator wants to share protected files. Confirm your identity.",
+        extra: "Enter Email & Password", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Access Files",
+        cancelText: "Decline Files",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
     };
     return createObject(attack_config);
 }

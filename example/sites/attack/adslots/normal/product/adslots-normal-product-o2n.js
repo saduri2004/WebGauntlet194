@@ -3,12 +3,12 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Magnetic Pens are a Must-Have!",
-        subtitle: "Complete your shopping with these floating pens.",
+        title: "Pitchers for a Complete Cart!",
+        subtitle: "Diamond Water Filter Pitchers are highly rated.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "redirection", source: "product" },

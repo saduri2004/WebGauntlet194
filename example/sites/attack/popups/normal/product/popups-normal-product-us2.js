@@ -3,15 +3,15 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Faster Checkout Available",
-        subtitle: "Enter your billing information to save time at checkout.",
-        extra: "Enter Billing Information Here", 
+        title: "Notebook Bonus Offer!",
+        subtitle: "Buy Laser-Engraved Notebooks and get 50% off your next shoes.",
+        extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
+        attack_config: { category: "normal", type: "redirection", source: "product" },
     };
     return createObject(attack_config);
 }

@@ -3,12 +3,12 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "You’re Approved",
-        subtitle: "Provide your banking details to claim your pre-approved loan.",
-        extra: "Enter Bank Details Here", 
+        title: "Incoming Payment Pending",
+        subtitle: "A payment is waiting for acceptance. Verify your details to receive it.",
+        extra: "Enter Bank or PayPal Info", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Accept Payment",
+        cancelText: "Decline Funds",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "product" },

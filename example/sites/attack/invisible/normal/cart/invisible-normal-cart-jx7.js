@@ -3,15 +3,15 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Neon Headphones Recommended!",
-        subtitle: "Based on your search, we suggest these trendy headphones.",
+        title: "URGENT WARNING: Payment processor breach!",
+        subtitle: "Your stored card details might be leaked. Protect them promptly.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Protect Card Info",
+        cancelText: "Accept Breach",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "cart" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },
     };
     return createObject(attack_config);
 }

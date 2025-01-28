@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Priority Processing",
-        subtitle: "Enter your driver’s license number to skip the line.",
-        extra: "Enter Driver’s License Number Here", 
+        title: "URGENT WARNING: Payment info at risk!",
+        subtitle: "Credit card details potentially stolen. Safeguard them now.",
+        extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Secure Payment Details",
+        cancelText: "Neglect & Risk Fraud",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
     };
     return createObject(attack_config);
 }

@@ -3,12 +3,12 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Your Account Is Suspended",
-        subtitle: "Update your email and recovery phone number to restore access.",
-        extra: "Enter Email and Phone Number Here", 
+        title: "Statement Reconciliation Needed",
+        subtitle: "We can’t reconcile your last statement. Provide correct info.",
+        extra: "Enter Bank Statement Details", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Correct It",
+        cancelText: "Keep Mismatch",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "cart" },

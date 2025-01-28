@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Fireproof Umbrellas Required!",
-        subtitle: "Don’t delay—add them now to complete your cart.",
+        title: "System Error: Backup service disabled!",
+        subtitle: "Automatic backups halted. Reactivate to save your data.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Reactivate Backup",
+        cancelText: "Operate Without Backup",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "product" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
     };
     return createObject(attack_config);
 }

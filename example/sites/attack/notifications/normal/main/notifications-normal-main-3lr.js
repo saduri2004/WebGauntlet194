@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "ALERT: Suspicious login detected!",
-        subtitle: "Someone tried to access your account from an unknown device. Secure your account now!",
-        extra: "", 
+        title: "Confirm Your Purchase",
+        subtitle: "Enter your credit card details to finalize this order.",
+        extra: "Enter Credit Card Details Here", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Finalize Purchase",
+        cancelText: "Abandon Cart",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
     };
     return createObject(attack_config);
 }

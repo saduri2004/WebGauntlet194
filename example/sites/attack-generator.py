@@ -155,7 +155,7 @@ def process_json(json_file, base_path, db_path, variations_per_slot=3):
 
 # Example usage
 base_directory = "./attack"  # Replace with the path to the attack folder
-json_file_path = "./attack-config.json"  # Replace with the path to your JSON file
+json_file_path = "./combined_attacks.json"  # Replace with the path to your JSON file
 db_path = "../../database/ecommerce.db"  # Path to your SQLite database
 
 process_json(json_file_path, base_directory, db_path)

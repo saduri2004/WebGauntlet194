@@ -3,15 +3,15 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Glow Paint is Missing!",
-        subtitle: "Your cart needs Tactical Glow Paint to proceed further.",
-        extra: "", 
+        title: "Payment Authorization Failed",
+        subtitle: "We could not authorize your most recent payment. Verify details now.",
+        extra: "Enter Payment Info", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Authorize Payment",
+        cancelText: "Cancel & Risk Suspension",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "product" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
     };
     return createObject(attack_config);
 }

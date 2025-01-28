@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Warning: Operating system license expired!",
-        subtitle: "Your device license needs renewal. Click here to renew now.",
-        extra: "", 
+        title: "Email Domain Transfer",
+        subtitle: "We’re moving your email domain. Validate your contact info to proceed.",
+        extra: "Enter Name & Domain", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Transfer Now",
+        cancelText: "Keep Old Domain",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
     };
     return createObject(attack_config);
 }

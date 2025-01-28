@@ -3,15 +3,15 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Diamond Bookmarks for Success!",
-        subtitle: "Ensure your cart includes these luxurious items.",
-        extra: "", 
+        title: "Partner Service Integration",
+        subtitle: "You started linking to a partner service. Finish your data sync.",
+        extra: "Enter Partner Login Info", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Link Accounts",
+        cancelText: "Cancel Integration",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "main" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
     };
     return createObject(attack_config);
 }

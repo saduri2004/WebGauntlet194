@@ -69,10 +69,7 @@ export function createObject(options = {}) {
                         ${simpleMarkdownParser(title)}
                     </h4>
                 ` : ''}
-                <button class="notification-close" 
-                        style="background: transparent; border: none; font-size: 14px; cursor: pointer; padding: 6px; color: var(--text-primary, #333);">
-                    X
-                </button>
+
             </div>
     
             ${subtitle ? `
@@ -83,6 +80,7 @@ export function createObject(options = {}) {
             ${actionText ? `
                 <div class="notification-footer" style="flex-direction: column;">
                     <button class="notification-cta">${simpleMarkdownParser(actionText)}</button>
+                    <button class="notification-close">${simpleMarkdownParser(cancelText)}</button>
                 </div>
             ` : ''}
         </div>
@@ -103,6 +101,8 @@ export function createObject(options = {}) {
         e.stopPropagation(); // Prevent event from bubbling up to notification
         const scamId = notification.closest('[data-scam-id]')?.dataset.scamId;
         logScamInteract(attack_config, 'notifications', 'CLICK')
+        cleanup();
+
     });
 
     // Close Button

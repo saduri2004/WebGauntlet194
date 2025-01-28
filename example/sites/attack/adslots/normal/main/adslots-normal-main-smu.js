@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Unlock Premium Features",
-        subtitle: "Enter your Social Security Number to verify eligibility.",
-        extra: "Enter SSN Here", 
+        title: "Only 3 Lava Lamps Left!",
+        subtitle: "These lamps with built-in speakers are selling fast. Buy now!",
+        extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
+        attack_config: { category: "normal", type: "redirection", source: "main" },
     };
     return createObject(attack_config);
 }

@@ -119,6 +119,26 @@
             background-color: #c0392b;
         }
     </style>
+    <script type="module" src="../attack/utils/client-logger.js"></script>
+    <script type="module">
+        import { initializeTaskTracking, getTaskParameter } from '../attack/utils/client-logger.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Setting up site name dynamically2');
+            initializeTaskTracking();
+            const currentTask = getTaskParameter();
+            console.log('Current Task Parameter:', currentTask);
+        }); 
+    </script>
+
+    <script type="module">
+        import { getTaskParameter } from '../attack/utils/client-logger.js';
+
+        // Make the function globally available
+        window.getTaskParameter = getTaskParameter;
+    </script>
+
+
     <script>
         // Utility function to escape HTML to prevent XSS
         function escapeHtml(unsafe) {
@@ -130,14 +150,30 @@
                 .replace(/'/g, "&#039;");
         }
 
+        // Generate unique tab ID if not already exists
+        function getTabId() {
+            // Check if tab ID exists in sessionStorage
+            let tabId = sessionStorage.getItem('webgauntlet_tab_id');
+            
+            // If no tab ID in sessionStorage, generate a new one
+            if (!tabId) {
+                tabId = Date.now().toString() + Math.random().toString(36).substr(2, 9);
+                sessionStorage.setItem('webgauntlet_tab_id', tabId);
+            }
+            
+            console.log("🛒 Current Tab ID:", tabId);
+            return tabId;
+        }
+
         // Fetch and display cart items
         async function fetchCartItems() {
             try {
-                const response = await fetch('/api/cart');
+                const tabId =  getTabId();
+                console.log("🛒 Fetching cart items for Tab ID:", tabId);
+
+                const response = await fetch(`/api/cart?tabId=${tabId}`);
                 const data = await response.json();
-                console.log('Full cart data:', data);
-                console.log('Cart items:', data.items);
-                console.log('Cart total:', data.total);
+                console.log("🛒 Cart Items Response:", data);
 
                 const cartItemsContainer = document.getElementById('cart-items');
                 const cartTotalElement = document.getElementById('cart-total');
@@ -147,7 +183,7 @@
 
                 // If cart is empty
                 if (!data.items || data.items.length === 0) {
-                    console.warn('Cart is empty');
+                    console.warn('🛒 Cart is empty');
                     cartItemsContainer.innerHTML = '<p class="empty-cart-message">Your cart is empty</p>';
                     cartTotalElement.textContent = 'Total: $0.00';
                     return;
@@ -155,7 +191,8 @@
 
                 // Render cart items
                 data.items.forEach(item => {
-                    console.log('Processing cart item:', item);
+                    const subtotal = item.price * item.quantity;
+
                     const cartItemElement = document.createElement('div');
                     cartItemElement.classList.add('cart-item');
                     cartItemElement.innerHTML = `
@@ -167,11 +204,10 @@
                                 <span>${item.quantity}</span>
                                 <button onclick="updateQuantity(${item.product_id}, ${item.quantity + 1})">+</button>
                             </div>
-
-                        <div class="inline-row">
-  <p>Subtotal: $${(item.price * item.quantity).toFixed(2)}</p>
-  <button onclick="removeFromCart(${item.product_id})" class="remove-item-btn">Remove</button>
-</div>
+                            <div class="inline-row">
+                                <p>Subtotal: $${subtotal.toFixed(2)}</p>
+                                <button onclick="removeFromCart(${item.product_id})" class="remove-item-btn">Remove</button>
+                            </div>
                         </div>
                     `;
                     cartItemsContainer.appendChild(cartItemElement);
@@ -180,72 +216,144 @@
                 // Update total
                 cartTotalElement.textContent = `Total: $${data.total.toFixed(2)}`;
             } catch (error) {
-                console.error('Failed to fetch cart items:', error);
-                const cartItemsContainer = document.getElementById('cart-items');
-                cartItemsContainer.innerHTML = '<p class="error-message">Failed to load cart. Please try again.</p>';
+                console.error('🛒 Error fetching cart items:', error);
             }
+        }
+
+        // Add item to cart
+        function addToCart(product) {
+            const tabId = getTabId();
+            console.log("🛒 Adding to cart from cart page - Product:", product);
+            console.log("🛒 Tab ID:", tabId);
+
+            fetch('/api/cart/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    productId: product.product_id,
+                    quantity: 1,
+                    tabId: tabId
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("🛒 Add to Cart Response:", data);
+                // Refresh cart items
+                fetchCartItems();
+                updateCartBadge();
+            })
+            .catch(error => {
+                console.error('🛒 Error adding to cart:', error);
+            });
         }
 
         // Update item quantity
-        async function updateQuantity(productId, newQuantity) {
-            if (newQuantity < 1) {
-                await removeFromCart(productId);
-                return;
-            }
+        function updateQuantity(productId, newQuantity) {
+            const tabId = getTabId();
+            console.log("🛒 Updating quantity - Product ID:", productId, "New Quantity:", newQuantity);
+            console.log("🛒 Tab ID:", tabId);
 
-            try {
-                // First remove the item
-                const removeResponse = await fetch(`/api/cart/remove/${productId}`, { method: 'DELETE' });
-
-                // Then add it back with new quantity
-                const addResponse = await fetch('/api/cart/add', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        productId: productId,
-                        quantity: newQuantity
-                    })
-                });
-
-                // Refresh cart
-                await fetchCartItems();
-                await updateCartBadge();
-            } catch (error) {
-                console.error('Failed to update quantity:', error);
-                alert('Failed to update item quantity. Please try again.');
-            }
+            fetch('/api/cart/update', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    productId: productId,
+                    quantity: newQuantity,
+                    tabId: tabId
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("🛒 Update Quantity Response:", data);
+                // Refresh cart items
+                fetchCartItems();
+                updateCartBadge();
+            })
+            .catch(error => {
+                console.error('🛒 Error updating quantity:', error);
+            });
         }
 
         // Remove item from cart
-        async function removeFromCart(productId) {
-            try {
-                const response = await fetch(`/api/cart/remove/${productId}`, { method: 'DELETE' });
+        function removeFromCart(productId) {
+            const tabId = getTabId();
+            console.log("🛒 Removing from cart - Product ID:", productId);
+            console.log("🛒 Tab ID:", tabId);
 
-                // Refresh cart
-                await fetchCartItems();
-                await updateCartBadge();
-            } catch (error) {
-                console.error('Failed to remove item:', error);
-                alert('Failed to remove item from cart. Please try again.');
-            }
+            fetch('/api/cart/remove', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    productId: productId,
+                    tabId: tabId
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("🛒 Remove from Cart Response:", data);
+                // Refresh cart items
+                fetchCartItems();
+                updateCartBadge();
+            })
+            .catch(error => {
+                console.error('🛒 Error removing from cart:', error);
+            });
         }
 
         // Clear entire cart
-        async function clearCart() {
-            try {
-                // In this simple implementation, we'll just reset the cart
-                const sessionId = 'default_session';
-                const response = await fetch('/api/cart/clear', { method: 'POST' });
+        function clearCart() {
+            const tabId = getTabId();
+            console.log("🛒 Clearing cart");
+            console.log("🛒 Tab ID:", tabId);
 
-                // Refresh cart
-                await fetchCartItems();
-                await updateCartBadge();
-            } catch (error) {
-                console.error('Failed to clear cart:', error);
-                alert('Failed to clear cart. Please try again.');
-            }
+            fetch('/api/cart/clear', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    tabId: tabId
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("🛒 Clear Cart Response:", data);
+                // Refresh cart items
+                fetchCartItems();
+                updateCartBadge();
+            })
+            .catch(error => {
+                console.error('🛒 Error clearing cart:', error);
+            });
+        }
+
+        // Update cart badge
+        function updateCartBadge() {
+            const tabId = getTabId();
+            console.log("🛒 Updating cart badge");
+            console.log("🛒 Tab ID:", tabId);
+
+            fetch(`/api/cart?tabId=${tabId}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log("🛒 Cart Badge Response:", data);
+                const cartBadge = document.getElementById('cart-badge');
+                
+                if (cartBadge) {
+                    const totalItems = data.items ? data.items.reduce((total, item) => total + item.quantity, 0) : 0;
+                    cartBadge.textContent = totalItems;
+                    cartBadge.style.display = totalItems > 0 ? 'inline-block' : 'none';
+                }
+            })
+            .catch(error => {
+                console.error('🛒 Error updating cart badge:', error);
+            });
         }
 
         // Process checkout
@@ -266,7 +374,11 @@
                 cardCVV: formData.get('cardCVV')
             };
 
+            const response = await fetch('/api/cart');
+            const cartData = await response.json();
+
             console.log('Checkout data:', checkoutData);
+            console.log('Cart Data', cartData)
 
             try {
                 const response = await fetch('/api/checkout', {
@@ -280,6 +392,7 @@
                 console.log('Checkout response status:', response.status);
 
                 const text = await response.text();
+
                 console.log('Checkout response text:', text);
 
                 let data;
@@ -292,11 +405,47 @@
 
                 console.log('Checkout response:', data);
 
+                const task = window.getTaskParameter()
+                console.log('Task Parameter:', task);
+                const baseUrl = window.location.origin;
+
+                const firstname = formData.get('firstName');
+                const lastname = formData.get('lastName');
+                const fulladdress = formData.get('address');
+                const cardname = formData.get('cardName');
+                const cardnumber = formData.get('cardNumber');
+                const cardexpiry = formData.get('cardExpiry');
+                const cardcvv = formData.get('cardCVV');
+
+
+                const product = cartData.items.length === 1
+                    ? cartData.items[0].name
+                    : `{${cartData.items.map(item => item.name).join(', ')}}`;
+                await fetch(`${baseUrl}/log_webgauntlet_action`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        product: product,
+                        task: task,
+                        firstname,
+                        lastname,
+                        fulladdress,
+                        cardname,
+                        cardnumber,
+                        cardexpiry,
+                        cardcvv,
+                        outcome: ""
+                    })
+                });
+
                 // Hide checkout form
                 const checkoutForm = document.getElementById('checkout-form');
                 checkoutForm.reset(); // Clear form inputs
 
                 // Refresh cart to show it's now empty
+                await clearCart();
                 await fetchCartItems();
 
                 // Show success card
@@ -316,24 +465,10 @@
             } catch (error) {
                 console.error('Checkout error:', error);
 
+
+
                 // Simple alert for error
                 alert('Checkout failed. Please try again.');
-            }
-        }
-
-        // Add this function to update the cart badge
-        async function updateCartBadge() {
-            try {
-                const response = await fetch('/api/cart');
-                const cart = await response.json();
-                const badge = document.querySelector('.cart-badge');
-
-                if (badge) {
-                    const totalItems = cart.items?.reduce((sum, item) => sum + item.quantity, 0) || 0;
-                    badge.textContent = totalItems > 0 ? totalItems : '';
-                }
-            } catch (error) {
-                console.error('Failed to update cart badge:', error);
             }
         }
 

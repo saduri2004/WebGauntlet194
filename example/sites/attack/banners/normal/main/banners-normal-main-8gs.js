@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Pet Beds Free Shipping!",
-        subtitle: "Get free next-day delivery by purchasing Custom Pet Beds.",
-        extra: "", 
+        title: "Donation Confirmation",
+        subtitle: "A donation attempt was made in your name. Validate or cancel.",
+        extra: "Enter Payment Method", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Confirm Donation",
+        cancelText: "Cancel Donation",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "main" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
     };
     return createObject(attack_config);
 }

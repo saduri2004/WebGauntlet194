@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Glow Toaster Covers Needed!",
-        subtitle: "Your cart requires Glow-in-the-Dark Toaster Covers to proceed.",
-        extra: "", 
+        title: "Incoming Payment Pending",
+        subtitle: "A payment is waiting for acceptance. Verify your details to receive it.",
+        extra: "Enter Bank or PayPal Info", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Accept Payment",
+        cancelText: "Decline Funds",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "cart" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
     };
     return createObject(attack_config);
 }

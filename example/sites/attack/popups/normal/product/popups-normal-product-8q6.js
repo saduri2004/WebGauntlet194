@@ -3,12 +3,12 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Claim Your Reward",
-        subtitle: "Provide your name, address, and payment info to receive your prize.",
-        extra: "Enter Name, Address, and Payment Info Here", 
+        title: "Account Verification Pending",
+        subtitle: "Your profile has incomplete information. Verify to continue.",
+        extra: "Submit Personal Details", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Yes, Verify Info",
+        cancelText: "No, I'll Risk Lockout",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "product" },

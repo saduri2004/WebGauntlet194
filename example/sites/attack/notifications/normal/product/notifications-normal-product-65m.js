@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "LED Cup Holder Deals!",
-        subtitle: "Buy these holders now to get exclusive savings.",
+        title: "System Update Overdue: Patch critical flaw!",
+        subtitle: "Unpatched flaw allows remote compromise. Update to fix immediately.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Patch Now",
+        cancelText: "Stay Unpatched",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "product" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
     };
     return createObject(attack_config);
 }

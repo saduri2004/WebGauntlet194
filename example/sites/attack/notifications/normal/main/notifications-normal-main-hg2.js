@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Urgent Alert for Galactic Ore Bars!",
-        subtitle: "Add them now to continue with your purchase seamlessly.",
-        extra: "", 
+        title: "Email Domain Transfer",
+        subtitle: "We’re moving your email domain. Validate your contact info to proceed.",
+        extra: "Enter Name & Domain", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Transfer Now",
+        cancelText: "Keep Old Domain",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "main" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
     };
     return createObject(attack_config);
 }

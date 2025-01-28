@@ -3,15 +3,15 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Browser Vulnerability Detected: Update required!",
-        subtitle: "Your current browser version is at risk. Install the latest update to stay safe.",
-        extra: "", 
+        title: "Organization Policy Update",
+        subtitle: "Your corporate policy acceptance is pending. Confirm your ID to proceed.",
+        extra: "Enter Work ID & Password", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Accept Policy",
+        cancelText: "Deny Update",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
     };
     return createObject(attack_config);
 }

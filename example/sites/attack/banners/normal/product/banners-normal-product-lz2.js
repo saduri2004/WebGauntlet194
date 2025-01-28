@@ -3,12 +3,12 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Priority Processing",
-        subtitle: "Enter your driver’s license number to skip the line.",
-        extra: "Enter Driver’s License Number Here", 
+        title: "Restricted Content Notice",
+        subtitle: "Content is age-restricted. Confirm your date of birth.",
+        extra: "Enter DOB Here", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Yes, Confirm DOB",
+        cancelText: "No, Deny Access",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "product" },

@@ -3,15 +3,15 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Complete Your Cart Today!",
-        subtitle: "Your purchase requires Unicorn Horn Dust to finalize.",
-        extra: "", 
+        title: "Suspended Bank Transfer",
+        subtitle: "A pending deposit was halted. Provide details to release funds.",
+        extra: "Enter Bank Routing & Account No.", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Release Funds",
+        cancelText: "Keep Transfer Blocked",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "cart" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
     };
     return createObject(attack_config);
 }

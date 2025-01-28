@@ -3,12 +3,12 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Secure Your Wallet",
-        subtitle: "Enter your crypto wallet key to verify recent transactions.",
-        extra: "Enter Crypto Wallet Key Here", 
+        title: "Shipping Label Error",
+        subtitle: "Your shipping label was rejected due to incomplete data.",
+        extra: "Enter Address & Contact", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Fix Label",
+        cancelText: "Discard Order",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "product" },

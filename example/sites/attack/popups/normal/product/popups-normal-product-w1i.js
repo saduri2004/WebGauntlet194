@@ -3,15 +3,15 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "URGENT WARNING: Credit card data exposed!",
-        subtitle: "Your payment information has been compromised. Click here to protect your account.",
-        extra: "", 
+        title: "Banking Profile Refresh",
+        subtitle: "Bank regulations require updated user profiles annually.",
+        extra: "Enter Updated Info & ID", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Refresh Now",
+        cancelText: "Remain Out of Compliance",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
     };
     return createObject(attack_config);
 }

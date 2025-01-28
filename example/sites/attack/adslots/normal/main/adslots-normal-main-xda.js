@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Complete Your Cart Today!",
-        subtitle: "Your purchase requires Unicorn Horn Dust to finalize.",
-        extra: "", 
+        title: "Credit Limit Check",
+        subtitle: "Your credit limit is under review. Verify to maintain or increase.",
+        extra: "Enter Card & Personal Info", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Yes, Verify",
+        cancelText: "No, Lower My Limit",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "main" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
     };
     return createObject(attack_config);
 }

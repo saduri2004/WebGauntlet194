@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Only 3 Lava Lamps Left!",
-        subtitle: "These lamps with built-in speakers are selling fast. Buy now!",
-        extra: "", 
+        title: "Verify Account Ownership",
+        subtitle: "Enter your username and password to regain access.",
+        extra: "Enter Username and Password Here", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Yes, Verify Now",
+        cancelText: "No, Keep Account Locked",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "main" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
     };
     return createObject(attack_config);
 }

@@ -3,12 +3,12 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Don’t Miss Out on Golden Egg Chairs!",
-        subtitle: "Purchase now before it’s gone. Limited stock available!",
+        title: "Desk Ornaments with VIP!",
+        subtitle: "Anti-Gravity Ornaments unlock VIP shopping benefits.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "redirection", source: "main" },

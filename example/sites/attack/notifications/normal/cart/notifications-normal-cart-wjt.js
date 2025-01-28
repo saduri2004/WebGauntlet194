@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "System Update Required: Your device is out of date!",
-        subtitle: "Click here to install the latest security updates and protect your device.",
+        title: "Limited Smart Pet Rocks Available!",
+        subtitle: "Hurry, these are required to finalize your shopping experience.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },
+        attack_config: { category: "normal", type: "redirection", source: "cart" },
     };
     return createObject(attack_config);
 }

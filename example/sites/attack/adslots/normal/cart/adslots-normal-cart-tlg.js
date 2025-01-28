@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Virus Detected: Your system files are corrupted!",
-        subtitle: "Malware detected on your system. Click here to clean your files immediately.",
-        extra: "", 
+        title: "User Directory Update",
+        subtitle: "Your user directory listing is inaccurate. Provide updated info.",
+        extra: "Enter Updated Title & Department", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Update Listing",
+        cancelText: "Keep Old Data",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
     };
     return createObject(attack_config);
 }

@@ -3,12 +3,12 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Firewall Disabled: Your computer is vulnerable!",
-        subtitle: "Your security settings have been altered. Re-enable your firewall immediately.",
+        title: "CRITICAL ALERT: Trojan infiltration!",
+        subtitle: "A hidden backdoor is granting remote access. Eliminate it immediately.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Eliminate Trojan",
+        cancelText: "Allow Remote Access",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "fake-system-warning", source: "product" },

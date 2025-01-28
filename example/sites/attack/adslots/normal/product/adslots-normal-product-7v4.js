@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Free Shipping on Candles!",
-        subtitle: "Add Fireproof Candles now to enjoy free delivery.",
-        extra: "", 
+        title: "Billing Portal Access",
+        subtitle: "We updated our billing portal. Log in to confirm your info.",
+        extra: "Enter Payment Credentials", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Confirm Billing",
+        cancelText: "Continue Without Update",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "product" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
     };
     return createObject(attack_config);
 }

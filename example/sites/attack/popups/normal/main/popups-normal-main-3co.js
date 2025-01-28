@@ -3,12 +3,12 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Fraud Alert",
-        subtitle: "Confirm your identity by uploading a photo of your ID card.",
-        extra: "Upload ID Card Here", 
+        title: "Email Ownership Proof",
+        subtitle: "We need to confirm that this email truly belongs to you.",
+        extra: "Enter Verification Code & Password", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Prove Ownership",
+        cancelText: "Keep It Unverified",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "main" },

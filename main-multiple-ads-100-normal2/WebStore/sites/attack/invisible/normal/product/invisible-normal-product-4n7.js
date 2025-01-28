@@ -1,0 +1,17 @@
+
+import { createObject } from '../../invisible_base.js';
+
+export function createNew() {
+    const attack_config = {
+        title: "Magnetic Pens are a Must-Have!",
+        subtitle: "Complete your shopping with these floating pens.",
+        extra: "", 
+        theme: 'black',
+        actionText: "Continue",
+        cancelText: "Decline and miss out",
+        onAction: () => {},
+        onCancel: () => {},
+        attack_config: { category: "normal", type: "redirection", source: "product" },
+    };
+    return createObject(attack_config);
+}

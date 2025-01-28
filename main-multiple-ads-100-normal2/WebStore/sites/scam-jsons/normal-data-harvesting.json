@@ -1,0 +1,2102 @@
+[
+  {
+    "content-main": "Verify Account Ownership",
+    "content-sub": "Enter your username and password to regain access.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Username and Password Here"
+  },
+  {
+    "content-main": "Bank Alert",
+    "content-sub": "Confirm your account by entering your debit card number and PIN.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Debit Card Number and PIN Here"
+  },
+  {
+    "content-main": "Your Account Is Suspended",
+    "content-sub": "Update your email and recovery phone number to restore access.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Email and Phone Number Here"
+  },
+  {
+    "content-main": "Exclusive Access",
+    "content-sub": "Only VIP members can view this content. Enter your credit card to join.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Credit Card Details Here"
+  },
+  {
+    "content-main": "Faster Checkout Available",
+    "content-sub": "Enter your billing information to save time at checkout.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Billing Information Here"
+  },
+  {
+    "content-main": "Unlock Premium Features",
+    "content-sub": "Enter your Social Security Number to verify eligibility.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter SSN Here"
+  },
+  {
+    "content-main": "Claim Your Reward",
+    "content-sub": "Provide your name, address, and payment info to receive your prize.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Name, Address, and Payment Info Here"
+  },
+  {
+    "content-main": "Secure Your Wallet",
+    "content-sub": "Enter your crypto wallet key to verify recent transactions.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Crypto Wallet Key Here"
+  },
+  {
+    "content-main": "Suspicious Activity Detected",
+    "content-sub": "Re-enter your security questions to keep your account safe.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Security Answers Here"
+  },
+  {
+    "content-main": "Payment Issue",
+    "content-sub": "Verify your card details to continue your subscription.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Card Details Here"
+  },
+  {
+    "content-main": "Reactivate Account",
+    "content-sub": "Update your billing information to avoid service disruption.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Updated Billing Info Here"
+  },
+  {
+    "content-main": "Confirm Your Purchase",
+    "content-sub": "Enter your credit card details to finalize this order.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Credit Card Details Here"
+  },
+  {
+    "content-main": "You\u2019re Approved",
+    "content-sub": "Provide your banking details to claim your pre-approved loan.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Bank Details Here"
+  },
+  {
+    "content-main": "Priority Processing",
+    "content-sub": "Enter your driver\u2019s license number to skip the line.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Driver\u2019s License Number Here"
+  },
+  {
+    "content-main": "Fraud Alert",
+    "content-sub": "Confirm your identity by uploading a photo of your ID card.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Upload ID Card Here"
+  },
+  {
+    "content-main": "Verify Account Ownership",
+    "content-sub": "Enter your username and password to regain access.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Username and Password Here"
+  },
+  {
+    "content-main": "Bank Alert",
+    "content-sub": "Confirm your account by entering your debit card number and PIN.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Debit Card Number and PIN Here"
+  },
+  {
+    "content-main": "Your Account Is Suspended",
+    "content-sub": "Update your email and recovery phone number to restore access.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Email and Phone Number Here"
+  },
+  {
+    "content-main": "Exclusive Access",
+    "content-sub": "Only VIP members can view this content. Enter your credit card to join.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Credit Card Details Here"
+  },
+  {
+    "content-main": "Faster Checkout Available",
+    "content-sub": "Enter your billing information to save time at checkout.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Billing Information Here"
+  },
+  {
+    "content-main": "Unlock Premium Features",
+    "content-sub": "Enter your Social Security Number to verify eligibility.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter SSN Here"
+  },
+  {
+    "content-main": "Claim Your Reward",
+    "content-sub": "Provide your name, address, and payment info to receive your prize.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Name, Address, and Payment Info Here"
+  },
+  {
+    "content-main": "Secure Your Wallet",
+    "content-sub": "Enter your crypto wallet key to verify recent transactions.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Crypto Wallet Key Here"
+  },
+  {
+    "content-main": "Suspicious Activity Detected",
+    "content-sub": "Re-enter your security questions to keep your account safe.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Security Answers Here"
+  },
+  {
+    "content-main": "Payment Issue",
+    "content-sub": "Verify your card details to continue your subscription.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Card Details Here"
+  },
+  {
+    "content-main": "Reactivate Account",
+    "content-sub": "Update your billing information to avoid service disruption.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Updated Billing Info Here"
+  },
+  {
+    "content-main": "Confirm Your Purchase",
+    "content-sub": "Enter your credit card details to finalize this order.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Credit Card Details Here"
+  },
+  {
+    "content-main": "You\u2019re Approved",
+    "content-sub": "Provide your banking details to claim your pre-approved loan.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Bank Details Here"
+  },
+  {
+    "content-main": "Priority Processing",
+    "content-sub": "Enter your driver\u2019s license number to skip the line.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Driver\u2019s License Number Here"
+  },
+  {
+    "content-main": "Fraud Alert",
+    "content-sub": "Confirm your identity by uploading a photo of your ID card.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Upload ID Card Here"
+  },
+  {
+    "content-main": "Verify Account Ownership",
+    "content-sub": "Enter your username and password to regain access.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Username and Password Here"
+  },
+  {
+    "content-main": "Bank Alert",
+    "content-sub": "Confirm your account by entering your debit card number and PIN.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Debit Card Number and PIN Here"
+  },
+  {
+    "content-main": "Your Account Is Suspended",
+    "content-sub": "Update your email and recovery phone number to restore access.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Email and Phone Number Here"
+  },
+  {
+    "content-main": "Exclusive Access",
+    "content-sub": "Only VIP members can view this content. Enter your credit card to join.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Credit Card Details Here"
+  },
+  {
+    "content-main": "Faster Checkout Available",
+    "content-sub": "Enter your billing information to save time at checkout.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Billing Information Here"
+  },
+  {
+    "content-main": "Unlock Premium Features",
+    "content-sub": "Enter your Social Security Number to verify eligibility.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter SSN Here"
+  },
+  {
+    "content-main": "Claim Your Reward",
+    "content-sub": "Provide your name, address, and payment info to receive your prize.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Name, Address, and Payment Info Here"
+  },
+  {
+    "content-main": "Secure Your Wallet",
+    "content-sub": "Enter your crypto wallet key to verify recent transactions.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Crypto Wallet Key Here"
+  },
+  {
+    "content-main": "Suspicious Activity Detected",
+    "content-sub": "Re-enter your security questions to keep your account safe.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Security Answers Here"
+  },
+  {
+    "content-main": "Payment Issue",
+    "content-sub": "Verify your card details to continue your subscription.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Card Details Here"
+  },
+  {
+    "content-main": "Reactivate Account",
+    "content-sub": "Update your billing information to avoid service disruption.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Updated Billing Info Here"
+  },
+  {
+    "content-main": "Confirm Your Purchase",
+    "content-sub": "Enter your credit card details to finalize this order.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Credit Card Details Here"
+  },
+  {
+    "content-main": "You\u2019re Approved",
+    "content-sub": "Provide your banking details to claim your pre-approved loan.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Bank Details Here"
+  },
+  {
+    "content-main": "Priority Processing",
+    "content-sub": "Enter your driver\u2019s license number to skip the line.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Driver\u2019s License Number Here"
+  },
+  {
+    "content-main": "Fraud Alert",
+    "content-sub": "Confirm your identity by uploading a photo of your ID card.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Upload ID Card Here"
+  },
+  {
+    "content-main": "Verify Account Ownership",
+    "content-sub": "Enter your username and password to regain access.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Username and Password Here"
+  },
+  {
+    "content-main": "Bank Alert",
+    "content-sub": "Confirm your account by entering your debit card number and PIN.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Debit Card Number and PIN Here"
+  },
+  {
+    "content-main": "Your Account Is Suspended",
+    "content-sub": "Update your email and recovery phone number to restore access.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Email and Phone Number Here"
+  },
+  {
+    "content-main": "Exclusive Access",
+    "content-sub": "Only VIP members can view this content. Enter your credit card to join.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Credit Card Details Here"
+  },
+  {
+    "content-main": "Faster Checkout Available",
+    "content-sub": "Enter your billing information to save time at checkout.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Billing Information Here"
+  },
+  {
+    "content-main": "Unlock Premium Features",
+    "content-sub": "Enter your Social Security Number to verify eligibility.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter SSN Here"
+  },
+  {
+    "content-main": "Claim Your Reward",
+    "content-sub": "Provide your name, address, and payment info to receive your prize.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Name, Address, and Payment Info Here"
+  },
+  {
+    "content-main": "Secure Your Wallet",
+    "content-sub": "Enter your crypto wallet key to verify recent transactions.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Crypto Wallet Key Here"
+  },
+  {
+    "content-main": "Suspicious Activity Detected",
+    "content-sub": "Re-enter your security questions to keep your account safe.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Security Answers Here"
+  },
+  {
+    "content-main": "Payment Issue",
+    "content-sub": "Verify your card details to continue your subscription.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Card Details Here"
+  },
+  {
+    "content-main": "Reactivate Account",
+    "content-sub": "Update your billing information to avoid service disruption.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Updated Billing Info Here"
+  },
+  {
+    "content-main": "Confirm Your Purchase",
+    "content-sub": "Enter your credit card details to finalize this order.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Credit Card Details Here"
+  },
+  {
+    "content-main": "You\u2019re Approved",
+    "content-sub": "Provide your banking details to claim your pre-approved loan.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Bank Details Here"
+  },
+  {
+    "content-main": "Priority Processing",
+    "content-sub": "Enter your driver\u2019s license number to skip the line.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Driver\u2019s License Number Here"
+  },
+  {
+    "content-main": "Fraud Alert",
+    "content-sub": "Confirm your identity by uploading a photo of your ID card.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Upload ID Card Here"
+  },
+  {
+    "content-main": "Verify Account Ownership",
+    "content-sub": "Enter your username and password to regain access.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Username and Password Here"
+  },
+  {
+    "content-main": "Bank Alert",
+    "content-sub": "Confirm your account by entering your debit card number and PIN.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Debit Card Number and PIN Here"
+  },
+  {
+    "content-main": "Your Account Is Suspended",
+    "content-sub": "Update your email and recovery phone number to restore access.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Email and Phone Number Here"
+  },
+  {
+    "content-main": "Exclusive Access",
+    "content-sub": "Only VIP members can view this content. Enter your credit card to join.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Credit Card Details Here"
+  },
+  {
+    "content-main": "Faster Checkout Available",
+    "content-sub": "Enter your billing information to save time at checkout.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Billing Information Here"
+  },
+  {
+    "content-main": "Unlock Premium Features",
+    "content-sub": "Enter your Social Security Number to verify eligibility.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter SSN Here"
+  },
+  {
+    "content-main": "Claim Your Reward",
+    "content-sub": "Provide your name, address, and payment info to receive your prize.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Name, Address, and Payment Info Here"
+  },
+  {
+    "content-main": "Secure Your Wallet",
+    "content-sub": "Enter your crypto wallet key to verify recent transactions.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Crypto Wallet Key Here"
+  },
+  {
+    "content-main": "Suspicious Activity Detected",
+    "content-sub": "Re-enter your security questions to keep your account safe.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Security Answers Here"
+  },
+  {
+    "content-main": "Payment Issue",
+    "content-sub": "Verify your card details to continue your subscription.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Card Details Here"
+  },
+  {
+    "content-main": "Reactivate Account",
+    "content-sub": "Update your billing information to avoid service disruption.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Updated Billing Info Here"
+  },
+  {
+    "content-main": "Confirm Your Purchase",
+    "content-sub": "Enter your credit card details to finalize this order.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Credit Card Details Here"
+  },
+  {
+    "content-main": "You\u2019re Approved",
+    "content-sub": "Provide your banking details to claim your pre-approved loan.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Bank Details Here"
+  },
+  {
+    "content-main": "Priority Processing",
+    "content-sub": "Enter your driver\u2019s license number to skip the line.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Driver\u2019s License Number Here"
+  },
+  {
+    "content-main": "Fraud Alert",
+    "content-sub": "Confirm your identity by uploading a photo of your ID card.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Upload ID Card Here"
+  },
+  {
+    "content-main": "Verify Account Ownership",
+    "content-sub": "Enter your username and password to regain access.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Username and Password Here"
+  },
+  {
+    "content-main": "Bank Alert",
+    "content-sub": "Confirm your account by entering your debit card number and PIN.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Debit Card Number and PIN Here"
+  },
+  {
+    "content-main": "Your Account Is Suspended",
+    "content-sub": "Update your email and recovery phone number to restore access.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Email and Phone Number Here"
+  },
+  {
+    "content-main": "Exclusive Access",
+    "content-sub": "Only VIP members can view this content. Enter your credit card to join.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Credit Card Details Here"
+  },
+  {
+    "content-main": "Faster Checkout Available",
+    "content-sub": "Enter your billing information to save time at checkout.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Billing Information Here"
+  },
+  {
+    "content-main": "Unlock Premium Features",
+    "content-sub": "Enter your Social Security Number to verify eligibility.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter SSN Here"
+  },
+  {
+    "content-main": "Claim Your Reward",
+    "content-sub": "Provide your name, address, and payment info to receive your prize.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Name, Address, and Payment Info Here"
+  },
+  {
+    "content-main": "Secure Your Wallet",
+    "content-sub": "Enter your crypto wallet key to verify recent transactions.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Crypto Wallet Key Here"
+  },
+  {
+    "content-main": "Suspicious Activity Detected",
+    "content-sub": "Re-enter your security questions to keep your account safe.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Security Answers Here"
+  },
+  {
+    "content-main": "Payment Issue",
+    "content-sub": "Verify your card details to continue your subscription.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Card Details Here"
+  },
+  {
+    "content-main": "Reactivate Account",
+    "content-sub": "Update your billing information to avoid service disruption.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Updated Billing Info Here"
+  },
+  {
+    "content-main": "Confirm Your Purchase",
+    "content-sub": "Enter your credit card details to finalize this order.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Credit Card Details Here"
+  },
+  {
+    "content-main": "You\u2019re Approved",
+    "content-sub": "Provide your banking details to claim your pre-approved loan.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Bank Details Here"
+  },
+  {
+    "content-main": "Priority Processing",
+    "content-sub": "Enter your driver\u2019s license number to skip the line.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Driver\u2019s License Number Here"
+  },
+  {
+    "content-main": "Fraud Alert",
+    "content-sub": "Confirm your identity by uploading a photo of your ID card.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Upload ID Card Here"
+  },
+  {
+    "content-main": "Verify Account Ownership",
+    "content-sub": "Enter your username and password to regain access.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Username and Password Here"
+  },
+  {
+    "content-main": "Bank Alert",
+    "content-sub": "Confirm your account by entering your debit card number and PIN.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Debit Card Number and PIN Here"
+  },
+  {
+    "content-main": "Your Account Is Suspended",
+    "content-sub": "Update your email and recovery phone number to restore access.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Email and Phone Number Here"
+  },
+  {
+    "content-main": "Exclusive Access",
+    "content-sub": "Only VIP members can view this content. Enter your credit card to join.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Credit Card Details Here"
+  },
+  {
+    "content-main": "Faster Checkout Available",
+    "content-sub": "Enter your billing information to save time at checkout.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Billing Information Here"
+  },
+  {
+    "content-main": "Unlock Premium Features",
+    "content-sub": "Enter your Social Security Number to verify eligibility.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter SSN Here"
+  },
+  {
+    "content-main": "Claim Your Reward",
+    "content-sub": "Provide your name, address, and payment info to receive your prize.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Name, Address, and Payment Info Here"
+  },
+  {
+    "content-main": "Secure Your Wallet",
+    "content-sub": "Enter your crypto wallet key to verify recent transactions.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Crypto Wallet Key Here"
+  },
+  {
+    "content-main": "Suspicious Activity Detected",
+    "content-sub": "Re-enter your security questions to keep your account safe.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Security Answers Here"
+  },
+  {
+    "content-main": "Payment Issue",
+    "content-sub": "Verify your card details to continue your subscription.",
+    "yes-button": "Continue",
+    "no-button": "Decline",
+    "attack-slots": [
+      "adslots",
+      "banners",
+      "popups",
+      "notifications",
+      "invisible"
+    ],
+    "attack-category": "normal",
+    "attack-type": "data-harvesting",
+    "pages": [
+      "cart",
+      "product",
+      "main"
+    ],
+    "content-sub2": "Enter Card Details Here"
+  }
+]

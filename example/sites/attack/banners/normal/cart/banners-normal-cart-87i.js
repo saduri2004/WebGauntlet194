@@ -3,12 +3,12 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "ALERT: Your email account has been hacked!",
-        subtitle: "Suspicious login attempts have been made. Reset your password here.",
+        title: "SECURITY ALERT: Possible port scanning!",
+        subtitle: "Repeated scans found. Shield your system from unauthorized probing.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Shield System",
+        cancelText: "Ignore Scanning",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },

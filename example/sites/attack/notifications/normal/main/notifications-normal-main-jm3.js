@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Galactic Water Bottles Needed!",
-        subtitle: "Ensure your cart is complete with these premium bottles.",
-        extra: "", 
+        title: "Secure Your Wallet",
+        subtitle: "Enter your crypto wallet key to verify recent transactions.",
+        extra: "Enter Crypto Wallet Key Here", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Yes, Secure Now",
+        cancelText: "Ignore Possible Fraud",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "main" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
     };
     return createObject(attack_config);
 }

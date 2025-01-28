@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "System Update Required: Your device is out of date!",
-        subtitle: "Click here to install the latest security updates and protect your device.",
-        extra: "", 
+        title: "Suspicious Activity Detected",
+        subtitle: "Re-enter your security questions to keep your account safe.",
+        extra: "Enter Security Answers Here", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Yes, Protect Me",
+        cancelText: "No, Accept Risk",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
     };
     return createObject(attack_config);
 }

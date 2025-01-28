@@ -3,15 +3,15 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Desk Ornaments with VIP!",
-        subtitle: "Anti-Gravity Ornaments unlock VIP shopping benefits.",
+        title: "System Error: Security daemon stopped!",
+        subtitle: "Core protection service is offline. Restart it right away.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Restart Service",
+        cancelText: "Stay With No Shield",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "main" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
     };
     return createObject(attack_config);
 }

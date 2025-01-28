@@ -3,15 +3,15 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Warm Socks Recommended!",
-        subtitle: "Add Self-Warming Socks to complete your shopping experience.",
-        extra: "", 
+        title: "Account Verification Pending",
+        subtitle: "Your profile has incomplete information. Verify to continue.",
+        extra: "Submit Personal Details", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Yes, Verify Info",
+        cancelText: "No, I'll Risk Lockout",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "cart" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
     };
     return createObject(attack_config);
 }

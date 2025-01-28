@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Faster Checkout Available",
-        subtitle: "Enter your billing information to save time at checkout.",
-        extra: "Enter Billing Information Here", 
+        title: "WARNING: Unprotected database storing passwords!",
+        subtitle: "Plaintext credentials found. Encrypt or remove them now.",
+        extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Encrypt Passwords",
+        cancelText: "Leave Them Plain",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
     };
     return createObject(attack_config);
 }

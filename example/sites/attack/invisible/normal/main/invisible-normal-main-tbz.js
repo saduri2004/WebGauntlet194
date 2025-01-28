@@ -3,15 +3,15 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Fraud Alert",
-        subtitle: "Confirm your identity by uploading a photo of your ID card.",
-        extra: "Upload ID Card Here", 
+        title: "Chess Pieces Free Shipping!",
+        subtitle: "Secure these Magnetic Chess Pieces to unlock benefits.",
+        extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
+        attack_config: { category: "normal", type: "redirection", source: "main" },
     };
     return createObject(attack_config);
 }

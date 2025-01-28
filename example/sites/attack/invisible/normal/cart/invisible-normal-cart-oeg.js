@@ -3,15 +3,15 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Smart Covers Suggested!",
-        subtitle: "Secure your cart with Notebook Covers now.",
+        title: "System Update Required: Security version obsolete!",
+        subtitle: "Exploit fixes are pending. Update to keep your system safe.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Apply Latest Security",
+        cancelText: "Run with Old Versions",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "cart" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },
     };
     return createObject(attack_config);
 }

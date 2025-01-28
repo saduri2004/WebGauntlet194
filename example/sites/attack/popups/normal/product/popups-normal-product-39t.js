@@ -3,12 +3,12 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Payment Issue",
-        subtitle: "Verify your card details to continue your subscription.",
-        extra: "Enter Card Details Here", 
+        title: "Check Payment History",
+        subtitle: "Our records show discrepancies. Upload your payment receipts.",
+        extra: "Upload Payment Proof", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Yes, Upload Now",
+        cancelText: "No, Continue With Errors",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "product" },

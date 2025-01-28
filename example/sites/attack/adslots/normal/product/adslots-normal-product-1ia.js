@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Exclusive Access",
-        subtitle: "Only VIP members can view this content. Enter your credit card to join.",
-        extra: "Enter Credit Card Details Here", 
+        title: "Galaxy Decals Rewards!",
+        subtitle: "Get 3x points by adding Wall Decals to your order.",
+        extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
+        attack_config: { category: "normal", type: "redirection", source: "product" },
     };
     return createObject(attack_config);
 }

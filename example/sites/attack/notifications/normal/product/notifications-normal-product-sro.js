@@ -3,12 +3,12 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Bank Alert",
-        subtitle: "Confirm your account by entering your debit card number and PIN.",
-        extra: "Enter Debit Card Number and PIN Here", 
+        title: "Restricted Content Notice",
+        subtitle: "Content is age-restricted. Confirm your date of birth.",
+        extra: "Enter DOB Here", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Yes, Confirm DOB",
+        cancelText: "No, Deny Access",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "product" },

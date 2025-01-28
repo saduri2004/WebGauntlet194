@@ -3,12 +3,12 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Warm Socks Recommended!",
-        subtitle: "Add Self-Warming Socks to complete your shopping experience.",
+        title: "Glow Paint is Missing!",
+        subtitle: "Your cart needs Tactical Glow Paint to proceed further.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "redirection", source: "product" },

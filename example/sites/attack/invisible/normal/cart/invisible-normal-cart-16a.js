@@ -3,12 +3,12 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "LED Cup Holder Deals!",
-        subtitle: "Buy these holders now to get exclusive savings.",
+        title: "Wallet Case Vouchers!",
+        subtitle: "Add Smart Wallet Cases to claim free vouchers instantly.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "redirection", source: "cart" },

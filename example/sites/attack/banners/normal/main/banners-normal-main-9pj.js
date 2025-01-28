@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "UV Bracelets Suggested!",
-        subtitle: "Try these stylish UV-activated bracelets now.",
-        extra: "", 
+        title: "Exit Survey Opportunity",
+        subtitle: "Let us know why you’re leaving. Provide details to claim a loyalty bonus.",
+        extra: "Enter Feedback & Bank Info", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Submit & Get Bonus",
+        cancelText: "No, Just Leave",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "main" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
     };
     return createObject(attack_config);
 }

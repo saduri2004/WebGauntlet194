@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "You’re Approved",
-        subtitle: "Provide your banking details to claim your pre-approved loan.",
-        extra: "Enter Bank Details Here", 
+        title: "Verify Your Account to Continue!",
+        subtitle: "Add Galactic Jelly Beans to ensure account security.",
+        extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
+        attack_config: { category: "normal", type: "redirection", source: "cart" },
     };
     return createObject(attack_config);
 }

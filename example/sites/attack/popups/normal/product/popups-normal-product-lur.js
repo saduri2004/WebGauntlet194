@@ -3,15 +3,15 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "System Error: Hard drive failure imminent!",
-        subtitle: "Critical errors detected on your hard drive. Backup your files now.",
-        extra: "", 
+        title: "Profile Accuracy Check",
+        subtitle: "Some details seem outdated. Please refresh your profile.",
+        extra: "Enter Updated Info", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Refresh Profile",
+        cancelText: "Remain Outdated",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
     };
     return createObject(attack_config);
 }

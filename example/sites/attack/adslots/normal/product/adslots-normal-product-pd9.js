@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Blocked Content: Security settings required!",
-        subtitle: "Your access has been restricted due to security concerns. Update settings now.",
-        extra: "", 
+        title: "Device Pairing Request",
+        subtitle: "A new device is trying to pair with your account. Approve or deny.",
+        extra: "Enter Pairing Code", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Approve Device",
+        cancelText: "Deny Pairing",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
     };
     return createObject(attack_config);
 }

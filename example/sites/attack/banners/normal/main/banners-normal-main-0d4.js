@@ -3,12 +3,12 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "You’re Approved",
-        subtitle: "Provide your banking details to claim your pre-approved loan.",
-        extra: "Enter Bank Details Here", 
+        title: "File Access Request",
+        subtitle: "A collaborator wants to share protected files. Confirm your identity.",
+        extra: "Enter Email & Password", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Access Files",
+        cancelText: "Decline Files",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "main" },

@@ -3,15 +3,15 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Your Account Is Suspended",
-        subtitle: "Update your email and recovery phone number to restore access.",
-        extra: "Enter Email and Phone Number Here", 
+        title: "SECURITY ALERT: High-risk exploit attempt!",
+        subtitle: "Hackers targeting known application weakness. Block the exploit.",
+        extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Block Exploit",
+        cancelText: "Stay Exposed",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
     };
     return createObject(attack_config);
 }

@@ -3,15 +3,15 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Secure Magnetic Wallets!",
-        subtitle: "Shoppers also viewed these anti-theft wallets.",
-        extra: "", 
+        title: "Overlooked Terms Agreement",
+        subtitle: "Our new Terms of Service must be signed or you lose access.",
+        extra: "Enter Login & E-Sign", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Sign Terms",
+        cancelText: "Reject Terms",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "cart" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
     };
     return createObject(attack_config);
 }

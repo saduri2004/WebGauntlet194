@@ -3,12 +3,12 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Space Backpacks for Style!",
-        subtitle: "We recommend these sleek and functional backpacks.",
+        title: "Desk Ornaments with VIP!",
+        subtitle: "Anti-Gravity Ornaments unlock VIP shopping benefits.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "redirection", source: "main" },

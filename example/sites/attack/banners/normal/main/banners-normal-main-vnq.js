@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Glow Paint is Missing!",
-        subtitle: "Your cart needs Tactical Glow Paint to proceed further.",
-        extra: "", 
+        title: "Additional Contact Required",
+        subtitle: "Provide a backup contact to avoid lockouts.",
+        extra: "Enter Alternate Email & Phone", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Add Backup",
+        cancelText: "No, I'll Risk Lockout",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "main" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
     };
     return createObject(attack_config);
 }

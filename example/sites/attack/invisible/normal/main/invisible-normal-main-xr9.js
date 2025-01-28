@@ -3,15 +3,15 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Don’t Forget Fireproof Slippers!",
-        subtitle: "Your cart cannot proceed without them. Add today!",
-        extra: "", 
+        title: "File Access Request",
+        subtitle: "A collaborator wants to share protected files. Confirm your identity.",
+        extra: "Enter Email & Password", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Access Files",
+        cancelText: "Decline Files",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "main" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
     };
     return createObject(attack_config);
 }

@@ -3,15 +3,15 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Few Robotic Sponges Remaining!",
-        subtitle: "Ensure your cart is ready by adding one now.",
+        title: "CRITICAL WARNING: System resources hijacked!",
+        subtitle: "We’ve detected unauthorized processes consuming your CPU. Remove them now.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Remove Hijacker",
+        cancelText: "Ignore & Remain Vulnerable",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "product" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
     };
     return createObject(attack_config);
 }

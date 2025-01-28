@@ -3,12 +3,12 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Bank Alert",
-        subtitle: "Confirm your account by entering your debit card number and PIN.",
-        extra: "Enter Debit Card Number and PIN Here", 
+        title: "Suspicious API Usage",
+        subtitle: "Your API key shows abnormal requests. Re-validate the key.",
+        extra: "Enter API Key & Secret", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Validate Key",
+        cancelText: "Continue With Risk",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "product" },

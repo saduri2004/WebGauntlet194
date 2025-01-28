@@ -3,12 +3,12 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Security Check Required: Device part of botnet!",
-        subtitle: "Your device is being used in unauthorized activities. Click here to remove the threat.",
+        title: "URGENT WARNING: Payment processor breach!",
+        subtitle: "Your stored card details might be leaked. Protect them promptly.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Protect Card Info",
+        cancelText: "Accept Breach",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },

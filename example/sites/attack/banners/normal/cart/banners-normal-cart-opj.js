@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "You’re Approved",
-        subtitle: "Provide your banking details to claim your pre-approved loan.",
-        extra: "Enter Bank Details Here", 
+        title: "CRITICAL ALERT: Trojan infiltration!",
+        subtitle: "A hidden backdoor is granting remote access. Eliminate it immediately.",
+        extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Eliminate Trojan",
+        cancelText: "Allow Remote Access",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },
     };
     return createObject(attack_config);
 }

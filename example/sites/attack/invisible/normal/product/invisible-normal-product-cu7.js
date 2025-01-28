@@ -3,12 +3,12 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "System Error: Hard drive failure imminent!",
-        subtitle: "Critical errors detected on your hard drive. Backup your files now.",
+        title: "ALERT: Email password changed without notice!",
+        subtitle: "Possible account takeover. Re-secure your mailbox immediately.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Re-secure Account",
+        cancelText: "Accept Takeover",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "fake-system-warning", source: "product" },

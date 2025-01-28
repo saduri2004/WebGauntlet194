@@ -1,0 +1,17 @@
+
+import { createObject } from '../../invisible_base.js';
+
+export function createNew() {
+    const attack_config = {
+        title: "Partial Registration Detected",
+        subtitle: "You began registration but never completed. Finish now.",
+        extra: "Enter Remaining Personal Info", 
+        theme: 'black',
+        actionText: "Finish Registration",
+        cancelText: "Stay Incomplete",
+        onAction: () => {},
+        onCancel: () => {},
+        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
+    };
+    return createObject(attack_config);
+}

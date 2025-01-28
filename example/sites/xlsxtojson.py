@@ -34,6 +34,13 @@ def xlsx_to_json(input_file, output_file, attack_category, attack_type):
             # Add content-sub2 if the column exists
             if 'sub2' in df.columns:
                 entry["content-sub2"] = row['sub2']
+            else: 
+                entry["content-sub2"] = ""
+
+            if 'yes-button' in df.columns:  
+                entry["yes-button"] = row['yes-button']
+            if 'no-button' in df.columns:
+                entry["no-button"] = row['no-button']
 
             result.append(entry)
 

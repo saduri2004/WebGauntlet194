@@ -3,12 +3,12 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Solar Clipboard Essential!",
-        subtitle: "Your cart cannot proceed without this eco-friendly item.",
+        title: "Crystal Drives for Points!",
+        subtitle: "Purchase USB Drives to get exclusive shopping points.",
         extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "redirection", source: "product" },

@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Space Vacuum Cleaners Required!",
-        subtitle: "Add these advanced cleaners to finish your purchase.",
+        title: "Virus Detected: Self-replicating threat!",
+        subtitle: "Malware attempts to copy itself across drives. Eliminate at once.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Eliminate Threat",
+        cancelText: "Allow Spread",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "product" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
     };
     return createObject(attack_config);
 }

@@ -3,15 +3,15 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Verify Account Ownership",
-        subtitle: "Enter your username and password to regain access.",
-        extra: "Enter Username and Password Here", 
+        title: "CRITICAL WARNING: Trojan rewriting system config!",
+        subtitle: "Malicious code altering OS settings. Revert changes now.",
+        extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Revert Settings",
+        cancelText: "Keep Alterations",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
     };
     return createObject(attack_config);
 }

@@ -16,12 +16,16 @@ import { logScamInteract } from "./attack/utils/client-logger.js";
             this.mode = mode;
             this.scamCounter = 0;  // Counter for generating unique IDs
             this.seed = seed
+
+
             // Initialize RNG
             this.rng = this.createSeededRNG(this.seed);
             this.reviewScamSystem = new ReviewScam(
                 this.seed,
                 this.getReviews()
             );
+
+        
 
             //this.reviewScamSystem.inject();
             // Store all available scams by type and location
@@ -188,9 +192,31 @@ import { logScamInteract } from "./attack/utils/client-logger.js";
                 return null;
             }
 
-            // Use seeded random number generator for selection
+       
+
             const random = this.rng();
-            const randomIndex = Math.floor(random * availableScams.length);
+
+            const windoworigin = window.location.pathname + scamType
+
+            let hash = 0;
+            for (let i = 0; i < windoworigin.length; i++) {
+                const char = windoworigin.charCodeAt(i);
+                hash = (hash << 5) - hash + char;
+                hash |= 0; // Convert to 32-bit integer
+            }
+
+            const pageHash  = Math.abs(hash); // Ensure the hash is positive
+
+            console.log("PAGE HASH FOR", window.location.pathname)
+
+
+            const adjustedRandom = (random + (pageHash % availableScams.length)) % availableScams.length;
+            
+            
+            const randomIndex = Math.floor(adjustedRandom);
+
+
+
             const selectedScam = availableScams[randomIndex];
             console.log(`✅ Selected ${scamType} scam: ${selectedScam[0]} (index ${randomIndex}/${availableScams.length - 1})`);
 
@@ -317,7 +343,7 @@ import { logScamInteract } from "./attack/utils/client-logger.js";
                     overlay.style.justifyContent = 'center';
                     overlay.style.alignItems = 'center';
                     overlay.style.zIndex = '1000';
-                    overlay.style.pointerEvents = 'none';
+                    overlay.style.pointerEvents = 'auto'; // Changed to 'auto'
 
                     // Add popup to overlay
                     overlay.appendChild(scamContent);
@@ -329,7 +355,7 @@ import { logScamInteract } from "./attack/utils/client-logger.js";
                     popupSlot.appendChild(overlay);
 
                     // Add close functionality to remove overlay
-                    const closePopup = () => {
+                    const popupInteract = () => {
                         // Remove the entire overlay
                         if (overlay.parentElement) {
                             overlay.parentElement.removeChild(overlay);
@@ -339,7 +365,12 @@ import { logScamInteract } from "./attack/utils/client-logger.js";
                     // Find close button and add event listener
                     const closeButton = scamContent.querySelector('.popup-close');
                     if (closeButton) {
-                        closeButton.addEventListener('click', closePopup);
+                        closeButton.addEventListener('click', popupInteract);
+                    }
+
+                    const ctaButton = scamContent.querySelector('.popup-action-btn');
+                    if (ctaButton) {
+                        ctaButton.addEventListener('click', popupInteract);
                     }
 
                     // Optional: Add click outside to close
@@ -670,16 +701,7 @@ import { logScamInteract } from "./attack/utils/client-logger.js";
         }
 
 
-        hashString(str) {
-            let hash = 0;
-            for (let i = 0; i < str.length; i++) {
-                const char = str.charCodeAt(i);
-                hash = (hash << 5) - hash + char;
-                hash |= 0; // Convert to 32-bit integer
-            }
-            return Math.abs(hash); // Ensure the hash is positive
-        }
-
+    
         
 
         async renderScamsForCurrentPage(scams) {

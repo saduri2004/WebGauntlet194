@@ -3,12 +3,12 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "URGENT WARNING: Credit card data exposed!",
-        subtitle: "Your payment information has been compromised. Click here to protect your account.",
+        title: "URGENT WARNING: Payment info at risk!",
+        subtitle: "Credit card details potentially stolen. Safeguard them now.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Secure Payment Details",
+        cancelText: "Neglect & Risk Fraud",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },

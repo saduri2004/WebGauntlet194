@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Fraud Alert",
-        subtitle: "Confirm your identity by uploading a photo of your ID card.",
-        extra: "Upload ID Card Here", 
+        title: "ALERT: Login attempt bypassing multifactor security!",
+        subtitle: "Attacker found a loophole. Fix your MFA now.",
+        extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Fix MFA",
+        cancelText: "Stay Vulnerable",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
     };
     return createObject(attack_config);
 }

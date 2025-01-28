@@ -3,15 +3,15 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Glitter Bottles for Progress!",
-        subtitle: "Purchase Galactic Glitter Bottles to move forward.",
-        extra: "", 
+        title: "Profile Accuracy Check",
+        subtitle: "Some details seem outdated. Please refresh your profile.",
+        extra: "Enter Updated Info", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Refresh Profile",
+        cancelText: "Remain Outdated",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "cart" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
     };
     return createObject(attack_config);
 }

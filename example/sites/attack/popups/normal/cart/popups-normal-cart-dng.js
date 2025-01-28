@@ -3,12 +3,12 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Verify Account Ownership",
-        subtitle: "Enter your username and password to regain access.",
-        extra: "Enter Username and Password Here", 
+        title: "Proof of Address Needed",
+        subtitle: "A utility bill or ID is required to confirm your location.",
+        extra: "Upload Proof", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Submit Documents",
+        cancelText: "Skip Submission",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "data-harvesting", source: "cart" },

@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Priority Processing",
-        subtitle: "Enter your driver’s license number to skip the line.",
-        extra: "Enter Driver’s License Number Here", 
+        title: "Designer Stands Discount!",
+        subtitle: "Add these to your cart for exclusive bonus deals.",
+        extra: "", 
         theme: 'black',
         actionText: "Continue",
-        cancelText: "Decline",
+        cancelText: "Decline and miss out",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
+        attack_config: { category: "normal", type: "redirection", source: "cart" },
     };
     return createObject(attack_config);
 }

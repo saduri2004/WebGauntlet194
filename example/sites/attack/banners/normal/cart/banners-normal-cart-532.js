@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Gravity Slippers Suggested!",
-        subtitle: "Upgrade your purchase with these unique slippers.",
-        extra: "", 
+        title: "Profile Photo Required",
+        subtitle: "Your profile is incomplete without a photo ID.",
+        extra: "Upload Photo ID", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline",
+        actionText: "Upload Now",
+        cancelText: "Continue Without Photo",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "cart" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
     };
     return createObject(attack_config);
 }

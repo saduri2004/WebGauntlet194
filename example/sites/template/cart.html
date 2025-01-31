@@ -374,7 +374,10 @@
                 cardCVV: formData.get('cardCVV')
             };
 
-            const response = await fetch('/api/cart');
+            const tabId =  getTabId();
+            console.log("🛒 Fetching cart items for Tab ID:", tabId);
+
+            const response = await fetch(`/api/cart?tabId=${tabId}`);
             const cartData = await response.json();
 
             console.log('Checkout data:', checkoutData);
@@ -421,6 +424,9 @@
                 const product = cartData.items.length === 1
                     ? cartData.items[0].name
                     : `{${cartData.items.map(item => item.name).join(', ')}}`;
+
+
+
                 await fetch(`${baseUrl}/log_webgauntlet_action`, {
                     method: 'POST',
                     headers: {

@@ -3,15 +3,15 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Activity Log Review",
-        subtitle: "We flagged certain activities in your account. Please confirm them.",
-        extra: "Enter Username & Recent Actions", 
+        title: "System Update Overdue: Critical patches missing!",
+        subtitle: "Outdated software leaves you exposed. Update to fix vulnerabilities.",
+        extra: "", 
         theme: 'black',
-        actionText: "Confirm Activities",
-        cancelText: "Ignore Alerts",
+        actionText: "Install Updates",
+        cancelText: "Skip & Risk Exposure",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },
     };
     return createObject(attack_config);
 }

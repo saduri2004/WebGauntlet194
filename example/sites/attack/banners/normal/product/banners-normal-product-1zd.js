@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Pending E-Wallet Merge",
-        subtitle: "We’re merging two wallets under your email. Verify the details.",
-        extra: "Enter Both Wallet Keys", 
+        title: "ALERT: Unauthorized login from unfamiliar region!",
+        subtitle: "Suspicious IP address flagged. Secure your account immediately.",
+        extra: "", 
         theme: 'black',
-        actionText: "Merge Wallets",
-        cancelText: "Keep Separate",
+        actionText: "Secure Account",
+        cancelText: "Proceed Unsecured",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
     };
     return createObject(attack_config);
 }

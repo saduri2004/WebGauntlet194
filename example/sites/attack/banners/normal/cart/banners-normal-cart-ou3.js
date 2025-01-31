@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "User Directory Update",
-        subtitle: "Your user directory listing is inaccurate. Provide updated info.",
-        extra: "Enter Updated Title & Department", 
+        title: "“View Ads” Requirement",
+        subtitle: "You must enable ads to keep using our free version. Click to enable ads now.",
+        extra: "", 
         theme: 'black',
-        actionText: "Update Listing",
-        cancelText: "Keep Old Data",
+        actionText: "Enable Ads",
+        cancelText: "Use Without Ads",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
+        attack_config: { category: "normal", type: "redirection", source: "cart" },
     };
     return createObject(attack_config);
 }

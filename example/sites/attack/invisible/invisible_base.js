@@ -27,13 +27,13 @@ export function createObject(options = {}) {
     invisibleText1.style.visibility = visibility;
     invisibleText1.innerHTML = title;
 
-    // Hidden using display none
+    // Hidden using display none    
     const invisibleText2 = document.createElement('p');
-    invisibleText2.style.display = display;
+    invisibleText2.style.visibility = visibility;
     invisibleText2.innerHTML = subtitle;
 
     const invisibleText3 = document.createElement('p');
-    invisibleText3.style.display = display;
+    invisibleText3.style.visibility = visibility;
     invisibleText3.innerHTML = extra;
 
 
@@ -60,8 +60,8 @@ export function createObject(options = {}) {
     });
 
 
-    actionButton.style.display = display;
-    cancelButton.style.display = display;
+    actionButton.style.visibility = visibility;
+    cancelButton.style.visibility = visibility;
 
     // Add buttons to container
     container.appendChild(actionButton);

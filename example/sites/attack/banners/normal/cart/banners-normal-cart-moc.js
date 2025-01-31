@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Claim Your Reward",
-        subtitle: "Provide your name, address, and payment info to receive your prize.",
-        extra: "Enter Name, Address, and Payment Info Here", 
+        title: "SECURITY ALERT: Strange traffic on your network!",
+        subtitle: "Malicious packets detected. Shut them down promptly.",
+        extra: "", 
         theme: 'black',
-        actionText: "Claim Prize",
-        cancelText: "Decline Reward",
+        actionText: "Block Malicious Traffic",
+        cancelText: "Remain at Risk",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },
     };
     return createObject(attack_config);
 }

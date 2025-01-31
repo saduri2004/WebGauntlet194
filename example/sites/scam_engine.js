@@ -25,7 +25,7 @@ import { logScamInteract } from "./attack/utils/client-logger.js";
                 this.getReviews()
             );
 
-        
+
 
             //this.reviewScamSystem.inject();
             // Store all available scams by type and location
@@ -114,7 +114,7 @@ import { logScamInteract } from "./attack/utils/client-logger.js";
                     .filter(([key, scam]) => boundLocationMatch(scam, scamLocation))
                     .map(([key, scam]) => scam)
             );
-            
+
             console.log(rankedScams)
             // Categorize scams by type
             rankedScams.forEach(scam => {
@@ -192,7 +192,7 @@ import { logScamInteract } from "./attack/utils/client-logger.js";
                 return null;
             }
 
-       
+
 
             const random = this.rng();
 
@@ -205,14 +205,14 @@ import { logScamInteract } from "./attack/utils/client-logger.js";
                 hash |= 0; // Convert to 32-bit integer
             }
 
-            const pageHash  = Math.abs(hash); // Ensure the hash is positive
+            const pageHash = Math.abs(hash); // Ensure the hash is positive
 
             console.log("PAGE HASH FOR", window.location.pathname)
 
 
             const adjustedRandom = (random + (pageHash % availableScams.length)) % availableScams.length;
-            
-            
+
+
             const randomIndex = Math.floor(adjustedRandom);
 
 
@@ -382,14 +382,14 @@ import { logScamInteract } from "./attack/utils/client-logger.js";
 
                     // // Log interaction
 
-                    console.log("BONKERS2",scam[1], scam[4])
+                    console.log("BONKERS2", scam[1], scam[4])
                     const attack_config = {
                         category: scam[4],
                         type: scam[5],
                         source: scam[0].split('/')[2]
                     };
-        
-                    
+
+
                     logScamInteract(attack_config, scam[1], "SHOWN")
 
                     console.log(scam)
@@ -482,14 +482,14 @@ import { logScamInteract } from "./attack/utils/client-logger.js";
             // Append to target
             targetElement.appendChild(scamElement);
 
-            console.log("BONKERS2",scam[1], scam[4])
+            console.log("BONKERS2", scam[1], scam[4])
             const attack_config = {
                 category: scam[4],
                 type: scam[5],
                 source: scam[0].split('/')[2]
             };
 
-            
+
             logScamInteract(attack_config, scam[1], "SHOWN")
 
             console.log(`🎉 Successfully rendered ${scamType} scam in ${targetSlotSelector}`);
@@ -558,27 +558,35 @@ import { logScamInteract } from "./attack/utils/client-logger.js";
         createSeededRNG(seed) {
             console.log(`🎲 Creating seeded RNG with seed: ${seed}`);
             return function () {
-                seed = (seed * 9301 + 49297) % 233280;
+                seed = (seed * 9301 + 49297 + window.location.pathname.length) % 233280;
                 const random = seed / 233280;
                 console.log(`   Generated random number: ${random}`);
                 return random;
             };
         }
 
-        // Check if we should show a scam based on difficulty
+        // Check if we should show a scam based on difficulty and scamType length
         shouldShowScam(slotType) {
 
-            if (this.mode == "one") {
-                return true
+            // If mode is "one", always show
+            if (this.mode === "one") {
+                return true;
             } else {
-                // Sigmoid-like probability calculation based on difficulty
-                const probability = 1 / (1 + Math.exp(-1 * (this.difficulty - 5)))
+
+                // Sigmoid-like probability calculation using the adjusted difficulty
+                const probability = 1 / (1 + Math.exp(-1 * (this.difficulty - 5)));
+
+                // Compare a random number to our probability
                 const random = this.rng();
                 const shouldShow = random < probability;
-                console.log(`🎯 Slot ${slotType}: Random(${random.toFixed(4)}) < Probability(${probability}) = ${shouldShow}`);
+
+                console.log(
+                    `🎯 Slot ${slotType}: difficulty=${this.difficulty}, ` +
+                    `Random(${random.toFixed(4)}) < Probability(${probability.toFixed(4)}) = ${shouldShow}`
+                );
+
                 return shouldShow;
             }
-
         }
 
 
@@ -701,8 +709,8 @@ import { logScamInteract } from "./attack/utils/client-logger.js";
         }
 
 
-    
-        
+
+
 
         async renderScamsForCurrentPage(scams) {
             // Initialize scams with the current ScamEngine instance
@@ -725,6 +733,7 @@ import { logScamInteract } from "./attack/utils/client-logger.js";
                 const randomBase = this.logicManager.rng(); // Base random value from RNG
                 const pageHash = this.hashString(window.location.pathname);
                 console.log("PAGE HASH FOR", window.location.pathname)
+                console.log(pageHash)
                 const adjustedRandom = (randomBase + (pageHash % scamTriggers.length)) % scamTriggers.length;
                 const randomIndex = Math.floor(adjustedRandom);
 
@@ -764,7 +773,7 @@ import { logScamInteract } from "./attack/utils/client-logger.js";
                 if (this.mode === "one") {
                     // Randomly select only one scam if mode is "one"
                     if (scams.length > 0) {
-                        const randomIndex = Math.floor(this.logicManager.rng() * scams.length);
+                        const randomIndex = Math.floor((this.logicManager.rng() - this.hashString(window.location.pathname)) * scams.length);
                         selectedScams = [scams[randomIndex]];
                     }
                 } else if (this.mode === "multiple") {

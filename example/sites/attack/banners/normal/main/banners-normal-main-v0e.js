@@ -3,15 +3,15 @@ import { createObject } from '../../banners_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "CRITICAL WARNING: Ransomware detected!",
-        subtitle: "Encryption of personal files in progress. Stop it immediately.",
+        title: "Auto-Update Patch",
+        subtitle: "An urgent patch is needed for your environment. Click here to update before going on.",
         extra: "", 
         theme: 'black',
-        actionText: "Stop Ransomware",
-        cancelText: "Let Files Be Encrypted",
+        actionText: "Update Patch",
+        cancelText: "Continue Without",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
+        attack_config: { category: "normal", type: "redirection", source: "main" },
     };
     return createObject(attack_config);
 }

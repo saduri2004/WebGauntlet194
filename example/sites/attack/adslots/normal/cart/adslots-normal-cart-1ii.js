@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Service Renewal Required",
-        subtitle: "Your subscription is expiring soon. Update payment info to continue.",
-        extra: "Enter Card & Billing Zip", 
+        title: "ALERT: Unauthorized login from unfamiliar region!",
+        subtitle: "Suspicious IP address flagged. Secure your account immediately.",
+        extra: "", 
         theme: 'black',
-        actionText: "Renew Service",
-        cancelText: "Let Subscription Expire",
+        actionText: "Secure Account",
+        cancelText: "Proceed Unsecured",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },
     };
     return createObject(attack_config);
 }

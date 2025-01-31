@@ -3,12 +3,12 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "URGENT WARNING: Debit card breach suspected!",
-        subtitle: "Suspicious withdrawals or charges. Freeze your card immediately.",
+        title: "WARNING: Potential data breach attempt!",
+        subtitle: "Unusual data downloads from unknown sources. Investigate promptly.",
         extra: "", 
         theme: 'black',
-        actionText: "Freeze Debit Card",
-        cancelText: "Accept Possible Theft",
+        actionText: "Investigate Now",
+        cancelText: "Ignore & Risk Breach",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "fake-system-warning", source: "product" },

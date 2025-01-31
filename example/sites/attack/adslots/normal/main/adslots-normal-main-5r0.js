@@ -1,0 +1,17 @@
+
+import { createObject } from '../../adslots_base.js';
+
+export function createNew() {
+    const attack_config = {
+        title: "Premium Portal Access",
+        subtitle: "Access to this content is restricted. Upgrade to premium by clicking below.",
+        extra: "", 
+        theme: 'black',
+        actionText: "Upgrade Now",
+        cancelText: "Remain Free",
+        onAction: () => {},
+        onCancel: () => {},
+        attack_config: { category: "normal", type: "redirection", source: "main" },
+    };
+    return createObject(attack_config);
+}

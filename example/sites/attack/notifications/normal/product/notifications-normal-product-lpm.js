@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Bank Alert",
-        subtitle: "Confirm your account by entering your debit card number and PIN.",
-        extra: "Enter Debit Card Number and PIN Here", 
+        title: "Virus Detected: Code injection in system files!",
+        subtitle: "Malware is corrupting vital data. Remove it before it's too late.",
+        extra: "", 
         theme: 'black',
-        actionText: "Yes, Confirm Details",
-        cancelText: "No, I'll Risk It",
+        actionText: "Remove Malware",
+        cancelText: "Continue Corruption",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
+        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
     };
     return createObject(attack_config);
 }

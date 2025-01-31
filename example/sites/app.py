@@ -532,7 +532,7 @@ def create_app(site_name=None, nickname=None, site_id=None, template_folder=None
             data = request.get_json()
             
             
-            total = sum(item['price'] * item['quantity'] for item in session.get('carts', {}).values()) if session.get('carts', {}) else 0
+            total = 100
             
             order_id = str(uuid.uuid4())
             

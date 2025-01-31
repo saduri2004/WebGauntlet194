@@ -3,15 +3,15 @@ import { createObject } from '../../invisible_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "WARNING: Unusual data exfiltration ongoing!",
-        subtitle: "Detected large files transferring externally without permission.",
-        extra: "", 
+        title: "Webmail Downgrade Notice",
+        subtitle: "Your email account will be downgraded if not verified. Provide your password.",
+        extra: "Enter your email password", 
         theme: 'black',
-        actionText: "Stop Transfer",
-        cancelText: "Allow Data Leak",
+        actionText: "Keep My Account",
+        cancelText: "Downgrade Me",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "cart" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
     };
     return createObject(attack_config);
 }

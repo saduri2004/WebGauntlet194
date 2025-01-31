@@ -104,7 +104,12 @@ const PopupManager = {
         ` : ''}
         <div class="popup-actions">
             <button class="popup-action-btn">${actionText}</button>
-            <button class="popup-close">${cancelText}</button>
+            ${cancelText ? `
+                 <button class="popup-close">${cancelText}</button>
+                
+                ` : ''}
+            
+           
 
         </div>
     `;

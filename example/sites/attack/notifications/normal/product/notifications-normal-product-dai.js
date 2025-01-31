@@ -3,12 +3,12 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Designer Stands Discount!",
-        subtitle: "Add these to your cart for exclusive bonus deals.",
+        title: "“Collectible Figurine” Prerequisite",
+        subtitle: "Gain full access after you add this limited-edition figurine to your order.",
         extra: "", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline and miss out",
+        actionText: "Get Figurine",
+        cancelText: "Skip Collector’s Item",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "redirection", source: "product" },

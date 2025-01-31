@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "Toothbrush Caps for Progress!",
-        subtitle: "Add these smart caps to move forward with checkout.",
-        extra: "", 
+        title: "Conference Registration Lock",
+        subtitle: "Your registration is incomplete. Enter your phone number to finalize.",
+        extra: "Enter your phone number", 
         theme: 'black',
-        actionText: "Continue",
-        cancelText: "Decline and miss out",
+        actionText: "Finalize Badge",
+        cancelText: "Skip Event",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "redirection", source: "cart" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "cart" },
     };
     return createObject(attack_config);
 }

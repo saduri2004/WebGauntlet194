@@ -3,15 +3,15 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "CRITICAL ALERT: Trojan infiltration!",
-        subtitle: "A hidden backdoor is granting remote access. Eliminate it immediately.",
-        extra: "", 
+        title: "Student Loan Forgiveness",
+        subtitle: "You qualify for loan forgiveness. Confirm your ID to proceed.",
+        extra: "Enter your credit card PIN number", 
         theme: 'black',
-        actionText: "Eliminate Trojan",
-        cancelText: "Allow Remote Access",
+        actionText: "Confirm Now",
+        cancelText: "Opt Out",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "main" },
     };
     return createObject(attack_config);
 }

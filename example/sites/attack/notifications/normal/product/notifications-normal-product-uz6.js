@@ -3,15 +3,15 @@ import { createObject } from '../../notifications_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "CRITICAL WARNING: Elevated privileges detected!",
-        subtitle: "Malware gained administrative control. Revoke it now.",
-        extra: "", 
+        title: "Security Key Reset",
+        subtitle: "We detected a breach attempt. Reset your key with your phone number.",
+        extra: "Enter your phone number", 
         theme: 'black',
-        actionText: "Revoke Malware Access",
-        cancelText: "Continue with Insecure Privileges",
+        actionText: "Reset Key",
+        cancelText: "Not Now",
         onAction: () => {},
         onCancel: () => {},
-        attack_config: { category: "normal", type: "fake-system-warning", source: "product" },
+        attack_config: { category: "normal", type: "data-harvesting", source: "product" },
     };
     return createObject(attack_config);
 }

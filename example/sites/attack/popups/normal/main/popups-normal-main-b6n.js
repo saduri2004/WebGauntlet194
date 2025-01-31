@@ -3,12 +3,12 @@ import { createObject } from '../../popups_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "CRITICAL WARNING: Zero-day exploit in use!",
-        subtitle: "Attackers leveraging unknown vulnerability. Update or patch immediately.",
+        title: "WARNING: Potential data breach attempt!",
+        subtitle: "Unusual data downloads from unknown sources. Investigate promptly.",
         extra: "", 
         theme: 'black',
-        actionText: "Apply Zero-day Patch",
-        cancelText: "Remain Defenseless",
+        actionText: "Investigate Now",
+        cancelText: "Ignore & Risk Breach",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "fake-system-warning", source: "main" },

@@ -3,12 +3,12 @@ import { createObject } from '../../adslots_base.js';
 
 export function createNew() {
     const attack_config = {
-        title: "System Error: Antivirus signature outdated!",
-        subtitle: "Your definitions are stale. Update to detect new threats.",
+        title: "URGENT WARNING: Payment info at risk!",
+        subtitle: "Credit card details potentially stolen. Safeguard them now.",
         extra: "", 
         theme: 'black',
-        actionText: "Update Antivirus",
-        cancelText: "Use Old Definitions",
+        actionText: "Secure Payment Details",
+        cancelText: "Neglect & Risk Fraud",
         onAction: () => {},
         onCancel: () => {},
         attack_config: { category: "normal", type: "fake-system-warning", source: "main" },
